@@ -33,7 +33,7 @@ cmake --build build
 - Edit **only** files inside `solution/` directories
 - Your code must compile with `-std=c++20 -O2`
 - No inline assembly, no compiler-specific intrinsics (unless stated otherwise)
-- Standard library only (no Boost, no external dependencies)
+- [Pre-installed libraries](https://hftuniversity.com/challenges/libraries) (Boost, Abseil, TBB, etc.) are available — see the full list on the website
 - Time limit and memory limit are per-challenge (see each challenge's README)
 
 ## Getting New Challenges
