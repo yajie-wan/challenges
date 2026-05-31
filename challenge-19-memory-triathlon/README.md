@@ -57,10 +57,14 @@ public:
 ## Build & run
 
 ```bash
-cmake -B build -DCMAKE_BUILD_TYPE=Release
+cmake -B build -DCMAKE_BUILD_TYPE=Release   # also fetches sample.trace (~4 MB)
 cmake --build build
-./build/benchmark            # runs on the bundled sample.trace
+./build/benchmark                            # runs on sample.trace
 ```
+
+The configure step downloads `sample.trace` from this repo's releases. If you're
+offline, run `./fetch_sample.sh` manually, or point the harness at any trace via
+`TRIATHLON_TRACE=/path/to.trace ./build/benchmark`.
 
 ## Files
 
@@ -68,7 +72,8 @@ cmake --build build
 - `solution/solution.cpp` — translation unit (edit if you split out definitions)
 - `triathlon.h` — the frozen interface (do NOT modify)
 - `replay.hpp`, `benchmark.cpp` — the harness (do NOT modify)
-- `sample.trace` — a short, surge-free trace for local iteration
+- `fetch_sample.sh` — downloads the local-dev sample trace (CMake runs it for you)
+- `sample.trace` — short, surge-free trace for local iteration (fetched, not committed)
 - `CMakeLists.txt` — build config (do NOT modify)
 
 > The local `sample.trace` is short and surge-free. The certified run uses a

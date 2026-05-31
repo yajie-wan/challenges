@@ -55,7 +55,14 @@ int main(int argc, char** argv) {
     uint64_t salt = std::strtoull(salt_str, nullptr, 0);
 
     Trace tr;
-    if (!load_trace(trace_path, tr)) return 1;
+    if (!load_trace(trace_path, tr)) {
+        std::fprintf(stderr,
+            "\nNo trace at '%s'. The sample is fetched on build (CMake) — or run\n"
+            "  ./fetch_sample.sh\n"
+            "to download it, or point TRIATHLON_TRACE at your own .trace file.\n",
+            trace_path);
+        return 1;
+    }
     std::printf("trace %s: %zu events, handle_space=%u\n",
                 trace_path, tr.events.size(), tr.handle_space);
 
