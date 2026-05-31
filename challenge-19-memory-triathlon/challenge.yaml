@@ -71,7 +71,7 @@ description: |
 time_limit_seconds: 120
 memory_limit_mb: 4096
 daily_submission_limit: 10
-published: false
+published: true
 goals:
   - key: composite
     name: "Triathlon Score"
@@ -79,9 +79,8 @@ goals:
     unit: cycles
     order: asc
 badges:
-  # PROVISIONAL — recalibrate from reference runs before publishing.
-  # Reference on the held-out surge trace: baseline ~1280, pooled+hot/cold ~540.
-  gold: 650
-  silver: 900
-  bronze: 1300
+  # Hz2-calibrated on the held-out trace: baseline 1984, gold 682.
+  gold: 750
+  silver: 1100
+  bronze: 1500
 weight: 4.0

@@ -33,7 +33,7 @@ using namespace tri;
 #endif
 // The public, told-about steady-state regime (the surge exceeds it at grade time).
 #ifndef SHAPE_ORDER
-#define SHAPE_ORDER 175000
+#define SHAPE_ORDER 825000
 #endif
 #ifndef SHAPE_LEVEL
 #define SHAPE_LEVEL 4000

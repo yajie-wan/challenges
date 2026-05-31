@@ -5,11 +5,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Fetch the local-dev sample trace into the BUILD dir on first configure (not
-# committed — it's a 4 MB binary; the build dir is gitignored and rm-clean). The
+# committed — it's a 11 MB binary; the build dir is gitignored and rm-clean). The
 # certified run uses a different held-out trace anyway.
 set(SAMPLE_TRACE "${CMAKE_CURRENT_BINARY_DIR}/sample.trace")
-set(SAMPLE_URL  "https://github.com/Vitorian/hft-challenges/releases/download/c19-sample-v1/sample.trace")
-set(SAMPLE_SHA256 "c6afb60e112c415847884b2b4a5c8572627bc96acef13738c1d3fee57ba6a161")
+set(SAMPLE_URL  "https://github.com/Vitorian/hft-challenges/releases/download/c19-sample-v2/sample.trace")
+set(SAMPLE_SHA256 "01cb06389c66fc411af22605d2f04c179fa55bbefc9a8fa26e55674ee98a7bf3")
 if(NOT EXISTS "${SAMPLE_TRACE}")
     message(STATUS "Fetching sample.trace into build dir ...")
     file(DOWNLOAD "${SAMPLE_URL}" "${SAMPLE_TRACE}"

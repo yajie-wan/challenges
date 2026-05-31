@@ -36,7 +36,7 @@ public:
 
 - `hotness` (0..10) is the object's **per-symbol** activity hint, constant for
   its life. Co-locate hot objects to win the access leg.
-- `shapes` gives the **steady-state** peak live count per class. The certified
+- `shapes` gives the **steady-state** peak live count per class (Order≈825k / Level≈4k / Shard≈128). The certified
   trace adds a secret **surge** that exceeds it — grow your pools gracefully.
 
 ## Rules
