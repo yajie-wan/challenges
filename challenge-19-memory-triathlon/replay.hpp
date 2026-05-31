@@ -180,19 +180,37 @@ Result replay(const Trace& tr, const ShapeTable& shapes, uint64_t salt) {
     return R;
 }
 
+// Human-readable report -> stderr (stdout is reserved for the result JSON).
 inline void print_result(const char* label, const Result& R) {
-    std::printf("\n==== %s ====\n", label);
-    std::printf("events: alloc=%llu free=%llu access=%llu  peak_live=%u\n",
+    std::fprintf(stderr, "\n==== %s ====\n", label);
+    std::fprintf(stderr, "events: alloc=%llu free=%llu access=%llu  peak_live=%u\n",
                 (unsigned long long)R.n_alloc, (unsigned long long)R.n_free,
                 (unsigned long long)R.n_access, R.peak_live);
-    std::printf("  allocate  P50=%-6u P99=%-6u\n", R.alloc_p50, R.alloc_p99);
-    std::printf("  free      P50=%-6u P99=%-6u\n", R.free_p50, R.free_p99);
-    std::printf("  access    P50=%-6u P90=%-6u P99=%-6u mean=%.1f\n",
+    std::fprintf(stderr, "  allocate  P50=%-6u P99=%-6u\n", R.alloc_p50, R.alloc_p99);
+    std::fprintf(stderr, "  free      P50=%-6u P99=%-6u\n", R.free_p50, R.free_p99);
+    std::fprintf(stderr, "  access    P50=%-6u P90=%-6u P99=%-6u mean=%.1f\n",
                 R.access_p50, R.access_p90, R.access_p99, R.access_mean);
-    std::printf("  SCORE = P99(alloc)+P99(free)+P99(access) = %u+%u+%u = %llu cyc\n",
+    std::fprintf(stderr, "  SCORE = P99(alloc)+P99(free)+P99(access) = %u+%u+%u = %llu cyc\n",
                 R.alloc_p99, R.free_p99, R.access_p99, (unsigned long long)R.score);
-    std::printf("  integrity fails: %llu   null allocs: %llu\n",
+    std::fprintf(stderr, "  integrity fails: %llu   null allocs: %llu\n",
                 (unsigned long long)R.integrity_fails, (unsigned long long)R.null_allocs);
+}
+
+// Result JSON -> stdout, in the worker's expected shape. On a correctness
+// failure (aliasing / undersize / drop) emit {"error":...} so the run is
+// rejected rather than scored.
+inline void print_json(const char* bench_name, const Result& R) {
+    if (R.integrity_fails || R.null_allocs) {
+        std::printf("{\"error\":\"correctness check failed: %llu integrity fails, "
+                    "%llu null allocs\"}\n",
+                    (unsigned long long)R.integrity_fails,
+                    (unsigned long long)R.null_allocs);
+        return;
+    }
+    std::printf("{\"benchmarks\":[{\"name\":\"%s\",\"cycles_per_op\":%llu,"
+                "\"alloc_p99\":%u,\"free_p99\":%u,\"access_p99\":%u,\"peak_live\":%u}]}\n",
+                bench_name, (unsigned long long)R.score,
+                R.alloc_p99, R.free_p99, R.access_p99, R.peak_live);
 }
 
 } // namespace tri
