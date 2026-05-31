@@ -25,6 +25,11 @@
 
 using namespace tri;
 
+// CMake bakes in the absolute path of the fetched sample (in the build dir).
+#ifndef DEFAULT_TRACE
+#define DEFAULT_TRACE "sample.trace"
+#endif
+
 // Per-class peak live over a trace -> the "active" regime of the ShapeTable.
 static ShapeTable build_shapes(const Trace& tr) {
     std::vector<uint8_t> cls(tr.handle_space, 0), liveb(tr.handle_space, 0);
@@ -49,7 +54,7 @@ static const char* pick(int argc, char** argv, int i, const char* env, const cha
 }
 
 int main(int argc, char** argv) {
-    const char* trace_path = pick(argc, argv, 1, "TRIATHLON_TRACE", "sample.trace");
+    const char* trace_path = pick(argc, argv, 1, "TRIATHLON_TRACE", DEFAULT_TRACE);
     const char* shape_path = pick(argc, argv, 2, "TRIATHLON_SHAPE", trace_path);
     const char* salt_str   = pick(argc, argv, 3, "TRIATHLON_SALT", "0x5A1700D0FACE");
     uint64_t salt = std::strtoull(salt_str, nullptr, 0);
@@ -57,9 +62,9 @@ int main(int argc, char** argv) {
     Trace tr;
     if (!load_trace(trace_path, tr)) {
         std::fprintf(stderr,
-            "\nNo trace at '%s'. The sample is fetched on build (CMake) — or run\n"
-            "  ./fetch_sample.sh\n"
-            "to download it, or point TRIATHLON_TRACE at your own .trace file.\n",
+            "\nNo trace at '%s'. CMake fetches the sample into the build dir on\n"
+            "configure; if you're offline run  ./fetch_sample.sh  (writes\n"
+            "build/sample.trace), or point TRIATHLON_TRACE at your own .trace file.\n",
             trace_path);
         return 1;
     }
