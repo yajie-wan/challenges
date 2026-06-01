@@ -14,6 +14,7 @@
 #include <vector>
 
 #include "triathlon.h"
+#include "common/benchmark_harness.h"   // hftu::cycle_light
 
 namespace tri {
 
@@ -54,16 +55,13 @@ inline bool load_trace(const char* path, Trace& out) {
 }
 
 // ---- Fenced TSC ----
-// lfence before rdtsc serializes instruction retirement (prior ops complete
-// locally before the timestamp) without mfence's store-drain cost, keeping the
-// per-op overhead floor low enough that the access leg's cache-residency signal
-// (~4-40 cyc) is not swamped. The residual constant floor cancels in
-// cross-solver ranking.
-static inline uint64_t tsc() {
-    uint32_t lo, hi;
-    __asm__ __volatile__("lfence\n\trdtsc" : "=a"(lo), "=d"(hi) :: "memory");
-    return (uint64_t(hi) << 32) | lo;
-}
+// A single light fence (hftu::cycle_light) keeps the per-op overhead floor low
+// enough that the access leg's cache-residency signal (~4-40 cyc) is not
+// swamped — cycle_start/cycle_end's full CPUID serialization would bury it. The
+// residual constant floor cancels in cross-solver ranking. cycle_light is
+// portable (x86 lfence+rdtsc, ARM64 isb+cntvct_el0, else clock_gettime) so this
+// builds for local iteration on a Mac; the certified run is always x86.
+static inline uint64_t tsc() { return hftu::cycle_light(); }
 
 // ---- Address-derived integrity tokens ----
 // head/tail 64-bit words derived from the block ADDRESS, the handle, and a

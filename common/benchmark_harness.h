@@ -93,6 +93,32 @@ inline uint64_t cycle_end() { return cycle_start(); }
 #endif
 
 // ---------------------------------------------------------------------------
+// Lightweight fenced cycle read (cycle_light)
+// A single light fence instead of cycle_start/cycle_end's full CPUID
+// serialization. Use when the measured region is only a handful of cycles and
+// the heavy serialization would swamp the signal (e.g. a cache-residency
+// probe): take one cycle_light() before and one after the region.
+// Same portability story as above — x86 lfence+rdtsc, ARM64 isb+cntvct_el0,
+// else clock_gettime ns. Non-x86 results are NOT comparable to certified scores.
+// ---------------------------------------------------------------------------
+
+#if defined(__x86_64__) || defined(_M_X64)
+inline uint64_t cycle_light() {
+    uint32_t lo, hi;
+    asm volatile("lfence\n\trdtsc" : "=a"(lo), "=d"(hi) :: "memory");
+    return (static_cast<uint64_t>(hi) << 32) | lo;
+}
+#elif defined(__aarch64__) || defined(_M_ARM64)
+inline uint64_t cycle_light() {
+    uint64_t val;
+    asm volatile("isb\n\tmrs %0, cntvct_el0" : "=r"(val) :: "memory");
+    return val;
+}
+#else
+inline uint64_t cycle_light() { return cycle_start(); }
+#endif
+
+// ---------------------------------------------------------------------------
 // Compiler barriers
 // ---------------------------------------------------------------------------
 
