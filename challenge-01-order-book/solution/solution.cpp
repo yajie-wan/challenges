@@ -57,15 +57,24 @@ void OrderBook::cancel_order(uint64_t id) {
     if (buy_volumes_[price] == 0){
         // update buy
         buy_l0[price >> 6] &= ~(1ULL << (price & 63));
-        buy_l1[price >> 12] &= ~(1ULL << ((price >> 6) & 63));
-        buy_l2[price >> 18] &= ~(1ULL << ((price >> 12) & 63));
+        if(buy_l0[price >> 6] == 0){
+             buy_l1[price >> 12] &= ~(1ULL << ((price >> 6) & 63));
+             if(buy_l1[price >> 12] == 0){
+                buy_l2[price >> 18] &= ~(1ULL << ((price >> 12) & 63));
+             }
+        }
+        
     }
     
     if (sell_volumes_[price] == 0){
         // update sell
         sell_l0[price >> 6] &= ~(1ULL << (price & 63));
-        sell_l1[price >> 12] &= ~(1ULL << ((price >> 6) & 63));
-        sell_l2[price >> 18] &= ~(1ULL << ((price >> 12) & 63));
+        if(sell_l0[price >> 6] == 0){
+             sell_l1[price >> 12] &= ~(1ULL << ((price >> 6) & 63));
+             if(sell_l1[price >> 12] == 0){
+                sell_l2[price >> 18] &= ~(1ULL << ((price >> 12) & 63));
+             }
+        }
     }
 }
 
