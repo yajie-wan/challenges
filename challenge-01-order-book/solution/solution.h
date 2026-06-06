@@ -5,6 +5,8 @@
 #include <cstdint>
 #include <map>
 #include <unordered_map>
+#include <array> 
+#include <cstdint> 
 
 namespace hftu {
 
@@ -22,6 +24,11 @@ public:
     // Return lowest ask price, or 0 if no asks.
     int64_t best_ask() const;
 
+    inline int64_t find_next_best_bid() const;
+
+
+    inline int64_t find_next_best_ask() const;
+
 private:
     // Replace these with your own data structures
     struct Order {
@@ -30,9 +37,22 @@ private:
         int64_t quantity;
     };
 
-    std::unordered_map<uint64_t, Order> orders_;
-    std::map<int64_t, int64_t, std::greater<>> bids_; // price -> total qty, descending
-    std::map<int64_t, int64_t> asks_;                  // price -> total qty, ascending
+    static std::array<Order, 100'002> orders_;
+    static std::array<int64_t, 1'000'000> buy_volumes_;
+    static std::array<int64_t, 1'000'000> sell_volumes_;
+    std::array<uint64_t, 15625> buy_l0{};
+    std::array<uint64_t, 245> buy_l1{};
+    std::array<uint64_t, 5> buy_l2{};
+
+
+    std::array<uint64_t, 15625> sell_l0{};
+    std::array<uint64_t, 245> sell_l1{};
+    std::array<uint64_t, 4> sell_l2{};
+
+
+    // std::unordered_map<uint64_t, Order> orders_;
+    // std::map<int64_t, int64_t, std::greater<>> bids_; // price -> total qty, descending
+    // std::map<int64_t, int64_t> asks_;                  // price -> total qty, ascending
 };
 
 } // namespace hftu
