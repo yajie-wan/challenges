@@ -5,6 +5,8 @@
 #include <cstdint>
 #include <map>
 #include <unordered_map>
+#include <array>   // Fixes the incomplete type error for std::array
+#include <cstdint>
 
 namespace hftu {
 
@@ -29,9 +31,17 @@ private:
         int32_t quantity; // 4 bytes
     };
 
-    std::unordered_map<uint32_t, Order> orders_;
-    std::map<int32_t, int32_t, std::greater<>> bids_; // price -> total qty, descending
-    std::map<int32_t, int32_t, std::greater<>> asks_;                  // price -> total qty, ascending
+    std::array<int32_t, 1048576> orders_; // id to price mapping
+    std::array<uint64_t, 16384> l0_bids_{};
+    std::array<uint64_t, 16384> l0_asks_{};
+    std::array<uint64_t, 256> l1_bids_{};
+    std::array<uint64_t, 256> l1_asks_{};
+    std::array<uint64_t, 4> l2_bids_{};
+    std::array<uint64_t, 4> l2_asks_{};
+
+    std::unordered_map<int32_t, int32_t> price_collisions_; // price -> count of orders at that price
+    // std::map<int32_t, int32_t, std::greater<>> bids_; // price -> total qty, descending
+    // std::map<int32_t, int32_t, std::greater<>> asks_;                  // price -> total qty, ascending
 };
 
 } // namespace hftu

@@ -6,47 +6,139 @@
 namespace hftu {
 
 void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity) {
-    uint32_t condensed_id = static_cast<uint32_t>(id); 
-    int32_t condensed_price = static_cast<int32_t>(side == 0 ? price : -price);
-    int32_t condensed_quantity = static_cast<int32_t>(quantity);
-    orders_[condensed_id] = {condensed_price, condensed_quantity};
+    int32_t condensed_id = static_cast<int32_t>(id); 
+    int32_t condensed_price = static_cast<uint32_t>(side == 0 ? price : -price);
+    orders_[condensed_id] = condensed_price;
 
-    
-    if (side == 0) {
-        bids_[condensed_price] += condensed_quantity;
-    } else {
-        asks_[condensed_price] += condensed_quantity;
+    if (side == 0){
+        int l0_idx = condensed_price >> 6;
+        int l0_offset = condensed_price & 63;
+        
+        bool is_new_price = l0_bids_[l0_idx] >> l0_offset & 1ULL == 0;
+        if(is_new_price){
+            l0_bids_[l0_idx] |= (1ULL << l0_offset);
+        }
+        else{
+            price_collisions_[condensed_price]++;    
+        }
+
+        int l1_idx = l0_idx >> 6;
+        int l1_offset = l0_idx & 63;
+        l1_bids_[l1_idx] |= (1ULL << l1_offset);
+
+        int l2_idx = l1_idx >> 6;
+        int l2_offset = l1_idx & 63;
+        l2_bids_[l2_idx] |= (1ULL << l2_offset);
+
     }
+    else{
+        int l0_idx = condensed_price >> 6;
+        int l0_offset = condensed_price & 63;
+        
+        bool is_new_price = l0_asks_[l0_idx] >> l0_offset & 1ULL == 0;
+        if(is_new_price){
+            l0_asks_[l0_idx] |= (1ULL << l0_offset);
+        }
+        else{
+            price_collisions_[condensed_price]++;    
+        }
+
+        int l1_idx = l0_idx >> 6;
+        int l1_offset = l0_idx & 63;
+        l1_asks_[l1_idx] |= (1ULL << l1_offset);
+
+        int l2_idx = l1_idx >> 6;
+        int l2_offset = l1_idx & 63;
+        l2_asks_[l2_idx] |= (1ULL << l2_offset);
+
+    }
+    
 }
 
 void OrderBook::cancel_order(uint64_t id) {
-    uint32_t condensed_id = static_cast<uint32_t>(id); 
-    auto it = orders_.find(condensed_id);
-    if (it == orders_.end()) return;
+    int32_t condensed_id = static_cast<int32_t>(id);
+    int32_t condensed_price = orders_[condensed_id];
+    orders_[condensed_id] = 0;
 
-    auto& order = it->second;
-    if (order.price > 0) {
-        auto bit = bids_.find(order.price);
-        if (bit != bids_.end()) {
-            bit->second -= order.quantity;
-            if (bit->second <= 0) bids_.erase(bit);
+    if (condensed_price > 0){
+        int l0_idx = condensed_price >> 6;
+        int l0_offset = condensed_price & 63;
+
+        if(price_collisions_[condensed_price] > 0){
+            price_collisions_[condensed_price]--;
         }
-    } else {
-        auto ait = asks_.find(order.price);
-        if (ait != asks_.end()) {
-            ait->second -= order.quantity;
-            if (ait->second <= 0) asks_.erase(ait);
+        else{
+            l0_bids_[l0_idx] &= ~(1ULL << l0_offset);
+        }
+
+        if(l0_bids_[l0_idx] == 0){
+            int l1_idx = l0_idx >> 6;
+            int l1_offset = l0_idx & 63;
+            l1_bids_[l1_idx] &= ~(1ULL << l1_offset);
+
+            if(l1_bids_[l1_idx] == 0){
+                int l2_idx = l1_idx >> 6;
+                int l2_offset = l1_idx & 63;
+                l2_bids_[l2_idx] &= ~(1ULL << l2_offset);
+            }
         }
     }
-    orders_.erase(it);
+    else{
+        condensed_price = -condensed_price;
+        int l0_idx = (condensed_price) >> 6;
+        int l0_offset = (condensed_price) & 63;
+
+        if(price_collisions_[condensed_price] > 0){
+            price_collisions_[condensed_price]--;
+        }
+        else{
+            l0_asks_[l0_idx] &= ~(1ULL << l0_offset);
+        }
+
+        if(l0_asks_[l0_idx] == 0){
+            int l1_idx = l0_idx >> 6;
+            int l1_offset = l0_idx & 63;
+            l1_asks_[l1_idx] &= ~(1ULL << l1_offset);
+
+            if(l1_asks_[l1_idx] == 0){
+                int l2_idx = l1_idx >> 6;
+                int l2_offset = l1_idx & 63;
+                l2_asks_[l2_idx] &= ~(1ULL << l2_offset);
+            }
+        }
+    }
 }
 
 int64_t OrderBook::best_bid() const {
-    return bids_.empty() ? 0 : bids_.begin()->first;
+    for(int i = 3; i >= 0; i--){
+        if(l2_bids_[i] != 0){
+            int l1_idx = (i << 6) | (63 - __builtin_clzll(l2_bids_[i]));
+            if(l1_bids_[l1_idx] != 0){
+                int l0_idx = (l1_idx << 6) | (63 - __builtin_clzll(l1_bids_[l1_idx]));
+                if(l0_bids_[l0_idx] != 0){
+                    int price = (l0_idx << 6) | (63 - __builtin_clzll(l0_bids_[l0_idx]));
+                    return price;
+                }
+            }
+        }
+    }
+    return 0;
 }
 
 int64_t OrderBook::best_ask() const {
-    return asks_.empty() ? 0 : -asks_.begin()->first;
+    for(int i = 0; i < 4; i++){
+        if(l2_asks_[i] != 0){
+            int l1_idx = (i << 6) | __builtin_ctzll(l2_asks_[i]);
+            if(l1_asks_[l1_idx] != 0){
+                int l0_idx = (l1_idx << 6) | __builtin_ctzll(l1_asks_[l1_idx]);
+                if(l0_asks_[l0_idx] != 0){
+                    int price = (l0_idx << 6) | __builtin_ctzll(l0_asks_[l0_idx]);
+                    return price;
+                }
+            }
+        }
+    }
+    return 0;
 }
 
 } // namespace hftu
