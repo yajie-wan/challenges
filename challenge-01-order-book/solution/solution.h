@@ -31,7 +31,7 @@ private:
 
     std::unordered_map<uint32_t, Order> orders_;
     std::map<int32_t, int32_t, std::greater<>> bids_; // price -> total qty, descending
-    std::map<int32_t, int32_t> asks_;                  // price -> total qty, ascending
+    std::map<int32_t, int32_t, std::greater<>> asks_;                  // price -> total qty, ascending
 };
 
 } // namespace hftu

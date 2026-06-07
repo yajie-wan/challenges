@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/ubuntu/challenges/challenge-01-order-book/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

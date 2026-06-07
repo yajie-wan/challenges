@@ -10,6 +10,8 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
     int32_t condensed_price = static_cast<int32_t>(side == 0 ? price : -price);
     int32_t condensed_quantity = static_cast<int32_t>(quantity);
     orders_[condensed_id] = {condensed_price, condensed_quantity};
+
+    
     if (side == 0) {
         bids_[condensed_price] += condensed_quantity;
     } else {
@@ -44,7 +46,7 @@ int64_t OrderBook::best_bid() const {
 }
 
 int64_t OrderBook::best_ask() const {
-    return asks_.empty() ? 0 : asks_.begin()->first;
+    return asks_.empty() ? 0 : -asks_.begin()->first;
 }
 
 } // namespace hftu

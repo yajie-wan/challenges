@@ -1,3 +1,0 @@
-Error:
-No supported events found.
-The cache-references event is not supported.

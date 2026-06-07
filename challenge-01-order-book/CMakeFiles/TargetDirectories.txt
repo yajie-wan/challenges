@@ -1,0 +1,3 @@
+/home/ubuntu/challenges/challenge-01-order-book/CMakeFiles/benchmark.dir
+/home/ubuntu/challenges/challenge-01-order-book/CMakeFiles/edit_cache.dir
+/home/ubuntu/challenges/challenge-01-order-book/CMakeFiles/rebuild_cache.dir

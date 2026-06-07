@@ -1,3 +1,0 @@
-Error:
-No supported events found.
-The L1-dcache-load-misses event is not supported.
