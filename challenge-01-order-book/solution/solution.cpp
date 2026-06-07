@@ -7,8 +7,8 @@ namespace hftu {
 
 // Definitions for static storage declared in the header
 std::array<OrderBook::Order, 100'002> OrderBook::orders_{};
-std::array<int64_t, 1'000'000> OrderBook::buy_volumes_{};
-std::array<int64_t, 1'000'000> OrderBook::sell_volumes_{};
+std::array<int64_t, 1'000'001> OrderBook::buy_volumes_{};
+std::array<int64_t, 1'000'001> OrderBook::sell_volumes_{};
 
 // void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity) {
 //     orders_[id] = {side, price, quantity};
@@ -19,7 +19,7 @@ std::array<int64_t, 1'000'000> OrderBook::sell_volumes_{};
 //     }
 // }
 
-void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity) {
+void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity)  {
     OrderBook::orders_[id] = {side, price, quantity};
     int64_t buy_quantity = side == 0 ? quantity : 0;
     int64_t sell_quantity = side == 1 ? quantity : 0;
@@ -43,8 +43,13 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
 
 }
 
-void OrderBook::cancel_order(uint64_t id) {
+void OrderBook::cancel_order(uint64_t id)  {
     auto& [side, price, quantity] = orders_[id];
+
+    if (quantity == 0) {
+        return; 
+    }
+    
     int64_t buy_quantity = side == 0 ? quantity : 0;
     int64_t sell_quantity = side == 1 ? quantity : 0;
 
@@ -99,7 +104,7 @@ void OrderBook::cancel_order(uint64_t id) {
 //     orders_.erase(it);
 // }
 
-int64_t OrderBook::best_bid() const {
+int64_t OrderBook::best_bid() const{
     for(int i = 3; i >= 0; --i){
         if (buy_l2[i] != 0){
             int l2_bit = 63 - __builtin_clzll(buy_l2[i]);
@@ -114,7 +119,7 @@ int64_t OrderBook::best_bid() const {
     return 0;
 }
 
-int64_t OrderBook::best_ask() const {
+int64_t OrderBook::best_ask() const{
     for(int i = 0; i < 4; i++){
         if (sell_l2[i] != 0){
             int l2_bit = __builtin_ctzll(sell_l2[i]);

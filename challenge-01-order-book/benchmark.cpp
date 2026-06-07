@@ -3,8 +3,10 @@
 
 #include "common/benchmark_harness.h"
 #include "solution/solution.h"
+#include "solution/solution_reference.h"
 
 #include <vector>
+#include <cstdio>
 
 namespace {
 
@@ -51,7 +53,8 @@ std::vector<Operation> generate_workload(size_t n) {
     return ops;
 }
 
-void run_workload(hftu::OrderBook& book, const std::vector<Operation>& ops) {
+template <typename Book>
+void run_workload(Book& book, const std::vector<Operation>& ops) {
     for (const auto& op : ops) {
         switch (op.type) {
             case Operation::ADD:
@@ -68,6 +71,55 @@ void run_workload(hftu::OrderBook& book, const std::vector<Operation>& ops) {
                 break;
         }
     }
+}
+
+void compare_against_reference(const std::vector<Operation>& ops) {
+    hftu::OrderBook solution_book;
+    hftu::ReferenceOrderBook reference_book;
+
+    for (size_t i = 0; i < ops.size(); ++i) {
+        const auto& op = ops[i];
+        switch (op.type) {
+            case Operation::ADD:
+                std::printf("[op %zu] ADD id=%llu side=%d price=%lld qty=%lld\n",
+                            i, static_cast<unsigned long long>(op.id), op.side,
+                            static_cast<long long>(op.price), static_cast<long long>(op.quantity));
+                solution_book.add_order(op.id, op.side, op.price, op.quantity);
+                reference_book.add_order(op.id, op.side, op.price, op.quantity);
+                break;
+            case Operation::CANCEL:
+                std::printf("[op %zu] CANCEL id=%llu\n",
+                            i, static_cast<unsigned long long>(op.id));
+                solution_book.cancel_order(op.id);
+                reference_book.cancel_order(op.id);
+                break;
+            case Operation::BEST_BID: {
+                int64_t solution_value = solution_book.best_bid();
+                int64_t reference_value = reference_book.best_bid();
+                std::printf("[op %zu] BEST_BID solution=%lld reference=%lld\n",
+                            i, static_cast<long long>(solution_value), static_cast<long long>(reference_value));
+                if (solution_value != reference_value) {
+                    std::printf("Mismatch at op %zu: solution=%lld reference=%lld\n",
+                                i, static_cast<long long>(solution_value), static_cast<long long>(reference_value));
+                    return;
+                }
+                break;
+            }
+            case Operation::BEST_ASK: {
+                int64_t solution_value = solution_book.best_ask();
+                int64_t reference_value = reference_book.best_ask();
+                std::printf("[op %zu] BEST_ASK solution=%lld reference=%lld\n",
+                            i, static_cast<long long>(solution_value), static_cast<long long>(reference_value));
+                if (solution_value != reference_value) {
+                    std::printf("Mismatch at op %zu: solution=%lld reference=%lld\n",
+                                i, static_cast<long long>(solution_value), static_cast<long long>(reference_value));
+                    return;
+                }
+                break;
+            }
+        }
+    }
+    std::printf("Comparison complete: no mismatches in %zu ops\n", ops.size());
 }
 
 } // namespace
@@ -91,6 +143,8 @@ static hftu::RegisterBenchmark reg_solution(
 );
 
 int main() {
+    const auto ops = generate_workload(100'000);
+    compare_against_reference(ops);
     hftu::run_benchmarks();
     return 0;
 }
