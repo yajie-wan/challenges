@@ -6,20 +6,19 @@
 namespace hftu {
 
 void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity) {
-    int32_t condensed_id = static_cast<int32_t>(id); 
-    int32_t condensed_price = static_cast<uint32_t>(side == 0 ? price : -price);
-    orders_[condensed_id] = condensed_price;
+    int64_t condensed_price = static_cast<int64_t>(side == 0 ? price : -price);
+    orders_[id] = condensed_price;
 
     if (side == 0){
-        int l0_idx = condensed_price >> 6;
-        int l0_offset = condensed_price & 63;
+        int l0_idx = price >> 6;
+        int l0_offset = price & 63;
         
         bool is_new_price = l0_bids_[l0_idx] >> l0_offset & 1ULL == 0;
         if(is_new_price){
             l0_bids_[l0_idx] |= (1ULL << l0_offset);
         }
         else{
-            price_collisions_[condensed_price]++;    
+            price_collisions_[price]++;    
         }
 
         int l1_idx = l0_idx >> 6;
@@ -32,15 +31,15 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
 
     }
     else{
-        int l0_idx = condensed_price >> 6;
-        int l0_offset = condensed_price & 63;
+        int l0_idx = price >> 6;
+        int l0_offset = price & 63;
         
         bool is_new_price = l0_asks_[l0_idx] >> l0_offset & 1ULL == 0;
         if(is_new_price){
             l0_asks_[l0_idx] |= (1ULL << l0_offset);
         }
         else{
-            price_collisions_[condensed_price]++;    
+            price_collisions_[price]++;    
         }
 
         int l1_idx = l0_idx >> 6;
@@ -56,9 +55,8 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
 }
 
 void OrderBook::cancel_order(uint64_t id) {
-    int32_t condensed_id = static_cast<int32_t>(id);
-    int32_t condensed_price = orders_[condensed_id];
-    orders_[condensed_id] = 0;
+    int64_t condensed_price = orders_[id];
+    orders_[id] = 0;
 
     if (condensed_price > 0){
         int l0_idx = condensed_price >> 6;
