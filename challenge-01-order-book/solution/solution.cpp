@@ -6,20 +6,24 @@
 namespace hftu {
 
 void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity) {
-    orders_[id] = {side, price, quantity};
+    uint32_t condensed_id = static_cast<uint32_t>(id); 
+    int32_t condensed_price = static_cast<int32_t>(side == 0 ? price : -price);
+    int32_t condensed_quantity = static_cast<int32_t>(quantity);
+    orders_[condensed_id] = {condensed_price, condensed_quantity};
     if (side == 0) {
-        bids_[price] += quantity;
+        bids_[condensed_price] += condensed_quantity;
     } else {
-        asks_[price] += quantity;
+        asks_[condensed_price] += condensed_quantity;
     }
 }
 
 void OrderBook::cancel_order(uint64_t id) {
-    auto it = orders_.find(id);
+    uint32_t condensed_id = static_cast<uint32_t>(id); 
+    auto it = orders_.find(condensed_id);
     if (it == orders_.end()) return;
 
     auto& order = it->second;
-    if (order.side == 0) {
+    if (order.price > 0) {
         auto bit = bids_.find(order.price);
         if (bit != bids_.end()) {
             bit->second -= order.quantity;

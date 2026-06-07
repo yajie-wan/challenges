@@ -25,14 +25,13 @@ public:
 private:
     // Replace these with your own data structures
     struct Order {
-        int side;
-        int64_t price;
-        int64_t quantity;
+        int32_t price; // 4 bytes, positive for bids, negative for asks
+        int32_t quantity; // 4 bytes
     };
 
-    std::unordered_map<uint64_t, Order> orders_;
-    std::map<int64_t, int64_t, std::greater<>> bids_; // price -> total qty, descending
-    std::map<int64_t, int64_t> asks_;                  // price -> total qty, ascending
+    std::unordered_map<uint32_t, Order> orders_;
+    std::map<int32_t, int32_t, std::greater<>> bids_; // price -> total qty, descending
+    std::map<int32_t, int32_t> asks_;                  // price -> total qty, ascending
 };
 
 } // namespace hftu
