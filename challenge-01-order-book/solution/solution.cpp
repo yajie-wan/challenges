@@ -1,7 +1,7 @@
 // Challenge 01: Order Book — Reference Implementation
 // This is a naive reference used for validation and comparison.
 
-#include "solution_reference.h"
+#include "solution.h"
 
 namespace hftu {
 

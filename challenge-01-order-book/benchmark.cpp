@@ -3,10 +3,9 @@
 
 #include "common/benchmark_harness.h"
 #include "solution/solution.h"
-#include "solution/solution_reference.h"
+#include "solution/solution_my.h"
 
 #include <vector>
-#include <cstdio>
 
 namespace {
 
@@ -81,45 +80,28 @@ void compare_against_reference(const std::vector<Operation>& ops) {
         const auto& op = ops[i];
         switch (op.type) {
             case Operation::ADD:
-                std::printf("[op %zu] ADD id=%llu side=%d price=%lld qty=%lld\n",
-                            i, static_cast<unsigned long long>(op.id), op.side,
-                            static_cast<long long>(op.price), static_cast<long long>(op.quantity));
                 solution_book.add_order(op.id, op.side, op.price, op.quantity);
                 reference_book.add_order(op.id, op.side, op.price, op.quantity);
                 break;
             case Operation::CANCEL:
-                std::printf("[op %zu] CANCEL id=%llu\n",
-                            i, static_cast<unsigned long long>(op.id));
                 solution_book.cancel_order(op.id);
                 reference_book.cancel_order(op.id);
                 break;
             case Operation::BEST_BID: {
                 int64_t solution_value = solution_book.best_bid();
                 int64_t reference_value = reference_book.best_bid();
-                std::printf("[op %zu] BEST_BID solution=%lld reference=%lld\n",
-                            i, static_cast<long long>(solution_value), static_cast<long long>(reference_value));
-                if (solution_value != reference_value) {
-                    std::printf("Mismatch at op %zu: solution=%lld reference=%lld\n",
-                                i, static_cast<long long>(solution_value), static_cast<long long>(reference_value));
-                    return;
-                }
+                if (solution_value != reference_value) return; // silent mismatch
                 break;
             }
             case Operation::BEST_ASK: {
                 int64_t solution_value = solution_book.best_ask();
                 int64_t reference_value = reference_book.best_ask();
-                std::printf("[op %zu] BEST_ASK solution=%lld reference=%lld\n",
-                            i, static_cast<long long>(solution_value), static_cast<long long>(reference_value));
-                if (solution_value != reference_value) {
-                    std::printf("Mismatch at op %zu: solution=%lld reference=%lld\n",
-                                i, static_cast<long long>(solution_value), static_cast<long long>(reference_value));
-                    return;
-                }
+                if (solution_value != reference_value) return; // silent mismatch
                 break;
             }
         }
     }
-    std::printf("Comparison complete: no mismatches in %zu ops\n", ops.size());
+    // silent: no output
 }
 
 } // namespace
