@@ -3,7 +3,6 @@
 
 #include "common/benchmark_harness.h"
 #include "solution/solution.h"
-#include "solution/solution_my.h"
 
 #include <vector>
 
@@ -52,8 +51,7 @@ std::vector<Operation> generate_workload(size_t n) {
     return ops;
 }
 
-template <typename Book>
-void run_workload(Book& book, const std::vector<Operation>& ops) {
+void run_workload(hftu::OrderBook& book, const std::vector<Operation>& ops) {
     for (const auto& op : ops) {
         switch (op.type) {
             case Operation::ADD:
@@ -70,38 +68,6 @@ void run_workload(Book& book, const std::vector<Operation>& ops) {
                 break;
         }
     }
-}
-
-void compare_against_reference(const std::vector<Operation>& ops) {
-    hftu::OrderBook solution_book;
-    hftu::ReferenceOrderBook reference_book;
-
-    for (size_t i = 0; i < ops.size(); ++i) {
-        const auto& op = ops[i];
-        switch (op.type) {
-            case Operation::ADD:
-                solution_book.add_order(op.id, op.side, op.price, op.quantity);
-                reference_book.add_order(op.id, op.side, op.price, op.quantity);
-                break;
-            case Operation::CANCEL:
-                solution_book.cancel_order(op.id);
-                reference_book.cancel_order(op.id);
-                break;
-            case Operation::BEST_BID: {
-                int64_t solution_value = solution_book.best_bid();
-                int64_t reference_value = reference_book.best_bid();
-                if (solution_value != reference_value) return; // silent mismatch
-                break;
-            }
-            case Operation::BEST_ASK: {
-                int64_t solution_value = solution_book.best_ask();
-                int64_t reference_value = reference_book.best_ask();
-                if (solution_value != reference_value) return; // silent mismatch
-                break;
-            }
-        }
-    }
-    // silent: no output
 }
 
 } // namespace
@@ -125,8 +91,6 @@ static hftu::RegisterBenchmark reg_solution(
 );
 
 int main() {
-    const auto ops = generate_workload(100'000);
-    compare_against_reference(ops);
     hftu::run_benchmarks();
     return 0;
 }

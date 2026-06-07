@@ -1,6 +1,6 @@
- #pragma once
+#pragma once
 // Challenge 01: Order Book
-// Reference order book implementation used for validation and comparison.
+// Edit this file and solution.cpp to implement your solution.
 
 #include <cstdint>
 #include <map>
@@ -8,7 +8,7 @@
 
 namespace hftu {
 
-class ReferenceOrderBook {
+class OrderBook {
 public:
     // Add a new order. side: 0=buy(bid), 1=sell(ask)
     void add_order(uint64_t id, int side, int64_t price, int64_t quantity);

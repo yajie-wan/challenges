@@ -1,11 +1,11 @@
-// Challenge 01: Order Book — Reference Implementation
-// This is a naive reference used for validation and comparison.
+// Challenge 01: Order Book — Skeleton Implementation
+// This is a naive reference. You can do much better!
 
 #include "solution.h"
 
 namespace hftu {
 
-void ReferenceOrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity) {
+void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity) {
     orders_[id] = {side, price, quantity};
     if (side == 0) {
         bids_[price] += quantity;
@@ -14,7 +14,7 @@ void ReferenceOrderBook::add_order(uint64_t id, int side, int64_t price, int64_t
     }
 }
 
-void ReferenceOrderBook::cancel_order(uint64_t id) {
+void OrderBook::cancel_order(uint64_t id) {
     auto it = orders_.find(id);
     if (it == orders_.end()) return;
 
@@ -35,11 +35,11 @@ void ReferenceOrderBook::cancel_order(uint64_t id) {
     orders_.erase(it);
 }
 
-int64_t ReferenceOrderBook::best_bid() const {
+int64_t OrderBook::best_bid() const {
     return bids_.empty() ? 0 : bids_.begin()->first;
 }
 
-int64_t ReferenceOrderBook::best_ask() const {
+int64_t OrderBook::best_ask() const {
     return asks_.empty() ? 0 : asks_.begin()->first;
 }
 

@@ -1,0 +1,11 @@
+{
+  "benchmarks": [
+    {
+      "name": "BM_Solution",
+      "iterations": 4,
+      "ops_per_iteration": 100000,
+      "total_cycles": 850912942,
+      "cycles_per_op": 2127.28
+    }
+  ]
+}

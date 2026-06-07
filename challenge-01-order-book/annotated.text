@@ -1,0 +1,112 @@
+--------------------------------------------------------------------------------
+-- Metadata
+--------------------------------------------------------------------------------
+Invocation:       /usr/bin/cg_annotate cachegrind.out.74824
+Command:          ./build/benchmark
+Events recorded:  Ir
+Events shown:     Ir
+Event sort order: Ir
+Threshold:        0.1%
+Annotation:       on
+
+--------------------------------------------------------------------------------
+-- Summary
+--------------------------------------------------------------------------------
+Ir__________________ 
+
+171,320,583 (100.0%)  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+-- File:function summary
+--------------------------------------------------------------------------------
+  Ir________________________  file:function
+
+< 163,392,849 (95.4%, 95.4%)  ???:
+   51,259,748 (29.9%)           hftu::OrderBook::add_order(unsigned long, int, long, long)
+   38,186,285 (22.3%)           reg_solution::{lambda(int)#1}::operator()(int) const [clone .isra.0]
+   26,093,105 (15.2%)           std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::operator()()
+   23,424,622 (13.7%)           hftu::OrderBook::cancel_order(unsigned long)
+    9,150,642  (5.3%)           std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::_M_gen_rand()
+    7,500,000  (4.4%)           (anonymous namespace)::Operation& std::vector<(anonymous namespace)::Operation, std::allocator<(anonymous namespace)::Operation> >::emplace_back<(anonymous namespace)::Operation>((anonymous namespace)::Operation&&) [clone .isra.0]
+    4,524,022  (2.6%)           hftu::OrderBook::best_bid() const
+    3,225,636  (1.9%)           hftu::OrderBook::best_ask() const
+
+<   4,572,342  (2.7%, 98.0%)  ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S:__memset_avx2_unaligned_erms
+
+<   1,529,097  (0.9%, 98.9%)  ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S:
+    1,529,065  (0.9%)           __memcpy_avx_unaligned_erms
+
+<     757,894  (0.4%, 99.4%)  ./elf/./elf/dl-lookup.c:
+      465,037  (0.3%)           do_lookup_x
+      182,222  (0.1%)           _dl_lookup_symbol_x
+
+<     486,988  (0.3%, 99.7%)  ./elf/../sysdeps/generic/dl-new-hash.h:_dl_lookup_symbol_x
+
+--------------------------------------------------------------------------------
+-- Function:file summary
+--------------------------------------------------------------------------------
+  Ir_______________________  function:file
+
+> 51,259,748 (29.9%, 29.9%)  hftu::OrderBook::add_order(unsigned long, int, long, long):???
+
+> 38,186,285 (22.3%, 52.2%)  reg_solution::{lambda(int)#1}::operator()(int) const [clone .isra.0]:???
+
+> 26,093,105 (15.2%, 67.4%)  std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::operator()():???
+
+> 23,424,622 (13.7%, 81.1%)  hftu::OrderBook::cancel_order(unsigned long):???
+
+>  9,150,642  (5.3%, 86.5%)  std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::_M_gen_rand():???
+
+>  7,500,000  (4.4%, 90.8%)  (anonymous namespace)::Operation& std::vector<(anonymous namespace)::Operation, std::allocator<(anonymous namespace)::Operation> >::emplace_back<(anonymous namespace)::Operation>((anonymous namespace)::Operation&&) [clone .isra.0]:???
+
+>  4,572,342  (2.7%, 93.5%)  __memset_avx2_unaligned_erms:./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S
+
+>  4,524,022  (2.6%, 96.1%)  hftu::OrderBook::best_bid() const:???
+
+>  3,225,636  (1.9%, 98.0%)  hftu::OrderBook::best_ask() const:???
+
+>  1,529,065  (0.9%, 98.9%)  __memcpy_avx_unaligned_erms:./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
+
+>    669,210  (0.4%, 99.3%)  _dl_lookup_symbol_x:
+     486,988  (0.3%)           ./elf/../sysdeps/generic/dl-new-hash.h
+     182,222  (0.1%)           ./elf/./elf/dl-lookup.c
+
+>    481,858  (0.3%, 99.6%)  do_lookup_x:
+     465,037  (0.3%)           ./elf/./elf/dl-lookup.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./elf/../sysdeps/generic/dl-new-hash.h
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./elf/../sysdeps/generic/dl-new-hash.h
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./elf/./elf/dl-lookup.c
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./elf/./elf/dl-lookup.c
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./string/../sysdeps/x86_64/multiarch/memmove-vec-unaligned-erms.S
+
+--------------------------------------------------------------------------------
+-- Annotated source file: ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S
+--------------------------------------------------------------------------------
+Unannotated because one or more of these original files are unreadable:
+- ./string/../sysdeps/x86_64/multiarch/memset-vec-unaligned-erms.S
+
+--------------------------------------------------------------------------------
+-- Annotation summary
+--------------------------------------------------------------------------------
+Ir_________________ 
+
+          0            annotated: files known & above threshold & readable, line numbers known
+          0            annotated: files known & above threshold & readable, line numbers unknown
+          0          unannotated: files known & above threshold & two or more non-identical
+  7,346,321  (4.3%)  unannotated: files known & above threshold & unreadable 
+    581,413  (0.3%)  unannotated: files known & below threshold
+163,392,849 (95.4%)  unannotated: files unknown
+
