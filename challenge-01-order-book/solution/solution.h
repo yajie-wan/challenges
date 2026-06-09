@@ -11,8 +11,8 @@
 namespace hftu {
 
 struct HeapStorage {
-    alignas(64) std::array<int64_t, 1048576> orders_; 
-    alignas(64) std::array<uint64_t, 1048576> price_collisions_{};
+    alignas(64) std::array<int64_t, 100001> orders_; // id to condensed_price mapping
+    alignas(64) std::array<uint64_t, 1048576> price_collisions_{}; // hashmap for counting extra orders at a price
     alignas(64) std::array<uint64_t, 16384> l0_bids_{};
     alignas(64) std::array<uint64_t, 16384> l0_asks_{};
     alignas(64) std::array<uint64_t, 256> l1_bids_{};
