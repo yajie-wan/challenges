@@ -11,7 +11,7 @@
 namespace hftu {
 
 struct HeapStorage {
-    alignas(64) std::array<uint64_t, 1048576> orders_; 
+    alignas(64) std::array<int64_t, 1048576> orders_; 
     alignas(64) std::array<uint64_t, 1048576> price_collisions_{};
     alignas(64) std::array<uint64_t, 16384> l0_bids_{};
     alignas(64) std::array<uint64_t, 16384> l0_asks_{};
@@ -62,7 +62,7 @@ private:
 
     inline static HeapStorage global_arena_{};
 
-    uint64_t* orders_;
+    int64_t* orders_;
     uint64_t* l0_bids_;
     uint64_t* l0_asks_;
     uint64_t* l1_bids_;
