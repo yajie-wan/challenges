@@ -46,9 +46,13 @@ public:
     l2_asks_ = global_arena_.l2_asks_.data();
     price_collisions_ = global_arena_.price_collisions_.data(); // This will be empty at the start of each run
 
-    // 2. High-Speed Reset Phase
-    // Clear only your tiny top-level tracking bitmasks. 
-    // This wipes your entire order book's price state in just a handful of clock cycles!
+    // 2. Reset all shared arena state for a fresh book instance.
+    global_arena_.orders_.fill(0);
+    global_arena_.price_collisions_.fill(0);
+    global_arena_.l0_bids_.fill(0);
+    global_arena_.l0_asks_.fill(0);
+    global_arena_.l1_bids_.fill(0);
+    global_arena_.l1_asks_.fill(0);
     global_arena_.l2_bids_.fill(0);
     global_arena_.l2_asks_.fill(0);
 }
