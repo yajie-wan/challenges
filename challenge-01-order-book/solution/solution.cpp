@@ -14,11 +14,10 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
         int l0_offset = price & 63;
         
         bool is_new_price = ((l0_bids_[l0_idx] >> l0_offset) & 1ULL) == 0;
-        if(is_new_price){
+        if (is_new_price) [[likely]]{
             l0_bids_[l0_idx] |= (1ULL << l0_offset);
-        }
-        else{
-            price_collisions_[price]++;    
+        } else {
+            price_collisions_[price]++;
         }
 
         int l1_idx = l0_idx >> 6;
@@ -35,12 +34,12 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
         int l0_offset = price & 63;
         
         bool is_new_price = ((l0_asks_[l0_idx] >> l0_offset) & 1ULL) == 0;
-        if(is_new_price){
+        if (is_new_price)[[likely]] {
             l0_asks_[l0_idx] |= (1ULL << l0_offset);
+        } else {
+            price_collisions_[price]++;
         }
-        else{
-            price_collisions_[price]++;    
-        }
+        
 
         int l1_idx = l0_idx >> 6;
         int l1_offset = l0_idx & 63;
