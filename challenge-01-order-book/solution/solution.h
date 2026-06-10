@@ -17,7 +17,7 @@ struct Entry {
 
 struct HeapStorage {
     alignas(64) std::array<int64_t, 100001> orders_; // id to condensed_price mapping
-    alignas(64) std::array<Entry, 32768> price_collisions_{}; // sparse collision counts for repeated prices
+    alignas(64) std::array<Entry, 8192> price_collisions_{}; // sparse collision counts for repeated prices
     alignas(64) std::array<uint64_t, 16384> l0_bids_{};
     alignas(64) std::array<uint64_t, 16384> l0_asks_{};
     alignas(64) std::array<uint64_t, 256> l1_bids_{};
@@ -81,7 +81,7 @@ private:
     uint64_t* l2_asks_;
     Entry* price_collisions_;
 
-    static constexpr uint32_t kCollisionTableSize = 32768;
+    static constexpr uint32_t kCollisionTableSize = 8192;
     static constexpr uint32_t kCollisionTableMask = kCollisionTableSize - 1;
     static constexpr uint32_t kCollisionEmpty = 0;
     static constexpr uint32_t kCollisionTombstone = 0xFFFFFFFFu;

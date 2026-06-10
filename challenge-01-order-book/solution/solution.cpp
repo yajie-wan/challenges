@@ -9,103 +9,72 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
     int64_t condensed_price = static_cast<int64_t>(side == 0 ? price : -price);
     orders_[id] = condensed_price;
 
-    if (side == 0){
-        int l0_idx = price >> 6;
-        int l0_offset = price & 63;
-        
-        bool is_new_price = ((l0_bids_[l0_idx] >> l0_offset) & 1ULL) == 0;
-        if (is_new_price) [[likely]] {
-            l0_bids_[l0_idx] |= (1ULL << l0_offset);
-        } else [[unlikely]] {
-            Entry* entry = find_or_insert_collision(price);
-            entry->count++;
-        }
+    uint64_t* l0_tables[2] = {l0_bids_, l0_asks_};
+    uint64_t* l1_tables[2] = {l1_bids_, l1_asks_};
+    uint64_t* l2_tables[2] = {l2_bids_, l2_asks_};
 
-        int l1_idx = l0_idx >> 6;
-        int l1_offset = l0_idx & 63;
-        l1_bids_[l1_idx] |= (1ULL << l1_offset);
+    uint64_t* l0 = l0_tables[side];
+    uint64_t* l1 = l1_tables[side];
+    uint64_t* l2 = l2_tables[side];
 
-        int l2_idx = l1_idx >> 6;
-        int l2_offset = l1_idx & 63;
-        l2_bids_[l2_idx] |= (1ULL << l2_offset);
+    int l0_idx = price >> 6;
+    int l0_offset = price & 63;
 
+    bool is_new_price = ((l0[l0_idx] >> l0_offset) & 1ULL) == 0;
+    if (is_new_price) [[likely]] {
+        l0[l0_idx] |= (1ULL << l0_offset);
+    } else [[unlikely]] {
+        Entry* entry = find_or_insert_collision(price);
+        entry->count++;
     }
-    else{
-        int l0_idx = price >> 6;
-        int l0_offset = price & 63;
-        
-        bool is_new_price = ((l0_asks_[l0_idx] >> l0_offset) & 1ULL) == 0;
-        if (is_new_price) [[likely]] {
-            l0_asks_[l0_idx] |= (1ULL << l0_offset);
-        } else [[unlikely]] {
-            Entry* entry = find_or_insert_collision(price);
-            entry->count++;
-        }
-        
 
-        int l1_idx = l0_idx >> 6;
-        int l1_offset = l0_idx & 63;
-        l1_asks_[l1_idx] |= (1ULL << l1_offset);
+    int l1_idx = l0_idx >> 6;
+    int l1_offset = l0_idx & 63;
+    l1[l1_idx] |= (1ULL << l1_offset);
 
-        int l2_idx = l1_idx >> 6;
-        int l2_offset = l1_idx & 63;
-        l2_asks_[l2_idx] |= (1ULL << l2_offset);
-
-    }
-    
+    int l2_idx = l1_idx >> 6;
+    int l2_offset = l1_idx & 63;
+    l2[l2_idx] |= (1ULL << l2_offset);
 }
 
 void OrderBook::cancel_order(uint64_t id) {
     int64_t condensed_price = orders_[id];
+    if (condensed_price == 0) return;
     orders_[id] = 0;
 
-    if (condensed_price > 0){
-        int l0_idx = condensed_price >> 6;
-        int l0_offset = condensed_price & 63;
+    uint64_t sign = static_cast<uint64_t>(condensed_price) >> 63;
+    size_t side = static_cast<size_t>(sign);
+    uint64_t price = (static_cast<uint64_t>(condensed_price) ^ sign) - sign;
 
-        if (Entry* entry = find_collision(condensed_price)) {
-            if (--entry->count == 0) {
-                erase_collision(entry);
-            }
-        } else {
-            l0_bids_[l0_idx] &= ~(1ULL << l0_offset);
+    uint64_t* l0_tables[2] = {l0_bids_, l0_asks_};
+    uint64_t* l1_tables[2] = {l1_bids_, l1_asks_};
+    uint64_t* l2_tables[2] = {l2_bids_, l2_asks_};
+
+    uint64_t* l0 = l0_tables[side];
+    uint64_t* l1 = l1_tables[side];
+    uint64_t* l2 = l2_tables[side];
+
+    int l0_idx = price >> 6;
+    int l0_offset = price & 63;
+    uint64_t bit = 1ULL << l0_offset;
+
+    if (Entry* entry = find_collision(static_cast<uint32_t>(price))) {
+        if (--entry->count == 0) {
+            erase_collision(entry);
         }
-
-        if(l0_bids_[l0_idx] == 0){
-            int l1_idx = l0_idx >> 6;
-            int l1_offset = l0_idx & 63;
-            l1_bids_[l1_idx] &= ~(1ULL << l1_offset);
-
-            if(l1_bids_[l1_idx] == 0){
-                int l2_idx = l1_idx >> 6;
-                int l2_offset = l1_idx & 63;
-                l2_bids_[l2_idx] &= ~(1ULL << l2_offset);
-            }
-        }
+    } else {
+        l0[l0_idx] &= ~bit;
     }
-    else{
-        condensed_price = -condensed_price;
-        int l0_idx = (condensed_price) >> 6;
-        int l0_offset = (condensed_price) & 63;
 
-        if (Entry* entry = find_collision(condensed_price)) {
-            if (--entry->count == 0) {
-                erase_collision(entry);
-            }
-        } else {
-            l0_asks_[l0_idx] &= ~(1ULL << l0_offset);
-        }
+    if (l0[l0_idx] == 0) {
+        int l1_idx = l0_idx >> 6;
+        int l1_offset = l0_idx & 63;
+        l1[l1_idx] &= ~(1ULL << l1_offset);
 
-        if(l0_asks_[l0_idx] == 0){
-            int l1_idx = l0_idx >> 6;
-            int l1_offset = l0_idx & 63;
-            l1_asks_[l1_idx] &= ~(1ULL << l1_offset);
-
-            if(l1_asks_[l1_idx] == 0){
-                int l2_idx = l1_idx >> 6;
-                int l2_offset = l1_idx & 63;
-                l2_asks_[l2_idx] &= ~(1ULL << l2_offset);
-            }
+        if (l1[l1_idx] == 0) {
+            int l2_idx = l1_idx >> 6;
+            int l2_offset = l1_idx & 63;
+            l2[l2_idx] &= ~(1ULL << l2_offset);
         }
     }
 }
