@@ -42,9 +42,9 @@ void OrderBook::cancel_order(uint64_t id) {
     if (condensed_price == 0) return;
     orders_[id] = 0;
 
-    uint64_t sign = static_cast<uint64_t>(condensed_price) >> 63;
-    size_t side = static_cast<size_t>(sign);
-    uint64_t price = (static_cast<uint64_t>(condensed_price) ^ sign) - sign;
+    int64_t sign = condensed_price >> 63; // 0 for bid, -1 for ask
+    size_t side = static_cast<size_t>(sign & 1);
+    uint64_t price = static_cast<uint64_t>((condensed_price ^ sign) - sign);
 
     uint64_t* l0_tables[2] = {l0_bids_, l0_asks_};
     uint64_t* l1_tables[2] = {l1_bids_, l1_asks_};
