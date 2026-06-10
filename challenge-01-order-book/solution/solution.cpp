@@ -14,10 +14,11 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
         int l0_offset = price & 63;
         
         bool is_new_price = ((l0_bids_[l0_idx] >> l0_offset) & 1ULL) == 0;
-        if (is_new_price) [[likely]]{
+        if (is_new_price) [[likely]] {
             l0_bids_[l0_idx] |= (1ULL << l0_offset);
         } else [[unlikely]] {
-            price_collisions_[price]++;
+            Entry* entry = find_or_insert_collision(price);
+            entry->count++;
         }
 
         int l1_idx = l0_idx >> 6;
@@ -34,10 +35,11 @@ void OrderBook::add_order(uint64_t id, int side, int64_t price, int64_t quantity
         int l0_offset = price & 63;
         
         bool is_new_price = ((l0_asks_[l0_idx] >> l0_offset) & 1ULL) == 0;
-        if (is_new_price)[[likely]] {
+        if (is_new_price) [[likely]] {
             l0_asks_[l0_idx] |= (1ULL << l0_offset);
-        } else[[unlikely]] {
-            price_collisions_[price]++;
+        } else [[unlikely]] {
+            Entry* entry = find_or_insert_collision(price);
+            entry->count++;
         }
         
 
@@ -61,10 +63,11 @@ void OrderBook::cancel_order(uint64_t id) {
         int l0_idx = condensed_price >> 6;
         int l0_offset = condensed_price & 63;
 
-        if(price_collisions_[condensed_price] > 0){
-            price_collisions_[condensed_price]--;
-        }
-        else{
+        if (Entry* entry = find_collision(condensed_price)) {
+            if (--entry->count == 0) {
+                erase_collision(entry);
+            }
+        } else {
             l0_bids_[l0_idx] &= ~(1ULL << l0_offset);
         }
 
@@ -85,10 +88,11 @@ void OrderBook::cancel_order(uint64_t id) {
         int l0_idx = (condensed_price) >> 6;
         int l0_offset = (condensed_price) & 63;
 
-        if(price_collisions_[condensed_price] > 0){
-            price_collisions_[condensed_price]--;
-        }
-        else{
+        if (Entry* entry = find_collision(condensed_price)) {
+            if (--entry->count == 0) {
+                erase_collision(entry);
+            }
+        } else {
             l0_asks_[l0_idx] &= ~(1ULL << l0_offset);
         }
 
@@ -104,6 +108,40 @@ void OrderBook::cancel_order(uint64_t id) {
             }
         }
     }
+}
+
+Entry* OrderBook::find_collision(uint32_t price) {
+    uint32_t idx = (price * 2654435761u) & kCollisionTableMask;
+    while (true) {
+        Entry& e = price_collisions_[idx];
+        if (e.price == price) return &e;
+        if (e.price == kCollisionEmpty) return nullptr;
+        idx = (idx + 1) & kCollisionTableMask;
+    }
+}
+
+Entry* OrderBook::find_or_insert_collision(uint32_t price) {
+    uint32_t idx = (price * 2654435761u) & kCollisionTableMask;
+    Entry* first_tombstone = nullptr;
+    while (true) {
+        Entry& e = price_collisions_[idx];
+        if (e.price == price) return &e;
+        if (e.price == kCollisionEmpty) {
+            Entry* target = first_tombstone ? first_tombstone : &e;
+            target->price = price;
+            target->count = 0;
+            return target;
+        }
+        if (e.price == kCollisionTombstone && first_tombstone == nullptr) {
+            first_tombstone = &e;
+        }
+        idx = (idx + 1) & kCollisionTableMask;
+    }
+}
+
+void OrderBook::erase_collision(Entry* entry) {
+    entry->price = kCollisionTombstone;
+    entry->count = 0;
 }
 
 int64_t OrderBook::best_bid() const {

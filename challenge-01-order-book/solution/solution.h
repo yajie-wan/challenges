@@ -10,9 +10,14 @@
 
 namespace hftu {
 
+struct Entry { 
+    uint32_t price; 
+    uint32_t count; 
+};
+
 struct HeapStorage {
     alignas(64) std::array<int64_t, 100001> orders_; // id to condensed_price mapping
-    alignas(64) std::array<uint64_t, 1048576> price_collisions_{}; // hashmap for counting extra orders at a price
+    alignas(64) std::array<Entry, 8192> price_collisions_{}; // sparse collision counts for repeated prices
     alignas(64) std::array<uint64_t, 16384> l0_bids_{};
     alignas(64) std::array<uint64_t, 16384> l0_asks_{};
     alignas(64) std::array<uint64_t, 256> l1_bids_{};
@@ -48,7 +53,7 @@ public:
 
     // 2. Reset all shared arena state for a fresh book instance.
     global_arena_.orders_.fill(0);
-    global_arena_.price_collisions_.fill(0);
+    global_arena_.price_collisions_.fill({0, 0});
     global_arena_.l0_bids_.fill(0);
     global_arena_.l0_asks_.fill(0);
     global_arena_.l1_bids_.fill(0);
@@ -64,6 +69,7 @@ private:
         int64_t quantity; // 4 bytes
     };
 
+
     inline static HeapStorage global_arena_{};
 
     int64_t* orders_;
@@ -73,7 +79,16 @@ private:
     uint64_t* l1_asks_;
     uint64_t* l2_bids_;
     uint64_t* l2_asks_;
-    uint64_t* price_collisions_;
+    Entry* price_collisions_;
+
+    static constexpr uint32_t kCollisionTableSize = 8192;
+    static constexpr uint32_t kCollisionTableMask = kCollisionTableSize - 1;
+    static constexpr uint32_t kCollisionEmpty = 0;
+    static constexpr uint32_t kCollisionTombstone = 0xFFFFFFFFu;
+
+    Entry* find_collision(uint32_t price);
+    Entry* find_or_insert_collision(uint32_t price);
+    void erase_collision(Entry* entry);
      // price -> count of orders at that price
     // std::map<int32_t, int32_t, std::greater<>> bids_; // price -> total qty, descending
     // std::map<int32_t, int32_t, std::greater<>> asks_;                  // price -> total qty, ascending
