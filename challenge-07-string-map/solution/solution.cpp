@@ -5,16 +5,86 @@
 
 namespace hftu {
 
-StringMap::StringMap() {}
+StringMap::StringMap() {
+
+
+}
 
 void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
-    map_.emplace(std::string(key, key_len), value);
+
+    uint64_t high = 0;
+    uint64_t low = 0;
+    uint64_t raw_high = 0;
+    uint64_t raw_low = 0;
+    if(key_len > 8){
+        low = reinterpret_cast<uint64_t>(key);
+        raw_high = reinterpret_cast<uint64_t>(key + 8);
+        uint64_t mask = (key_len == 16) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
+        high = raw_high & mask;
+    }
+    else{
+        high = 0;
+        raw_low = reinterpret_cast<uint64_t>(key);
+        uint64_t mask = (key_len == 8) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
+        low = raw_low & mask;
+    }
+    
+    const uint64_t kMultiplier = 0xdeece66d4abaec3ULL; 
+    
+    uint64_t hash_key = low ^ high;
+    hash_key ^= hash_key >> 33;
+    hash_key *= kMultiplier;
+    hash_key ^= hash_key >> 33;
+    hash_key *= kMultiplier;
+    hash_key ^= hash_key >> 33;
+
+    entries_[hash_key % entries_.size()] = Entry{low, high, value, hash_key};
 }
 
 const uint32_t* StringMap::find(const char* key, size_t key_len) const {
-    auto it = map_.find(std::string(key, key_len));
-    if (it == map_.end()) return nullptr;
-    return &it->second;
+    
+    uint64_t high = 0;
+    uint64_t low = 0;
+    uint64_t raw_high = 0;
+    uint64_t raw_low = 0;
+    if(key_len > 8){
+        low = reinterpret_cast<uint64_t>(key);
+        raw_high = reinterpret_cast<uint64_t>(key + 8);
+        uint64_t mask = (key_len == 16) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
+        high = raw_high & mask;
+    }
+    else{
+        high = 0;
+        raw_low = reinterpret_cast<uint64_t>(key);
+        uint64_t mask = (key_len == 8) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
+        low = raw_low & mask;
+    }
+    
+    
+    const uint64_t kMultiplier = 0xdeece66d4abaec3ULL; 
+    
+    uint64_t hash_key = low ^ high;
+    hash_key ^= hash_key >> 33;
+    hash_key *= kMultiplier;
+    hash_key ^= hash_key >> 33;
+    hash_key *= kMultiplier;
+    hash_key ^= hash_key >> 33;
+
+    bool found = false;
+    while(!found){
+        if(entries_[hash_key % entries_.size()].hash != hash_key && entries_[hash_key % entries_.size()].value != 0){
+            hash_key++;
+        }
+        else if(entries_[hash_key % entries_.size()].hash == hash_key){
+            found = true;
+            return &entries_[hash_key % entries_.size()].value;
+        }
+        else{
+            break;
+        }
+    }
+
+    return nullptr;
 }
 
 } // namespace hftu
