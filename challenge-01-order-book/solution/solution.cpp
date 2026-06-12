@@ -117,13 +117,8 @@ int64_t OrderBook::best_bid() const {
     for(int i = 3; i >= 0; i--){
         if(l2_bids_[i] != 0){
             int l1_idx = (i << 6) | (63 - __builtin_clzll(l2_bids_[i]));
-            if(l1_bids_[l1_idx] != 0){
-                int l0_idx = (l1_idx << 6) | (63 - __builtin_clzll(l1_bids_[l1_idx]));
-                if(l0_bids_[l0_idx] != 0){
-                    int price = (l0_idx << 6) | (63 - __builtin_clzll(l0_bids_[l0_idx]));
-                    return price;
-                }
-            }
+            int l0_idx = (l1_idx << 6) | (63 - __builtin_clzll(l1_bids_[l1_idx]));
+            return (l0_idx << 6) | (63 - __builtin_clzll(l0_bids_[l0_idx]));
         }
     }
     return 0;
@@ -133,13 +128,8 @@ int64_t OrderBook::best_ask() const {
     for(int i = 0; i < 4; i++){
         if(l2_asks_[i] != 0){
             int l1_idx = (i << 6) | __builtin_ctzll(l2_asks_[i]);
-            if(l1_asks_[l1_idx] != 0){
-                int l0_idx = (l1_idx << 6) | __builtin_ctzll(l1_asks_[l1_idx]);
-                if(l0_asks_[l0_idx] != 0){
-                    int price = (l0_idx << 6) | __builtin_ctzll(l0_asks_[l0_idx]);
-                    return price;
-                }
-            }
+            int l0_idx = (l1_idx << 6) | __builtin_ctzll(l1_asks_[l1_idx]);
+            return (l0_idx << 6) | __builtin_ctzll(l0_asks_[l0_idx]);
         }
     }
     return 0;
