@@ -7,7 +7,6 @@ namespace hftu {
 
 StringMap::StringMap() {
 
-
 }
 
 void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
@@ -38,7 +37,12 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
     hash_key *= kMultiplier;
     hash_key ^= hash_key >> 33;
 
-    entries_[hash_key % entries_.size()] = Entry{low, high, value, hash_key};
+    while(entries_[hash_key & (entry_size - 1)].value != 0){
+       hash_key++;
+    }
+
+    entries_[hash_key & (entry_size - 1)] = Entry{low, high, value, hash_key};
+
 }
 
 const uint32_t* StringMap::find(const char* key, size_t key_len) const {
@@ -70,14 +74,12 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     hash_key *= kMultiplier;
     hash_key ^= hash_key >> 33;
 
-    bool found = false;
-    while(!found){
-        if(entries_[hash_key % entries_.size()].hash != hash_key && entries_[hash_key % entries_.size()].value != 0){
+    while(true){
+        if(entries_[hash_key & (entry_size - 1)].hash != hash_key && entries_[hash_key & (entry_size - 1)].value != 0){
             hash_key++;
         }
-        else if(entries_[hash_key % entries_.size()].hash == hash_key){
-            found = true;
-            return &entries_[hash_key % entries_.size()].value;
+        else if(entries_[hash_key & (entry_size - 1)].hash == hash_key){
+            return &entries_[hash_key & (entry_size - 1)].value;
         }
         else{
             break;

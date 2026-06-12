@@ -11,10 +11,10 @@
 namespace hftu {
 
     struct Entry {
-        uint64_t hi;
-        uint64_t lo;
-        uint32_t value;
-        uint64_t hash;
+        uint64_t hi; // 8 byte
+        uint64_t lo; // 8 byte
+        uint32_t value; // 4 byte
+        uint64_t hash; // 8 byte
     };
 
 class StringMap {
@@ -30,10 +30,11 @@ public:
 
 
 private:
-    std::unordered_map<std::string, uint32_t> map_;
+
+    static const uint64_t entry_size = 131072;
 
     // array implementation
-    std::array<Entry, 100001> entries_{};
+    std::array<Entry, entry_size> entries_{};
 
 };
 
