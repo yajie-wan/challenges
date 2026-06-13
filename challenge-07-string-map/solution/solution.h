@@ -10,7 +10,7 @@
 
 namespace hftu {
 
-    static constexpr uint64_t ENTRY_SIZE = 131072;
+    static constexpr uint64_t ENTRY_SIZE = 262144;
 
     struct SOA_hot{
         std::array<uint16_t, ENTRY_SIZE> tag;

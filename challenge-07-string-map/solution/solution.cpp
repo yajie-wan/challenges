@@ -39,13 +39,16 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
     uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * constant;
     size_t mask = ENTRY_SIZE - 1;
     size_t idx = hash & mask;
-    uint16_t tag = hash & ((1u << 16) - 1);
-    while(soa_value_.value[idx] != 0){
+    uint16_t tag = static_cast<uint16_t>(hash & ((1u << 16) - 1));
+    if (tag == 0) {
+        tag = 1;
+    }
+    while(soa_hot_.tag[idx] != 0){
         idx = (idx + 1) & mask;
     }
 
-   soa_value_.value[idx] = value;
    soa_hot_.tag[idx] = tag;
+   soa_value_.value[idx] = value;
    soa_cold_.hi[idx] = high;
    soa_cold_.lo[idx] = low;
 
