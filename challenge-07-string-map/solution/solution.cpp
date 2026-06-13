@@ -21,22 +21,15 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
 
     uint64_t high = 0;
     uint64_t low = 0;
-    uint64_t raw_high = 0;
-    uint64_t raw_low = 0;
     uint64_t hash_mask = 0;
 
-    if(key_len > 8){
-        std::memcpy(&low, key, 8); 
-        std::memcpy(&raw_high, key + 8, key_len - 8); 
-        hash_mask = (key_len == 16) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
-        high = raw_high & hash_mask;
+    if (key_len <= 8) {
+        std::memcpy(&low, key, key_len);
+    } else {
+        std::memcpy(&low, key, 8);
+        std::memcpy(&high, key + 8, key_len - 8);
     }
-    else{
-        high = 0;
-        std::memcpy(&raw_low, key, key_len); 
-        hash_mask = (key_len == 8) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
-        low = raw_low & hash_mask;
-    }
+
     
     uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
@@ -60,22 +53,15 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     
     uint64_t high = 0;
     uint64_t low = 0;
-    uint64_t raw_high = 0;
-    uint64_t raw_low = 0;
     uint64_t hash_mask = 0;
 
-    if(key_len > 8){
-        std::memcpy(&low, key, 8); 
-        std::memcpy(&raw_high, key + 8, key_len - 8); 
-        hash_mask = (key_len == 16) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
-        high = raw_high & hash_mask;
+    if (key_len <= 8) {
+        std::memcpy(&low, key, key_len);
+    } else {
+        std::memcpy(&low, key, 8);
+        std::memcpy(&high, key + 8, key_len - 8);
     }
-    else{
-        high = 0;
-        std::memcpy(&raw_low, key, key_len); 
-        hash_mask = (key_len == 8) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
-        low = raw_low & hash_mask;
-    }
+
     
     uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
