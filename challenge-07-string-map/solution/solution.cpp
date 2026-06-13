@@ -81,7 +81,7 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
         tag = 1;
     }
     while(soa_hot_.tag[idx] != 0){
-        if(soa_hot_.tag[idx] != tag){ // tag mismatch
+        if(soa_hot_.tag[idx] != tag)[[likely]]{ // tag mismatch
             idx = (idx + 1) & mask;
         }
         else if(soa_cold_.hi[idx] == high && soa_cold_.lo[idx] == low){ // tag match, check high low
