@@ -62,16 +62,17 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     uint64_t low = 0;
     uint64_t raw_high = 0;
     uint64_t raw_low = 0;
-    uint64_t hash_mask = (key_len == 16) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
-    uint64_t constant = 0x9ddfea08eb382d69ULL;
+    uint64_t hash_mask = 0;
+
     if(key_len > 8){
-        low = reinterpret_cast<uint64_t>(key);
-        raw_high = reinterpret_cast<uint64_t>(key + 8);
+        std::memcpy(&low, key, 8); 
+        std::memcpy(&raw_high, key + 8, key_len - 8); 
+        hash_mask = (key_len == 16) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
         high = raw_high & hash_mask;
     }
     else{
         high = 0;
-        raw_low = reinterpret_cast<uint64_t>(key);
+        std::memcpy(&raw_low, key, key_len); 
         hash_mask = (key_len == 8) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
         low = raw_low & hash_mask;
     }
