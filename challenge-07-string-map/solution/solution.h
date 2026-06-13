@@ -12,6 +12,15 @@ namespace hftu {
 
     static constexpr uint64_t ENTRY_SIZE = 262144;
     static constexpr uint64_t HASH_CONSTANT = 0x9ddfea08eb382d69ULL;
+    static constexpr uint64_t LOW_MASKS[17] = {
+        0x0ULL, 0xFFULL, 0xFFFFULL, 0xFFFFFFULL, 0xFFFFFFFFULL, 0xFFFFFFFFFFULL, 0xFFFFFFFFFFFFULL, 0xFFFFFFFFFFFFFFULL, ~0ULL,
+        ~0ULL,  ~0ULL,   ~0ULL,     ~0ULL,       ~0ULL,         ~0ULL,           ~0ULL,             ~0ULL
+    };
+
+    static constexpr uint64_t HIGH_MASKS[17] = {
+        0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL,
+        0xFFULL, 0xFFFFULL, 0xFFFFFFULL, 0xFFFFFFFFULL, 0xFFFFFFFFFFULL, 0xFFFFFFFFFFFFULL, 0xFFFFFFFFFFFFFFULL, ~0ULL
+    };
 
     struct SOA_hot{
         std::array<uint16_t, ENTRY_SIZE> tag;
