@@ -21,9 +21,10 @@ namespace hftu {
         0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL, 0x0ULL,
         0xFFULL, 0xFFFFULL, 0xFFFFFFULL, 0xFFFFFFFFULL, 0xFFFFFFFFFFULL, 0xFFFFFFFFFFFFULL, 0xFFFFFFFFFFFFFFULL, ~0ULL
     };
+    static constexpr uint64_t TAG_BIT = 8;
 
     struct SOA_hot{
-        std::array<uint16_t, ENTRY_SIZE> tag;
+        std::array<uint8_t, ENTRY_SIZE> tag;
     };
 
     struct SOA_cold{

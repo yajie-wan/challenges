@@ -39,7 +39,7 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
     uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
     size_t idx = hash & mask;
-    uint16_t tag = static_cast<uint16_t>(hash & ((1u << 16) - 1));
+    uint8_t tag = static_cast<uint8_t>(hash & ((1u << TAG_BIT) - 1));
     if (tag == 0) {
         tag = 1;
     }
@@ -76,7 +76,7 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
     size_t idx = hash & mask;
-    uint16_t tag = static_cast<uint16_t>(hash & ((1u << 16) - 1));
+    uint8_t tag = static_cast<uint8_t>(hash & ((1u << TAG_BIT) - 1));
     if (tag == 0){
         tag = 1;
     }
