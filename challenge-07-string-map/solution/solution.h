@@ -23,16 +23,16 @@ namespace hftu {
     };
     static constexpr uint64_t TAG_BIT = 8;
 
-    struct alignas(32) SOA_hot{
+    struct SOA_hot{
         std::array<uint8_t, ENTRY_SIZE + 32> tag;
     };
 
-    struct alignas(64) SOA_cold{
+    struct SOA_cold{
         std::array<uint64_t, ENTRY_SIZE + 32> hi;
         std::array<uint64_t, ENTRY_SIZE + 32> lo;
     };
 
-    struct alignas(32) SOA_value{
+    struct SOA_value{
         std::array<uint32_t, ENTRY_SIZE + 32> value; 
     };
 

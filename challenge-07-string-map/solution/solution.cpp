@@ -3,13 +3,13 @@
 
 #include "solution.h"
 #include <cstring>
-#include <immintrin.h> // 必须引入 Intel 内联函数头文件
+#include <immintrin.h>
 
 namespace hftu {
 
-SOA_hot soa_hot_;
-SOA_cold soa_cold_;
-SOA_value soa_value_;
+alignas(32) SOA_hot soa_hot_;
+alignas(64) SOA_cold soa_cold_;
+alignas(32) SOA_value soa_value_;
 
 StringMap::StringMap() {
     soa_cold_.hi.fill(0);
@@ -65,7 +65,10 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
 
     uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
-    size_t idx = hash & mask;
+
+    size_t initial_idx = hash & mask;
+    size_t aligned_idx = initial_idx & ~31ULL; 
+    int block_offset = initial_idx - aligned_idx;
 
     uint8_t tag = static_cast<uint8_t>(hash & ((1u << TAG_BIT) - 1));
     if (tag == 0) tag = 1;
@@ -73,8 +76,14 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     __m256i target_tags = _mm256_set1_epi8(tag);
     __m256i empty_tags  = _mm256_setzero_si256();
 
-    while (true) {
-        __m256i loaded_tags = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&soa_hot_.tag[idx]));
+    uint32_t first_round_filter = 0xFFFFFFFFULL << block_offset;
+
+    for(int step = 0; step < ENTRY_SIZE; step += 32)
+    {
+
+        size_t current_idx = (aligned_idx + step) & mask;
+
+        __m256i loaded_tags = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&soa_hot_.tag[current_idx]));
 
         __m256i match_res = _mm256_cmpeq_epi8(loaded_tags, target_tags);
         uint32_t match_mask = _mm256_movemask_epi8(match_res);
@@ -82,9 +91,14 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
         __m256i empty_res = _mm256_cmpeq_epi8(loaded_tags, empty_tags);
         uint32_t empty_mask = _mm256_movemask_epi8(empty_res);
 
+        if (step == 0) {
+            match_mask &= first_round_filter;
+            empty_mask &= first_round_filter;
+        }
+
         while (match_mask > 0) {
             int offset = __builtin_ctz(match_mask);
-            size_t match_idx = (idx + offset) & mask;
+            size_t match_idx = (current_idx + offset) & mask;
             
             if (soa_cold_.hi[match_idx] == high && soa_cold_.lo[match_idx] == low) [[likely]] {
                 return &soa_value_.value[match_idx];
@@ -96,9 +110,9 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
         if (empty_mask > 0) {
             return nullptr;
         }
-
-        idx = (idx + 32) & mask;
     }
+
+    return nullptr;
 }
 
 
