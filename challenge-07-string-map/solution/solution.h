@@ -10,11 +10,19 @@
 
 namespace hftu {
 
-    struct Entry {
-        uint64_t hi; // 8 byte
-        uint64_t lo; // 8 byte
-        uint32_t value; // 4 byte
-        uint64_t hash; // 8 byte
+    static constexpr uint64_t ENTRY_SIZE = 131072;
+
+    struct SOA_hot{
+        std::array<uint16_t, ENTRY_SIZE> tag;
+    };
+
+    struct SOA_cold{
+        std::array<uint64_t, ENTRY_SIZE> hi;
+        std::array<uint64_t, ENTRY_SIZE> lo;
+    };
+
+    struct SOA_value{
+        std::array<uint32_t, ENTRY_SIZE> value; 
     };
 
 class StringMap {
@@ -31,11 +39,10 @@ public:
 
 private:
 
-    static const uint64_t entry_size = 131072;
-
     // array implementation
-    std::array<Entry, entry_size> entries_{};
-
+    static SOA_hot soa_hot_;
+    static SOA_cold soa_cold_;
+    static SOA_value soa_value_;
 };
 
 } // namespace hftu
