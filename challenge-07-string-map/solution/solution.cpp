@@ -22,11 +22,12 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
     uint64_t low = 0;
     uint64_t raw_high = 0;
     uint64_t raw_low = 0;
-    uint64_t hash_mask = (key_len == 16) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
-    uint64_t constant = 0x9ddfea08eb382d69ULL;
+    uint64_t hash_mask = 0;
+
     if(key_len > 8){
         low = reinterpret_cast<uint64_t>(key);
         raw_high = reinterpret_cast<uint64_t>(key + 8);
+        hash_mask = (key_len == 16) ? ~0ULL : (1ULL << (key_len * 8)) - 1;
         high = raw_high & hash_mask;
     }
     else{
@@ -36,7 +37,7 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
         low = raw_low & hash_mask;
     }
     
-    uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * constant;
+    uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
     size_t idx = hash & mask;
     uint16_t tag = static_cast<uint16_t>(hash & ((1u << 16) - 1));
@@ -74,10 +75,13 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
         low = raw_low & hash_mask;
     }
     
-    uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * constant;
+    uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
     size_t idx = hash & mask;
     uint16_t tag = hash & ((1u << 16) - 1);
+    if (tag == 0){
+        tag = 1;
+    }
     while(soa_hot_.tag[idx] != 0){
         if(soa_hot_.tag[idx] != tag){ // tag mismatch
             idx = (idx + 1) & mask;
