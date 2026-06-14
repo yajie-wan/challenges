@@ -16,22 +16,20 @@ StringMap::StringMap() {
 
 void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
 
-    uint64_t high = 0;
-    uint64_t low = 0;
-    uint64_t hash_mask = 0;
+    uint64_t low = 0, high = 0;
 
-    // if (key_len <= 8) {
-    //     std::memcpy(&low, key, key_len);
-    // } else {
-    //     std::memcpy(&low, key, 8);
-    //     std::memcpy(&high, key + 8, key_len - 8);
-    // }
+    if (key_len <= 8) {
+        std::memcpy(&low, key, key_len);
+    } else {
+        std::memcpy(&low, key, 8);
+        std::memcpy(&high, key + 8, key_len - 8);
+    }
 
-    std::memcpy(&low, key, 8);
-    std::memcpy(&high, key + 8, 8);
 
-    low &= LOW_MASKS[key_len];
-    high &= HIGH_MASKS[key_len];
+    //std::memcpy(&low, key, 8);
+    //std::memcpy(&high, key + 8, 8);
+    //low &= LOW_MASKS[key_len];
+    //high &= HIGH_MASKS[key_len];
     
     uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
