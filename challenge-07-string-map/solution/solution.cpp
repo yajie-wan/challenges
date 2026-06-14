@@ -7,10 +7,6 @@
 
 namespace hftu {
 
-alignas(32) SOA_hot soa_hot_;
-alignas(64) SOA_cold soa_cold_;
-alignas(32) SOA_value soa_value_;
-
 StringMap::StringMap() {
     soa_cold_.hi.fill(0);
     soa_cold_.lo.fill(0);
