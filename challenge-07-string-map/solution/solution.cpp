@@ -6,9 +6,6 @@
 
 namespace hftu {
 
-SOA_hot StringMap::soa_hot_;
-SOA_cold StringMap::soa_cold_;
-SOA_value StringMap::soa_value_;
 
 StringMap::StringMap() {
     soa_cold_.hi.fill(0);
@@ -21,7 +18,6 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
 
     uint64_t high = 0;
     uint64_t low = 0;
-    uint64_t hash_mask = 0;
 
     // if (key_len <= 8) {
     //     std::memcpy(&low, key, key_len);
@@ -58,7 +54,6 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     
     uint64_t high = 0;
     uint64_t low = 0;
-    uint64_t hash_mask = 0;
 
     // if (key_len <= 8) {
     //     std::memcpy(&low, key, key_len);
@@ -80,6 +75,8 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     if (tag == 0){
         tag = 1;
     }
+
+
     while(soa_hot_.tag[idx] != 0){
         if(soa_hot_.tag[idx] != tag){ // tag mismatch
             idx = (idx + 1) & mask;

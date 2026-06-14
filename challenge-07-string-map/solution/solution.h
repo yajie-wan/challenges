@@ -11,6 +11,7 @@
 namespace hftu {
 
     static constexpr uint64_t ENTRY_SIZE = 262144;
+    static constexpr uint64_t ENTRY_AVX_PADDING = 32;
     static constexpr uint64_t HASH_CONSTANT = 0x9ddfea08eb382d69ULL;
     static constexpr uint64_t LOW_MASKS[17] = {
         0x0ULL, 0xFFULL, 0xFFFFULL, 0xFFFFFFULL, 0xFFFFFFFFULL, 0xFFFFFFFFFFULL, 0xFFFFFFFFFFFFULL, 0xFFFFFFFFFFFFFFULL, ~0ULL,
@@ -24,16 +25,16 @@ namespace hftu {
     static constexpr uint64_t TAG_BIT = 8;
 
     struct SOA_hot{
-        std::array<uint8_t, ENTRY_SIZE> tag;
+        std::array<uint8_t, ENTRY_SIZE + ENTRY_AVX_PADDING> tag;
     };
 
     struct SOA_cold{
-        std::array<uint64_t, ENTRY_SIZE> hi;
-        std::array<uint64_t, ENTRY_SIZE> lo;
+        std::array<uint64_t, ENTRY_SIZE + ENTRY_AVX_PADDING> hi;
+        std::array<uint64_t, ENTRY_SIZE + ENTRY_AVX_PADDING> lo;
     };
 
     struct SOA_value{
-        std::array<uint32_t, ENTRY_SIZE> value; 
+        std::array<uint32_t, ENTRY_SIZE + ENTRY_AVX_PADDING> value; 
     };
 
 class StringMap {
@@ -51,9 +52,9 @@ public:
 private:
 
     // array implementation
-    static SOA_hot soa_hot_;
-    static SOA_cold soa_cold_;
-    static SOA_value soa_value_;
+    SOA_hot soa_hot_;
+    SOA_cold soa_cold_;
+    SOA_value soa_value_;
 };
 
 } // namespace hftu
