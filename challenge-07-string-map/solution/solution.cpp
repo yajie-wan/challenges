@@ -6,9 +6,9 @@
 
 namespace hftu {
 
-SOA_hot StringMap::soa_hot_{};
-SOA_cold StringMap::soa_cold_{};
-SOA_value StringMap::soa_value_{};
+    alignas(32) SOA_hot StringMap::soa_hot_{};
+    alignas(64) SOA_cold StringMap::soa_cold_{};
+    alignas(32) SOA_value StringMap::soa_value_{};
 
 StringMap::StringMap() {
     soa_cold_.hi.fill(0);
