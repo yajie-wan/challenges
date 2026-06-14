@@ -24,16 +24,16 @@ namespace hftu {
     static constexpr uint64_t TAG_BIT = 8;
 
     struct SOA_hot{
-        std::array<uint8_t, ENTRY_SIZE + 32> tag;
+        std::array<uint8_t, ENTRY_SIZE> tag;
     };
 
     struct SOA_cold{
-        std::array<uint64_t, ENTRY_SIZE + 32> hi;
-        std::array<uint64_t, ENTRY_SIZE + 32> lo;
+        std::array<uint64_t, ENTRY_SIZE> hi;
+        std::array<uint64_t, ENTRY_SIZE> lo;
     };
 
     struct SOA_value{
-        std::array<uint32_t, ENTRY_SIZE + 32> value; 
+        std::array<uint32_t, ENTRY_SIZE> value; 
     };
 
 class StringMap {
@@ -51,9 +51,9 @@ public:
 private:
 
     // array implementation
-    SOA_hot soa_hot_;
-    SOA_cold soa_cold_;
-    SOA_value soa_value_;
+    static SOA_hot soa_hot_;
+    static SOA_cold soa_cold_;
+    static SOA_value soa_value_;
 };
 
 } // namespace hftu
