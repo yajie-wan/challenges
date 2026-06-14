@@ -6,6 +6,9 @@
 
 namespace hftu {
 
+SOA_hot StringMap::soa_hot_{};
+SOA_cold StringMap::soa_cold_{};
+SOA_value StringMap::soa_value_{};
 
 StringMap::StringMap() {
     soa_cold_.hi.fill(0);
