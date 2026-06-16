@@ -18,7 +18,7 @@ StringMap::StringMap() {
     //soa_cold_.lo.fill(0);
     //soa_value_.value.fill(0);
     soa_hot_.tag.fill(0);
-    cold_entries_.fill({0, 0, 0});
+    std::memset(cold_entries_.data(), 0, sizeof(cold_entries_));
 }
 
 void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
@@ -108,7 +108,7 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
         if(soa_hot_.tag[idx] != tag){ // tag mismatch
             idx = (idx + 1) & mask;
         }
-        else if(cold_entries_[idx].lo == low && cold_entries_[idx].lo == low){ // tag match, check high low
+        else if(cold_entries_[idx].lo == low && cold_entries_[idx].hi == high){ // tag match, check high low
             return &cold_entries_[idx].value;
         }
         else{
