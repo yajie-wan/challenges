@@ -4,18 +4,21 @@
 #include "solution.h"
 #include <cstring>
 #include <immintrin.h> 
+#include <vector>
 
 namespace hftu {
 
     alignas(32) SOA_hot StringMap::soa_hot_{};
-    alignas(64) SOA_cold StringMap::soa_cold_{};
-    alignas(32) SOA_value StringMap::soa_value_{};
+    //alignas(64) SOA_cold StringMap::soa_cold_{};
+    //alignas(32) SOA_value StringMap::soa_value_{};
+    alignas(32) std::array<ColdEntry, ENTRY_SIZE + ENTRY_AVX_PADDING> StringMap::cold_entries_{};
 
 StringMap::StringMap() {
-    soa_cold_.hi.fill(0);
-    soa_cold_.lo.fill(0);
-    soa_value_.value.fill(0);
+    //soa_cold_.hi.fill(0);
+    //soa_cold_.lo.fill(0);
+    //soa_value_.value.fill(0);
     soa_hot_.tag.fill(0);
+    cold_entries_.fill({0, 0, 0});
 }
 
 void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
@@ -66,9 +69,11 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
 
     // 将计算出的数据原子性写入对应的槽位
     soa_hot_.tag[final_idx] = tag;
-    soa_value_.value[final_idx] = value;
-    soa_cold_.hi[final_idx] = high;
-    soa_cold_.lo[final_idx] = low;
+
+    cold_entries_[final_idx] = {high, low, value};
+    // soa_value_.value[final_idx] = value;
+    // soa_cold_.hi[final_idx] = high;
+    // soa_cold_.lo[final_idx] = low;
 }
 
 
@@ -103,8 +108,8 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
         if(soa_hot_.tag[idx] != tag){ // tag mismatch
             idx = (idx + 1) & mask;
         }
-        else if(soa_cold_.hi[idx] == high && soa_cold_.lo[idx] == low){ // tag match, check high low
-            return &soa_value_.value[idx];
+        else if(cold_entries_[idx].lo == low && cold_entries_[idx].lo == low){ // tag match, check high low
+            return &cold_entries_[idx].value;
         }
         else{
             idx = (idx + 1) & mask;

@@ -7,6 +7,7 @@
 #include <string>
 #include <array>
 #include <unordered_map>
+#include <vector>
 
 namespace hftu {
 
@@ -37,6 +38,12 @@ namespace hftu {
         std::array<uint32_t, ENTRY_SIZE + ENTRY_AVX_PADDING> value; 
     };
 
+    struct ColdEntry{
+        uint64_t hi;
+        uint64_t lo;
+        uint32_t value;
+    };
+
 class StringMap {
 public:
     StringMap();
@@ -53,8 +60,9 @@ private:
 
     // array implementation
     static SOA_hot soa_hot_;
-    static SOA_cold soa_cold_;
-    static SOA_value soa_value_;
+    //static SOA_cold soa_cold_;
+    //static SOA_value soa_value_;
+    static std::array<ColdEntry, ENTRY_SIZE + ENTRY_AVX_PADDING> cold_entries_;
 };
 
 } // namespace hftu
