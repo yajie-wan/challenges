@@ -142,19 +142,19 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
 
     // idx = (idx + 32) & mask;
 
+    if(soa_hot_.tag[idx] == tag && cold_entries_[idx].lo == low && cold_entries_[idx].hi == high){ // tag mismatch
+            return &cold_entries_[idx].value;
+    }
+
+    idx = (idx + 1) & mask;
     while(soa_hot_.tag[idx] != 0){
-        if(soa_hot_.tag[idx] != tag){ // tag mismatch
-            idx = (idx + 1) & mask;
+        if(soa_hot_.tag[idx] == tag && cold_entries_[idx].lo == low && cold_entries_[idx].hi == high){ // tag mismatch
+            return &cold_entries_[idx].value;
         }
         // else if(soa_cold_.lo[idx] == low && soa_cold_.hi[idx] == high){ // tag match, check high low
         //     return &soa_value_.value[idx];
         // }
-        else if(cold_entries_[idx].lo == low && cold_entries_[idx].hi == high){ // tag match, check high low
-            return &cold_entries_[idx].value;
-        }
-        else{
-            idx = (idx + 1) & mask;
-        }
+        idx = (idx + 1) & mask;
     }
 
     return nullptr;
