@@ -37,8 +37,8 @@ namespace hftu {
     struct SOA_value{
         std::array<uint32_t, ENTRY_SIZE + ENTRY_AVX_PADDING> value; 
     };
-
-    struct alignas(32) ColdEntry{
+    //alignas(32)
+    struct ColdEntry{
         uint64_t hi;
         uint64_t lo;
         uint32_t value;
