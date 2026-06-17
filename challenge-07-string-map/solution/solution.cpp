@@ -101,9 +101,7 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     size_t mask = ENTRY_SIZE - 1;
     size_t idx = hash & mask;
     uint8_t tag = static_cast<uint8_t>(hash & ((1u << TAG_BIT) - 1));
-    if (tag == 0){
-        tag = 1;
-    }
+    tag += (tag == 0);
 
     // __m256i tag_vec   = _mm256_set1_epi8(static_cast<char>(tag));
     // __m256i zero_vec  = _mm256_setzero_si256();
