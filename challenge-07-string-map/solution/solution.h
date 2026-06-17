@@ -63,6 +63,7 @@ private:
     // static SOA_cold soa_cold_;
     // static SOA_value soa_value_;
     static std::array<ColdEntry, ENTRY_SIZE + ENTRY_AVX_PADDING> cold_entries_;
+    //static std::array<uint32_t, ENTRY_SIZE + ENTRY_AVX_PADDING> bucket_hits_;
 };
 
 } // namespace hftu

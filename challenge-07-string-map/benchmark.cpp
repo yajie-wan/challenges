@@ -6,6 +6,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 namespace {
 
@@ -34,7 +35,6 @@ static hftu::RegisterBenchmark reg_solution(
     [](int iterations) -> uint64_t {
         auto keys = generate_keys(100'000, 16, 0xDEAD);
         uint64_t total = 0;
-
         for (int i = 0; i < iterations; ++i) {
             hftu::StringMap sm;
             uint64_t start = hftu::cycle_start();

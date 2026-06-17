@@ -12,6 +12,7 @@ namespace hftu {
     // alignas(64) SOA_cold StringMap::soa_cold_{};
     // alignas(32) SOA_value StringMap::soa_value_{};
     alignas(32) std::array<ColdEntry, ENTRY_SIZE + ENTRY_AVX_PADDING> StringMap::cold_entries_{};
+    //alignas(32) std::array<uint32_t, ENTRY_SIZE + ENTRY_AVX_PADDING> StringMap::bucket_hits_{};
 
 StringMap::StringMap() {
     // soa_cold_.hi.fill(0);
@@ -29,7 +30,12 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
     low &= LOW_MASKS[key_len];
     high &= HIGH_MASKS[key_len];
 
-    uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
+    //uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
+    uint64_t hash = low ^ (high + 0x9e3779b97f4a7c15ULL + (low << 6) + (low >> 2));
+    hash ^= hash >> 33;
+    hash *= 0xff51afd7ed558ccdULL;
+    hash ^= hash >> 33;
+
     size_t mask = ENTRY_SIZE - 1;
     
     // 🚀 核心优化：将初始哈希索引向下对齐到 32 字节边界，以获得最佳的硬件加载吞吐量
@@ -97,7 +103,12 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     low &= LOW_MASKS[key_len];
     high &= HIGH_MASKS[key_len];
     
-    uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
+    //uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
+    uint64_t hash = low ^ (high + 0x9e3779b97f4a7c15ULL + (low << 6) + (low >> 2));
+    hash ^= hash >> 33;
+    hash *= 0xff51afd7ed558ccdULL;
+    hash ^= hash >> 33;
+    
     size_t mask = ENTRY_SIZE - 1;
     size_t idx = hash & mask;
     __builtin_prefetch(&cold_entries_[idx], 0, 1);
@@ -144,7 +155,7 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     // idx = (idx + 32) & mask;
 
     if(soa_hot_.tag[idx] != 0 && soa_hot_.tag[idx] == tag && cold_entries_[idx].lo == low && cold_entries_[idx].hi == high){ // tag mismatch
-            return &cold_entries_[idx].value;
+        return &cold_entries_[idx].value;
     }
 
     idx = (idx + 1) & mask;
