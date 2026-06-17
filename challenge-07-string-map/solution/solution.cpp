@@ -9,14 +9,14 @@
 namespace hftu {
 
     alignas(32) SOA_hot StringMap::soa_hot_{};
-    //alignas(64) SOA_cold StringMap::soa_cold_{};
-    //alignas(32) SOA_value StringMap::soa_value_{};
+    // alignas(64) SOA_cold StringMap::soa_cold_{};
+    // alignas(32) SOA_value StringMap::soa_value_{};
     alignas(32) std::array<ColdEntry, ENTRY_SIZE + ENTRY_AVX_PADDING> StringMap::cold_entries_{};
 
 StringMap::StringMap() {
-    //soa_cold_.hi.fill(0);
-    //soa_cold_.lo.fill(0);
-    //soa_value_.value.fill(0);
+    // soa_cold_.hi.fill(0);
+    // soa_cold_.lo.fill(0);
+    // soa_value_.value.fill(0);
     soa_hot_.tag.fill(0);
     std::memset(cold_entries_.data(), 0, sizeof(cold_entries_));
     //cold_entries_.fill(ColdEntry{0, 0, 0});
@@ -72,6 +72,7 @@ void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
     soa_hot_.tag[final_idx] = tag;
 
     cold_entries_[final_idx] = {high, low, value};
+    
     // soa_value_.value[final_idx] = value;
     // soa_cold_.hi[final_idx] = high;
     // soa_cold_.lo[final_idx] = low;
@@ -104,11 +105,52 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
         tag = 1;
     }
 
+    __m256i tag_vec   = _mm256_set1_epi8(static_cast<char>(tag));
+    __m256i zero_vec  = _mm256_setzero_si256();
+
+    __m256i loaded    = _mm256_loadu_si256(
+        reinterpret_cast<const __m256i*>(&soa_hot_.tag[idx])
+    );
+
+    __m256i match_cmp = _mm256_cmpeq_epi8(loaded, tag_vec);
+    uint32_t match_mask = static_cast<uint32_t>(_mm256_movemask_epi8(match_cmp));
+
+    __m256i empty_cmp = _mm256_cmpeq_epi8(loaded, zero_vec);
+    uint32_t empty_mask = static_cast<uint32_t>(_mm256_movemask_epi8(empty_cmp));
+
+
+    uint32_t simd_mask;
+    if (empty_mask == 0){
+        simd_mask = ~0U;
+    }
+    else{
+        simd_mask = (1U << __builtin_ctz(empty_mask)) - 1;
+    }
+
+    match_mask &= simd_mask;
+
+    while(match_mask){
+        int off = __builtin_ctz(match_mask);           // 只能在 match_mask != 0 时用
+        size_t curr_idx = (idx + off) & mask;
+        if(cold_entries_[curr_idx].lo == low && cold_entries_[curr_idx].hi == high){ // tag match, check high low
+            return &cold_entries_[curr_idx].value;
+        }
+        match_mask &= match_mask - 1;
+    }
+
+    if(empty_mask != 0){
+        return nullptr;
+    }
+
+    idx += 32;
 
     while(soa_hot_.tag[idx] != 0){
         if(soa_hot_.tag[idx] != tag){ // tag mismatch
             idx = (idx + 1) & mask;
         }
+        // else if(soa_cold_.lo[idx] == low && soa_cold_.hi[idx] == high){ // tag match, check high low
+        //     return &soa_value_.value[idx];
+        // }
         else if(cold_entries_[idx].lo == low && cold_entries_[idx].hi == high){ // tag match, check high low
             return &cold_entries_[idx].value;
         }

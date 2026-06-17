@@ -60,8 +60,8 @@ private:
 
     // array implementation
     static SOA_hot soa_hot_;
-    //static SOA_cold soa_cold_;
-    //static SOA_value soa_value_;
+    // static SOA_cold soa_cold_;
+    // static SOA_value soa_value_;
     static std::array<ColdEntry, ENTRY_SIZE + ENTRY_AVX_PADDING> cold_entries_;
 };
 
