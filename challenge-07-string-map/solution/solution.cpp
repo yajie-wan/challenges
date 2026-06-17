@@ -142,7 +142,7 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
 
     // idx = (idx + 32) & mask;
 
-    if(soa_hot_.tag[idx] == tag && cold_entries_[idx].lo == low && cold_entries_[idx].hi == high){ // tag mismatch
+    if(soa_hot_.tag[idx] != 0 && soa_hot_.tag[idx] == tag && cold_entries_[idx].lo == low && cold_entries_[idx].hi == high){ // tag mismatch
             return &cold_entries_[idx].value;
     }
 
