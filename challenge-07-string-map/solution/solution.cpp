@@ -100,6 +100,7 @@ const uint32_t* StringMap::find(const char* key, size_t key_len) const {
     uint64_t hash = (low ^ (high << 1) ^ (high >> 1)) * HASH_CONSTANT;
     size_t mask = ENTRY_SIZE - 1;
     size_t idx = hash & mask;
+    __builtin_prefetch(&cold_entries_[idx], 0, 1);
     uint8_t tag = static_cast<uint8_t>(hash & ((1u << TAG_BIT) - 1));
     tag += (tag == 0);
 
