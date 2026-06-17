@@ -1,0 +1,1999 @@
+
+./build/benchmark:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000001000 <_init>:
+    1000:	f3 0f 1e fa          	endbr64
+    1004:	48 83 ec 08          	sub    $0x8,%rsp
+    1008:	48 8b 05 e1 3f 00 00 	mov    0x3fe1(%rip),%rax        # 4ff0 <__gmon_start__>
+    100f:	48 85 c0             	test   %rax,%rax
+    1012:	74 02                	je     1016 <_init+0x16>
+    1014:	ff d0                	call   *%rax
+    1016:	48 83 c4 08          	add    $0x8,%rsp
+    101a:	c3                   	ret
+
+Disassembly of section .plt:
+
+0000000000001020 <.plt>:
+    1020:	ff 35 32 3f 00 00    	push   0x3f32(%rip)        # 4f58 <_GLOBAL_OFFSET_TABLE_+0x8>
+    1026:	ff 25 34 3f 00 00    	jmp    *0x3f34(%rip)        # 4f60 <_GLOBAL_OFFSET_TABLE_+0x10>
+    102c:	0f 1f 40 00          	nopl   0x0(%rax)
+    1030:	f3 0f 1e fa          	endbr64
+    1034:	68 00 00 00 00       	push   $0x0
+    1039:	e9 e2 ff ff ff       	jmp    1020 <_init+0x20>
+    103e:	66 90                	xchg   %ax,%ax
+    1040:	f3 0f 1e fa          	endbr64
+    1044:	68 01 00 00 00       	push   $0x1
+    1049:	e9 d2 ff ff ff       	jmp    1020 <_init+0x20>
+    104e:	66 90                	xchg   %ax,%ax
+    1050:	f3 0f 1e fa          	endbr64
+    1054:	68 02 00 00 00       	push   $0x2
+    1059:	e9 c2 ff ff ff       	jmp    1020 <_init+0x20>
+    105e:	66 90                	xchg   %ax,%ax
+    1060:	f3 0f 1e fa          	endbr64
+    1064:	68 03 00 00 00       	push   $0x3
+    1069:	e9 b2 ff ff ff       	jmp    1020 <_init+0x20>
+    106e:	66 90                	xchg   %ax,%ax
+    1070:	f3 0f 1e fa          	endbr64
+    1074:	68 04 00 00 00       	push   $0x4
+    1079:	e9 a2 ff ff ff       	jmp    1020 <_init+0x20>
+    107e:	66 90                	xchg   %ax,%ax
+    1080:	f3 0f 1e fa          	endbr64
+    1084:	68 05 00 00 00       	push   $0x5
+    1089:	e9 92 ff ff ff       	jmp    1020 <_init+0x20>
+    108e:	66 90                	xchg   %ax,%ax
+    1090:	f3 0f 1e fa          	endbr64
+    1094:	68 06 00 00 00       	push   $0x6
+    1099:	e9 82 ff ff ff       	jmp    1020 <_init+0x20>
+    109e:	66 90                	xchg   %ax,%ax
+    10a0:	f3 0f 1e fa          	endbr64
+    10a4:	68 07 00 00 00       	push   $0x7
+    10a9:	e9 72 ff ff ff       	jmp    1020 <_init+0x20>
+    10ae:	66 90                	xchg   %ax,%ax
+    10b0:	f3 0f 1e fa          	endbr64
+    10b4:	68 08 00 00 00       	push   $0x8
+    10b9:	e9 62 ff ff ff       	jmp    1020 <_init+0x20>
+    10be:	66 90                	xchg   %ax,%ax
+    10c0:	f3 0f 1e fa          	endbr64
+    10c4:	68 09 00 00 00       	push   $0x9
+    10c9:	e9 52 ff ff ff       	jmp    1020 <_init+0x20>
+    10ce:	66 90                	xchg   %ax,%ax
+    10d0:	f3 0f 1e fa          	endbr64
+    10d4:	68 0a 00 00 00       	push   $0xa
+    10d9:	e9 42 ff ff ff       	jmp    1020 <_init+0x20>
+    10de:	66 90                	xchg   %ax,%ax
+    10e0:	f3 0f 1e fa          	endbr64
+    10e4:	68 0b 00 00 00       	push   $0xb
+    10e9:	e9 32 ff ff ff       	jmp    1020 <_init+0x20>
+    10ee:	66 90                	xchg   %ax,%ax
+    10f0:	f3 0f 1e fa          	endbr64
+    10f4:	68 0c 00 00 00       	push   $0xc
+    10f9:	e9 22 ff ff ff       	jmp    1020 <_init+0x20>
+    10fe:	66 90                	xchg   %ax,%ax
+    1100:	f3 0f 1e fa          	endbr64
+    1104:	68 0d 00 00 00       	push   $0xd
+    1109:	e9 12 ff ff ff       	jmp    1020 <_init+0x20>
+    110e:	66 90                	xchg   %ax,%ax
+
+Disassembly of section .plt.got:
+
+0000000000001110 <__cxa_finalize@plt>:
+    1110:	f3 0f 1e fa          	endbr64
+    1114:	ff 25 be 3e 00 00    	jmp    *0x3ebe(%rip)        # 4fd8 <__cxa_finalize@GLIBC_2.2.5>
+    111a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+Disassembly of section .plt.sec:
+
+0000000000001120 <__printf_chk@plt>:
+    1120:	f3 0f 1e fa          	endbr64
+    1124:	ff 25 3e 3e 00 00    	jmp    *0x3e3e(%rip)        # 4f68 <__printf_chk@GLIBC_2.3.4>
+    112a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001130 <std::__throw_bad_function_call()@plt>:
+    1130:	f3 0f 1e fa          	endbr64
+    1134:	ff 25 36 3e 00 00    	jmp    *0x3e36(%rip)        # 4f70 <std::__throw_bad_function_call()@GLIBCXX_3.4.14>
+    113a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001140 <std::__throw_length_error(char const*)@plt>:
+    1140:	f3 0f 1e fa          	endbr64
+    1144:	ff 25 2e 3e 00 00    	jmp    *0x3e2e(%rip)        # 4f78 <std::__throw_length_error(char const*)@GLIBCXX_3.4>
+    114a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001150 <memset@plt>:
+    1150:	f3 0f 1e fa          	endbr64
+    1154:	ff 25 26 3e 00 00    	jmp    *0x3e26(%rip)        # 4f80 <memset@GLIBC_2.2.5>
+    115a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001160 <__cxa_guard_release@plt>:
+    1160:	f3 0f 1e fa          	endbr64
+    1164:	ff 25 1e 3e 00 00    	jmp    *0x3e1e(%rip)        # 4f88 <__cxa_guard_release@CXXABI_1.3>
+    116a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001170 <memcpy@plt>:
+    1170:	f3 0f 1e fa          	endbr64
+    1174:	ff 25 16 3e 00 00    	jmp    *0x3e16(%rip)        # 4f90 <memcpy@GLIBC_2.14>
+    117a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001180 <__cxa_atexit@plt>:
+    1180:	f3 0f 1e fa          	endbr64
+    1184:	ff 25 0e 3e 00 00    	jmp    *0x3e0e(%rip)        # 4f98 <__cxa_atexit@GLIBC_2.2.5>
+    118a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001190 <operator new(unsigned long)@plt>:
+    1190:	f3 0f 1e fa          	endbr64
+    1194:	ff 25 06 3e 00 00    	jmp    *0x3e06(%rip)        # 4fa0 <operator new(unsigned long)@GLIBCXX_3.4>
+    119a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000011a0 <operator delete(void*, unsigned long)@plt>:
+    11a0:	f3 0f 1e fa          	endbr64
+    11a4:	ff 25 fe 3d 00 00    	jmp    *0x3dfe(%rip)        # 4fa8 <operator delete(void*, unsigned long)@CXXABI_1.3.9>
+    11aa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000011b0 <__stack_chk_fail@plt>:
+    11b0:	f3 0f 1e fa          	endbr64
+    11b4:	ff 25 f6 3d 00 00    	jmp    *0x3df6(%rip)        # 4fb0 <__stack_chk_fail@GLIBC_2.4>
+    11ba:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000011c0 <puts@plt>:
+    11c0:	f3 0f 1e fa          	endbr64
+    11c4:	ff 25 ee 3d 00 00    	jmp    *0x3dee(%rip)        # 4fb8 <puts@GLIBC_2.2.5>
+    11ca:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000011d0 <__fprintf_chk@plt>:
+    11d0:	f3 0f 1e fa          	endbr64
+    11d4:	ff 25 e6 3d 00 00    	jmp    *0x3de6(%rip)        # 4fc0 <__fprintf_chk@GLIBC_2.3.4>
+    11da:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000011e0 <_Unwind_Resume@plt>:
+    11e0:	f3 0f 1e fa          	endbr64
+    11e4:	ff 25 de 3d 00 00    	jmp    *0x3dde(%rip)        # 4fc8 <_Unwind_Resume@GCC_3.0>
+    11ea:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000011f0 <__cxa_guard_acquire@plt>:
+    11f0:	f3 0f 1e fa          	endbr64
+    11f4:	ff 25 d6 3d 00 00    	jmp    *0x3dd6(%rip)        # 4fd0 <__cxa_guard_acquire@CXXABI_1.3>
+    11fa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+Disassembly of section .text:
+
+0000000000001200 <main.cold>:
+    1200:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
+    1205:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    120c:	00 00 
+    120e:	75 59                	jne    1269 <main.cold+0x69>
+    1210:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
+    1216:	c4 e3 d1 22 eb 01    	vpinsrq $0x1,%rbx,%xmm5,%xmm5
+    121c:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
+    1222:	e8 09 ff ff ff       	call   1130 <std::__throw_bad_function_call()@plt>
+    1227:	f3 0f 1e fa          	endbr64
+    122b:	48 89 c3             	mov    %rax,%rbx
+    122e:	c5 f9 6f 6c 24 10    	vmovdqa 0x10(%rsp),%xmm5
+    1234:	48 8b 44 24 30       	mov    0x30(%rsp),%rax
+    1239:	48 8d 7c 24 50       	lea    0x50(%rsp),%rdi
+    123e:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
+    1243:	c5 f9 7f 6c 24 50    	vmovdqa %xmm5,0x50(%rsp)
+    1249:	c5 f8 77             	vzeroupper
+    124c:	e8 6f 17 00 00       	call   29c0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>
+    1251:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
+    1256:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    125d:	00 00 
+    125f:	75 0d                	jne    126e <main.cold+0x6e>
+    1261:	48 89 df             	mov    %rbx,%rdi
+    1264:	e8 77 ff ff ff       	call   11e0 <_Unwind_Resume@plt>
+    1269:	e8 42 ff ff ff       	call   11b0 <__stack_chk_fail@plt>
+    126e:	e8 3d ff ff ff       	call   11b0 <__stack_chk_fail@plt>
+    1273:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
+    1278:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    127f:	00 00 
+    1281:	75 17                	jne    129a <main.cold+0x9a>
+    1283:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
+    1289:	c4 e3 d1 22 eb 01    	vpinsrq $0x1,%rbx,%xmm5,%xmm5
+    128f:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
+    1295:	e8 96 fe ff ff       	call   1130 <std::__throw_bad_function_call()@plt>
+    129a:	e8 11 ff ff ff       	call   11b0 <__stack_chk_fail@plt>
+    129f:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
+    12a4:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    12ab:	00 00 
+    12ad:	75 47                	jne    12f6 <main.cold+0xf6>
+    12af:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
+    12b5:	48 8d 3d 7c 1d 00 00 	lea    0x1d7c(%rip),%rdi        # 3038 <_IO_stdin_used+0x38>
+    12bc:	c4 e3 d1 22 6c 24 30 	vpinsrq $0x1,0x30(%rsp),%xmm5,%xmm5
+    12c3:	01 
+    12c4:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
+    12ca:	e8 71 fe ff ff       	call   1140 <std::__throw_length_error(char const*)@plt>
+    12cf:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
+    12d4:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    12db:	00 00 
+    12dd:	75 32                	jne    1311 <main.cold+0x111>
+    12df:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
+    12e5:	c4 e3 d1 22 eb 01    	vpinsrq $0x1,%rbx,%xmm5,%xmm5
+    12eb:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
+    12f1:	e8 3a fe ff ff       	call   1130 <std::__throw_bad_function_call()@plt>
+    12f6:	e8 b5 fe ff ff       	call   11b0 <__stack_chk_fail@plt>
+    12fb:	31 c0                	xor    %eax,%eax
+    12fd:	c5 d1 ef ed          	vpxor  %xmm5,%xmm5,%xmm5
+    1301:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+    1306:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
+    130c:	e9 1d ff ff ff       	jmp    122e <main.cold+0x2e>
+    1311:	e8 9a fe ff ff       	call   11b0 <__stack_chk_fail@plt>
+
+0000000000001316 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0] [clone .cold]>:
+    1316:	48 8b 84 24 18 0a 00 	mov    0xa18(%rsp),%rax
+    131d:	00 
+    131e:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    1325:	00 00 
+    1327:	75 59                	jne    1382 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0] [clone .cold]+0x6c>
+    1329:	48 8d 3d 08 1d 00 00 	lea    0x1d08(%rip),%rdi        # 3038 <_IO_stdin_used+0x38>
+    1330:	e8 0b fe ff ff       	call   1140 <std::__throw_length_error(char const*)@plt>
+    1335:	f3 0f 1e fa          	endbr64
+    1339:	48 8b 7c 24 30       	mov    0x30(%rsp),%rdi
+    133e:	48 3b 3c 24          	cmp    (%rsp),%rdi
+    1342:	48 89 c3             	mov    %rax,%rbx
+    1345:	74 40                	je     1387 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0] [clone .cold]+0x71>
+    1347:	48 8b 44 24 40       	mov    0x40(%rsp),%rax
+    134c:	48 8d 70 01          	lea    0x1(%rax),%rsi
+    1350:	c5 f8 77             	vzeroupper
+    1353:	e8 48 fe ff ff       	call   11a0 <operator delete(void*, unsigned long)@plt>
+    1358:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+    135d:	e8 8e 16 00 00       	call   29f0 <std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~vector()>
+    1362:	48 8b 84 24 18 0a 00 	mov    0xa18(%rsp),%rax
+    1369:	00 
+    136a:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    1371:	00 00 
+    1373:	75 08                	jne    137d <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0] [clone .cold]+0x67>
+    1375:	48 89 df             	mov    %rbx,%rdi
+    1378:	e8 63 fe ff ff       	call   11e0 <_Unwind_Resume@plt>
+    137d:	e8 2e fe ff ff       	call   11b0 <__stack_chk_fail@plt>
+    1382:	e8 29 fe ff ff       	call   11b0 <__stack_chk_fail@plt>
+    1387:	c5 f8 77             	vzeroupper
+    138a:	eb cc                	jmp    1358 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0] [clone .cold]+0x42>
+
+000000000000138c <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]>:
+    138c:	c5 fa 7e 4c 24 10    	vmovq  0x10(%rsp),%xmm1
+    1392:	48 8b 7c 24 28       	mov    0x28(%rsp),%rdi
+    1397:	c4 e3 f1 22 44 24 20 	vpinsrq $0x1,0x20(%rsp),%xmm1,%xmm0
+    139e:	01 
+    139f:	c5 f9 7f 44 24 40    	vmovdqa %xmm0,0x40(%rsp)
+    13a5:	c5 f8 77             	vzeroupper
+    13a8:	e8 43 16 00 00       	call   29f0 <std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~vector()>
+    13ad:	48 8b 44 24 58       	mov    0x58(%rsp),%rax
+    13b2:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    13b9:	00 00 
+    13bb:	75 08                	jne    13c5 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x39>
+    13bd:	48 89 df             	mov    %rbx,%rdi
+    13c0:	e8 1b fe ff ff       	call   11e0 <_Unwind_Resume@plt>
+    13c5:	e8 e6 fd ff ff       	call   11b0 <__stack_chk_fail@plt>
+
+00000000000013ca <_GLOBAL__sub_I_main.cold>:
+    13ca:	48 8b 44 24 78       	mov    0x78(%rsp),%rax
+    13cf:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    13d6:	00 00 
+    13d8:	75 0c                	jne    13e6 <_GLOBAL__sub_I_main.cold+0x1c>
+    13da:	48 8d 3d 57 1c 00 00 	lea    0x1c57(%rip),%rdi        # 3038 <_IO_stdin_used+0x38>
+    13e1:	e8 5a fd ff ff       	call   1140 <std::__throw_length_error(char const*)@plt>
+    13e6:	e8 c5 fd ff ff       	call   11b0 <__stack_chk_fail@plt>
+    13eb:	f3 0f 1e fa          	endbr64
+    13ef:	48 8d 7c 24 50       	lea    0x50(%rsp),%rdi
+    13f4:	48 89 c3             	mov    %rax,%rbx
+    13f7:	c5 f8 77             	vzeroupper
+    13fa:	e8 51 14 00 00       	call   2850 <std::_Function_base::~_Function_base()>
+    13ff:	48 8d 7c 24 20       	lea    0x20(%rsp),%rdi
+    1404:	e8 47 14 00 00       	call   2850 <std::_Function_base::~_Function_base()>
+    1409:	48 8b 44 24 78       	mov    0x78(%rsp),%rax
+    140e:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    1415:	00 00 
+    1417:	75 08                	jne    1421 <_GLOBAL__sub_I_main.cold+0x57>
+    1419:	48 89 df             	mov    %rbx,%rdi
+    141c:	e8 bf fd ff ff       	call   11e0 <_Unwind_Resume@plt>
+    1421:	e8 8a fd ff ff       	call   11b0 <__stack_chk_fail@plt>
+    1426:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    142d:	00 00 00 
+
+0000000000001430 <main>:
+    1430:	f3 0f 1e fa          	endbr64
+    1434:	41 57                	push   %r15
+    1436:	41 56                	push   %r14
+    1438:	41 55                	push   %r13
+    143a:	41 54                	push   %r12
+    143c:	55                   	push   %rbp
+    143d:	53                   	push   %rbx
+    143e:	48 83 ec 78          	sub    $0x78,%rsp
+    1442:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1449:	00 00 
+    144b:	48 89 44 24 68       	mov    %rax,0x68(%rsp)
+    1450:	31 c0                	xor    %eax,%eax
+    1452:	e8 29 14 00 00       	call   2880 <hftu::run_validations()>
+    1457:	84 c0                	test   %al,%al
+    1459:	0f 84 59 05 00 00    	je     19b8 <main+0x588>
+    145f:	0f b6 05 ca 3b 00 00 	movzbl 0x3bca(%rip),%eax        # 5030 <guard variable for hftu::benchmark_registry()::reg>
+    1466:	84 c0                	test   %al,%al
+    1468:	0f 84 7e 01 00 00    	je     15ec <main+0x1bc>
+    146e:	4c 8b 25 d3 3b 00 00 	mov    0x3bd3(%rip),%r12        # 5048 <hftu::benchmark_registry()::reg+0x8>
+    1475:	4c 8b 35 c4 3b 00 00 	mov    0x3bc4(%rip),%r14        # 5040 <hftu::benchmark_registry()::reg>
+    147c:	4c 89 e3             	mov    %r12,%rbx
+    147f:	4c 29 f3             	sub    %r14,%rbx
+    1482:	0f 85 34 01 00 00    	jne    15bc <main+0x18c>
+    1488:	31 d2                	xor    %edx,%edx
+    148a:	48 89 54 24 30       	mov    %rdx,0x30(%rsp)
+    148f:	48 89 54 24 08       	mov    %rdx,0x8(%rsp)
+    1494:	4d 39 f4             	cmp    %r14,%r12
+    1497:	0f 84 29 05 00 00    	je     19c6 <main+0x596>
+    149d:	48 8b 5c 24 08       	mov    0x8(%rsp),%rbx
+    14a2:	49 83 c6 10          	add    $0x10,%r14
+    14a6:	eb 75                	jmp    151d <main+0xed>
+    14a8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    14af:	00 
+    14b0:	49 83 7e 10 00       	cmpq   $0x0,0x10(%r14)
+    14b5:	44 89 7c 24 4c       	mov    %r15d,0x4c(%rsp)
+    14ba:	0f 84 0f fe ff ff    	je     12cf <main.cold+0xcf>
+    14c0:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
+    14c6:	48 8d 74 24 4c       	lea    0x4c(%rsp),%rsi
+    14cb:	4c 89 f7             	mov    %r14,%rdi
+    14ce:	c4 e3 d1 22 e3 01    	vpinsrq $0x1,%rbx,%xmm5,%xmm4
+    14d4:	c5 f9 7f 64 24 10    	vmovdqa %xmm4,0x10(%rsp)
+    14da:	41 ff 56 18          	call   *0x18(%r14)
+    14de:	48 39 5c 24 30       	cmp    %rbx,0x30(%rsp)
+    14e3:	48 89 c2             	mov    %rax,%rdx
+    14e6:	c4 c1 7a 7e 46 f8    	vmovq  -0x8(%r14),%xmm0
+    14ec:	49 8b 76 f0          	mov    -0x10(%r14),%rsi
+    14f0:	0f 84 3a 01 00 00    	je     1630 <main+0x200>
+    14f6:	48 89 43 18          	mov    %rax,0x18(%rbx)
+    14fa:	c4 c3 f9 22 c7 01    	vpinsrq $0x1,%r15,%xmm0,%xmm0
+    1500:	49 8d 46 28          	lea    0x28(%r14),%rax
+    1504:	48 89 33             	mov    %rsi,(%rbx)
+    1507:	c5 fa 7f 43 08       	vmovdqu %xmm0,0x8(%rbx)
+    150c:	48 83 c3 20          	add    $0x20,%rbx
+    1510:	49 39 c4             	cmp    %rax,%r12
+    1513:	0f 84 00 02 00 00    	je     1719 <main+0x2e9>
+    1519:	49 83 c6 38          	add    $0x38,%r14
+    151d:	4d 63 7e 20          	movslq 0x20(%r14),%r15
+    1521:	45 85 ff             	test   %r15d,%r15d
+    1524:	7f 8a                	jg     14b0 <main+0x80>
+    1526:	49 83 7e 10 00       	cmpq   $0x0,0x10(%r14)
+    152b:	c7 44 24 44 01 00 00 	movl   $0x1,0x44(%rsp)
+    1532:	00 
+    1533:	0f 84 c7 fc ff ff    	je     1200 <main.cold>
+    1539:	c5 fa 7e 74 24 08    	vmovq  0x8(%rsp),%xmm6
+    153f:	48 8d 74 24 44       	lea    0x44(%rsp),%rsi
+    1544:	4c 89 f7             	mov    %r14,%rdi
+    1547:	c4 e3 c9 22 cb 01    	vpinsrq $0x1,%rbx,%xmm6,%xmm1
+    154d:	c5 f9 7f 4c 24 10    	vmovdqa %xmm1,0x10(%rsp)
+    1553:	41 ff 56 18          	call   *0x18(%r14)
+    1557:	49 83 7e 10 00       	cmpq   $0x0,0x10(%r14)
+    155c:	c7 44 24 48 01 00 00 	movl   $0x1,0x48(%rsp)
+    1563:	00 
+    1564:	0f 84 09 fd ff ff    	je     1273 <main.cold+0x73>
+    156a:	c5 fa 7e 4c 24 08    	vmovq  0x8(%rsp),%xmm1
+    1570:	48 8d 74 24 48       	lea    0x48(%rsp),%rsi
+    1575:	4c 89 f7             	mov    %r14,%rdi
+    1578:	c4 e3 f1 22 fb 01    	vpinsrq $0x1,%rbx,%xmm1,%xmm7
+    157e:	c5 f9 7f 7c 24 10    	vmovdqa %xmm7,0x10(%rsp)
+    1584:	41 ff 56 18          	call   *0x18(%r14)
+    1588:	48 85 c0             	test   %rax,%rax
+    158b:	b9 01 00 00 00       	mov    $0x1,%ecx
+    1590:	bd e8 03 00 00       	mov    $0x3e8,%ebp
+    1595:	48 0f 45 c8          	cmovne %rax,%rcx
+    1599:	31 d2                	xor    %edx,%edx
+    159b:	b8 00 ca 9a 3b       	mov    $0x3b9aca00,%eax
+    15a0:	48 f7 f1             	div    %rcx
+    15a3:	39 e8                	cmp    %ebp,%eax
+    15a5:	0f 4e e8             	cmovle %eax,%ebp
+    15a8:	48 83 f8 02          	cmp    $0x2,%rax
+    15ac:	b8 03 00 00 00       	mov    $0x3,%eax
+    15b1:	0f 47 c5             	cmova  %ebp,%eax
+    15b4:	4c 63 f8             	movslq %eax,%r15
+    15b7:	e9 f4 fe ff ff       	jmp    14b0 <main+0x80>
+    15bc:	48 c1 fb 03          	sar    $0x3,%rbx
+    15c0:	48 b8 b7 6d db b6 6d 	movabs $0x6db6db6db6db6db7,%rax
+    15c7:	db b6 6d 
+    15ca:	48 0f af d8          	imul   %rax,%rbx
+    15ce:	48 c1 e3 05          	shl    $0x5,%rbx
+    15d2:	48 89 df             	mov    %rbx,%rdi
+    15d5:	e8 b6 fb ff ff       	call   1190 <operator new(unsigned long)@plt>
+    15da:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+    15df:	48 01 d8             	add    %rbx,%rax
+    15e2:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+    15e7:	e9 a8 fe ff ff       	jmp    1494 <main+0x64>
+    15ec:	48 8d 3d 3d 3a 00 00 	lea    0x3a3d(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
+    15f3:	e8 f8 fb ff ff       	call   11f0 <__cxa_guard_acquire@plt>
+    15f8:	85 c0                	test   %eax,%eax
+    15fa:	0f 84 6e fe ff ff    	je     146e <main+0x3e>
+    1600:	48 8d 15 01 3a 00 00 	lea    0x3a01(%rip),%rdx        # 5008 <__dso_handle>
+    1607:	48 8d 35 32 3a 00 00 	lea    0x3a32(%rip),%rsi        # 5040 <hftu::benchmark_registry()::reg>
+    160e:	48 8d 3d cb 11 00 00 	lea    0x11cb(%rip),%rdi        # 27e0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>
+    1615:	e8 66 fb ff ff       	call   1180 <__cxa_atexit@plt>
+    161a:	48 8d 3d 0f 3a 00 00 	lea    0x3a0f(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
+    1621:	e8 3a fb ff ff       	call   1160 <__cxa_guard_release@plt>
+    1626:	e9 43 fe ff ff       	jmp    146e <main+0x3e>
+    162b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+    1630:	48 8b 5c 24 30       	mov    0x30(%rsp),%rbx
+    1635:	48 2b 5c 24 08       	sub    0x8(%rsp),%rbx
+    163a:	48 b9 ff ff ff ff ff 	movabs $0x3ffffffffffffff,%rcx
+    1641:	ff ff 03 
+    1644:	48 89 d8             	mov    %rbx,%rax
+    1647:	48 c1 f8 05          	sar    $0x5,%rax
+    164b:	48 39 c8             	cmp    %rcx,%rax
+    164e:	0f 84 4b fc ff ff    	je     129f <main.cold+0x9f>
+    1654:	c5 fa 7e 64 24 08    	vmovq  0x8(%rsp),%xmm4
+    165a:	48 85 c0             	test   %rax,%rax
+    165d:	bd 01 00 00 00       	mov    $0x1,%ebp
+    1662:	48 89 54 24 38       	mov    %rdx,0x38(%rsp)
+    1667:	c4 e3 d9 22 4c 24 30 	vpinsrq $0x1,0x30(%rsp),%xmm4,%xmm1
+    166e:	01 
+    166f:	48 0f 45 e8          	cmovne %rax,%rbp
+    1673:	c5 f9 d6 44 24 28    	vmovq  %xmm0,0x28(%rsp)
+    1679:	48 89 74 24 20       	mov    %rsi,0x20(%rsp)
+    167e:	48 01 c5             	add    %rax,%rbp
+    1681:	48 b8 ff ff ff ff ff 	movabs $0x3ffffffffffffff,%rax
+    1688:	ff ff 03 
+    168b:	48 39 c5             	cmp    %rax,%rbp
+    168e:	48 0f 47 e8          	cmova  %rax,%rbp
+    1692:	48 c1 e5 05          	shl    $0x5,%rbp
+    1696:	48 89 ef             	mov    %rbp,%rdi
+    1699:	c5 f9 7f 4c 24 10    	vmovdqa %xmm1,0x10(%rsp)
+    169f:	e8 ec fa ff ff       	call   1190 <operator new(unsigned long)@plt>
+    16a4:	c5 fa 7e 44 24 28    	vmovq  0x28(%rsp),%xmm0
+    16aa:	49 89 c5             	mov    %rax,%r13
+    16ad:	48 8b 74 24 20       	mov    0x20(%rsp),%rsi
+    16b2:	48 8b 54 24 38       	mov    0x38(%rsp),%rdx
+    16b7:	48 89 34 18          	mov    %rsi,(%rax,%rbx,1)
+    16bb:	48 89 54 18 18       	mov    %rdx,0x18(%rax,%rbx,1)
+    16c0:	c4 c3 f9 22 c7 01    	vpinsrq $0x1,%r15,%xmm0,%xmm0
+    16c6:	c5 fa 7f 44 18 08    	vmovdqu %xmm0,0x8(%rax,%rbx,1)
+    16cc:	48 85 db             	test   %rbx,%rbx
+    16cf:	74 10                	je     16e1 <main+0x2b1>
+    16d1:	48 8b 74 24 08       	mov    0x8(%rsp),%rsi
+    16d6:	48 89 da             	mov    %rbx,%rdx
+    16d9:	48 89 c7             	mov    %rax,%rdi
+    16dc:	e8 8f fa ff ff       	call   1170 <memcpy@plt>
+    16e1:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+    16e6:	49 8d 5c 1d 20       	lea    0x20(%r13,%rbx,1),%rbx
+    16eb:	48 85 ff             	test   %rdi,%rdi
+    16ee:	74 0d                	je     16fd <main+0x2cd>
+    16f0:	48 8b 74 24 30       	mov    0x30(%rsp),%rsi
+    16f5:	48 29 fe             	sub    %rdi,%rsi
+    16f8:	e8 a3 fa ff ff       	call   11a0 <operator delete(void*, unsigned long)@plt>
+    16fd:	49 8d 44 2d 00       	lea    0x0(%r13,%rbp,1),%rax
+    1702:	4c 89 6c 24 08       	mov    %r13,0x8(%rsp)
+    1707:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+    170c:	49 8d 46 28          	lea    0x28(%r14),%rax
+    1710:	49 39 c4             	cmp    %rax,%r12
+    1713:	0f 85 00 fe ff ff    	jne    1519 <main+0xe9>
+    1719:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
+    171f:	48 8d 3d 2c 19 00 00 	lea    0x192c(%rip),%rdi        # 3052 <_IO_stdin_used+0x52>
+    1726:	c4 e3 d1 22 e3 01    	vpinsrq $0x1,%rbx,%xmm5,%xmm4
+    172c:	c5 f9 7f 64 24 10    	vmovdqa %xmm4,0x10(%rsp)
+    1732:	e8 89 fa ff ff       	call   11c0 <puts@plt>
+    1737:	4c 8b 64 24 08       	mov    0x8(%rsp),%r12
+    173c:	48 89 d8             	mov    %rbx,%rax
+    173f:	31 ed                	xor    %ebp,%ebp
+    1741:	4c 29 e0             	sub    %r12,%rax
+    1744:	48 c1 f8 05          	sar    $0x5,%rax
+    1748:	48 89 44 24 20       	mov    %rax,0x20(%rsp)
+    174d:	e9 79 01 00 00       	jmp    18cb <main+0x49b>
+    1752:	0f 1f 00             	nopl   (%rax)
+    1755:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    175c:	00 00 00 00 
+    1760:	c5 c9 57 f6          	vxorpd %xmm6,%xmm6,%xmm6
+    1764:	c4 c1 cb 2a cd       	vcvtsi2sd %r13,%xmm6,%xmm1
+    1769:	4d 85 ff             	test   %r15,%r15
+    176c:	0f 88 a1 01 00 00    	js     1913 <main+0x4e3>
+    1772:	c5 c1 57 ff          	vxorpd %xmm7,%xmm7,%xmm7
+    1776:	c4 c1 c3 2a c7       	vcvtsi2sd %r15,%xmm7,%xmm0
+    177b:	4d 85 f6             	test   %r14,%r14
+    177e:	0f 88 b4 01 00 00    	js     1938 <main+0x508>
+    1784:	c5 e9 57 d2          	vxorpd %xmm2,%xmm2,%xmm2
+    1788:	c4 c1 eb 2a d6       	vcvtsi2sd %r14,%xmm2,%xmm2
+    178d:	c5 fb 59 c2          	vmulsd %xmm2,%xmm0,%xmm0
+    1791:	c5 fa 7e 5c 24 08    	vmovq  0x8(%rsp),%xmm3
+    1797:	48 8d 3d c8 18 00 00 	lea    0x18c8(%rip),%rdi        # 3066 <_IO_stdin_used+0x66>
+    179e:	c5 f3 5e f0          	vdivsd %xmm0,%xmm1,%xmm6
+    17a2:	c4 e3 e1 22 fb 01    	vpinsrq $0x1,%rbx,%xmm3,%xmm7
+    17a8:	c5 f9 7f 7c 24 10    	vmovdqa %xmm7,0x10(%rsp)
+    17ae:	c5 fb 11 74 24 28    	vmovsd %xmm6,0x28(%rsp)
+    17b4:	e8 07 fa ff ff       	call   11c0 <puts@plt>
+    17b9:	c5 fa 7e 5c 24 08    	vmovq  0x8(%rsp),%xmm3
+    17bf:	48 8d 35 a6 18 00 00 	lea    0x18a6(%rip),%rsi        # 306c <_IO_stdin_used+0x6c>
+    17c6:	bf 02 00 00 00       	mov    $0x2,%edi
+    17cb:	31 c0                	xor    %eax,%eax
+    17cd:	49 8b 14 24          	mov    (%r12),%rdx
+    17d1:	c4 e3 e1 22 e3 01    	vpinsrq $0x1,%rbx,%xmm3,%xmm4
+    17d7:	c5 f9 7f 64 24 10    	vmovdqa %xmm4,0x10(%rsp)
+    17dd:	e8 3e f9 ff ff       	call   1120 <__printf_chk@plt>
+    17e2:	c5 fa 7e 5c 24 08    	vmovq  0x8(%rsp),%xmm3
+    17e8:	4c 89 fa             	mov    %r15,%rdx
+    17eb:	48 8d 35 8f 18 00 00 	lea    0x188f(%rip),%rsi        # 3081 <_IO_stdin_used+0x81>
+    17f2:	bf 02 00 00 00       	mov    $0x2,%edi
+    17f7:	31 c0                	xor    %eax,%eax
+    17f9:	c4 e3 e1 22 eb 01    	vpinsrq $0x1,%rbx,%xmm3,%xmm5
+    17ff:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
+    1805:	e8 16 f9 ff ff       	call   1120 <__printf_chk@plt>
+    180a:	c5 fa 7e 5c 24 08    	vmovq  0x8(%rsp),%xmm3
+    1810:	4c 89 f2             	mov    %r14,%rdx
+    1813:	48 8d 35 0e 19 00 00 	lea    0x190e(%rip),%rsi        # 3128 <_IO_stdin_used+0x128>
+    181a:	bf 02 00 00 00       	mov    $0x2,%edi
+    181f:	31 c0                	xor    %eax,%eax
+    1821:	c4 e3 e1 22 fb 01    	vpinsrq $0x1,%rbx,%xmm3,%xmm7
+    1827:	c5 f9 7f 7c 24 10    	vmovdqa %xmm7,0x10(%rsp)
+    182d:	e8 ee f8 ff ff       	call   1120 <__printf_chk@plt>
+    1832:	c5 fa 7e 5c 24 08    	vmovq  0x8(%rsp),%xmm3
+    1838:	4c 89 ea             	mov    %r13,%rdx
+    183b:	48 8d 35 59 18 00 00 	lea    0x1859(%rip),%rsi        # 309b <_IO_stdin_used+0x9b>
+    1842:	bf 02 00 00 00       	mov    $0x2,%edi
+    1847:	31 c0                	xor    %eax,%eax
+    1849:	c4 e3 e1 22 e3 01    	vpinsrq $0x1,%rbx,%xmm3,%xmm4
+    184f:	c5 f9 7f 64 24 10    	vmovdqa %xmm4,0x10(%rsp)
+    1855:	e8 c6 f8 ff ff       	call   1120 <__printf_chk@plt>
+    185a:	c5 fa 7e 5c 24 08    	vmovq  0x8(%rsp),%xmm3
+    1860:	48 8d 35 50 18 00 00 	lea    0x1850(%rip),%rsi        # 30b7 <_IO_stdin_used+0xb7>
+    1867:	bf 02 00 00 00       	mov    $0x2,%edi
+    186c:	b8 01 00 00 00       	mov    $0x1,%eax
+    1871:	c5 fb 10 44 24 28    	vmovsd 0x28(%rsp),%xmm0
+    1877:	c4 e3 e1 22 eb 01    	vpinsrq $0x1,%rbx,%xmm3,%xmm5
+    187d:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
+    1883:	e8 98 f8 ff ff       	call   1120 <__printf_chk@plt>
+    1888:	c5 fa 7e 5c 24 08    	vmovq  0x8(%rsp),%xmm3
+    188e:	48 ff c5             	inc    %rbp
+    1891:	48 8d 05 9e 17 00 00 	lea    0x179e(%rip),%rax        # 3036 <_IO_stdin_used+0x36>
+    1898:	48 8d 15 e1 17 00 00 	lea    0x17e1(%rip),%rdx        # 3080 <_IO_stdin_used+0x80>
+    189f:	48 3b 6c 24 20       	cmp    0x20(%rsp),%rbp
+    18a4:	48 8d 35 29 18 00 00 	lea    0x1829(%rip),%rsi        # 30d4 <_IO_stdin_used+0xd4>
+    18ab:	bf 02 00 00 00       	mov    $0x2,%edi
+    18b0:	48 0f 42 d0          	cmovb  %rax,%rdx
+    18b4:	31 c0                	xor    %eax,%eax
+    18b6:	c4 e3 e1 22 f3 01    	vpinsrq $0x1,%rbx,%xmm3,%xmm6
+    18bc:	c5 f9 7f 74 24 10    	vmovdqa %xmm6,0x10(%rsp)
+    18c2:	e8 59 f8 ff ff       	call   1120 <__printf_chk@plt>
+    18c7:	49 83 c4 20          	add    $0x20,%r12
+    18cb:	48 39 6c 24 20       	cmp    %rbp,0x20(%rsp)
+    18d0:	0f 84 83 00 00 00    	je     1959 <main+0x529>
+    18d6:	4d 8b 6c 24 18       	mov    0x18(%r12),%r13
+    18db:	4d 8b 7c 24 10       	mov    0x10(%r12),%r15
+    18e0:	4d 8b 74 24 08       	mov    0x8(%r12),%r14
+    18e5:	4d 85 ed             	test   %r13,%r13
+    18e8:	0f 89 72 fe ff ff    	jns    1760 <main+0x330>
+    18ee:	4c 89 e8             	mov    %r13,%rax
+    18f1:	4c 89 ea             	mov    %r13,%rdx
+    18f4:	c5 e9 57 d2          	vxorpd %xmm2,%xmm2,%xmm2
+    18f8:	48 d1 e8             	shr    $1,%rax
+    18fb:	83 e2 01             	and    $0x1,%edx
+    18fe:	48 09 d0             	or     %rdx,%rax
+    1901:	c4 e1 eb 2a c8       	vcvtsi2sd %rax,%xmm2,%xmm1
+    1906:	c5 f3 58 c9          	vaddsd %xmm1,%xmm1,%xmm1
+    190a:	4d 85 ff             	test   %r15,%r15
+    190d:	0f 89 5f fe ff ff    	jns    1772 <main+0x342>
+    1913:	4c 89 f8             	mov    %r15,%rax
+    1916:	4c 89 fa             	mov    %r15,%rdx
+    1919:	c5 c9 57 f6          	vxorpd %xmm6,%xmm6,%xmm6
+    191d:	48 d1 e8             	shr    $1,%rax
+    1920:	83 e2 01             	and    $0x1,%edx
+    1923:	48 09 d0             	or     %rdx,%rax
+    1926:	c4 e1 cb 2a c0       	vcvtsi2sd %rax,%xmm6,%xmm0
+    192b:	c5 fb 58 c0          	vaddsd %xmm0,%xmm0,%xmm0
+    192f:	4d 85 f6             	test   %r14,%r14
+    1932:	0f 89 4c fe ff ff    	jns    1784 <main+0x354>
+    1938:	4c 89 f0             	mov    %r14,%rax
+    193b:	4c 89 f2             	mov    %r14,%rdx
+    193e:	c5 c1 57 ff          	vxorpd %xmm7,%xmm7,%xmm7
+    1942:	48 d1 e8             	shr    $1,%rax
+    1945:	83 e2 01             	and    $0x1,%edx
+    1948:	48 09 d0             	or     %rdx,%rax
+    194b:	c4 e1 c3 2a d0       	vcvtsi2sd %rax,%xmm7,%xmm2
+    1950:	c5 eb 58 d2          	vaddsd %xmm2,%xmm2,%xmm2
+    1954:	e9 34 fe ff ff       	jmp    178d <main+0x35d>
+    1959:	c5 fa 7e 64 24 08    	vmovq  0x8(%rsp),%xmm4
+    195f:	48 8d 3d 77 17 00 00 	lea    0x1777(%rip),%rdi        # 30dd <_IO_stdin_used+0xdd>
+    1966:	c4 e3 d9 22 eb 01    	vpinsrq $0x1,%rbx,%xmm4,%xmm5
+    196c:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
+    1972:	e8 49 f8 ff ff       	call   11c0 <puts@plt>
+    1977:	c5 f9 6f 6c 24 10    	vmovdqa 0x10(%rsp),%xmm5
+    197d:	48 8d 7c 24 50       	lea    0x50(%rsp),%rdi
+    1982:	48 8b 44 24 30       	mov    0x30(%rsp),%rax
+    1987:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
+    198c:	c5 f9 7f 6c 24 50    	vmovdqa %xmm5,0x50(%rsp)
+    1992:	e8 29 10 00 00       	call   29c0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>
+    1997:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
+    199c:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    19a3:	00 00 
+    19a5:	75 29                	jne    19d0 <main+0x5a0>
+    19a7:	48 83 c4 78          	add    $0x78,%rsp
+    19ab:	31 c0                	xor    %eax,%eax
+    19ad:	5b                   	pop    %rbx
+    19ae:	5d                   	pop    %rbp
+    19af:	41 5c                	pop    %r12
+    19b1:	41 5d                	pop    %r13
+    19b3:	41 5e                	pop    %r14
+    19b5:	41 5f                	pop    %r15
+    19b7:	c3                   	ret
+    19b8:	48 8d 3d 31 17 00 00 	lea    0x1731(%rip),%rdi        # 30f0 <_IO_stdin_used+0xf0>
+    19bf:	e8 fc f7 ff ff       	call   11c0 <puts@plt>
+    19c4:	eb d1                	jmp    1997 <main+0x567>
+    19c6:	48 8b 5c 24 08       	mov    0x8(%rsp),%rbx
+    19cb:	e9 49 fd ff ff       	jmp    1719 <main+0x2e9>
+    19d0:	e8 db f7 ff ff       	call   11b0 <__stack_chk_fail@plt>
+    19d5:	f3 0f 1e fa          	endbr64
+    19d9:	e9 4d f8 ff ff       	jmp    122b <main.cold+0x2b>
+    19de:	f3 0f 1e fa          	endbr64
+    19e2:	48 89 c3             	mov    %rax,%rbx
+    19e5:	e9 11 f9 ff ff       	jmp    12fb <main.cold+0xfb>
+    19ea:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000019f0 <_GLOBAL__sub_I_main>:
+    19f0:	f3 0f 1e fa          	endbr64
+    19f4:	53                   	push   %rbx
+    19f5:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    19f9:	48 83 c4 80          	add    $0xffffffffffffff80,%rsp
+    19fd:	c5 fa 7e 1d 23 33 00 	vmovq  0x3323(%rip),%xmm3        # 4d28 <__do_global_dtors_aux_fini_array_entry+0x8>
+    1a04:	00 
+    1a05:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1a0c:	00 00 
+    1a0e:	48 89 44 24 78       	mov    %rax,0x78(%rsp)
+    1a13:	31 c0                	xor    %eax,%eax
+    1a15:	48 8d 05 84 0b 00 00 	lea    0xb84(%rip),%rax        # 25a0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)>
+    1a1c:	c5 f9 7f 44 24 20    	vmovdqa %xmm0,0x20(%rsp)
+    1a22:	c4 e3 e1 22 c0 01    	vpinsrq $0x1,%rax,%xmm3,%xmm0
+    1a28:	c5 f9 7f 44 24 30    	vmovdqa %xmm0,0x30(%rsp)
+    1a2e:	0f b6 05 fb 35 00 00 	movzbl 0x35fb(%rip),%eax        # 5030 <guard variable for hftu::benchmark_registry()::reg>
+    1a35:	84 c0                	test   %al,%al
+    1a37:	0f 84 0c 01 00 00    	je     1b49 <_GLOBAL__sub_I_main+0x159>
+    1a3d:	48 8d 05 9f 16 00 00 	lea    0x169f(%rip),%rax        # 30e3 <_IO_stdin_used+0xe3>
+    1a44:	48 8b 74 24 38       	mov    0x38(%rsp),%rsi
+    1a49:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    1a4d:	48 c7 44 24 48 40 0d 	movq   $0x30d40,0x48(%rsp)
+    1a54:	03 00 
+    1a56:	48 89 44 24 40       	mov    %rax,0x40(%rsp)
+    1a5b:	48 8b 44 24 30       	mov    0x30(%rsp),%rax
+    1a60:	c5 f9 7f 44 24 50    	vmovdqa %xmm0,0x50(%rsp)
+    1a66:	48 c7 44 24 60 00 00 	movq   $0x0,0x60(%rsp)
+    1a6d:	00 00 
+    1a6f:	48 89 74 24 68       	mov    %rsi,0x68(%rsp)
+    1a74:	48 85 c0             	test   %rax,%rax
+    1a77:	74 1b                	je     1a94 <_GLOBAL__sub_I_main+0xa4>
+    1a79:	c5 f9 6f 44 24 20    	vmovdqa 0x20(%rsp),%xmm0
+    1a7f:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
+    1a84:	c5 f9 7f 44 24 50    	vmovdqa %xmm0,0x50(%rsp)
+    1a8a:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    1a8e:	c5 f9 7f 44 24 30    	vmovdqa %xmm0,0x30(%rsp)
+    1a94:	48 8b 0d ad 35 00 00 	mov    0x35ad(%rip),%rcx        # 5048 <hftu::benchmark_registry()::reg+0x8>
+    1a9b:	c7 44 24 70 00 00 00 	movl   $0x0,0x70(%rsp)
+    1aa2:	00 
+    1aa3:	48 3b 0d a6 35 00 00 	cmp    0x35a6(%rip),%rcx        # 5050 <hftu::benchmark_registry()::reg+0x10>
+    1aaa:	0f 84 d8 00 00 00    	je     1b88 <_GLOBAL__sub_I_main+0x198>
+    1ab0:	48 8d 05 2c 16 00 00 	lea    0x162c(%rip),%rax        # 30e3 <_IO_stdin_used+0xe3>
+    1ab7:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    1abb:	48 c7 41 08 40 0d 03 	movq   $0x30d40,0x8(%rcx)
+    1ac2:	00 
+    1ac3:	48 c7 41 20 00 00 00 	movq   $0x0,0x20(%rcx)
+    1aca:	00 
+    1acb:	48 89 01             	mov    %rax,(%rcx)
+    1ace:	c5 fa 7f 41 10       	vmovdqu %xmm0,0x10(%rcx)
+    1ad3:	48 89 71 28          	mov    %rsi,0x28(%rcx)
+    1ad7:	48 8b 44 24 60       	mov    0x60(%rsp),%rax
+    1adc:	48 85 c0             	test   %rax,%rax
+    1adf:	74 19                	je     1afa <_GLOBAL__sub_I_main+0x10a>
+    1ae1:	c5 f9 6f 44 24 50    	vmovdqa 0x50(%rsp),%xmm0
+    1ae7:	48 89 41 20          	mov    %rax,0x20(%rcx)
+    1aeb:	c5 fa 7f 41 10       	vmovdqu %xmm0,0x10(%rcx)
+    1af0:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    1af4:	c5 f9 7f 44 24 60    	vmovdqa %xmm0,0x60(%rsp)
+    1afa:	8b 44 24 70          	mov    0x70(%rsp),%eax
+    1afe:	48 83 c1 38          	add    $0x38,%rcx
+    1b02:	89 41 f8             	mov    %eax,-0x8(%rcx)
+    1b05:	48 89 0d 3c 35 00 00 	mov    %rcx,0x353c(%rip)        # 5048 <hftu::benchmark_registry()::reg+0x8>
+    1b0c:	48 8b 44 24 60       	mov    0x60(%rsp),%rax
+    1b11:	48 85 c0             	test   %rax,%rax
+    1b14:	74 0f                	je     1b25 <_GLOBAL__sub_I_main+0x135>
+    1b16:	48 8d 7c 24 50       	lea    0x50(%rsp),%rdi
+    1b1b:	ba 03 00 00 00       	mov    $0x3,%edx
+    1b20:	48 89 fe             	mov    %rdi,%rsi
+    1b23:	ff d0                	call   *%rax
+    1b25:	48 8d 7c 24 20       	lea    0x20(%rsp),%rdi
+    1b2a:	e8 21 0d 00 00       	call   2850 <std::_Function_base::~_Function_base()>
+    1b2f:	48 8b 44 24 78       	mov    0x78(%rsp),%rax
+    1b34:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    1b3b:	00 00 
+    1b3d:	0f 85 de 01 00 00    	jne    1d21 <_GLOBAL__sub_I_main+0x331>
+    1b43:	48 83 ec 80          	sub    $0xffffffffffffff80,%rsp
+    1b47:	5b                   	pop    %rbx
+    1b48:	c3                   	ret
+    1b49:	48 8d 3d e0 34 00 00 	lea    0x34e0(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
+    1b50:	e8 9b f6 ff ff       	call   11f0 <__cxa_guard_acquire@plt>
+    1b55:	85 c0                	test   %eax,%eax
+    1b57:	0f 84 e0 fe ff ff    	je     1a3d <_GLOBAL__sub_I_main+0x4d>
+    1b5d:	48 8d 15 a4 34 00 00 	lea    0x34a4(%rip),%rdx        # 5008 <__dso_handle>
+    1b64:	48 8d 35 d5 34 00 00 	lea    0x34d5(%rip),%rsi        # 5040 <hftu::benchmark_registry()::reg>
+    1b6b:	48 8d 3d 6e 0c 00 00 	lea    0xc6e(%rip),%rdi        # 27e0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>
+    1b72:	e8 09 f6 ff ff       	call   1180 <__cxa_atexit@plt>
+    1b77:	48 8d 3d b2 34 00 00 	lea    0x34b2(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
+    1b7e:	e8 dd f5 ff ff       	call   1160 <__cxa_guard_release@plt>
+    1b83:	e9 b5 fe ff ff       	jmp    1a3d <_GLOBAL__sub_I_main+0x4d>
+    1b88:	4c 8b 05 b1 34 00 00 	mov    0x34b1(%rip),%r8        # 5040 <hftu::benchmark_registry()::reg>
+    1b8f:	48 89 ca             	mov    %rcx,%rdx
+    1b92:	48 b8 b7 6d db b6 6d 	movabs $0x6db6db6db6db6db7,%rax
+    1b99:	db b6 6d 
+    1b9c:	4c 29 c2             	sub    %r8,%rdx
+    1b9f:	48 89 d7             	mov    %rdx,%rdi
+    1ba2:	48 c1 ff 03          	sar    $0x3,%rdi
+    1ba6:	48 0f af f8          	imul   %rax,%rdi
+    1baa:	48 b8 49 92 24 49 92 	movabs $0x249249249249249,%rax
+    1bb1:	24 49 02 
+    1bb4:	48 39 c7             	cmp    %rax,%rdi
+    1bb7:	0f 84 0d f8 ff ff    	je     13ca <_GLOBAL__sub_I_main.cold>
+    1bbd:	48 85 ff             	test   %rdi,%rdi
+    1bc0:	b8 01 00 00 00       	mov    $0x1,%eax
+    1bc5:	48 89 54 24 18       	mov    %rdx,0x18(%rsp)
+    1bca:	4c 89 44 24 10       	mov    %r8,0x10(%rsp)
+    1bcf:	48 0f 45 c7          	cmovne %rdi,%rax
+    1bd3:	48 89 4c 24 08       	mov    %rcx,0x8(%rsp)
+    1bd8:	48 89 34 24          	mov    %rsi,(%rsp)
+    1bdc:	48 01 f8             	add    %rdi,%rax
+    1bdf:	48 bf 49 92 24 49 92 	movabs $0x249249249249249,%rdi
+    1be6:	24 49 02 
+    1be9:	48 39 f8             	cmp    %rdi,%rax
+    1bec:	48 0f 47 c7          	cmova  %rdi,%rax
+    1bf0:	48 6b f8 38          	imul   $0x38,%rax,%rdi
+    1bf4:	48 6b d8 38          	imul   $0x38,%rax,%rbx
+    1bf8:	e8 93 f5 ff ff       	call   1190 <operator new(unsigned long)@plt>
+    1bfd:	48 8b 54 24 18       	mov    0x18(%rsp),%rdx
+    1c02:	49 89 c1             	mov    %rax,%r9
+    1c05:	48 8b 34 24          	mov    (%rsp),%rsi
+    1c09:	31 c9                	xor    %ecx,%ecx
+    1c0b:	48 8d 3d d1 14 00 00 	lea    0x14d1(%rip),%rdi        # 30e3 <_IO_stdin_used+0xe3>
+    1c12:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    1c16:	4c 8b 44 24 10       	mov    0x10(%rsp),%r8
+    1c1b:	48 8d 04 10          	lea    (%rax,%rdx,1),%rax
+    1c1f:	48 8b 54 24 60       	mov    0x60(%rsp),%rdx
+    1c24:	48 89 48 20          	mov    %rcx,0x20(%rax)
+    1c28:	48 89 38             	mov    %rdi,(%rax)
+    1c2b:	48 8b 4c 24 08       	mov    0x8(%rsp),%rcx
+    1c30:	48 c7 40 08 40 0d 03 	movq   $0x30d40,0x8(%rax)
+    1c37:	00 
+    1c38:	c5 fa 7f 40 10       	vmovdqu %xmm0,0x10(%rax)
+    1c3d:	48 89 70 28          	mov    %rsi,0x28(%rax)
+    1c41:	48 85 d2             	test   %rdx,%rdx
+    1c44:	74 19                	je     1c5f <_GLOBAL__sub_I_main+0x26f>
+    1c46:	c5 f9 6f 44 24 50    	vmovdqa 0x50(%rsp),%xmm0
+    1c4c:	48 89 50 20          	mov    %rdx,0x20(%rax)
+    1c50:	c5 fa 7f 40 10       	vmovdqu %xmm0,0x10(%rax)
+    1c55:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    1c59:	c5 f9 7f 44 24 60    	vmovdqa %xmm0,0x60(%rsp)
+    1c5f:	31 d2                	xor    %edx,%edx
+    1c61:	89 50 30             	mov    %edx,0x30(%rax)
+    1c64:	4c 39 c1             	cmp    %r8,%rcx
+    1c67:	0f 84 af 00 00 00    	je     1d1c <_GLOBAL__sub_I_main+0x32c>
+    1c6d:	4c 89 c2             	mov    %r8,%rdx
+    1c70:	4c 89 c8             	mov    %r9,%rax
+    1c73:	c5 f1 ef c9          	vpxor  %xmm1,%xmm1,%xmm1
+    1c77:	c5 e9 ef d2          	vpxor  %xmm2,%xmm2,%xmm2
+    1c7b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+    1c80:	48 8b 32             	mov    (%rdx),%rsi
+    1c83:	48 89 30             	mov    %rsi,(%rax)
+    1c86:	48 8b 72 08          	mov    0x8(%rdx),%rsi
+    1c8a:	c5 fa 7f 48 10       	vmovdqu %xmm1,0x10(%rax)
+    1c8f:	48 c7 40 20 00 00 00 	movq   $0x0,0x20(%rax)
+    1c96:	00 
+    1c97:	48 89 70 08          	mov    %rsi,0x8(%rax)
+    1c9b:	48 8b 72 28          	mov    0x28(%rdx),%rsi
+    1c9f:	48 89 70 28          	mov    %rsi,0x28(%rax)
+    1ca3:	48 8b 72 20          	mov    0x20(%rdx),%rsi
+    1ca7:	48 85 f6             	test   %rsi,%rsi
+    1caa:	74 13                	je     1cbf <_GLOBAL__sub_I_main+0x2cf>
+    1cac:	c5 fa 6f 42 10       	vmovdqu 0x10(%rdx),%xmm0
+    1cb1:	48 89 70 20          	mov    %rsi,0x20(%rax)
+    1cb5:	c5 fa 7f 52 20       	vmovdqu %xmm2,0x20(%rdx)
+    1cba:	c5 fa 7f 40 10       	vmovdqu %xmm0,0x10(%rax)
+    1cbf:	8b 72 30             	mov    0x30(%rdx),%esi
+    1cc2:	48 83 c2 38          	add    $0x38,%rdx
+    1cc6:	48 83 c0 38          	add    $0x38,%rax
+    1cca:	89 70 f8             	mov    %esi,-0x8(%rax)
+    1ccd:	48 39 d1             	cmp    %rdx,%rcx
+    1cd0:	75 ae                	jne    1c80 <_GLOBAL__sub_I_main+0x290>
+    1cd2:	48 83 c0 38          	add    $0x38,%rax
+    1cd6:	4d 85 c0             	test   %r8,%r8
+    1cd9:	74 24                	je     1cff <_GLOBAL__sub_I_main+0x30f>
+    1cdb:	48 8b 35 6e 33 00 00 	mov    0x336e(%rip),%rsi        # 5050 <hftu::benchmark_registry()::reg+0x10>
+    1ce2:	4c 89 c7             	mov    %r8,%rdi
+    1ce5:	4c 89 4c 24 08       	mov    %r9,0x8(%rsp)
+    1cea:	48 89 04 24          	mov    %rax,(%rsp)
+    1cee:	4c 29 c6             	sub    %r8,%rsi
+    1cf1:	e8 aa f4 ff ff       	call   11a0 <operator delete(void*, unsigned long)@plt>
+    1cf6:	4c 8b 4c 24 08       	mov    0x8(%rsp),%r9
+    1cfb:	48 8b 04 24          	mov    (%rsp),%rax
+    1cff:	4c 89 0d 3a 33 00 00 	mov    %r9,0x333a(%rip)        # 5040 <hftu::benchmark_registry()::reg>
+    1d06:	49 01 d9             	add    %rbx,%r9
+    1d09:	48 89 05 38 33 00 00 	mov    %rax,0x3338(%rip)        # 5048 <hftu::benchmark_registry()::reg+0x8>
+    1d10:	4c 89 0d 39 33 00 00 	mov    %r9,0x3339(%rip)        # 5050 <hftu::benchmark_registry()::reg+0x10>
+    1d17:	e9 f0 fd ff ff       	jmp    1b0c <_GLOBAL__sub_I_main+0x11c>
+    1d1c:	4c 89 c8             	mov    %r9,%rax
+    1d1f:	eb b1                	jmp    1cd2 <_GLOBAL__sub_I_main+0x2e2>
+    1d21:	e8 8a f4 ff ff       	call   11b0 <__stack_chk_fail@plt>
+    1d26:	f3 0f 1e fa          	endbr64
+    1d2a:	e9 c0 f6 ff ff       	jmp    13ef <_GLOBAL__sub_I_main.cold+0x25>
+    1d2f:	90                   	nop
+
+0000000000001d30 <_start>:
+    1d30:	f3 0f 1e fa          	endbr64
+    1d34:	31 ed                	xor    %ebp,%ebp
+    1d36:	49 89 d1             	mov    %rdx,%r9
+    1d39:	5e                   	pop    %rsi
+    1d3a:	48 89 e2             	mov    %rsp,%rdx
+    1d3d:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+    1d41:	50                   	push   %rax
+    1d42:	54                   	push   %rsp
+    1d43:	45 31 c0             	xor    %r8d,%r8d
+    1d46:	31 c9                	xor    %ecx,%ecx
+    1d48:	48 8d 3d e1 f6 ff ff 	lea    -0x91f(%rip),%rdi        # 1430 <main>
+    1d4f:	ff 15 8b 32 00 00    	call   *0x328b(%rip)        # 4fe0 <__libc_start_main@GLIBC_2.34>
+    1d55:	f4                   	hlt
+    1d56:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    1d5d:	00 00 00 
+
+0000000000001d60 <deregister_tm_clones>:
+    1d60:	48 8d 3d b1 32 00 00 	lea    0x32b1(%rip),%rdi        # 5018 <__TMC_END__>
+    1d67:	48 8d 05 aa 32 00 00 	lea    0x32aa(%rip),%rax        # 5018 <__TMC_END__>
+    1d6e:	48 39 f8             	cmp    %rdi,%rax
+    1d71:	74 15                	je     1d88 <deregister_tm_clones+0x28>
+    1d73:	48 8b 05 6e 32 00 00 	mov    0x326e(%rip),%rax        # 4fe8 <_ITM_deregisterTMCloneTable>
+    1d7a:	48 85 c0             	test   %rax,%rax
+    1d7d:	74 09                	je     1d88 <deregister_tm_clones+0x28>
+    1d7f:	ff e0                	jmp    *%rax
+    1d81:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    1d88:	c3                   	ret
+    1d89:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001d90 <register_tm_clones>:
+    1d90:	48 8d 3d 81 32 00 00 	lea    0x3281(%rip),%rdi        # 5018 <__TMC_END__>
+    1d97:	48 8d 35 7a 32 00 00 	lea    0x327a(%rip),%rsi        # 5018 <__TMC_END__>
+    1d9e:	48 29 fe             	sub    %rdi,%rsi
+    1da1:	48 89 f0             	mov    %rsi,%rax
+    1da4:	48 c1 ee 3f          	shr    $0x3f,%rsi
+    1da8:	48 c1 f8 03          	sar    $0x3,%rax
+    1dac:	48 01 c6             	add    %rax,%rsi
+    1daf:	48 d1 fe             	sar    $1,%rsi
+    1db2:	74 14                	je     1dc8 <register_tm_clones+0x38>
+    1db4:	48 8b 05 3d 32 00 00 	mov    0x323d(%rip),%rax        # 4ff8 <_ITM_registerTMCloneTable>
+    1dbb:	48 85 c0             	test   %rax,%rax
+    1dbe:	74 08                	je     1dc8 <register_tm_clones+0x38>
+    1dc0:	ff e0                	jmp    *%rax
+    1dc2:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    1dc8:	c3                   	ret
+    1dc9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001dd0 <__do_global_dtors_aux>:
+    1dd0:	f3 0f 1e fa          	endbr64
+    1dd4:	80 3d 4d 32 00 00 00 	cmpb   $0x0,0x324d(%rip)        # 5028 <completed.0>
+    1ddb:	75 2b                	jne    1e08 <__do_global_dtors_aux+0x38>
+    1ddd:	55                   	push   %rbp
+    1dde:	48 83 3d f2 31 00 00 	cmpq   $0x0,0x31f2(%rip)        # 4fd8 <__cxa_finalize@GLIBC_2.2.5>
+    1de5:	00 
+    1de6:	48 89 e5             	mov    %rsp,%rbp
+    1de9:	74 0c                	je     1df7 <__do_global_dtors_aux+0x27>
+    1deb:	48 8b 3d 16 32 00 00 	mov    0x3216(%rip),%rdi        # 5008 <__dso_handle>
+    1df2:	e8 19 f3 ff ff       	call   1110 <__cxa_finalize@plt>
+    1df7:	e8 64 ff ff ff       	call   1d60 <deregister_tm_clones>
+    1dfc:	c6 05 25 32 00 00 01 	movb   $0x1,0x3225(%rip)        # 5028 <completed.0>
+    1e03:	5d                   	pop    %rbp
+    1e04:	c3                   	ret
+    1e05:	0f 1f 00             	nopl   (%rax)
+    1e08:	c3                   	ret
+    1e09:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001e10 <frame_dummy>:
+    1e10:	f3 0f 1e fa          	endbr64
+    1e14:	e9 77 ff ff ff       	jmp    1d90 <register_tm_clones>
+    1e19:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    1e20:	00 00 00 
+    1e23:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    1e2a:	00 00 00 
+    1e2d:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    1e34:	00 00 00 
+    1e37:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    1e3e:	00 00 
+
+0000000000001e40 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)>:
+    1e40:	f3 0f 1e fa          	endbr64
+    1e44:	85 d2                	test   %edx,%edx
+    1e46:	74 18                	je     1e60 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)+0x20>
+    1e48:	83 fa 01             	cmp    $0x1,%edx
+    1e4b:	74 03                	je     1e50 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)+0x10>
+    1e4d:	31 c0                	xor    %eax,%eax
+    1e4f:	c3                   	ret
+    1e50:	48 89 37             	mov    %rsi,(%rdi)
+    1e53:	31 c0                	xor    %eax,%eax
+    1e55:	c3                   	ret
+    1e56:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    1e5d:	00 00 00 
+    1e60:	48 8d 05 c9 2e 00 00 	lea    0x2ec9(%rip),%rax        # 4d30 <vtable for __cxxabiv1::__class_type_info@CXXABI_1.3>
+    1e67:	48 89 07             	mov    %rax,(%rdi)
+    1e6a:	31 c0                	xor    %eax,%eax
+    1e6c:	c3                   	ret
+    1e6d:	0f 1f 00             	nopl   (%rax)
+
+0000000000001e70 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]>:
+    1e70:	41 57                	push   %r15
+    1e72:	41 56                	push   %r14
+    1e74:	41 55                	push   %r13
+    1e76:	48 be 2d 7f 95 4c 2d 	movabs $0x5851f42d4c957f2d,%rsi
+    1e7d:	f4 51 58 
+    1e80:	41 54                	push   %r12
+    1e82:	55                   	push   %rbp
+    1e83:	53                   	push   %rbx
+    1e84:	41 bc 01 00 00 00    	mov    $0x1,%r12d
+    1e8a:	48 81 ec 28 0a 00 00 	sub    $0xa28,%rsp
+    1e91:	ba ad de 00 00       	mov    $0xdead,%edx
+    1e96:	48 89 7c 24 08       	mov    %rdi,0x8(%rsp)
+    1e9b:	48 8d 4c 24 58       	lea    0x58(%rsp),%rcx
+    1ea0:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1ea7:	00 00 
+    1ea9:	48 89 84 24 18 0a 00 	mov    %rax,0xa18(%rsp)
+    1eb0:	00 
+    1eb1:	31 c0                	xor    %eax,%eax
+    1eb3:	48 c7 44 24 50 ad de 	movq   $0xdead,0x50(%rsp)
+    1eba:	00 00 
+    1ebc:	0f 1f 40 00          	nopl   0x0(%rax)
+    1ec0:	48 89 d0             	mov    %rdx,%rax
+    1ec3:	48 83 c1 08          	add    $0x8,%rcx
+    1ec7:	48 c1 e8 3e          	shr    $0x3e,%rax
+    1ecb:	48 31 d0             	xor    %rdx,%rax
+    1ece:	48 0f af c6          	imul   %rsi,%rax
+    1ed2:	49 8d 14 04          	lea    (%r12,%rax,1),%rdx
+    1ed6:	49 ff c4             	inc    %r12
+    1ed9:	48 89 51 f8          	mov    %rdx,-0x8(%rcx)
+    1edd:	49 81 fc 38 01 00 00 	cmp    $0x138,%r12
+    1ee4:	75 da                	jne    1ec0 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x50>
+    1ee6:	48 8b 5c 24 08       	mov    0x8(%rsp),%rbx
+    1eeb:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    1eef:	48 c7 84 24 10 0a 00 	movq   $0x138,0xa10(%rsp)
+    1ef6:	00 38 01 00 00 
+    1efb:	bf 00 d4 30 00       	mov    $0x30d400,%edi
+    1f00:	c5 fa 7f 03          	vmovdqu %xmm0,(%rbx)
+    1f04:	48 c7 43 10 00 00 00 	movq   $0x0,0x10(%rbx)
+    1f0b:	00 
+    1f0c:	e8 7f f2 ff ff       	call   1190 <operator new(unsigned long)@plt>
+    1f11:	c4 e1 f9 6e c8       	vmovq  %rax,%xmm1
+    1f16:	48 05 00 d4 30 00    	add    $0x30d400,%rax
+    1f1c:	48 c7 44 24 10 a0 86 	movq   $0x186a0,0x10(%rsp)
+    1f23:	01 00 
+    1f25:	48 bd 00 00 a6 ed ff 	movabs $0x71d67fffeda60000,%rbp
+    1f2c:	7f d6 71 
+    1f2f:	48 89 43 10          	mov    %rax,0x10(%rbx)
+    1f33:	c5 f1 6c c1          	vpunpcklqdq %xmm1,%xmm1,%xmm0
+    1f37:	48 8d 44 24 40       	lea    0x40(%rsp),%rax
+    1f3c:	49 bf 00 00 00 00 e0 	movabs $0xfff7eee000000000,%r15
+    1f43:	ee f7 ff 
+    1f46:	c5 fa 7f 03          	vmovdqu %xmm0,(%rbx)
+    1f4a:	48 89 04 24          	mov    %rax,(%rsp)
+    1f4e:	48 bb 55 55 55 55 55 	movabs $0x5555555555555555,%rbx
+    1f55:	55 55 55 
+    1f58:	49 81 fc 37 01 00 00 	cmp    $0x137,%r12
+    1f5f:	0f 87 b0 01 00 00    	ja     2115 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x2a5>
+    1f65:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    1f6c:	00 00 00 00 
+    1f70:	4a 8b 54 e4 50       	mov    0x50(%rsp,%r12,8),%rdx
+    1f75:	49 8d 44 24 01       	lea    0x1(%r12),%rax
+    1f7a:	48 89 84 24 10 0a 00 	mov    %rax,0xa10(%rsp)
+    1f81:	00 
+    1f82:	48 89 d0             	mov    %rdx,%rax
+    1f85:	48 c1 e8 1d          	shr    $0x1d,%rax
+    1f89:	48 21 d8             	and    %rbx,%rax
+    1f8c:	48 31 c2             	xor    %rax,%rdx
+    1f8f:	48 89 d0             	mov    %rdx,%rax
+    1f92:	48 c1 e0 11          	shl    $0x11,%rax
+    1f96:	48 21 e8             	and    %rbp,%rax
+    1f99:	48 31 c2             	xor    %rax,%rdx
+    1f9c:	48 89 d0             	mov    %rdx,%rax
+    1f9f:	48 c1 e0 25          	shl    $0x25,%rax
+    1fa3:	4c 21 f8             	and    %r15,%rax
+    1fa6:	48 31 c2             	xor    %rax,%rdx
+    1fa9:	48 89 d0             	mov    %rdx,%rax
+    1fac:	48 c1 e8 2b          	shr    $0x2b,%rax
+    1fb0:	48 31 c2             	xor    %rax,%rdx
+    1fb3:	b8 10 00 00 00       	mov    $0x10,%eax
+    1fb8:	48 f7 e2             	mul    %rdx
+    1fbb:	48 8b 04 24          	mov    (%rsp),%rax
+    1fbf:	44 8d 62 01          	lea    0x1(%rdx),%r12d
+    1fc3:	4d 89 e5             	mov    %r12,%r13
+    1fc6:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+    1fcb:	41 83 fc 10          	cmp    $0x10,%r12d
+    1fcf:	0f 84 5b 01 00 00    	je     2130 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x2c0>
+    1fd5:	48 8b 04 24          	mov    (%rsp),%rax
+    1fd9:	41 83 fc 01          	cmp    $0x1,%r12d
+    1fdd:	0f 85 65 01 00 00    	jne    2148 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x2d8>
+    1fe3:	c6 44 24 40 20       	movb   $0x20,0x40(%rsp)
+    1fe8:	4c 89 64 24 38       	mov    %r12,0x38(%rsp)
+    1fed:	45 31 f6             	xor    %r14d,%r14d
+    1ff0:	42 c6 04 20 00       	movb   $0x0,(%rax,%r12,1)
+    1ff5:	4c 8d 64 24 50       	lea    0x50(%rsp),%r12
+    1ffa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    2000:	48 8b 84 24 10 0a 00 	mov    0xa10(%rsp),%rax
+    2007:	00 
+    2008:	48 3d 37 01 00 00    	cmp    $0x137,%rax
+    200e:	77 5e                	ja     206e <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x1fe>
+    2010:	48 8d 48 01          	lea    0x1(%rax),%rcx
+    2014:	48 89 8c 24 10 0a 00 	mov    %rcx,0xa10(%rsp)
+    201b:	00 
+    201c:	48 8b 44 c4 50       	mov    0x50(%rsp,%rax,8),%rax
+    2021:	48 89 c2             	mov    %rax,%rdx
+    2024:	48 c1 ea 1d          	shr    $0x1d,%rdx
+    2028:	48 21 da             	and    %rbx,%rdx
+    202b:	48 31 d0             	xor    %rdx,%rax
+    202e:	48 89 c2             	mov    %rax,%rdx
+    2031:	48 c1 e2 11          	shl    $0x11,%rdx
+    2035:	48 21 ea             	and    %rbp,%rdx
+    2038:	48 31 d0             	xor    %rdx,%rax
+    203b:	48 89 c2             	mov    %rax,%rdx
+    203e:	48 c1 e2 25          	shl    $0x25,%rdx
+    2042:	4c 21 fa             	and    %r15,%rdx
+    2045:	48 31 d0             	xor    %rdx,%rax
+    2048:	48 89 c2             	mov    %rax,%rdx
+    204b:	48 c1 ea 2b          	shr    $0x2b,%rdx
+    204f:	48 31 d0             	xor    %rdx,%rax
+    2052:	ba 1a 00 00 00       	mov    $0x1a,%edx
+    2057:	c4 e2 fb f6 d0       	mulx   %rax,%rax,%rdx
+    205c:	48 83 f8 0f          	cmp    $0xf,%rax
+    2060:	77 1e                	ja     2080 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x210>
+    2062:	48 89 c8             	mov    %rcx,%rax
+    2065:	48 81 f9 37 01 00 00 	cmp    $0x137,%rcx
+    206c:	76 a2                	jbe    2010 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x1a0>
+    206e:	4c 89 e7             	mov    %r12,%rdi
+    2071:	e8 ea 09 00 00       	call   2a60 <std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::_M_gen_rand()>
+    2076:	48 8b 84 24 10 0a 00 	mov    0xa10(%rsp),%rax
+    207d:	00 
+    207e:	eb 90                	jmp    2010 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x1a0>
+    2080:	8d 42 41             	lea    0x41(%rdx),%eax
+    2083:	48 8b 54 24 30       	mov    0x30(%rsp),%rdx
+    2088:	42 88 04 32          	mov    %al,(%rdx,%r14,1)
+    208c:	49 ff c6             	inc    %r14
+    208f:	45 39 f5             	cmp    %r14d,%r13d
+    2092:	0f 8f 68 ff ff ff    	jg     2000 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x190>
+    2098:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+    209d:	4c 8b 60 08          	mov    0x8(%rax),%r12
+    20a1:	4c 3b 60 10          	cmp    0x10(%rax),%r12
+    20a5:	0f 84 c5 00 00 00    	je     2170 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x300>
+    20ab:	49 8d 54 24 10       	lea    0x10(%r12),%rdx
+    20b0:	48 8b 3c 24          	mov    (%rsp),%rdi
+    20b4:	48 8b 4c 24 38       	mov    0x38(%rsp),%rcx
+    20b9:	49 89 14 24          	mov    %rdx,(%r12)
+    20bd:	48 8b 44 24 30       	mov    0x30(%rsp),%rax
+    20c2:	48 39 f8             	cmp    %rdi,%rax
+    20c5:	0f 84 28 03 00 00    	je     23f3 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x583>
+    20cb:	49 89 04 24          	mov    %rax,(%r12)
+    20cf:	48 8b 44 24 40       	mov    0x40(%rsp),%rax
+    20d4:	49 89 44 24 10       	mov    %rax,0x10(%r12)
+    20d9:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+    20de:	49 89 4c 24 08       	mov    %rcx,0x8(%r12)
+    20e3:	c6 44 24 40 00       	movb   $0x0,0x40(%rsp)
+    20e8:	48 83 40 08 20       	addq   $0x20,0x8(%rax)
+    20ed:	48 ff 4c 24 10       	decq   0x10(%rsp)
+    20f2:	0f 84 3c 02 00 00    	je     2334 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x4c4>
+    20f8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    20ff:	00 
+    2100:	4c 8b a4 24 10 0a 00 	mov    0xa10(%rsp),%r12
+    2107:	00 
+    2108:	49 81 fc 37 01 00 00 	cmp    $0x137,%r12
+    210f:	0f 86 5b fe ff ff    	jbe    1f70 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x100>
+    2115:	48 8d 7c 24 50       	lea    0x50(%rsp),%rdi
+    211a:	e8 41 09 00 00       	call   2a60 <std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::_M_gen_rand()>
+    211f:	4c 8b a4 24 10 0a 00 	mov    0xa10(%rsp),%r12
+    2126:	00 
+    2127:	e9 44 fe ff ff       	jmp    1f70 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x100>
+    212c:	0f 1f 40 00          	nopl   0x0(%rax)
+    2130:	bf 11 00 00 00       	mov    $0x11,%edi
+    2135:	e8 56 f0 ff ff       	call   1190 <operator new(unsigned long)@plt>
+    213a:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+    213f:	48 c7 44 24 40 10 00 	movq   $0x10,0x40(%rsp)
+    2146:	00 00 
+    2148:	41 83 fd 04          	cmp    $0x4,%r13d
+    214c:	0f 83 6e 02 00 00    	jae    23c0 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x550>
+    2152:	45 85 ed             	test   %r13d,%r13d
+    2155:	74 0d                	je     2164 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x2f4>
+    2157:	c6 00 20             	movb   $0x20,(%rax)
+    215a:	41 f6 c5 02          	test   $0x2,%r13b
+    215e:	0f 85 c3 03 00 00    	jne    2527 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x6b7>
+    2164:	48 8b 44 24 30       	mov    0x30(%rsp),%rax
+    2169:	e9 7a fe ff ff       	jmp    1fe8 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x178>
+    216e:	66 90                	xchg   %ax,%ax
+    2170:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+    2175:	4c 89 e2             	mov    %r12,%rdx
+    2178:	4c 8b 18             	mov    (%rax),%r11
+    217b:	48 b8 ff ff ff ff ff 	movabs $0x3ffffffffffffff,%rax
+    2182:	ff ff 03 
+    2185:	4c 29 da             	sub    %r11,%rdx
+    2188:	48 89 d1             	mov    %rdx,%rcx
+    218b:	48 c1 f9 05          	sar    $0x5,%rcx
+    218f:	48 39 c1             	cmp    %rax,%rcx
+    2192:	0f 84 7e f1 ff ff    	je     1316 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0] [clone .cold]>
+    2198:	48 85 c9             	test   %rcx,%rcx
+    219b:	b8 01 00 00 00       	mov    $0x1,%eax
+    21a0:	48 89 54 24 28       	mov    %rdx,0x28(%rsp)
+    21a5:	4c 89 5c 24 20       	mov    %r11,0x20(%rsp)
+    21aa:	48 0f 45 c1          	cmovne %rcx,%rax
+    21ae:	48 01 c8             	add    %rcx,%rax
+    21b1:	48 b9 ff ff ff ff ff 	movabs $0x3ffffffffffffff,%rcx
+    21b8:	ff ff 03 
+    21bb:	48 39 c8             	cmp    %rcx,%rax
+    21be:	48 0f 47 c1          	cmova  %rcx,%rax
+    21c2:	48 c1 e0 05          	shl    $0x5,%rax
+    21c6:	48 89 c7             	mov    %rax,%rdi
+    21c9:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+    21ce:	e8 bd ef ff ff       	call   1190 <operator new(unsigned long)@plt>
+    21d3:	48 8b 54 24 28       	mov    0x28(%rsp),%rdx
+    21d8:	49 89 c1             	mov    %rax,%r9
+    21db:	48 8b 74 24 38       	mov    0x38(%rsp),%rsi
+    21e0:	48 8b 4c 24 18       	mov    0x18(%rsp),%rcx
+    21e5:	4c 8b 5c 24 20       	mov    0x20(%rsp),%r11
+    21ea:	48 8d 04 10          	lea    (%rax,%rdx,1),%rax
+    21ee:	49 8d 54 11 10       	lea    0x10(%r9,%rdx,1),%rdx
+    21f3:	48 89 10             	mov    %rdx,(%rax)
+    21f6:	48 8b 7c 24 30       	mov    0x30(%rsp),%rdi
+    21fb:	48 3b 3c 24          	cmp    (%rsp),%rdi
+    21ff:	0f 84 8b 02 00 00    	je     2490 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x620>
+    2205:	48 8b 54 24 40       	mov    0x40(%rsp),%rdx
+    220a:	48 89 38             	mov    %rdi,(%rax)
+    220d:	48 89 50 10          	mov    %rdx,0x10(%rax)
+    2211:	48 89 70 08          	mov    %rsi,0x8(%rax)
+    2215:	48 8b 04 24          	mov    (%rsp),%rax
+    2219:	48 c7 44 24 38 00 00 	movq   $0x0,0x38(%rsp)
+    2220:	00 00 
+    2222:	c6 44 24 40 00       	movb   $0x0,0x40(%rsp)
+    2227:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
+    222c:	4d 39 dc             	cmp    %r11,%r12
+    222f:	0f 84 81 00 00 00    	je     22b6 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x446>
+    2235:	4c 89 da             	mov    %r11,%rdx
+    2238:	4c 89 c8             	mov    %r9,%rax
+    223b:	eb 23                	jmp    2260 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3f0>
+    223d:	0f 1f 00             	nopl   (%rax)
+    2240:	48 89 30             	mov    %rsi,(%rax)
+    2243:	48 8b 72 10          	mov    0x10(%rdx),%rsi
+    2247:	48 89 70 10          	mov    %rsi,0x10(%rax)
+    224b:	4c 8b 42 08          	mov    0x8(%rdx),%r8
+    224f:	48 83 c2 20          	add    $0x20,%rdx
+    2253:	4c 89 40 08          	mov    %r8,0x8(%rax)
+    2257:	48 83 c0 20          	add    $0x20,%rax
+    225b:	49 39 d4             	cmp    %rdx,%r12
+    225e:	74 60                	je     22c0 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x450>
+    2260:	48 8d 78 10          	lea    0x10(%rax),%rdi
+    2264:	4c 8d 42 10          	lea    0x10(%rdx),%r8
+    2268:	48 89 38             	mov    %rdi,(%rax)
+    226b:	48 8b 32             	mov    (%rdx),%rsi
+    226e:	4c 39 c6             	cmp    %r8,%rsi
+    2271:	75 cd                	jne    2240 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3d0>
+    2273:	4c 8b 42 08          	mov    0x8(%rdx),%r8
+    2277:	4d 8d 50 01          	lea    0x1(%r8),%r10
+    227b:	41 83 fa 08          	cmp    $0x8,%r10d
+    227f:	0f 83 eb 00 00 00    	jae    2370 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x500>
+    2285:	41 f6 c2 04          	test   $0x4,%r10b
+    2289:	0f 85 a5 02 00 00    	jne    2534 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x6c4>
+    228f:	45 85 d2             	test   %r10d,%r10d
+    2292:	74 bb                	je     224f <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3df>
+    2294:	44 0f b6 06          	movzbl (%rsi),%r8d
+    2298:	44 88 07             	mov    %r8b,(%rdi)
+    229b:	41 f6 c2 02          	test   $0x2,%r10b
+    229f:	74 aa                	je     224b <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3db>
+    22a1:	45 89 d2             	mov    %r10d,%r10d
+    22a4:	42 0f b7 74 16 fe    	movzwl -0x2(%rsi,%r10,1),%esi
+    22aa:	66 42 89 74 17 fe    	mov    %si,-0x2(%rdi,%r10,1)
+    22b0:	4c 8b 42 08          	mov    0x8(%rdx),%r8
+    22b4:	eb 99                	jmp    224f <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3df>
+    22b6:	4c 89 c8             	mov    %r9,%rax
+    22b9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    22c0:	4c 8d 60 20          	lea    0x20(%rax),%r12
+    22c4:	4d 85 db             	test   %r11,%r11
+    22c7:	74 30                	je     22f9 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x489>
+    22c9:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+    22ce:	4c 89 df             	mov    %r11,%rdi
+    22d1:	4c 89 4c 24 28       	mov    %r9,0x28(%rsp)
+    22d6:	48 89 4c 24 20       	mov    %rcx,0x20(%rsp)
+    22db:	48 8b 40 10          	mov    0x10(%rax),%rax
+    22df:	48 89 c6             	mov    %rax,%rsi
+    22e2:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+    22e7:	4c 29 de             	sub    %r11,%rsi
+    22ea:	e8 b1 ee ff ff       	call   11a0 <operator delete(void*, unsigned long)@plt>
+    22ef:	4c 8b 4c 24 28       	mov    0x28(%rsp),%r9
+    22f4:	48 8b 4c 24 20       	mov    0x20(%rsp),%rcx
+    22f9:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+    22fe:	48 8b 7c 24 30       	mov    0x30(%rsp),%rdi
+    2303:	4c 89 08             	mov    %r9,(%rax)
+    2306:	49 01 c9             	add    %rcx,%r9
+    2309:	48 3b 3c 24          	cmp    (%rsp),%rdi
+    230d:	4c 89 60 08          	mov    %r12,0x8(%rax)
+    2311:	4c 89 48 10          	mov    %r9,0x10(%rax)
+    2315:	0f 84 d2 fd ff ff    	je     20ed <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x27d>
+    231b:	48 8b 44 24 40       	mov    0x40(%rsp),%rax
+    2320:	48 8d 70 01          	lea    0x1(%rax),%rsi
+    2324:	e8 77 ee ff ff       	call   11a0 <operator delete(void*, unsigned long)@plt>
+    2329:	48 ff 4c 24 10       	decq   0x10(%rsp)
+    232e:	0f 85 cc fd ff ff    	jne    2100 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x290>
+    2334:	48 8b 84 24 18 0a 00 	mov    0xa18(%rsp),%rax
+    233b:	00 
+    233c:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    2343:	00 00 
+    2345:	0f 85 37 02 00 00    	jne    2582 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x712>
+    234b:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+    2350:	48 81 c4 28 0a 00 00 	add    $0xa28,%rsp
+    2357:	5b                   	pop    %rbx
+    2358:	5d                   	pop    %rbp
+    2359:	41 5c                	pop    %r12
+    235b:	41 5d                	pop    %r13
+    235d:	41 5e                	pop    %r14
+    235f:	41 5f                	pop    %r15
+    2361:	c3                   	ret
+    2362:	0f 1f 00             	nopl   (%rax)
+    2365:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    236c:	00 00 00 00 
+    2370:	4c 8b 06             	mov    (%rsi),%r8
+    2373:	4c 89 07             	mov    %r8,(%rdi)
+    2376:	45 89 d0             	mov    %r10d,%r8d
+    2379:	4e 8b 6c 06 f8       	mov    -0x8(%rsi,%r8,1),%r13
+    237e:	4e 89 6c 07 f8       	mov    %r13,-0x8(%rdi,%r8,1)
+    2383:	4c 8d 40 18          	lea    0x18(%rax),%r8
+    2387:	49 83 e0 f8          	and    $0xfffffffffffffff8,%r8
+    238b:	4c 29 c7             	sub    %r8,%rdi
+    238e:	41 01 fa             	add    %edi,%r10d
+    2391:	48 29 fe             	sub    %rdi,%rsi
+    2394:	41 83 e2 f8          	and    $0xfffffff8,%r10d
+    2398:	41 83 fa 08          	cmp    $0x8,%r10d
+    239c:	0f 82 a9 fe ff ff    	jb     224b <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3db>
+    23a2:	41 83 e2 f8          	and    $0xfffffff8,%r10d
+    23a6:	31 ff                	xor    %edi,%edi
+    23a8:	41 89 fd             	mov    %edi,%r13d
+    23ab:	83 c7 08             	add    $0x8,%edi
+    23ae:	4e 8b 34 2e          	mov    (%rsi,%r13,1),%r14
+    23b2:	4f 89 34 28          	mov    %r14,(%r8,%r13,1)
+    23b6:	44 39 d7             	cmp    %r10d,%edi
+    23b9:	72 ed                	jb     23a8 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x538>
+    23bb:	e9 8b fe ff ff       	jmp    224b <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3db>
+    23c0:	48 8d 78 04          	lea    0x4(%rax),%rdi
+    23c4:	c7 00 20 20 20 20    	movl   $0x20202020,(%rax)
+    23ca:	42 c7 44 20 fc 20 20 	movl   $0x20202020,-0x4(%rax,%r12,1)
+    23d1:	20 20 
+    23d3:	48 83 e7 fc          	and    $0xfffffffffffffffc,%rdi
+    23d7:	48 29 f8             	sub    %rdi,%rax
+    23da:	41 8d 4c 05 00       	lea    0x0(%r13,%rax,1),%ecx
+    23df:	b8 20 20 20 20       	mov    $0x20202020,%eax
+    23e4:	c1 e9 02             	shr    $0x2,%ecx
+    23e7:	f3 ab                	rep stos %eax,(%rdi)
+    23e9:	48 8b 44 24 30       	mov    0x30(%rsp),%rax
+    23ee:	e9 f5 fb ff ff       	jmp    1fe8 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x178>
+    23f3:	48 8d 41 01          	lea    0x1(%rcx),%rax
+    23f7:	83 f8 08             	cmp    $0x8,%eax
+    23fa:	72 54                	jb     2450 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x5e0>
+    23fc:	4c 8b 1c 24          	mov    (%rsp),%r11
+    2400:	49 8b 33             	mov    (%r11),%rsi
+    2403:	49 89 74 24 10       	mov    %rsi,0x10(%r12)
+    2408:	89 c6                	mov    %eax,%esi
+    240a:	49 8b 7c 33 f8       	mov    -0x8(%r11,%rsi,1),%rdi
+    240f:	48 89 7c 32 f8       	mov    %rdi,-0x8(%rdx,%rsi,1)
+    2414:	49 8d 74 24 18       	lea    0x18(%r12),%rsi
+    2419:	4c 89 df             	mov    %r11,%rdi
+    241c:	48 83 e6 f8          	and    $0xfffffffffffffff8,%rsi
+    2420:	48 29 f2             	sub    %rsi,%rdx
+    2423:	01 d0                	add    %edx,%eax
+    2425:	48 29 d7             	sub    %rdx,%rdi
+    2428:	83 e0 f8             	and    $0xfffffff8,%eax
+    242b:	83 f8 08             	cmp    $0x8,%eax
+    242e:	0f 82 a5 fc ff ff    	jb     20d9 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x269>
+    2434:	83 e0 f8             	and    $0xfffffff8,%eax
+    2437:	31 d2                	xor    %edx,%edx
+    2439:	41 89 d0             	mov    %edx,%r8d
+    243c:	83 c2 08             	add    $0x8,%edx
+    243f:	4e 8b 0c 07          	mov    (%rdi,%r8,1),%r9
+    2443:	4e 89 0c 06          	mov    %r9,(%rsi,%r8,1)
+    2447:	39 c2                	cmp    %eax,%edx
+    2449:	72 ee                	jb     2439 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x5c9>
+    244b:	e9 89 fc ff ff       	jmp    20d9 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x269>
+    2450:	a8 04                	test   $0x4,%al
+    2452:	0f 85 f8 00 00 00    	jne    2550 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x6e0>
+    2458:	85 c0                	test   %eax,%eax
+    245a:	0f 84 79 fc ff ff    	je     20d9 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x269>
+    2460:	48 8b 3c 24          	mov    (%rsp),%rdi
+    2464:	0f b6 37             	movzbl (%rdi),%esi
+    2467:	41 88 74 24 10       	mov    %sil,0x10(%r12)
+    246c:	a8 02                	test   $0x2,%al
+    246e:	0f 84 65 fc ff ff    	je     20d9 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x269>
+    2474:	48 8b 3c 24          	mov    (%rsp),%rdi
+    2478:	89 c0                	mov    %eax,%eax
+    247a:	0f b7 74 07 fe       	movzwl -0x2(%rdi,%rax,1),%esi
+    247f:	66 89 74 02 fe       	mov    %si,-0x2(%rdx,%rax,1)
+    2484:	e9 50 fc ff ff       	jmp    20d9 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x269>
+    2489:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    2490:	48 8d 7e 01          	lea    0x1(%rsi),%rdi
+    2494:	83 ff 08             	cmp    $0x8,%edi
+    2497:	72 53                	jb     24ec <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x67c>
+    2499:	4c 8b 04 24          	mov    (%rsp),%r8
+    249d:	4d 8b 10             	mov    (%r8),%r10
+    24a0:	4c 89 50 10          	mov    %r10,0x10(%rax)
+    24a4:	41 89 fa             	mov    %edi,%r10d
+    24a7:	4f 8b 74 10 f8       	mov    -0x8(%r8,%r10,1),%r14
+    24ac:	4e 89 74 12 f8       	mov    %r14,-0x8(%rdx,%r10,1)
+    24b1:	4c 8d 50 18          	lea    0x18(%rax),%r10
+    24b5:	49 83 e2 f8          	and    $0xfffffffffffffff8,%r10
+    24b9:	4c 29 d2             	sub    %r10,%rdx
+    24bc:	01 d7                	add    %edx,%edi
+    24be:	49 29 d0             	sub    %rdx,%r8
+    24c1:	83 e7 f8             	and    $0xfffffff8,%edi
+    24c4:	83 ff 08             	cmp    $0x8,%edi
+    24c7:	0f 82 44 fd ff ff    	jb     2211 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3a1>
+    24cd:	83 e7 f8             	and    $0xfffffff8,%edi
+    24d0:	31 d2                	xor    %edx,%edx
+    24d2:	41 89 fd             	mov    %edi,%r13d
+    24d5:	89 d7                	mov    %edx,%edi
+    24d7:	83 c2 08             	add    $0x8,%edx
+    24da:	4d 8b 34 38          	mov    (%r8,%rdi,1),%r14
+    24de:	4d 89 34 3a          	mov    %r14,(%r10,%rdi,1)
+    24e2:	44 39 ea             	cmp    %r13d,%edx
+    24e5:	72 ee                	jb     24d5 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x665>
+    24e7:	e9 25 fd ff ff       	jmp    2211 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3a1>
+    24ec:	40 f6 c7 04          	test   $0x4,%dil
+    24f0:	75 74                	jne    2566 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x6f6>
+    24f2:	85 ff                	test   %edi,%edi
+    24f4:	0f 84 17 fd ff ff    	je     2211 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3a1>
+    24fa:	4c 8b 14 24          	mov    (%rsp),%r10
+    24fe:	45 0f b6 12          	movzbl (%r10),%r10d
+    2502:	44 88 50 10          	mov    %r10b,0x10(%rax)
+    2506:	40 f6 c7 02          	test   $0x2,%dil
+    250a:	0f 84 01 fd ff ff    	je     2211 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3a1>
+    2510:	4c 8b 14 24          	mov    (%rsp),%r10
+    2514:	89 ff                	mov    %edi,%edi
+    2516:	45 0f b7 54 3a fe    	movzwl -0x2(%r10,%rdi,1),%r10d
+    251c:	66 44 89 54 3a fe    	mov    %r10w,-0x2(%rdx,%rdi,1)
+    2522:	e9 ea fc ff ff       	jmp    2211 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3a1>
+    2527:	66 42 c7 44 20 fe 20 	movw   $0x2020,-0x2(%rax,%r12,1)
+    252e:	20 
+    252f:	e9 30 fc ff ff       	jmp    2164 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x2f4>
+    2534:	44 8b 06             	mov    (%rsi),%r8d
+    2537:	45 89 d2             	mov    %r10d,%r10d
+    253a:	44 89 07             	mov    %r8d,(%rdi)
+    253d:	42 8b 74 16 fc       	mov    -0x4(%rsi,%r10,1),%esi
+    2542:	42 89 74 17 fc       	mov    %esi,-0x4(%rdi,%r10,1)
+    2547:	4c 8b 42 08          	mov    0x8(%rdx),%r8
+    254b:	e9 ff fc ff ff       	jmp    224f <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3df>
+    2550:	8b 37                	mov    (%rdi),%esi
+    2552:	89 c0                	mov    %eax,%eax
+    2554:	41 89 74 24 10       	mov    %esi,0x10(%r12)
+    2559:	8b 74 07 fc          	mov    -0x4(%rdi,%rax,1),%esi
+    255d:	89 74 02 fc          	mov    %esi,-0x4(%rdx,%rax,1)
+    2561:	e9 73 fb ff ff       	jmp    20d9 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x269>
+    2566:	4c 8b 04 24          	mov    (%rsp),%r8
+    256a:	89 ff                	mov    %edi,%edi
+    256c:	45 8b 10             	mov    (%r8),%r10d
+    256f:	44 89 50 10          	mov    %r10d,0x10(%rax)
+    2573:	45 8b 54 38 fc       	mov    -0x4(%r8,%rdi,1),%r10d
+    2578:	44 89 54 3a fc       	mov    %r10d,-0x4(%rdx,%rdi,1)
+    257d:	e9 8f fc ff ff       	jmp    2211 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]+0x3a1>
+    2582:	e8 29 ec ff ff       	call   11b0 <__stack_chk_fail@plt>
+    2587:	f3 0f 1e fa          	endbr64
+    258b:	48 89 c3             	mov    %rax,%rbx
+    258e:	c5 f8 77             	vzeroupper
+    2591:	e9 c2 ed ff ff       	jmp    1358 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0] [clone .cold]+0x42>
+    2596:	f3 0f 1e fa          	endbr64
+    259a:	e9 9a ed ff ff       	jmp    1339 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0] [clone .cold]+0x23>
+    259f:	90                   	nop
+
+00000000000025a0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)>:
+    25a0:	f3 0f 1e fa          	endbr64
+    25a4:	41 57                	push   %r15
+    25a6:	41 56                	push   %r14
+    25a8:	41 55                	push   %r13
+    25aa:	41 54                	push   %r12
+    25ac:	55                   	push   %rbp
+    25ad:	53                   	push   %rbx
+    25ae:	48 83 ec 68          	sub    $0x68,%rsp
+    25b2:	64 48 8b 1c 25 28 00 	mov    %fs:0x28,%rbx
+    25b9:	00 00 
+    25bb:	48 89 5c 24 58       	mov    %rbx,0x58(%rsp)
+    25c0:	8b 1e                	mov    (%rsi),%ebx
+    25c2:	48 8d 44 24 40       	lea    0x40(%rsp),%rax
+    25c7:	48 89 c7             	mov    %rax,%rdi
+    25ca:	48 89 44 24 28       	mov    %rax,0x28(%rsp)
+    25cf:	89 5c 24 1c          	mov    %ebx,0x1c(%rsp)
+    25d3:	e8 98 f8 ff ff       	call   1e70 <(anonymous namespace)::generate_keys(unsigned long, unsigned long, unsigned long) [clone .constprop.0]>
+    25d8:	48 8b 44 24 40       	mov    0x40(%rsp),%rax
+    25dd:	48 8b 6c 24 48       	mov    0x48(%rsp),%rbp
+    25e2:	48 89 44 24 10       	mov    %rax,0x10(%rsp)
+    25e7:	48 89 6c 24 20       	mov    %rbp,0x20(%rsp)
+    25ec:	85 db                	test   %ebx,%ebx
+    25ee:	0f 8e e1 00 00 00    	jle    26d5 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x135>
+    25f4:	48 29 c5             	sub    %rax,%rbp
+    25f7:	48 8d 7c 24 3f       	lea    0x3f(%rsp),%rdi
+    25fc:	48 c1 fd 05          	sar    $0x5,%rbp
+    2600:	e8 3b 06 00 00       	call   2c40 <hftu::StringMap::StringMap()>
+    2605:	31 c0                	xor    %eax,%eax
+    2607:	0f a2                	cpuid
+    2609:	0f 31                	rdtsc
+    260b:	45 31 f6             	xor    %r14d,%r14d
+    260e:	89 44 24 18          	mov    %eax,0x18(%rsp)
+    2612:	89 54 24 08          	mov    %edx,0x8(%rsp)
+    2616:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
+    261d:	00 
+    261e:	66 90                	xchg   %ax,%ax
+    2620:	31 db                	xor    %ebx,%ebx
+    2622:	4c 8b 6c 24 10       	mov    0x10(%rsp),%r13
+    2627:	4d 89 ef             	mov    %r13,%r15
+    262a:	eb 1f                	jmp    264b <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0xab>
+    262c:	0f 1f 40 00          	nopl   0x0(%rax)
+    2630:	49 8b 55 08          	mov    0x8(%r13),%rdx
+    2634:	49 8b 75 00          	mov    0x0(%r13),%rsi
+    2638:	89 d9                	mov    %ebx,%ecx
+    263a:	48 8d 7c 24 3f       	lea    0x3f(%rsp),%rdi
+    263f:	e8 3c 06 00 00       	call   2c80 <hftu::StringMap::insert(char const*, unsigned long, unsigned int)>
+    2644:	48 ff c3             	inc    %rbx
+    2647:	49 83 c5 20          	add    $0x20,%r13
+    264b:	48 39 eb             	cmp    %rbp,%rbx
+    264e:	75 e0                	jne    2630 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x90>
+    2650:	31 db                	xor    %ebx,%ebx
+    2652:	eb 24                	jmp    2678 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0xd8>
+    2654:	90                   	nop
+    2655:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    265c:	00 00 00 00 
+    2660:	49 8b 57 08          	mov    0x8(%r15),%rdx
+    2664:	49 8b 37             	mov    (%r15),%rsi
+    2667:	48 8d 7c 24 3f       	lea    0x3f(%rsp),%rdi
+    266c:	e8 2f 07 00 00       	call   2da0 <hftu::StringMap::find(char const*, unsigned long) const>
+    2671:	48 ff c3             	inc    %rbx
+    2674:	49 83 c7 20          	add    $0x20,%r15
+    2678:	48 39 dd             	cmp    %rbx,%rbp
+    267b:	75 e3                	jne    2660 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0xc0>
+    267d:	0f 01 f9             	rdtscp
+    2680:	89 c7                	mov    %eax,%edi
+    2682:	89 d6                	mov    %edx,%esi
+    2684:	0f a2                	cpuid
+    2686:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+    268b:	8b 54 24 18          	mov    0x18(%rsp),%edx
+    268f:	48 c1 e6 20          	shl    $0x20,%rsi
+    2693:	89 ff                	mov    %edi,%edi
+    2695:	4c 8b 2c 24          	mov    (%rsp),%r13
+    2699:	48 09 fe             	or     %rdi,%rsi
+    269c:	41 ff c6             	inc    %r14d
+    269f:	48 c1 e0 20          	shl    $0x20,%rax
+    26a3:	48 09 d0             	or     %rdx,%rax
+    26a6:	49 29 c5             	sub    %rax,%r13
+    26a9:	44 39 74 24 1c       	cmp    %r14d,0x1c(%rsp)
+    26ae:	4a 8d 04 2e          	lea    (%rsi,%r13,1),%rax
+    26b2:	48 89 04 24          	mov    %rax,(%rsp)
+    26b6:	74 28                	je     26e0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x140>
+    26b8:	48 8d 7c 24 3f       	lea    0x3f(%rsp),%rdi
+    26bd:	e8 7e 05 00 00       	call   2c40 <hftu::StringMap::StringMap()>
+    26c2:	31 c0                	xor    %eax,%eax
+    26c4:	0f a2                	cpuid
+    26c6:	0f 31                	rdtsc
+    26c8:	89 44 24 18          	mov    %eax,0x18(%rsp)
+    26cc:	89 54 24 08          	mov    %edx,0x8(%rsp)
+    26d0:	e9 4b ff ff ff       	jmp    2620 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x80>
+    26d5:	48 c7 04 24 00 00 00 	movq   $0x0,(%rsp)
+    26dc:	00 
+    26dd:	0f 1f 00             	nopl   (%rax)
+    26e0:	48 8b 44 24 10       	mov    0x10(%rsp),%rax
+    26e5:	48 39 44 24 20       	cmp    %rax,0x20(%rsp)
+    26ea:	48 8b 6c 24 20       	mov    0x20(%rsp),%rbp
+    26ef:	48 89 c3             	mov    %rax,%rbx
+    26f2:	74 2e                	je     2722 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x182>
+    26f4:	90                   	nop
+    26f5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    26fc:	00 00 00 00 
+    2700:	48 8b 3b             	mov    (%rbx),%rdi
+    2703:	48 8d 43 10          	lea    0x10(%rbx),%rax
+    2707:	48 39 c7             	cmp    %rax,%rdi
+    270a:	74 0d                	je     2719 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x179>
+    270c:	48 8b 43 10          	mov    0x10(%rbx),%rax
+    2710:	48 8d 70 01          	lea    0x1(%rax),%rsi
+    2714:	e8 87 ea ff ff       	call   11a0 <operator delete(void*, unsigned long)@plt>
+    2719:	48 83 c3 20          	add    $0x20,%rbx
+    271d:	48 39 dd             	cmp    %rbx,%rbp
+    2720:	75 de                	jne    2700 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x160>
+    2722:	48 83 7c 24 10 00    	cmpq   $0x0,0x10(%rsp)
+    2728:	74 12                	je     273c <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x19c>
+    272a:	48 8b 74 24 50       	mov    0x50(%rsp),%rsi
+    272f:	48 8b 7c 24 10       	mov    0x10(%rsp),%rdi
+    2734:	48 29 fe             	sub    %rdi,%rsi
+    2737:	e8 64 ea ff ff       	call   11a0 <operator delete(void*, unsigned long)@plt>
+    273c:	48 8b 44 24 58       	mov    0x58(%rsp),%rax
+    2741:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    2748:	00 00 
+    274a:	75 13                	jne    275f <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x1bf>
+    274c:	48 8b 04 24          	mov    (%rsp),%rax
+    2750:	48 83 c4 68          	add    $0x68,%rsp
+    2754:	5b                   	pop    %rbx
+    2755:	5d                   	pop    %rbp
+    2756:	41 5c                	pop    %r12
+    2758:	41 5d                	pop    %r13
+    275a:	41 5e                	pop    %r14
+    275c:	41 5f                	pop    %r15
+    275e:	c3                   	ret
+    275f:	e8 4c ea ff ff       	call   11b0 <__stack_chk_fail@plt>
+    2764:	f3 0f 1e fa          	endbr64
+    2768:	48 89 c3             	mov    %rax,%rbx
+    276b:	e9 1c ec ff ff       	jmp    138c <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]>
+
+0000000000002770 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()>:
+    2770:	f3 0f 1e fa          	endbr64
+    2774:	41 54                	push   %r12
+    2776:	55                   	push   %rbp
+    2777:	53                   	push   %rbx
+    2778:	49 89 fc             	mov    %rdi,%r12
+    277b:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
+    277f:	48 8b 1f             	mov    (%rdi),%rbx
+    2782:	48 39 dd             	cmp    %rbx,%rbp
+    2785:	74 2d                	je     27b4 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x44>
+    2787:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    278e:	00 00 
+    2790:	48 8b 43 18          	mov    0x18(%rbx),%rax
+    2794:	48 85 c0             	test   %rax,%rax
+    2797:	74 0e                	je     27a7 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x37>
+    2799:	48 8d 7b 08          	lea    0x8(%rbx),%rdi
+    279d:	ba 03 00 00 00       	mov    $0x3,%edx
+    27a2:	48 89 fe             	mov    %rdi,%rsi
+    27a5:	ff d0                	call   *%rax
+    27a7:	48 83 c3 28          	add    $0x28,%rbx
+    27ab:	48 39 dd             	cmp    %rbx,%rbp
+    27ae:	75 e0                	jne    2790 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x20>
+    27b0:	49 8b 1c 24          	mov    (%r12),%rbx
+    27b4:	48 85 db             	test   %rbx,%rbx
+    27b7:	74 17                	je     27d0 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x60>
+    27b9:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
+    27be:	48 89 df             	mov    %rbx,%rdi
+    27c1:	48 29 de             	sub    %rbx,%rsi
+    27c4:	5b                   	pop    %rbx
+    27c5:	5d                   	pop    %rbp
+    27c6:	41 5c                	pop    %r12
+    27c8:	e9 d3 e9 ff ff       	jmp    11a0 <operator delete(void*, unsigned long)@plt>
+    27cd:	0f 1f 00             	nopl   (%rax)
+    27d0:	5b                   	pop    %rbx
+    27d1:	5d                   	pop    %rbp
+    27d2:	41 5c                	pop    %r12
+    27d4:	c3                   	ret
+    27d5:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    27dc:	00 00 00 
+    27df:	90                   	nop
+
+00000000000027e0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>:
+    27e0:	f3 0f 1e fa          	endbr64
+    27e4:	41 54                	push   %r12
+    27e6:	55                   	push   %rbp
+    27e7:	53                   	push   %rbx
+    27e8:	49 89 fc             	mov    %rdi,%r12
+    27eb:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
+    27ef:	48 8b 1f             	mov    (%rdi),%rbx
+    27f2:	48 39 dd             	cmp    %rbx,%rbp
+    27f5:	74 2d                	je     2824 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x44>
+    27f7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    27fe:	00 00 
+    2800:	48 8b 43 20          	mov    0x20(%rbx),%rax
+    2804:	48 85 c0             	test   %rax,%rax
+    2807:	74 0e                	je     2817 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x37>
+    2809:	48 8d 7b 10          	lea    0x10(%rbx),%rdi
+    280d:	ba 03 00 00 00       	mov    $0x3,%edx
+    2812:	48 89 fe             	mov    %rdi,%rsi
+    2815:	ff d0                	call   *%rax
+    2817:	48 83 c3 38          	add    $0x38,%rbx
+    281b:	48 39 dd             	cmp    %rbx,%rbp
+    281e:	75 e0                	jne    2800 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x20>
+    2820:	49 8b 1c 24          	mov    (%r12),%rbx
+    2824:	48 85 db             	test   %rbx,%rbx
+    2827:	74 17                	je     2840 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x60>
+    2829:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
+    282e:	48 89 df             	mov    %rbx,%rdi
+    2831:	48 29 de             	sub    %rbx,%rsi
+    2834:	5b                   	pop    %rbx
+    2835:	5d                   	pop    %rbp
+    2836:	41 5c                	pop    %r12
+    2838:	e9 63 e9 ff ff       	jmp    11a0 <operator delete(void*, unsigned long)@plt>
+    283d:	0f 1f 00             	nopl   (%rax)
+    2840:	5b                   	pop    %rbx
+    2841:	5d                   	pop    %rbp
+    2842:	41 5c                	pop    %r12
+    2844:	c3                   	ret
+    2845:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    284c:	00 00 00 
+    284f:	90                   	nop
+
+0000000000002850 <std::_Function_base::~_Function_base()>:
+    2850:	f3 0f 1e fa          	endbr64
+    2854:	48 8b 47 10          	mov    0x10(%rdi),%rax
+    2858:	48 85 c0             	test   %rax,%rax
+    285b:	74 13                	je     2870 <std::_Function_base::~_Function_base()+0x20>
+    285d:	48 83 ec 08          	sub    $0x8,%rsp
+    2861:	ba 03 00 00 00       	mov    $0x3,%edx
+    2866:	48 89 fe             	mov    %rdi,%rsi
+    2869:	ff d0                	call   *%rax
+    286b:	48 83 c4 08          	add    $0x8,%rsp
+    286f:	c3                   	ret
+    2870:	c3                   	ret
+    2871:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2878:	00 00 00 
+    287b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000002880 <hftu::run_validations()>:
+    2880:	f3 0f 1e fa          	endbr64
+    2884:	41 56                	push   %r14
+    2886:	41 55                	push   %r13
+    2888:	41 54                	push   %r12
+    288a:	55                   	push   %rbp
+    288b:	53                   	push   %rbx
+    288c:	0f b6 05 c5 27 00 00 	movzbl 0x27c5(%rip),%eax        # 5058 <guard variable for hftu::validate_registry()::reg>
+    2893:	84 c0                	test   %al,%al
+    2895:	0f 84 d5 00 00 00    	je     2970 <hftu::run_validations()+0xf0>
+    289b:	48 8b 0d c6 27 00 00 	mov    0x27c6(%rip),%rcx        # 5068 <hftu::validate_registry()::reg+0x8>
+    28a2:	48 8b 05 b7 27 00 00 	mov    0x27b7(%rip),%rax        # 5060 <hftu::validate_registry()::reg>
+    28a9:	41 bc 01 00 00 00    	mov    $0x1,%r12d
+    28af:	48 39 c1             	cmp    %rax,%rcx
+    28b2:	0f 84 a2 00 00 00    	je     295a <hftu::run_validations()+0xda>
+    28b8:	48 29 c1             	sub    %rax,%rcx
+    28bb:	48 8b 3d 5e 27 00 00 	mov    0x275e(%rip),%rdi        # 5020 <stderr@GLIBC_2.2.5>
+    28c2:	48 b8 cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rax
+    28c9:	cc cc cc 
+    28cc:	48 8d 15 3b 07 00 00 	lea    0x73b(%rip),%rdx        # 300e <_IO_stdin_used+0xe>
+    28d3:	48 c1 f9 03          	sar    $0x3,%rcx
+    28d7:	be 02 00 00 00       	mov    $0x2,%esi
+    28dc:	48 0f af c8          	imul   %rax,%rcx
+    28e0:	31 c0                	xor    %eax,%eax
+    28e2:	e8 e9 e8 ff ff       	call   11d0 <__fprintf_chk@plt>
+    28e7:	48 8b 1d 72 27 00 00 	mov    0x2772(%rip),%rbx        # 5060 <hftu::validate_registry()::reg>
+    28ee:	4c 8b 2d 73 27 00 00 	mov    0x2773(%rip),%r13        # 5068 <hftu::validate_registry()::reg+0x8>
+    28f5:	49 39 dd             	cmp    %rbx,%r13
+    28f8:	74 60                	je     295a <hftu::run_validations()+0xda>
+    28fa:	4c 8d 35 03 07 00 00 	lea    0x703(%rip),%r14        # 3004 <_IO_stdin_used+0x4>
+    2901:	0f 1f 40 00          	nopl   0x0(%rax)
+    2905:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    290c:	00 00 00 00 
+    2910:	48 83 7b 18 00       	cmpq   $0x0,0x18(%rbx)
+    2915:	0f 84 94 00 00 00    	je     29af <hftu::run_validations()+0x12f>
+    291b:	48 8d 7b 08          	lea    0x8(%rbx),%rdi
+    291f:	ff 53 20             	call   *0x20(%rbx)
+    2922:	48 8b 0b             	mov    (%rbx),%rcx
+    2925:	4c 8d 05 dd 06 00 00 	lea    0x6dd(%rip),%r8        # 3009 <_IO_stdin_used+0x9>
+    292c:	48 8b 3d ed 26 00 00 	mov    0x26ed(%rip),%rdi        # 5020 <stderr@GLIBC_2.2.5>
+    2933:	84 c0                	test   %al,%al
+    2935:	89 c5                	mov    %eax,%ebp
+    2937:	48 8d 15 ee 06 00 00 	lea    0x6ee(%rip),%rdx        # 302c <_IO_stdin_used+0x2c>
+    293e:	4d 0f 45 c6          	cmovne %r14,%r8
+    2942:	be 02 00 00 00       	mov    $0x2,%esi
+    2947:	31 c0                	xor    %eax,%eax
+    2949:	48 83 c3 28          	add    $0x28,%rbx
+    294d:	41 21 ec             	and    %ebp,%r12d
+    2950:	e8 7b e8 ff ff       	call   11d0 <__fprintf_chk@plt>
+    2955:	49 39 dd             	cmp    %rbx,%r13
+    2958:	75 b6                	jne    2910 <hftu::run_validations()+0x90>
+    295a:	5b                   	pop    %rbx
+    295b:	44 89 e0             	mov    %r12d,%eax
+    295e:	5d                   	pop    %rbp
+    295f:	41 5c                	pop    %r12
+    2961:	41 5d                	pop    %r13
+    2963:	41 5e                	pop    %r14
+    2965:	c3                   	ret
+    2966:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    296d:	00 00 00 
+    2970:	48 8d 3d e1 26 00 00 	lea    0x26e1(%rip),%rdi        # 5058 <guard variable for hftu::validate_registry()::reg>
+    2977:	e8 74 e8 ff ff       	call   11f0 <__cxa_guard_acquire@plt>
+    297c:	85 c0                	test   %eax,%eax
+    297e:	0f 84 17 ff ff ff    	je     289b <hftu::run_validations()+0x1b>
+    2984:	48 8d 15 7d 26 00 00 	lea    0x267d(%rip),%rdx        # 5008 <__dso_handle>
+    298b:	48 8d 35 ce 26 00 00 	lea    0x26ce(%rip),%rsi        # 5060 <hftu::validate_registry()::reg>
+    2992:	48 8d 3d d7 fd ff ff 	lea    -0x229(%rip),%rdi        # 2770 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()>
+    2999:	e8 e2 e7 ff ff       	call   1180 <__cxa_atexit@plt>
+    299e:	48 8d 3d b3 26 00 00 	lea    0x26b3(%rip),%rdi        # 5058 <guard variable for hftu::validate_registry()::reg>
+    29a5:	e8 b6 e7 ff ff       	call   1160 <__cxa_guard_release@plt>
+    29aa:	e9 ec fe ff ff       	jmp    289b <hftu::run_validations()+0x1b>
+    29af:	e8 7c e7 ff ff       	call   1130 <std::__throw_bad_function_call()@plt>
+    29b4:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    29bb:	00 00 00 
+    29be:	66 90                	xchg   %ax,%ax
+
+00000000000029c0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>:
+    29c0:	f3 0f 1e fa          	endbr64
+    29c4:	48 89 f8             	mov    %rdi,%rax
+    29c7:	48 8b 3f             	mov    (%rdi),%rdi
+    29ca:	48 85 ff             	test   %rdi,%rdi
+    29cd:	74 11                	je     29e0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()+0x20>
+    29cf:	48 8b 70 10          	mov    0x10(%rax),%rsi
+    29d3:	48 29 fe             	sub    %rdi,%rsi
+    29d6:	e9 c5 e7 ff ff       	jmp    11a0 <operator delete(void*, unsigned long)@plt>
+    29db:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+    29e0:	c3                   	ret
+    29e1:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    29e8:	00 00 00 
+    29eb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+00000000000029f0 <std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~vector()>:
+    29f0:	f3 0f 1e fa          	endbr64
+    29f4:	41 54                	push   %r12
+    29f6:	55                   	push   %rbp
+    29f7:	53                   	push   %rbx
+    29f8:	49 89 fc             	mov    %rdi,%r12
+    29fb:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
+    29ff:	48 8b 1f             	mov    (%rdi),%rbx
+    2a02:	48 39 dd             	cmp    %rbx,%rbp
+    2a05:	74 2f                	je     2a36 <std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~vector()+0x46>
+    2a07:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    2a0e:	00 00 
+    2a10:	48 8b 3b             	mov    (%rbx),%rdi
+    2a13:	48 8d 43 10          	lea    0x10(%rbx),%rax
+    2a17:	48 39 c7             	cmp    %rax,%rdi
+    2a1a:	74 0d                	je     2a29 <std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~vector()+0x39>
+    2a1c:	48 8b 43 10          	mov    0x10(%rbx),%rax
+    2a20:	48 8d 70 01          	lea    0x1(%rax),%rsi
+    2a24:	e8 77 e7 ff ff       	call   11a0 <operator delete(void*, unsigned long)@plt>
+    2a29:	48 83 c3 20          	add    $0x20,%rbx
+    2a2d:	48 39 dd             	cmp    %rbx,%rbp
+    2a30:	75 de                	jne    2a10 <std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~vector()+0x20>
+    2a32:	49 8b 1c 24          	mov    (%r12),%rbx
+    2a36:	48 85 db             	test   %rbx,%rbx
+    2a39:	74 15                	je     2a50 <std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~vector()+0x60>
+    2a3b:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
+    2a40:	48 89 df             	mov    %rbx,%rdi
+    2a43:	48 29 de             	sub    %rbx,%rsi
+    2a46:	5b                   	pop    %rbx
+    2a47:	5d                   	pop    %rbp
+    2a48:	41 5c                	pop    %r12
+    2a4a:	e9 51 e7 ff ff       	jmp    11a0 <operator delete(void*, unsigned long)@plt>
+    2a4f:	90                   	nop
+    2a50:	5b                   	pop    %rbx
+    2a51:	5d                   	pop    %rbp
+    2a52:	41 5c                	pop    %r12
+    2a54:	c3                   	ret
+    2a55:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2a5c:	00 00 00 
+    2a5f:	90                   	nop
+
+0000000000002a60 <std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::_M_gen_rand()>:
+    2a60:	f3 0f 1e fa          	endbr64
+    2a64:	c5 fd 6f 25 14 07 00 	vmovdqa 0x714(%rip),%ymm4        # 3180 <typeinfo name for reg_solution::{lambda(int)#1}+0x30>
+    2a6b:	00 
+    2a6c:	c4 e2 7d 59 3d 2b 07 	vpbroadcastq 0x72b(%rip),%ymm7        # 31a0 <typeinfo name for reg_solution::{lambda(int)#1}+0x50>
+    2a73:	00 00 
+    2a75:	48 8d 87 e0 04 00 00 	lea    0x4e0(%rdi),%rax
+    2a7c:	48 89 fa             	mov    %rdi,%rdx
+    2a7f:	c4 e2 7d 59 35 20 07 	vpbroadcastq 0x720(%rip),%ymm6        # 31a8 <typeinfo name for reg_solution::{lambda(int)#1}+0x58>
+    2a86:	00 00 
+    2a88:	c4 e2 7d 59 2d 1f 07 	vpbroadcastq 0x71f(%rip),%ymm5        # 31b0 <typeinfo name for reg_solution::{lambda(int)#1}+0x60>
+    2a8f:	00 00 
+    2a91:	c5 bd 73 d4 20       	vpsrlq $0x20,%ymm4,%ymm8
+    2a96:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2a9d:	00 00 00 
+    2aa0:	c5 cd db 4a 08       	vpand  0x8(%rdx),%ymm6,%ymm1
+    2aa5:	c5 c5 db 02          	vpand  (%rdx),%ymm7,%ymm0
+    2aa9:	48 83 c2 20          	add    $0x20,%rdx
+    2aad:	c5 fd eb c1          	vpor   %ymm1,%ymm0,%ymm0
+    2ab1:	c5 ed 73 d0 01       	vpsrlq $0x1,%ymm0,%ymm2
+    2ab6:	c5 ed ef 92 c0 04 00 	vpxor  0x4c0(%rdx),%ymm2,%ymm2
+    2abd:	00 
+    2abe:	c5 fd db c5          	vpand  %ymm5,%ymm0,%ymm0
+    2ac2:	c5 f5 73 d0 20       	vpsrlq $0x20,%ymm0,%ymm1
+    2ac7:	c5 fd f4 dc          	vpmuludq %ymm4,%ymm0,%ymm3
+    2acb:	c5 f5 f4 cc          	vpmuludq %ymm4,%ymm1,%ymm1
+    2acf:	c5 bd f4 c0          	vpmuludq %ymm0,%ymm8,%ymm0
+    2ad3:	c5 f5 d4 c8          	vpaddq %ymm0,%ymm1,%ymm1
+    2ad7:	c5 f5 73 f1 20       	vpsllq $0x20,%ymm1,%ymm1
+    2adc:	c5 e5 d4 c1          	vpaddq %ymm1,%ymm3,%ymm0
+    2ae0:	c5 ed ef c0          	vpxor  %ymm0,%ymm2,%ymm0
+    2ae4:	c5 fe 7f 42 e0       	vmovdqu %ymm0,-0x20(%rdx)
+    2ae9:	48 39 c2             	cmp    %rax,%rdx
+    2aec:	75 b2                	jne    2aa0 <std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::_M_gen_rand()+0x40>
+    2aee:	c5 fd 6f 25 8a 06 00 	vmovdqa 0x68a(%rip),%ymm4        # 3180 <typeinfo name for reg_solution::{lambda(int)#1}+0x30>
+    2af5:	00 
+    2af6:	c4 e2 7d 59 3d a1 06 	vpbroadcastq 0x6a1(%rip),%ymm7        # 31a0 <typeinfo name for reg_solution::{lambda(int)#1}+0x50>
+    2afd:	00 00 
+    2aff:	48 8d 97 a0 09 00 00 	lea    0x9a0(%rdi),%rdx
+    2b06:	c4 e2 7d 59 35 99 06 	vpbroadcastq 0x699(%rip),%ymm6        # 31a8 <typeinfo name for reg_solution::{lambda(int)#1}+0x58>
+    2b0d:	00 00 
+    2b0f:	c4 e2 7d 59 2d 98 06 	vpbroadcastq 0x698(%rip),%ymm5        # 31b0 <typeinfo name for reg_solution::{lambda(int)#1}+0x60>
+    2b16:	00 00 
+    2b18:	c5 bd 73 d4 20       	vpsrlq $0x20,%ymm4,%ymm8
+    2b1d:	0f 1f 00             	nopl   (%rax)
+    2b20:	c5 cd db 48 08       	vpand  0x8(%rax),%ymm6,%ymm1
+    2b25:	c5 c5 db 00          	vpand  (%rax),%ymm7,%ymm0
+    2b29:	48 83 c0 20          	add    $0x20,%rax
+    2b2d:	c5 fd eb c1          	vpor   %ymm1,%ymm0,%ymm0
+    2b31:	c5 ed 73 d0 01       	vpsrlq $0x1,%ymm0,%ymm2
+    2b36:	c5 ed ef 90 00 fb ff 	vpxor  -0x500(%rax),%ymm2,%ymm2
+    2b3d:	ff 
+    2b3e:	c5 fd db c5          	vpand  %ymm5,%ymm0,%ymm0
+    2b42:	c5 f5 73 d0 20       	vpsrlq $0x20,%ymm0,%ymm1
+    2b47:	c5 fd f4 dc          	vpmuludq %ymm4,%ymm0,%ymm3
+    2b4b:	c5 f5 f4 cc          	vpmuludq %ymm4,%ymm1,%ymm1
+    2b4f:	c5 bd f4 c0          	vpmuludq %ymm0,%ymm8,%ymm0
+    2b53:	c5 f5 d4 c8          	vpaddq %ymm0,%ymm1,%ymm1
+    2b57:	c5 f5 73 f1 20       	vpsllq $0x20,%ymm1,%ymm1
+    2b5c:	c5 e5 d4 c1          	vpaddq %ymm1,%ymm3,%ymm0
+    2b60:	c5 ed ef c0          	vpxor  %ymm0,%ymm2,%ymm0
+    2b64:	c5 fe 7f 40 e0       	vmovdqu %ymm0,-0x20(%rax)
+    2b69:	48 39 d0             	cmp    %rdx,%rax
+    2b6c:	75 b2                	jne    2b20 <std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::_M_gen_rand()+0xc0>
+    2b6e:	48 8b b7 a0 09 00 00 	mov    0x9a0(%rdi),%rsi
+    2b75:	48 8d 97 c0 04 00 00 	lea    0x4c0(%rdi),%rdx
+    2b7c:	4c 8d 8f d8 04 00 00 	lea    0x4d8(%rdi),%r9
+    2b83:	49 b8 e9 19 66 a9 5a 	movabs $0xb5026f5aa96619e9,%r8
+    2b8a:	6f 02 b5 
+    2b8d:	48 81 e6 00 00 00 80 	and    $0xffffffff80000000,%rsi
+    2b94:	48 83 c2 08          	add    $0x8,%rdx
+    2b98:	48 89 f1             	mov    %rsi,%rcx
+    2b9b:	48 8b b2 e0 04 00 00 	mov    0x4e0(%rdx),%rsi
+    2ba2:	48 89 f0             	mov    %rsi,%rax
+    2ba5:	25 ff ff ff 7f       	and    $0x7fffffff,%eax
+    2baa:	48 09 c8             	or     %rcx,%rax
+    2bad:	48 89 c1             	mov    %rax,%rcx
+    2bb0:	83 e0 01             	and    $0x1,%eax
+    2bb3:	48 d1 e9             	shr    $1,%rcx
+    2bb6:	48 33 4a f8          	xor    -0x8(%rdx),%rcx
+    2bba:	48 f7 d8             	neg    %rax
+    2bbd:	4c 21 c0             	and    %r8,%rax
+    2bc0:	48 31 c8             	xor    %rcx,%rax
+    2bc3:	48 89 82 d8 04 00 00 	mov    %rax,0x4d8(%rdx)
+    2bca:	49 39 d1             	cmp    %rdx,%r9
+    2bcd:	75 be                	jne    2b8d <std::mersenne_twister_engine<unsigned long, 64ul, 312ul, 156ul, 31ul, 13043109905998158313ul, 29ul, 6148914691236517205ul, 17ul, 8202884508482404352ul, 37ul, 18444473444759240704ul, 43ul, 6364136223846793005ul>::_M_gen_rand()+0x12d>
+    2bcf:	48 8b 87 b8 09 00 00 	mov    0x9b8(%rdi),%rax
+    2bd6:	48 c7 87 c0 09 00 00 	movq   $0x0,0x9c0(%rdi)
+    2bdd:	00 00 00 00 
+    2be1:	48 8b 17             	mov    (%rdi),%rdx
+    2be4:	48 25 00 00 00 80    	and    $0xffffffff80000000,%rax
+    2bea:	81 e2 ff ff ff 7f    	and    $0x7fffffff,%edx
+    2bf0:	48 09 d0             	or     %rdx,%rax
+    2bf3:	48 89 c2             	mov    %rax,%rdx
+    2bf6:	83 e0 01             	and    $0x1,%eax
+    2bf9:	48 d1 ea             	shr    $1,%rdx
+    2bfc:	48 33 97 d8 04 00 00 	xor    0x4d8(%rdi),%rdx
+    2c03:	48 f7 d8             	neg    %rax
+    2c06:	4c 21 c0             	and    %r8,%rax
+    2c09:	48 31 d0             	xor    %rdx,%rax
+    2c0c:	48 89 87 b8 09 00 00 	mov    %rax,0x9b8(%rdi)
+    2c13:	c5 f8 77             	vzeroupper
+    2c16:	c3                   	ret
+    2c17:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2c1e:	00 00 00 
+    2c21:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2c28:	00 00 00 
+    2c2b:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2c32:	00 00 00 
+    2c35:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2c3c:	00 00 00 
+    2c3f:	90                   	nop
+
+0000000000002c40 <hftu::StringMap::StringMap()>:
+    2c40:	f3 0f 1e fa          	endbr64
+    2c44:	48 83 ec 08          	sub    $0x8,%rsp
+    2c48:	ba 20 00 04 00       	mov    $0x40020,%edx
+    2c4d:	31 f6                	xor    %esi,%esi
+    2c4f:	48 8d 3d 2a 27 60 00 	lea    0x60272a(%rip),%rdi        # 605380 <hftu::StringMap::soa_hot_>
+    2c56:	e8 f5 e4 ff ff       	call   1150 <memset@plt>
+    2c5b:	ba 00 03 60 00       	mov    $0x600300,%edx
+    2c60:	31 f6                	xor    %esi,%esi
+    2c62:	48 8d 3d 17 24 00 00 	lea    0x2417(%rip),%rdi        # 5080 <hftu::StringMap::cold_entries_>
+    2c69:	48 83 c4 08          	add    $0x8,%rsp
+    2c6d:	e9 de e4 ff ff       	jmp    1150 <memset@plt>
+    2c72:	0f 1f 00             	nopl   (%rax)
+    2c75:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    2c7c:	00 00 00 00 
+
+0000000000002c80 <hftu::StringMap::insert(char const*, unsigned long, unsigned int)>:
+    2c80:	f3 0f 1e fa          	endbr64
+    2c84:	48 8d 05 35 05 00 00 	lea    0x535(%rip),%rax        # 31c0 <hftu::HIGH_MASKS>
+    2c8b:	c5 fa 6f 06          	vmovdqu (%rsi),%xmm0
+    2c8f:	41 b9 01 00 00 00    	mov    $0x1,%r9d
+    2c95:	48 8d 3d e4 26 60 00 	lea    0x6026e4(%rip),%rdi        # 605380 <hftu::StringMap::soa_hot_>
+    2c9c:	c5 fa 7e 14 d0       	vmovq  (%rax,%rdx,8),%xmm2
+    2ca1:	48 8d 05 b8 05 00 00 	lea    0x5b8(%rip),%rax        # 3260 <hftu::LOW_MASKS>
+    2ca8:	41 89 c8             	mov    %ecx,%r8d
+    2cab:	c4 e3 e9 22 14 d0 01 	vpinsrq $0x1,(%rax,%rdx,8),%xmm2,%xmm2
+    2cb2:	48 ba 69 2d 38 eb 08 	movabs $0x9ddfea08eb382d69,%rdx
+    2cb9:	ea df 9d 
+    2cbc:	c4 e3 79 0f c0 08    	vpalignr $0x8,%xmm0,%xmm0,%xmm0
+    2cc2:	c5 e9 db d0          	vpand  %xmm0,%xmm2,%xmm2
+    2cc6:	c5 f1 73 d2 01       	vpsrlq $0x1,%xmm2,%xmm1
+    2ccb:	c5 f9 73 f2 01       	vpsllq $0x1,%xmm2,%xmm0
+    2cd0:	c5 f9 ef c1          	vpxor  %xmm1,%xmm0,%xmm0
+    2cd4:	c5 f1 73 da 08       	vpsrldq $0x8,%xmm2,%xmm1
+    2cd9:	c5 f9 ef c1          	vpxor  %xmm1,%xmm0,%xmm0
+    2cdd:	c5 f1 ef c9          	vpxor  %xmm1,%xmm1,%xmm1
+    2ce1:	c4 e1 f9 7e c0       	vmovq  %xmm0,%rax
+    2ce6:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    2cea:	48 0f af c2          	imul   %rdx,%rax
+    2cee:	ba ff ff ff ff       	mov    $0xffffffff,%edx
+    2cf3:	48 89 c6             	mov    %rax,%rsi
+    2cf6:	81 e6 e0 ff 03 00    	and    $0x3ffe0,%esi
+    2cfc:	84 c0                	test   %al,%al
+    2cfe:	44 0f 45 c8          	cmovne %eax,%r9d
+    2d02:	25 ff ff 03 00       	and    $0x3ffff,%eax
+    2d07:	c5 fd 74 04 37       	vpcmpeqb (%rdi,%rsi,1),%ymm0,%ymm0
+    2d0c:	c5 fd d7 c8          	vpmovmskb %ymm0,%ecx
+    2d10:	29 f0                	sub    %esi,%eax
+    2d12:	c4 e2 f9 f7 c2       	shlx   %rax,%rdx,%rax
+    2d17:	ba 20 00 00 00       	mov    $0x20,%edx
+    2d1c:	21 c1                	and    %eax,%ecx
+    2d1e:	74 2d                	je     2d4d <hftu::StringMap::insert(char const*, unsigned long, unsigned int)+0xcd>
+    2d20:	eb 72                	jmp    2d94 <hftu::StringMap::insert(char const*, unsigned long, unsigned int)+0x114>
+    2d22:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    2d29:	00 
+    2d2a:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    2d31:	00 00 00 00 
+    2d35:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    2d3c:	00 00 00 00 
+    2d40:	48 83 c2 20          	add    $0x20,%rdx
+    2d44:	48 81 fa 00 00 04 00 	cmp    $0x40000,%rdx
+    2d4b:	74 43                	je     2d90 <hftu::StringMap::insert(char const*, unsigned long, unsigned int)+0x110>
+    2d4d:	48 8d 04 16          	lea    (%rsi,%rdx,1),%rax
+    2d51:	25 ff ff 03 00       	and    $0x3ffff,%eax
+    2d56:	c5 f5 74 04 07       	vpcmpeqb (%rdi,%rax,1),%ymm1,%ymm0
+    2d5b:	c5 fd d7 c8          	vpmovmskb %ymm0,%ecx
+    2d5f:	85 c9                	test   %ecx,%ecx
+    2d61:	74 dd                	je     2d40 <hftu::StringMap::insert(char const*, unsigned long, unsigned int)+0xc0>
+    2d63:	f3 0f bc c9          	tzcnt  %ecx,%ecx
+    2d67:	48 01 c1             	add    %rax,%rcx
+    2d6a:	48 8d 15 0f 23 00 00 	lea    0x230f(%rip),%rdx        # 5080 <hftu::StringMap::cold_entries_>
+    2d71:	44 88 0c 0f          	mov    %r9b,(%rdi,%rcx,1)
+    2d75:	48 8d 0c 49          	lea    (%rcx,%rcx,2),%rcx
+    2d79:	48 c7 44 ca 10 00 00 	movq   $0x0,0x10(%rdx,%rcx,8)
+    2d80:	00 00 
+    2d82:	c5 fa 7f 14 ca       	vmovdqu %xmm2,(%rdx,%rcx,8)
+    2d87:	44 89 44 ca 10       	mov    %r8d,0x10(%rdx,%rcx,8)
+    2d8c:	c5 f8 77             	vzeroupper
+    2d8f:	c3                   	ret
+    2d90:	31 c9                	xor    %ecx,%ecx
+    2d92:	eb d6                	jmp    2d6a <hftu::StringMap::insert(char const*, unsigned long, unsigned int)+0xea>
+    2d94:	48 89 f0             	mov    %rsi,%rax
+    2d97:	eb ca                	jmp    2d63 <hftu::StringMap::insert(char const*, unsigned long, unsigned int)+0xe3>
+    2d99:	90                   	nop
+    2d9a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000002da0 <hftu::StringMap::find(char const*, unsigned long) const>:
+    2da0:	f3 0f 1e fa          	endbr64
+    2da4:	48 8d 05 b5 04 00 00 	lea    0x4b5(%rip),%rax        # 3260 <hftu::LOW_MASKS>
+    2dab:	4c 8b 04 d0          	mov    (%rax,%rdx,8),%r8
+    2daf:	48 8d 05 0a 04 00 00 	lea    0x40a(%rip),%rax        # 31c0 <hftu::HIGH_MASKS>
+    2db6:	4c 23 06             	and    (%rsi),%r8
+    2db9:	4c 8b 0c d0          	mov    (%rax,%rdx,8),%r9
+    2dbd:	4c 23 4e 08          	and    0x8(%rsi),%r9
+    2dc1:	48 8d 35 b8 25 60 00 	lea    0x6025b8(%rip),%rsi        # 605380 <hftu::StringMap::soa_hot_>
+    2dc8:	4c 89 c8             	mov    %r9,%rax
+    2dcb:	4b 8d 0c 09          	lea    (%r9,%r9,1),%rcx
+    2dcf:	48 d1 e8             	shr    $1,%rax
+    2dd2:	48 31 c1             	xor    %rax,%rcx
+    2dd5:	48 b8 69 2d 38 eb 08 	movabs $0x9ddfea08eb382d69,%rax
+    2ddc:	ea df 9d 
+    2ddf:	4c 31 c1             	xor    %r8,%rcx
+    2de2:	48 0f af c8          	imul   %rax,%rcx
+    2de6:	48 89 c8             	mov    %rcx,%rax
+    2de9:	25 ff ff 03 00       	and    $0x3ffff,%eax
+    2dee:	0f b6 14 06          	movzbl (%rsi,%rax,1),%edx
+    2df2:	84 d2                	test   %dl,%dl
+    2df4:	74 6a                	je     2e60 <hftu::StringMap::find(char const*, unsigned long) const+0xc0>
+    2df6:	84 c9                	test   %cl,%cl
+    2df8:	bf 01 00 00 00       	mov    $0x1,%edi
+    2dfd:	4c 8d 15 7c 22 00 00 	lea    0x227c(%rip),%r10        # 5080 <hftu::StringMap::cold_entries_>
+    2e04:	0f 44 cf             	cmove  %edi,%ecx
+    2e07:	eb 27                	jmp    2e30 <hftu::StringMap::find(char const*, unsigned long) const+0x90>
+    2e09:	90                   	nop
+    2e0a:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    2e11:	00 00 00 00 
+    2e15:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    2e1c:	00 00 00 00 
+    2e20:	48 ff c0             	inc    %rax
+    2e23:	25 ff ff 03 00       	and    $0x3ffff,%eax
+    2e28:	0f b6 14 06          	movzbl (%rsi,%rax,1),%edx
+    2e2c:	84 d2                	test   %dl,%dl
+    2e2e:	74 30                	je     2e60 <hftu::StringMap::find(char const*, unsigned long) const+0xc0>
+    2e30:	38 d1                	cmp    %dl,%cl
+    2e32:	75 ec                	jne    2e20 <hftu::StringMap::find(char const*, unsigned long) const+0x80>
+    2e34:	48 8d 14 40          	lea    (%rax,%rax,2),%rdx
+    2e38:	48 c1 e2 03          	shl    $0x3,%rdx
+    2e3c:	49 8d 3c 12          	lea    (%r10,%rdx,1),%rdi
+    2e40:	4c 3b 47 08          	cmp    0x8(%rdi),%r8
+    2e44:	75 da                	jne    2e20 <hftu::StringMap::find(char const*, unsigned long) const+0x80>
+    2e46:	4c 3b 0f             	cmp    (%rdi),%r9
+    2e49:	75 d5                	jne    2e20 <hftu::StringMap::find(char const*, unsigned long) const+0x80>
+    2e4b:	49 8d 44 12 10       	lea    0x10(%r10,%rdx,1),%rax
+    2e50:	c3                   	ret
+    2e51:	0f 1f 40 00          	nopl   0x0(%rax)
+    2e55:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    2e5c:	00 00 00 00 
+    2e60:	31 c0                	xor    %eax,%eax
+    2e62:	c3                   	ret
+
+Disassembly of section .fini:
+
+0000000000002e64 <_fini>:
+    2e64:	f3 0f 1e fa          	endbr64
+    2e68:	48 83 ec 08          	sub    $0x8,%rsp
+    2e6c:	48 83 c4 08          	add    $0x8,%rsp
+    2e70:	c3                   	ret

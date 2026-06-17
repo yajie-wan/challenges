@@ -38,7 +38,7 @@ namespace hftu {
         std::array<uint32_t, ENTRY_SIZE + ENTRY_AVX_PADDING> value; 
     };
 
-    struct ColdEntry{
+    struct alignas(32) ColdEntry{
         uint64_t hi;
         uint64_t lo;
         uint32_t value;

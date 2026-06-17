@@ -19,6 +19,7 @@ StringMap::StringMap() {
     //soa_value_.value.fill(0);
     soa_hot_.tag.fill(0);
     std::memset(cold_entries_.data(), 0, sizeof(cold_entries_));
+    //cold_entries_.fill(ColdEntry{0, 0, 0});
 }
 
 void StringMap::insert(const char* key, size_t key_len, uint32_t value) {
