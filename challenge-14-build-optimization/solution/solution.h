@@ -1,1 +1,1 @@
-// CXXFLAGS=-O2 -march=native
+CXXFLAGS=-O3 -march=native
