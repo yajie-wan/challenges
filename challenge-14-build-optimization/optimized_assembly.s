@@ -5,27 +5,95 @@
 _ZN12_GLOBAL__N_1L13process_burstEPKNS_10MarketTickE:
 .LFB5255:
 	.cfi_startproc
-	xorl	%ecx, %ecx
+	xorl	%edx, %edx
 	cmpb	$0, 12(%rdi)
+	movq	%rdi, %rax
 	vxorpd	%xmm0, %xmm0, %xmm0
 	je	.L2
-	.p2align 5
-	.p2align 4
-	.p2align 3
 .L3:
-	movzbl	13(%rdi), %edx
-	vaddsd	(%rdi), %xmm0, %xmm0
-	addq	$16, %rdi
-	movl	%edx, %eax
-	negl	%eax
-	xorl	-8(%rdi), %eax
-	addl	%edx, %eax
-	cltq
-	addq	%rax, %rcx
-	cmpb	$0, 12(%rdi)
+	movzbl	13(%rax), %esi
+	vaddsd	(%rax), %xmm0, %xmm0
+	movl	%esi, %ecx
+	negl	%ecx
+	xorl	8(%rax), %ecx
+	addl	%esi, %ecx
+	movslq	%ecx, %rdi
+	addq	%rdi, %rdx
+	cmpb	$0, 28(%rax)
+	je	.L2
+	movzbl	29(%rax), %r8d
+	vaddsd	16(%rax), %xmm0, %xmm0
+	movl	%r8d, %r9d
+	negl	%r9d
+	xorl	24(%rax), %r9d
+	addl	%r8d, %r9d
+	movslq	%r9d, %r10
+	addq	%r10, %rdx
+	cmpb	$0, 44(%rax)
+	je	.L2
+	movzbl	45(%rax), %r11d
+	vaddsd	32(%rax), %xmm0, %xmm0
+	movl	%r11d, %esi
+	negl	%esi
+	xorl	40(%rax), %esi
+	addl	%r11d, %esi
+	movslq	%esi, %rcx
+	addq	%rcx, %rdx
+	cmpb	$0, 60(%rax)
+	je	.L2
+	movzbl	61(%rax), %edi
+	vaddsd	48(%rax), %xmm0, %xmm0
+	movl	%edi, %r8d
+	negl	%r8d
+	xorl	56(%rax), %r8d
+	addl	%edi, %r8d
+	movslq	%r8d, %r9
+	addq	%r9, %rdx
+	cmpb	$0, 76(%rax)
+	je	.L2
+	movzbl	77(%rax), %r10d
+	vaddsd	64(%rax), %xmm0, %xmm0
+	movl	%r10d, %r11d
+	negl	%r11d
+	xorl	72(%rax), %r11d
+	addl	%r10d, %r11d
+	movslq	%r11d, %rsi
+	addq	%rsi, %rdx
+	cmpb	$0, 92(%rax)
+	je	.L2
+	movzbl	93(%rax), %edi
+	vaddsd	80(%rax), %xmm0, %xmm0
+	movl	%edi, %ecx
+	negl	%ecx
+	xorl	88(%rax), %ecx
+	addl	%edi, %ecx
+	movslq	%ecx, %r8
+	addq	%r8, %rdx
+	cmpb	$0, 108(%rax)
+	je	.L2
+	movzbl	109(%rax), %r9d
+	vaddsd	96(%rax), %xmm0, %xmm0
+	movl	%r9d, %r10d
+	negl	%r10d
+	xorl	104(%rax), %r10d
+	addl	%r9d, %r10d
+	movslq	%r10d, %r11
+	addq	%r11, %rdx
+	cmpb	$0, 124(%rax)
+	je	.L2
+	movzbl	125(%rax), %esi
+	vaddsd	112(%rax), %xmm0, %xmm0
+	subq	$-128, %rax
+	movl	%esi, %edi
+	negl	%edi
+	xorl	-8(%rax), %edi
+	addl	%esi, %edi
+	movslq	%edi, %rcx
+	addq	%rcx, %rdx
+	cmpb	$0, 12(%rax)
 	jne	.L3
 .L2:
-	movq	%rcx, %rax
+	movq	%rdx, %rax
 	ret
 	.cfi_endproc
 .LFE5255:
@@ -37,20 +105,20 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE10_M_manag
 	.cfi_startproc
 	endbr64
 	testl	%edx, %edx
-	je	.L8
+	je	.L22
 	cmpl	$1, %edx
-	je	.L9
+	je	.L23
 	xorl	%eax, %eax
 	ret
 	.p2align 4
 	.p2align 3
-.L9:
+.L23:
 	movq	%rsi, (%rdi)
 	xorl	%eax, %eax
 	ret
 	.p2align 4
 	.p2align 3
-.L8:
+.L22:
 	leaq	_ZTIN12_GLOBAL__N_1L15val_correctnessMUlvE_E(%rip), %rax
 	movq	%rax, (%rdi)
 	xorl	%eax, %eax
@@ -65,20 +133,20 @@ _ZNSt17_Function_handlerIFmiEN12_GLOBAL__N_1L9reg_burstMUliE_EE10_M_managerERSt9
 	.cfi_startproc
 	endbr64
 	testl	%edx, %edx
-	je	.L12
+	je	.L26
 	cmpl	$1, %edx
-	je	.L13
+	je	.L27
 	xorl	%eax, %eax
 	ret
 	.p2align 4
 	.p2align 3
-.L13:
+.L27:
 	movq	%rsi, (%rdi)
 	xorl	%eax, %eax
 	ret
 	.p2align 4
 	.p2align 3
-.L12:
+.L26:
 	leaq	_ZTIN12_GLOBAL__N_1L9reg_burstMUliE_E(%rip), %rax
 	movq	%rax, (%rdi)
 	xorl	%eax, %eax
@@ -96,13 +164,13 @@ _ZNSt6vectorIN12_GLOBAL__N_110MarketTickESaIS1_EED2Ev:
 	movq	%rdi, %rax
 	movq	(%rdi), %rdi
 	testq	%rdi, %rdi
-	je	.L17
+	je	.L31
 	movq	16(%rax), %rsi
 	subq	%rdi, %rsi
 	jmp	_ZdlPvm@PLT
 	.p2align 4
 	.p2align 3
-.L17:
+.L31:
 	ret
 	.cfi_endproc
 .LFE5717:
@@ -132,25 +200,25 @@ _ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED2Ev:
 	movq	8(%rdi), %rbp
 	movq	(%rdi), %rbx
 	cmpq	%rbx, %rbp
-	je	.L19
+	je	.L33
 	.p2align 4
 	.p2align 3
-.L23:
+.L37:
 	movq	24(%rbx), %rax
 	testq	%rax, %rax
-	je	.L20
+	je	.L34
 	leaq	8(%rbx), %rdi
 	addq	$40, %rbx
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	call	*%rax
 	cmpq	%rbx, %rbp
-	jne	.L23
-.L22:
+	jne	.L37
+.L36:
 	movq	(%r12), %rbx
-.L19:
+.L33:
 	testq	%rbx, %rbx
-	je	.L25
+	je	.L39
 	movq	16(%r12), %rsi
 	movq	%rbx, %rdi
 	subq	%rbx, %rsi
@@ -166,15 +234,15 @@ _ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED2Ev:
 .LEHE0:
 	.p2align 4
 	.p2align 3
-.L20:
+.L34:
 	.cfi_restore_state
 	addq	$40, %rbx
 	cmpq	%rbx, %rbp
-	jne	.L23
-	jmp	.L22
+	jne	.L37
+	jmp	.L36
 	.p2align 4
 	.p2align 3
-.L25:
+.L39:
 	popq	%rbx
 	.cfi_def_cfa_offset 24
 	popq	%rbp
@@ -224,25 +292,25 @@ _ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED2Ev:
 	movq	8(%rdi), %rbp
 	movq	(%rdi), %rbx
 	cmpq	%rbx, %rbp
-	je	.L28
+	je	.L42
 	.p2align 4
 	.p2align 3
-.L32:
+.L46:
 	movq	32(%rbx), %rax
 	testq	%rax, %rax
-	je	.L29
+	je	.L43
 	leaq	16(%rbx), %rdi
 	addq	$56, %rbx
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	call	*%rax
 	cmpq	%rbx, %rbp
-	jne	.L32
-.L31:
+	jne	.L46
+.L45:
 	movq	(%r12), %rbx
-.L28:
+.L42:
 	testq	%rbx, %rbx
-	je	.L34
+	je	.L48
 	movq	16(%r12), %rsi
 	movq	%rbx, %rdi
 	subq	%rbx, %rsi
@@ -258,15 +326,15 @@ _ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED2Ev:
 .LEHE1:
 	.p2align 4
 	.p2align 3
-.L29:
+.L43:
 	.cfi_restore_state
 	addq	$56, %rbx
 	cmpq	%rbx, %rbp
-	jne	.L32
-	jmp	.L31
+	jne	.L46
+	jmp	.L45
 	.p2align 4
 	.p2align 3
-.L34:
+.L48:
 	popq	%rbx
 	.cfi_def_cfa_offset 24
 	popq	%rbp
@@ -299,40 +367,51 @@ _ZNSt17_Function_handlerIFmiEN12_GLOBAL__N_1L9reg_burstMUliE_EE9_M_invokeERKSt9_
 .LFB5927:
 	.cfi_startproc
 	endbr64
-	pushq	%r12
+	pushq	%r15
 	.cfi_def_cfa_offset 16
-	.cfi_offset 12, -16
-	pushq	%rbp
+	.cfi_offset 15, -16
+	pushq	%r14
 	.cfi_def_cfa_offset 24
-	.cfi_offset 6, -24
-	pushq	%rbx
+	.cfi_offset 14, -24
+	pushq	%r13
 	.cfi_def_cfa_offset 32
-	.cfi_offset 3, -32
-	movl	(%rsi), %ebp
-	testl	%ebp, %ebp
-	jle	.L39
-	xorl	%esi, %esi
-	xorl	%r10d, %r10d
-	leaq	_ZN12_GLOBAL__N_1L5burstE(%rip), %r9
-	testb	$1, %bpl
-	je	.L38
-	movq	(%r9), %rdi
+	.cfi_offset 13, -32
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	.cfi_offset 12, -40
+	pushq	%rbp
+	.cfi_def_cfa_offset 48
+	.cfi_offset 6, -48
+	pushq	%rbx
+	.cfi_def_cfa_offset 56
+	.cfi_offset 3, -56
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 64
+	movl	(%rsi), %r14d
+	testl	%r14d, %r14d
+	jle	.L53
+	xorl	%r13d, %r13d
+	xorl	%ebp, %ebp
+	leaq	_ZN12_GLOBAL__N_1L5burstE(%rip), %r12
+	testb	$1, %r14b
+	je	.L52
+	movq	(%r12), %rdi
 	call	_ZN12_GLOBAL__N_1L13process_burstEPKNS_10MarketTickE
 	vmovq	%xmm0, %rcx
 	movq	%rax, %rdx
 	movq	%rcx, %rax
-	movl	%esi, %eax
+	movl	%r13d, %eax
 #APP
 # 41 "../common/benchmark_harness.h" 1
 	cpuid
 	rdtsc
 # 0 "" 2
 #NO_APP
-	movq	(%r9), %rdi
+	movq	(%r12), %rdi
 	movl	%eax, %ebx
 	salq	$32, %rdx
 	orq	%rbx, %rdx
-	movq	%rdx, %r8
+	movq	%rdx, %r15
 	call	_ZN12_GLOBAL__N_1L13process_burstEPKNS_10MarketTickE
 	vmovq	%xmm0, %rsi
 	movq	%rax, %rdx
@@ -341,25 +420,25 @@ _ZNSt17_Function_handlerIFmiEN12_GLOBAL__N_1L9reg_burstMUliE_EE9_M_invokeERKSt9_
 # 53 "../common/benchmark_harness.h" 1
 	rdtscp
 	mov %eax, %edi
-	mov %edx, %r10d
+	mov %edx, %ebp
 	cpuid
 # 0 "" 2
 #NO_APP
-	salq	$32, %r10
-	movl	%edi, %r11d
-	movl	$1, %esi
-	orq	%r11, %r10
-	subq	%r8, %r10
-	cmpl	$1, %ebp
-	je	.L36
+	salq	$32, %rbp
+	movl	%edi, %r8d
+	movl	$1, %r13d
+	orq	%r8, %rbp
+	subq	%r15, %rbp
+	cmpl	$1, %r14d
+	je	.L50
 	.p2align 4
 	.p2align 3
-.L38:
-	movq	(%r9), %rdi
+.L52:
+	movq	(%r12), %rdi
 	call	_ZN12_GLOBAL__N_1L13process_burstEPKNS_10MarketTickE
-	vmovq	%xmm0, %r12
+	vmovq	%xmm0, %r9
 	movq	%rax, %rdx
-	movq	%r12, %rax
+	movq	%r9, %rax
 	xorl	%eax, %eax
 #APP
 # 41 "../common/benchmark_harness.h" 1
@@ -367,33 +446,33 @@ _ZNSt17_Function_handlerIFmiEN12_GLOBAL__N_1L9reg_burstMUliE_EE9_M_invokeERKSt9_
 	rdtsc
 # 0 "" 2
 #NO_APP
-	movq	(%r9), %rdi
-	movl	%eax, %ecx
+	movq	(%r12), %rdi
+	movl	%eax, %r10d
 	salq	$32, %rdx
-	orq	%rcx, %rdx
-	movq	%rdx, %r11
+	orq	%r10, %rdx
+	movq	%rdx, %r15
 	call	_ZN12_GLOBAL__N_1L13process_burstEPKNS_10MarketTickE
-	vmovq	%xmm0, %rbx
+	vmovq	%xmm0, %r11
 	movq	%rax, %rdx
-	movq	%rbx, %rax
+	movq	%r11, %rax
 #APP
 # 53 "../common/benchmark_harness.h" 1
 	rdtscp
 	mov %eax, %edi
-	mov %edx, %r8d
+	mov %edx, %esi
 	cpuid
 # 0 "" 2
 #NO_APP
-	movl	%edi, %r12d
-	movq	(%r9), %rdi
-	salq	$32, %r8
-	orq	%r12, %r8
-	subq	%r11, %r8
-	addq	%r10, %r8
+	movl	%edi, %ecx
+	movq	(%r12), %rdi
+	salq	$32, %rsi
+	orq	%rcx, %rsi
+	subq	%r15, %rsi
+	addq	%rsi, %rbp
 	call	_ZN12_GLOBAL__N_1L13process_burstEPKNS_10MarketTickE
-	vmovq	%xmm0, %r10
+	vmovq	%xmm0, %rbx
 	movq	%rax, %rdx
-	movq	%r10, %rax
+	movq	%rbx, %rax
 	xorl	%eax, %eax
 #APP
 # 41 "../common/benchmark_harness.h" 1
@@ -401,54 +480,55 @@ _ZNSt17_Function_handlerIFmiEN12_GLOBAL__N_1L9reg_burstMUliE_EE9_M_invokeERKSt9_
 	rdtsc
 # 0 "" 2
 #NO_APP
-	movq	(%r9), %rdi
-	movl	%eax, %ecx
+	movq	(%r12), %rdi
+	movl	%eax, %r8d
 	salq	$32, %rdx
-	orq	%rcx, %rdx
-	movq	%rdx, %r11
+	orq	%r8, %rdx
+	movq	%rdx, %r15
 	call	_ZN12_GLOBAL__N_1L13process_burstEPKNS_10MarketTickE
-	vmovq	%xmm0, %rbx
+	vmovq	%xmm0, %r9
 	movq	%rax, %rdx
-	movq	%rbx, %rax
+	movq	%r9, %rax
 #APP
 # 53 "../common/benchmark_harness.h" 1
 	rdtscp
-	mov %eax, %edi
-	mov %edx, %r10d
+	mov %eax, %r10d
+	mov %edx, %r11d
 	cpuid
 # 0 "" 2
 #NO_APP
-	salq	$32, %r10
-	movl	%edi, %r12d
-	addl	$2, %esi
-	orq	%r12, %r10
-	subq	%r11, %r10
-	addq	%r8, %r10
-	cmpl	%esi, %ebp
-	jne	.L38
-.L36:
-	popq	%rbx
+	salq	$32, %r11
+	movl	%r10d, %edi
+	addl	$2, %r13d
+	orq	%rdi, %r11
+	subq	%r15, %r11
+	addq	%r11, %rbp
+	cmpl	%r13d, %r14d
+	jne	.L52
+.L50:
+	addq	$8, %rsp
 	.cfi_remember_state
-	.cfi_def_cfa_offset 24
-	movq	%r10, %rax
+	.cfi_def_cfa_offset 56
+	movq	%rbp, %rax
+	popq	%rbx
+	.cfi_def_cfa_offset 48
 	popq	%rbp
-	.cfi_def_cfa_offset 16
+	.cfi_def_cfa_offset 40
 	popq	%r12
+	.cfi_def_cfa_offset 32
+	popq	%r13
+	.cfi_def_cfa_offset 24
+	popq	%r14
+	.cfi_def_cfa_offset 16
+	popq	%r15
 	.cfi_def_cfa_offset 8
 	ret
 	.p2align 4
 	.p2align 3
-.L39:
+.L53:
 	.cfi_restore_state
-	xorl	%r10d, %r10d
-	popq	%rbx
-	.cfi_def_cfa_offset 24
-	popq	%rbp
-	.cfi_def_cfa_offset 16
-	movq	%r10, %rax
-	popq	%r12
-	.cfi_def_cfa_offset 8
-	ret
+	xorl	%ebp, %ebp
+	jmp	.L50
 	.cfi_endproc
 .LFE5927:
 	.size	_ZNSt17_Function_handlerIFmiEN12_GLOBAL__N_1L9reg_burstMUliE_EE9_M_invokeERKSt9_Any_dataOi, .-_ZNSt17_Function_handlerIFmiEN12_GLOBAL__N_1L9reg_burstMUliE_EE9_M_invokeERKSt9_Any_dataOi
@@ -528,12 +608,12 @@ _ZN4hftu14run_benchmarksEv:
 	xorl	%eax, %eax
 	movzbl	_ZGVZN4hftu17validate_registryEvE3reg(%rip), %eax
 	testb	%al, %al
-	je	.L182
-.L49:
+	je	.L196
+.L63:
 	movq	8+_ZZN4hftu17validate_registryEvE3reg(%rip), %rcx
 	movq	_ZZN4hftu17validate_registryEvE3reg(%rip), %rdx
 	cmpq	%rdx, %rcx
-	je	.L51
+	je	.L65
 	subq	%rdx, %rcx
 	movq	stderr(%rip), %rdi
 	movabsq	$-3689348814741910323, %rbx
@@ -547,18 +627,18 @@ _ZN4hftu14run_benchmarksEv:
 	movq	_ZZN4hftu17validate_registryEvE3reg(%rip), %r14
 	movq	8+_ZZN4hftu17validate_registryEvE3reg(%rip), %r13
 	cmpq	%r13, %r14
-	je	.L51
+	je	.L65
 	movq	%r13, %rcx
 	movl	$1, %ebp
 	leaq	.LC1(%rip), %r12
 	subq	%r14, %rcx
 	testb	$8, %cl
-	jne	.L157
+	jne	.L171
 	.p2align 4
 	.p2align 3
-.L55:
+.L69:
 	cmpq	$0, 24(%r14)
-	je	.L158
+	je	.L172
 	leaq	8(%r14), %rdi
 	call	*32(%r14)
 	movq	(%r14), %rcx
@@ -572,7 +652,7 @@ _ZN4hftu14run_benchmarksEv:
 	xorl	%eax, %eax
 	call	__fprintf_chk@PLT
 	cmpq	$0, 64(%r14)
-	je	.L158
+	je	.L172
 	leaq	48(%r14), %rdi
 	call	*72(%r14)
 	movq	40(%r14), %rcx
@@ -588,39 +668,39 @@ _ZN4hftu14run_benchmarksEv:
 	call	__fprintf_chk@PLT
 .LEHE2:
 	cmpq	%r14, %r13
-	jne	.L55
-.L176:
+	jne	.L69
+.L190:
 	testb	%bpl, %bpl
-	je	.L183
-.L51:
+	je	.L197
+.L65:
 	movzbl	_ZGVZN4hftu18benchmark_registryEvE3reg(%rip), %esi
 	testb	%sil, %sil
-	je	.L184
-.L58:
+	je	.L198
+.L72:
 	movq	8+_ZZN4hftu18benchmark_registryEvE3reg(%rip), %r12
 	movq	_ZZN4hftu18benchmark_registryEvE3reg(%rip), %rbx
 	movq	%r12, %rdi
 	subq	%rbx, %rdi
-	jne	.L185
+	jne	.L199
 	movq	$0, 16(%rsp)
 	xorl	%ebp, %ebp
 	cmpq	%rbx, %r12
-	je	.L186
-.L78:
+	je	.L200
+.L92:
 	addq	$16, %rbx
 	movq	%r12, %r10
 	movq	%rbp, 24(%rsp)
 	movabsq	$288230376151711743, %r13
 	subq	%rbx, %r10
 	testb	$8, %r10b
-	jne	.L76
+	jne	.L90
 	movl	32(%rbx), %r14d
 	testl	%r14d, %r14d
-	jle	.L187
-.L121:
+	jle	.L201
+.L135:
 	cmpq	$0, 16(%rbx)
 	movl	%r14d, 52(%rsp)
-	je	.L166
+	je	.L180
 	leaq	52(%rsp), %rsi
 	movq	%rbx, %rdi
 .LEHB3:
@@ -630,21 +710,21 @@ _ZN4hftu14run_benchmarksEv:
 	movq	%rax, %r15
 	movslq	%r14d, %r14
 	movq	-16(%rbx), %rsi
-	je	.L188
+	je	.L202
 	vpinsrq	$1, %r14, %xmm0, %xmm3
 	movq	%rsi, 0(%rbp)
 	movq	%rax, 24(%rbp)
 	addq	$32, %rbp
 	vmovdqu	%xmm3, -24(%rbp)
-.L170:
+.L184:
 	addq	$56, %rbx
-	jmp	.L76
+	jmp	.L90
 	.p2align 4
 	.p2align 3
-.L62:
+.L76:
 	cmpq	$0, 16(%rbx)
 	movl	%r15d, 52(%rsp)
-	je	.L166
+	je	.L180
 	leaq	52(%rsp), %rsi
 	movq	%rbx, %rdi
 	call	*24(%rbx)
@@ -652,52 +732,52 @@ _ZN4hftu14run_benchmarksEv:
 	vmovq	-8(%rbx), %xmm4
 	movslq	%r15d, %r14
 	movq	-16(%rbx), %r8
-	je	.L70
+	je	.L84
 	vpinsrq	$1, %r14, %xmm4, %xmm7
 	movq	%r8, 0(%rbp)
 	movq	%rax, 24(%rbp)
 	addq	$32, %rbp
 	vmovdqu	%xmm7, -24(%rbp)
-.L71:
+.L85:
 	leaq	56(%rbx), %r14
 	addq	$40, %rbx
 	cmpq	%rbx, %r12
-	je	.L189
+	je	.L203
 	movslq	32(%r14), %r15
 	testl	%r15d, %r15d
-	jle	.L190
-.L131:
+	jle	.L204
+.L145:
 	cmpq	$0, 16(%r14)
 	movl	%r15d, 52(%rsp)
-	je	.L166
+	je	.L180
 	leaq	52(%rsp), %rsi
 	movq	%r14, %rdi
 	call	*24(%r14)
 	cmpq	%rbp, 16(%rsp)
 	vmovq	-8(%r14), %xmm6
 	movq	-16(%r14), %r9
-	je	.L191
+	je	.L205
 	vpinsrq	$1, %r15, %xmm6, %xmm9
 	movq	%r9, 0(%rbp)
 	movq	%rax, 24(%rbp)
 	addq	$32, %rbp
 	vmovdqu	%xmm9, -24(%rbp)
-.L175:
+.L189:
 	leaq	56(%r14), %rbx
-.L76:
+.L90:
 	movl	32(%rbx), %r15d
 	testl	%r15d, %r15d
-	jg	.L62
+	jg	.L76
 	movq	16(%rbx), %r11
 	movl	$1, 52(%rsp)
 	testq	%r11, %r11
-	je	.L164
+	je	.L178
 	leaq	52(%rsp), %rsi
 	movq	%rbx, %rdi
 	call	*24(%rbx)
 	cmpq	$0, 16(%rbx)
 	movl	$1, 52(%rsp)
-	je	.L165
+	je	.L179
 	leaq	52(%rsp), %rsi
 	movq	%rbx, %rdi
 	call	*24(%rbx)
@@ -714,12 +794,12 @@ _ZN4hftu14run_benchmarksEv:
 	cmovle	%eax, %r15d
 	cmpq	$2, %rax
 	cmovbe	%esi, %r15d
-	jmp	.L62
+	jmp	.L76
 	.p2align 4
 	.p2align 3
-.L157:
+.L171:
 	cmpq	$0, 24(%r14)
-	je	.L158
+	je	.L172
 	leaq	8(%r14), %rdi
 .LEHB4:
 	call	*32(%r14)
@@ -736,21 +816,21 @@ _ZN4hftu14run_benchmarksEv:
 	andl	$1, %ebp
 	call	__fprintf_chk@PLT
 	cmpq	%r14, %r13
-	jne	.L55
-	jmp	.L176
+	jne	.L69
+	jmp	.L190
 	.p2align 4
 	.p2align 3
-.L183:
+.L197:
 	leaq	.LC7(%rip), %rsi
 	movl	$2, %edi
 	xorl	%eax, %eax
 	call	__printf_chk@PLT
 .LEHE4:
 	movl	$1, %eax
-.L47:
+.L61:
 	movq	56(%rsp), %rdx
 	subq	%fs:40, %rdx
-	jne	.L180
+	jne	.L194
 	addq	$72, %rsp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 56
@@ -769,7 +849,7 @@ _ZN4hftu14run_benchmarksEv:
 	ret
 	.p2align 4
 	.p2align 3
-.L185:
+.L199:
 	.cfi_restore_state
 	sarq	$3, %rdi
 	movabsq	$7905747460161236407, %r8
@@ -784,7 +864,7 @@ _ZN4hftu14run_benchmarksEv:
 	movq	%rax, %rbp
 	movq	%r9, 16(%rsp)
 	cmpq	%rbx, %r12
-	jne	.L78
+	jne	.L92
 	leaq	.LC9(%rip), %rsi
 	movl	$2, %edi
 	xorl	%eax, %eax
@@ -793,35 +873,35 @@ _ZN4hftu14run_benchmarksEv:
 .LEHE6:
 	movq	%rbp, 24(%rsp)
 	xorl	%ebx, %ebx
-	jmp	.L79
+	jmp	.L93
 	.p2align 4
 	.p2align 3
-.L184:
+.L198:
 	leaq	_ZGVZN4hftu18benchmark_registryEvE3reg(%rip), %rdi
 	call	__cxa_guard_acquire@PLT
 	testl	%eax, %eax
-	je	.L58
+	je	.L72
 	leaq	__dso_handle(%rip), %rdx
 	leaq	_ZZN4hftu18benchmark_registryEvE3reg(%rip), %rsi
 	leaq	_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev(%rip), %rdi
 	call	__cxa_atexit@PLT
 	leaq	_ZGVZN4hftu18benchmark_registryEvE3reg(%rip), %rdi
 	call	__cxa_guard_release@PLT
-	jmp	.L58
+	jmp	.L72
 	.p2align 4
 	.p2align 3
-.L190:
+.L204:
 	movq	16(%r14), %rbx
 	movl	$1, 52(%rsp)
 	testq	%rbx, %rbx
-	je	.L164
+	je	.L178
 	leaq	52(%rsp), %rsi
 	movq	%r14, %rdi
 .LEHB7:
 	call	*24(%r14)
 	cmpq	$0, 16(%r14)
 	movl	$1, 52(%rsp)
-	je	.L165
+	je	.L179
 	leaq	52(%rsp), %rsi
 	movq	%r14, %rdi
 	call	*24(%r14)
@@ -838,10 +918,10 @@ _ZN4hftu14run_benchmarksEv:
 	cmpq	$2, %rax
 	cmova	%r15d, %edi
 	movslq	%edi, %r15
-	jmp	.L131
+	jmp	.L145
 	.p2align 4
 	.p2align 3
-.L189:
+.L203:
 	leaq	.LC9(%rip), %rsi
 	movl	$2, %edi
 	xorl	%eax, %eax
@@ -849,26 +929,26 @@ _ZN4hftu14run_benchmarksEv:
 	subq	24(%rsp), %rbp
 	movq	%rbp, %rbx
 	sarq	$5, %rbx
-.L79:
+.L93:
 	movq	24(%rsp), %rbp
 	xorl	%r15d, %r15d
-	jmp	.L90
+	jmp	.L104
 	.p2align 4
 	.p2align 3
-.L192:
+.L206:
 	vxorpd	%xmm8, %xmm8, %xmm8
 	vcvtsi2sdq	%r12, %xmm8, %xmm11
 	testq	%r13, %r13
-	js	.L85
-.L193:
+	js	.L99
+.L207:
 	vxorpd	%xmm12, %xmm12, %xmm12
 	vcvtsi2sdq	%r13, %xmm12, %xmm15
 	testq	%r14, %r14
-	js	.L87
-.L194:
+	js	.L101
+.L208:
 	vxorpd	%xmm0, %xmm0, %xmm0
 	vcvtsi2sdq	%r14, %xmm0, %xmm3
-.L88:
+.L102:
 	vmulsd	%xmm3, %xmm15, %xmm4
 	leaq	.LC10(%rip), %rsi
 	movl	$2, %edi
@@ -911,14 +991,14 @@ _ZN4hftu14run_benchmarksEv:
 	xorl	%eax, %eax
 	call	__printf_chk@PLT
 	addq	$32, %rbp
-.L90:
+.L104:
 	cmpq	%rbx, %r15
-	je	.L82
+	je	.L96
 	movq	24(%rbp), %r12
 	movq	16(%rbp), %r14
 	movq	8(%rbp), %r13
 	testq	%r12, %r12
-	jns	.L192
+	jns	.L206
 	movq	%r12, %rdi
 	movq	%r12, %r8
 	vxorpd	%xmm9, %xmm9, %xmm9
@@ -928,8 +1008,8 @@ _ZN4hftu14run_benchmarksEv:
 	vcvtsi2sdq	%rdi, %xmm9, %xmm10
 	vaddsd	%xmm10, %xmm10, %xmm11
 	testq	%r13, %r13
-	jns	.L193
-.L85:
+	jns	.L207
+.L99:
 	movq	%r13, %r9
 	movq	%r13, %r10
 	vxorpd	%xmm13, %xmm13, %xmm13
@@ -939,8 +1019,8 @@ _ZN4hftu14run_benchmarksEv:
 	vcvtsi2sdq	%r9, %xmm13, %xmm14
 	vaddsd	%xmm14, %xmm14, %xmm15
 	testq	%r14, %r14
-	jns	.L194
-.L87:
+	jns	.L208
+.L101:
 	movq	%r14, %r11
 	movq	%r14, %rax
 	vxorpd	%xmm1, %xmm1, %xmm1
@@ -949,32 +1029,32 @@ _ZN4hftu14run_benchmarksEv:
 	orq	%rax, %r11
 	vcvtsi2sdq	%r11, %xmm1, %xmm2
 	vaddsd	%xmm2, %xmm2, %xmm3
-	jmp	.L88
+	jmp	.L102
 	.p2align 4
 	.p2align 3
-.L82:
+.L96:
 	leaq	.LC17(%rip), %rsi
 	movl	$2, %edi
 	xorl	%eax, %eax
 	call	__printf_chk@PLT
 	movq	24(%rsp), %rdi
 	testq	%rdi, %rdi
-	je	.L91
+	je	.L105
 	movq	16(%rsp), %rsi
 	subq	%rdi, %rsi
 	call	_ZdlPvm@PLT
-.L91:
+.L105:
 	xorl	%eax, %eax
-	jmp	.L47
+	jmp	.L61
 	.p2align 4
 	.p2align 3
-.L70:
+.L84:
 	movq	16(%rsp), %rbp
 	subq	24(%rsp), %rbp
 	movq	%rbp, %r9
 	sarq	$5, %r9
 	cmpq	%r13, %r9
-	je	.L172
+	je	.L186
 	testq	%r9, %r9
 	movl	$1, %r15d
 	movabsq	$288230376151711743, %r10
@@ -997,37 +1077,37 @@ _ZN4hftu14run_benchmarksEv:
 	movq	40(%rsp), %rax
 	movq	%rax, 24(%rcx,%rbp)
 	testq	%rbp, %rbp
-	je	.L74
+	je	.L88
 	movq	24(%rsp), %rsi
 	movq	%rcx, %rdi
 	movq	%rbp, %rdx
 	call	memcpy@PLT
 	movq	%rax, %rcx
-.L74:
+.L88:
 	movq	24(%rsp), %rdx
 	leaq	32(%rcx,%rbp), %rbp
 	testq	%rdx, %rdx
-	je	.L75
+	je	.L89
 	movq	16(%rsp), %rsi
 	movq	%rdx, %rdi
 	movq	%rcx, 8(%rsp)
 	subq	%rdx, %rsi
 	call	_ZdlPvm@PLT
 	movq	8(%rsp), %rcx
-.L75:
+.L89:
 	leaq	(%rcx,%r15), %rsi
 	movq	%rcx, 24(%rsp)
 	movq	%rsi, 16(%rsp)
-	jmp	.L71
+	jmp	.L85
 	.p2align 4
 	.p2align 3
-.L191:
+.L205:
 	movq	16(%rsp), %rbp
 	subq	24(%rsp), %rbp
 	movq	%rbp, %r10
 	sarq	$5, %r10
 	cmpq	%r13, %r10
-	je	.L172
+	je	.L186
 	testq	%r10, %r10
 	movl	$1, %ebx
 	movabsq	$288230376151711743, %r11
@@ -1050,54 +1130,54 @@ _ZN4hftu14run_benchmarksEv:
 	movq	40(%rsp), %rax
 	movq	%rax, 24(%rcx,%rbp)
 	testq	%rbp, %rbp
-	je	.L137
+	je	.L151
 	movq	24(%rsp), %rsi
 	movq	%rcx, %rdi
 	movq	%rbp, %rdx
 	call	memcpy@PLT
 	movq	%rax, %rcx
-.L137:
+.L151:
 	cmpq	$0, 24(%rsp)
 	leaq	32(%rcx,%rbp), %rbp
-	je	.L138
+	je	.L152
 	movq	16(%rsp), %rsi
 	movq	24(%rsp), %rdi
 	movq	%rcx, 8(%rsp)
 	subq	%rdi, %rsi
 	call	_ZdlPvm@PLT
 	movq	8(%rsp), %rcx
-.L138:
+.L152:
 	leaq	(%rcx,%rbx), %rdx
 	movq	%rcx, 24(%rsp)
 	movq	%rdx, 16(%rsp)
-	jmp	.L175
+	jmp	.L189
 	.p2align 4
 	.p2align 3
-.L182:
+.L196:
 	leaq	_ZGVZN4hftu17validate_registryEvE3reg(%rip), %rdi
 	call	__cxa_guard_acquire@PLT
 	testl	%eax, %eax
-	je	.L49
+	je	.L63
 	leaq	__dso_handle(%rip), %rdx
 	leaq	_ZZN4hftu17validate_registryEvE3reg(%rip), %rsi
 	leaq	_ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED1Ev(%rip), %rdi
 	call	__cxa_atexit@PLT
 	leaq	_ZGVZN4hftu17validate_registryEvE3reg(%rip), %rdi
 	call	__cxa_guard_release@PLT
-	jmp	.L49
+	jmp	.L63
 	.p2align 4
 	.p2align 3
-.L187:
+.L201:
 	movq	16(%rbx), %r11
 	movl	$1, 52(%rsp)
 	testq	%r11, %r11
-	je	.L164
+	je	.L178
 	leaq	52(%rsp), %rsi
 	movq	%rbx, %rdi
 	call	*24(%rbx)
 	cmpq	$0, 16(%rbx)
 	movl	$1, 52(%rsp)
-	je	.L165
+	je	.L179
 	leaq	52(%rsp), %rsi
 	movq	%rbx, %rdi
 	call	*24(%rbx)
@@ -1113,10 +1193,10 @@ _ZN4hftu14run_benchmarksEv:
 	cmovle	%eax, %r14d
 	cmpq	$2, %rax
 	cmovbe	%ecx, %r14d
-	jmp	.L121
+	jmp	.L135
 	.p2align 4
 	.p2align 3
-.L188:
+.L202:
 	movl	$32, %edi
 	vmovq	%xmm0, 32(%rsp)
 	movq	%rsi, 8(%rsp)
@@ -1131,28 +1211,28 @@ _ZN4hftu14run_benchmarksEv:
 	vpinsrq	$1, %r14, %xmm1, %xmm2
 	vmovdqu	%xmm2, 8(%rax,%rdi)
 	testq	%rdi, %rdi
-	je	.L127
+	je	.L141
 	movq	%rdi, %rdx
 	movq	%rbp, %rsi
 	movq	%rax, %rdi
 	call	memcpy@PLT
 	movq	%rax, %r9
-.L127:
+.L141:
 	cmpq	$0, 24(%rsp)
 	leaq	32(%r9), %rbp
-	je	.L128
+	je	.L142
 	movq	16(%rsp), %rsi
 	movq	24(%rsp), %rdi
 	movq	%r9, 8(%rsp)
 	subq	%rdi, %rsi
 	call	_ZdlPvm@PLT
 	movq	8(%rsp), %r9
-.L128:
+.L142:
 	leaq	32(%r9), %r10
 	movq	%r9, 24(%rsp)
 	movq	%r10, 16(%rsp)
-	jmp	.L170
-.L186:
+	jmp	.L184
+.L200:
 	leaq	.LC9(%rip), %rsi
 	movl	$2, %edi
 	xorl	%eax, %eax
@@ -1162,76 +1242,76 @@ _ZN4hftu14run_benchmarksEv:
 	movq	$0, 16(%rsp)
 	movq	$0, 24(%rsp)
 	xorl	%ebx, %ebx
-	jmp	.L79
-.L92:
-.L177:
+	jmp	.L93
+.L106:
+.L191:
 	vzeroupper
-.L93:
+.L107:
 	movq	56(%rsp), %rax
 	subq	%fs:40, %rax
-	je	.L95
-.L180:
+	je	.L109
+.L194:
 	call	__stack_chk_fail@PLT
-.L164:
+.L178:
 	movq	56(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L180
+	jne	.L194
 .LEHB9:
 	call	_ZSt25__throw_bad_function_callv@PLT
-.L165:
+.L179:
 	movq	56(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L180
+	jne	.L194
 	call	_ZSt25__throw_bad_function_callv@PLT
 .LEHE9:
-.L104:
+.L118:
 	endbr64
-.L181:
+.L195:
 	movq	%rax, %r12
-	jmp	.L92
-.L158:
-	movq	56(%rsp), %rax
-	subq	%fs:40, %rax
-	jne	.L180
-.LEHB10:
-	call	_ZSt25__throw_bad_function_callv@PLT
-.LEHE10:
-.L106:
-	endbr64
-	movq	%rax, %r12
-	jmp	.L94
+	jmp	.L106
 .L172:
 	movq	56(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L180
+	jne	.L194
+.LEHB10:
+	call	_ZSt25__throw_bad_function_callv@PLT
+.LEHE10:
+.L120:
+	endbr64
+	movq	%rax, %r12
+	jmp	.L108
+.L186:
+	movq	56(%rsp), %rax
+	subq	%fs:40, %rax
+	jne	.L194
 	leaq	.LC8(%rip), %rdi
 .LEHB11:
 	call	_ZSt20__throw_length_errorPKc@PLT
-.L105:
+.L119:
 	endbr64
 	movq	%rax, %r12
-	jmp	.L81
-.L166:
+	jmp	.L95
+.L180:
 	movq	56(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L180
+	jne	.L194
 	call	_ZSt25__throw_bad_function_callv@PLT
 .LEHE11:
-.L107:
+.L121:
 	endbr64
-	jmp	.L181
-.L94:
+	jmp	.L195
+.L108:
 	movq	%rbp, 24(%rsp)
-.L81:
+.L95:
 	cmpq	$0, 24(%rsp)
-	je	.L177
+	je	.L191
 	movq	24(%rsp), %rdi
 	movq	16(%rsp), %rsi
 	subq	%rdi, %rsi
 	vzeroupper
 	call	_ZdlPvm@PLT
-	jmp	.L93
-.L95:
+	jmp	.L107
+.L109:
 	movq	%r12, %rdi
 .LEHB12:
 	call	_Unwind_Resume@PLT
@@ -1251,7 +1331,7 @@ _ZN4hftu14run_benchmarksEv:
 	.uleb128 0
 	.uleb128 .LEHB3-.LFB5227
 	.uleb128 .LEHE3-.LEHB3
-	.uleb128 .L105-.LFB5227
+	.uleb128 .L119-.LFB5227
 	.uleb128 0
 	.uleb128 .LEHB4-.LFB5227
 	.uleb128 .LEHE4-.LEHB4
@@ -1259,23 +1339,23 @@ _ZN4hftu14run_benchmarksEv:
 	.uleb128 0
 	.uleb128 .LEHB5-.LFB5227
 	.uleb128 .LEHE5-.LEHB5
-	.uleb128 .L104-.LFB5227
+	.uleb128 .L118-.LFB5227
 	.uleb128 0
 	.uleb128 .LEHB6-.LFB5227
 	.uleb128 .LEHE6-.LEHB6
-	.uleb128 .L106-.LFB5227
+	.uleb128 .L120-.LFB5227
 	.uleb128 0
 	.uleb128 .LEHB7-.LFB5227
 	.uleb128 .LEHE7-.LEHB7
-	.uleb128 .L105-.LFB5227
+	.uleb128 .L119-.LFB5227
 	.uleb128 0
 	.uleb128 .LEHB8-.LFB5227
 	.uleb128 .LEHE8-.LEHB8
-	.uleb128 .L107-.LFB5227
+	.uleb128 .L121-.LFB5227
 	.uleb128 0
 	.uleb128 .LEHB9-.LFB5227
 	.uleb128 .LEHE9-.LEHB9
-	.uleb128 .L105-.LFB5227
+	.uleb128 .L119-.LFB5227
 	.uleb128 0
 	.uleb128 .LEHB10-.LFB5227
 	.uleb128 .LEHE10-.LEHB10
@@ -1283,7 +1363,7 @@ _ZN4hftu14run_benchmarksEv:
 	.uleb128 0
 	.uleb128 .LEHB11-.LFB5227
 	.uleb128 .LEHE11-.LEHB11
-	.uleb128 .L105-.LFB5227
+	.uleb128 .L119-.LFB5227
 	.uleb128 0
 	.uleb128 .LEHB12-.LFB5227
 	.uleb128 .LEHE12-.LEHB12
@@ -1322,7 +1402,7 @@ _ZNSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm2
 	vpsrlq	$32, %ymm1, %ymm5
 	.p2align 4
 	.p2align 3
-.L197:
+.L211:
 	vpand	8(%rdx), %ymm3, %ymm6
 	vpand	(%rdx), %ymm4, %ymm0
 	addq	$96, %rdx
@@ -1370,7 +1450,7 @@ _ZNSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm2
 	vpxor	%ymm12, %ymm15, %ymm13
 	vmovdqu	%ymm13, -32(%rdx)
 	cmpq	%rax, %rdx
-	jne	.L197
+	jne	.L211
 	leaq	2464(%rdi), %r8
 	movabsq	$-5403634167711393303, %rcx
 	vpbroadcastq	.LC23(%rip), %ymm5
@@ -1382,7 +1462,7 @@ _ZNSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm2
 	vpbroadcastq	%xmm2, %ymm14
 	andl	$32, %esi
 	vpsrlq	$32, %ymm14, %ymm15
-	je	.L198
+	je	.L212
 	vpand	(%rax), %ymm5, %ymm0
 	vpand	8(%rax), %ymm4, %ymm1
 	addq	$32, %rax
@@ -1400,10 +1480,10 @@ _ZNSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm2
 	vpxor	%ymm1, %ymm7, %ymm8
 	vmovdqu	%ymm8, -32(%rax)
 	cmpq	%r8, %rax
-	je	.L208
+	je	.L222
 	.p2align 4
 	.p2align 3
-.L198:
+.L212:
 	vpand	8(%rax), %ymm4, %ymm7
 	addq	$64, %rax
 	vpand	-64(%rax), %ymm5, %ymm6
@@ -1436,8 +1516,8 @@ _ZNSt23mersenne_twister_engineImLm64ELm312ELm156ELm31ELm13043109905998158313ELm2
 	vpxor	%ymm11, %ymm2, %ymm12
 	vmovdqu	%ymm12, -32(%rax)
 	cmpq	%r8, %rax
-	jne	.L198
-.L208:
+	jne	.L212
+.L222:
 	movq	2480(%rdi), %r8
 	movq	2472(%rdi), %r9
 	movq	$0, 2496(%rdi)
@@ -1535,7 +1615,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	movq	%r15, 40(%rsp)
 	.p2align 4
 	.p2align 3
-.L210:
+.L224:
 	movq	%r15, %rcx
 	shrq	$62, %rcx
 	xorq	%r15, %rcx
@@ -1599,7 +1679,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	addq	$80, %r8
 	movq	%r15, -8(%r8)
 	cmpq	$312, %rbx
-	jne	.L210
+	jne	.L224
 	leal	1(%rsi), %esi
 	movslq	%esi, %r12
 	salq	$4, %r12
@@ -1619,46 +1699,46 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	shrq	$4, %rdi
 	incq	%rdi
 	andl	$7, %edi
-	je	.L211
+	je	.L225
 	cmpq	$1, %rdi
-	je	.L272
+	je	.L286
 	cmpq	$2, %rdi
-	je	.L273
+	je	.L287
 	cmpq	$3, %rdi
-	je	.L274
+	je	.L288
 	cmpq	$4, %rdi
-	je	.L275
+	je	.L289
 	cmpq	$5, %rdi
-	je	.L276
+	je	.L290
 	cmpq	$6, %rdi
-	jne	.L295
-.L277:
+	jne	.L309
+.L291:
 	vmovdqa	0(%r13), %xmm1
 	addq	$16, %rax
 	vmovdqa	%xmm1, -16(%rax)
-.L276:
+.L290:
 	vmovdqa	0(%r13), %xmm2
 	addq	$16, %rax
 	vmovdqa	%xmm2, -16(%rax)
-.L275:
+.L289:
 	vmovdqa	0(%r13), %xmm3
 	addq	$16, %rax
 	vmovdqa	%xmm3, -16(%rax)
-.L274:
+.L288:
 	vmovdqa	0(%r13), %xmm4
 	addq	$16, %rax
 	vmovdqa	%xmm4, -16(%rax)
-.L273:
+.L287:
 	vmovdqa	0(%r13), %xmm5
 	addq	$16, %rax
 	vmovdqa	%xmm5, -16(%rax)
-.L272:
+.L286:
 	vmovdqa	0(%r13), %xmm6
 	addq	$16, %rax
 	vmovdqa	%xmm6, -16(%rax)
 	cmpq	%r8, %rax
-	je	.L293
-.L211:
+	je	.L307
+.L225:
 	vmovdqa	0(%r13), %xmm7
 	subq	$-128, %rax
 	vmovdqa	%xmm7, -128(%rax)
@@ -1677,8 +1757,8 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	vmovdqa	0(%r13), %xmm14
 	vmovdqa	%xmm14, -16(%rax)
 	cmpq	%r8, %rax
-	jne	.L211
-.L293:
+	jne	.L225
+.L307:
 	movq	8(%rsp), %rcx
 	leaq	-16(%r12), %r9
 	leaq	-16(%r13,%r12), %r10
@@ -1689,13 +1769,13 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	movabsq	$-2270628950310912, %r15
 	movq	%rax, 8(%rcx)
 	movq	%r13, %rcx
-	jmp	.L219
+	jmp	.L233
 	.p2align 4
 	.p2align 3
-.L300:
+.L314:
 	movq	32(%rsp,%rbx,8), %rax
 	incq	%rbx
-.L213:
+.L227:
 	movq	%rax, %r10
 	vmovsd	.LC27(%rip), %xmm3
 	vxorpd	%xmm15, %xmm15, %xmm15
@@ -1723,8 +1803,8 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	vfmadd132sd	.LC26(%rip), %xmm3, %xmm2
 	vmovsd	%xmm2, (%rcx)
 	cmpq	$312, %rbx
-	je	.L296
-.L216:
+	je	.L310
+.L230:
 	movq	32(%rsp,%rbx,8), %rdi
 	leaq	1(%rbx), %r11
 	movabsq	$2361183241434822607, %rax
@@ -1754,8 +1834,8 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	incl	%edi
 	movl	%edi, 8(%rcx)
 	cmpq	$311, %r11
-	ja	.L297
-.L217:
+	ja	.L311
+.L231:
 	movq	32(%rsp,%r11,8), %rbx
 	leaq	1(%r11), %rax
 	movq	%rax, 2528(%rsp)
@@ -1777,8 +1857,8 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	andl	$1, %ebx
 	movb	%bl, 13(%rcx)
 	cmpq	$311, %rax
-	ja	.L298
-.L218:
+	ja	.L312
+.L232:
 	movq	32(%rsp,%rax,8), %r8
 	leaq	1(%rax), %rbx
 	movabsq	$147573952589676413, %rax
@@ -1805,10 +1885,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	subq	%r12, %r8
 	movw	%r8w, -2(%rcx)
 	cmpq	24(%rsp), %rcx
-	je	.L299
-.L219:
+	je	.L313
+.L233:
 	cmpq	$311, %rbx
-	jbe	.L300
+	jbe	.L314
 	vpbroadcastq	.LC24(%rip), %ymm15
 	vpbroadcastq	.LC23(%rip), %ymm3
 	leaq	1280(%rsp), %rbx
@@ -1863,7 +1943,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	vmovdqa	%ymm12, 96(%rsp)
 	.p2align 4
 	.p2align 3
-.L214:
+.L228:
 	vpand	8(%r11), %ymm15, %ymm13
 	subq	$-128, %r11
 	vpand	-128(%r11), %ymm3, %ymm14
@@ -1926,7 +2006,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	vpxor	%ymm13, %ymm7, %ymm14
 	vmovdqa	%ymm14, -32(%r11)
 	cmpq	%rbx, %r11
-	jne	.L214
+	jne	.L228
 	vpbroadcastq	.LC29(%rip), %ymm1
 	leaq	2496(%rsp), %rsi
 	vpbroadcastq	.LC24(%rip), %ymm15
@@ -1939,11 +2019,11 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	incq	%r12
 	andl	$3, %r12d
 	vpsrlq	$32, %ymm1, %ymm4
-	je	.L215
+	je	.L229
 	cmpq	$1, %r12
-	je	.L278
+	je	.L292
 	cmpq	$2, %r12
-	je	.L279
+	je	.L293
 	vpand	8(%rbx), %ymm15, %ymm5
 	vpand	1280(%rsp), %ymm3, %ymm7
 	addq	$32, %rbx
@@ -1960,7 +2040,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	vpaddq	%ymm5, %ymm12, %ymm7
 	vpxor	%ymm7, %ymm11, %ymm9
 	vmovdqa	%ymm9, 1280(%rsp)
-.L279:
+.L293:
 	vpand	8(%rbx), %ymm15, %ymm10
 	addq	$32, %rbx
 	vpand	-32(%rbx), %ymm3, %ymm11
@@ -1977,7 +2057,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	vpaddq	%ymm10, %ymm8, %ymm11
 	vpxor	%ymm11, %ymm13, %ymm0
 	vmovdqa	%ymm0, -32(%rbx)
-.L278:
+.L292:
 	vpand	8(%rbx), %ymm15, %ymm12
 	addq	$32, %rbx
 	vpand	-32(%rbx), %ymm3, %ymm13
@@ -1995,10 +2075,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	vpxor	%ymm13, %ymm5, %ymm14
 	vmovdqa	%ymm14, -32(%rbx)
 	cmpq	%rsi, %rbx
-	je	.L292
+	je	.L306
 	.p2align 4
 	.p2align 3
-.L215:
+.L229:
 	vpand	8(%rbx), %ymm15, %ymm8
 	subq	$-128, %rbx
 	vpand	-128(%rbx), %ymm3, %ymm5
@@ -2061,8 +2141,8 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	vpxor	%ymm5, %ymm7, %ymm9
 	vmovdqa	%ymm9, -32(%rbx)
 	cmpq	%rsi, %rbx
-	jne	.L215
-.L292:
+	jne	.L229
+.L306:
 	movq	2504(%rsp), %rdx
 	movq	2496(%rsp), %r8
 	movabsq	$-5403634167711393303, %r10
@@ -2118,10 +2198,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	xorq	%rbx, %r12
 	movl	$1, %ebx
 	movq	%r12, 2520(%rsp)
-	jmp	.L213
+	jmp	.L227
 	.p2align 4
 	.p2align 3
-.L298:
+.L312:
 	movq	%rcx, 16(%rsp)
 	leaq	32(%rsp), %rdi
 	vzeroupper
@@ -2129,10 +2209,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	movabsq	$6148914691236517205, %r9
 	movq	2528(%rsp), %rax
 	movq	16(%rsp), %rcx
-	jmp	.L218
+	jmp	.L232
 	.p2align 4
 	.p2align 3
-.L297:
+.L311:
 	movq	%rcx, 16(%rsp)
 	leaq	32(%rsp), %rdi
 	vzeroupper
@@ -2140,10 +2220,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	movabsq	$6148914691236517205, %r9
 	movq	2528(%rsp), %r11
 	movq	16(%rsp), %rcx
-	jmp	.L217
+	jmp	.L231
 	.p2align 4
 	.p2align 3
-.L296:
+.L310:
 	movq	%rcx, 16(%rsp)
 	leaq	32(%rsp), %rdi
 	vzeroupper
@@ -2151,14 +2231,14 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	movabsq	$6148914691236517205, %r9
 	movq	2528(%rsp), %rbx
 	movq	16(%rsp), %rcx
-	jmp	.L216
-.L299:
+	jmp	.L230
+.L313:
 	movq	(%rsp), %r14
 	vpxor	%xmm1, %xmm1, %xmm1
 	vmovdqa	%xmm1, 0(%r13,%r14)
 	movq	2552(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L301
+	jne	.L315
 	movq	8(%rsp), %rax
 	vzeroupper
 	leaq	-40(%rbp), %rsp
@@ -2171,13 +2251,13 @@ _ZN12_GLOBAL__N_1L14generate_burstEim:
 	.cfi_remember_state
 	.cfi_def_cfa 7, 8
 	ret
-.L295:
+.L309:
 	.cfi_restore_state
 	vmovdqa	0(%r13), %xmm0
 	vmovdqa	%xmm0, (%rax)
 	leaq	32(%r13), %rax
-	jmp	.L277
-.L301:
+	jmp	.L291
+.L315:
 	vzeroupper
 	call	__stack_chk_fail@PLT
 	.cfi_endproc
@@ -2218,7 +2298,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	leaq	48(%rsp), %rax
 	.p2align 4
 	.p2align 3
-.L303:
+.L317:
 	movq	%r12, %rcx
 	shrq	$62, %rcx
 	xorq	%r12, %rcx
@@ -2282,7 +2362,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	addq	$80, %rax
 	movq	%r12, -8(%rax)
 	cmpq	$312, %rbx
-	jne	.L303
+	jne	.L317
 	movl	$16016, %edi
 	movq	$312, 2528(%rsp)
 	call	_Znwm@PLT
@@ -2296,7 +2376,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	movq	%rdx, 16(%rax)
 	.p2align 4
 	.p2align 3
-.L304:
+.L318:
 	subq	$-128, %r14
 	vmovdqa	0(%r13), %xmm0
 	vmovdqa	%xmm0, -128(%r14)
@@ -2315,7 +2395,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	vmovdqa	0(%r13), %xmm7
 	vmovdqa	%xmm7, -16(%r14)
 	cmpq	%rdx, %r14
-	jne	.L304
+	jne	.L318
 	movq	8(%rsp), %r15
 	leaq	16000(%r13), %rcx
 	movq	%r13, %rsi
@@ -2324,10 +2404,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	movabsq	$8202884508482404352, %r12
 	movq	%r14, 8(%r15)
 	movabsq	$-2270628950310912, %r14
-	jmp	.L312
+	jmp	.L326
 	.p2align 4
 	.p2align 3
-.L305:
+.L319:
 	leaq	1(%rbx), %r11
 	movq	32(%rsp,%rbx,8), %rbx
 	vmovsd	.LC27(%rip), %xmm10
@@ -2357,8 +2437,8 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	vfmadd132sd	.LC26(%rip), %xmm10, %xmm9
 	vmovsd	%xmm9, (%rsi)
 	cmpq	$311, %r11
-	ja	.L359
-.L306:
+	ja	.L373
+.L320:
 	movq	32(%rsp,%r11,8), %rcx
 	leaq	1(%r11), %rbx
 	movb	$1, 12(%rsi)
@@ -2388,8 +2468,8 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	incl	%ecx
 	movl	%ecx, 8(%rsi)
 	cmpq	$311, %rbx
-	ja	.L360
-.L307:
+	ja	.L374
+.L321:
 	movq	32(%rsp,%rbx,8), %rcx
 	leaq	1(%rbx), %r11
 	movq	%rcx, %rdi
@@ -2410,10 +2490,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	andl	$1, %ecx
 	movb	%cl, 13(%rsi)
 	cmpq	$311, %r11
-	ja	.L308
+	ja	.L322
 	movq	32(%rsp,%r11,8), %r9
 	addq	$2, %rbx
-.L309:
+.L323:
 	movq	%r9, %rcx
 	movabsq	$147573952589676413, %rax
 	addq	$16, %rsi
@@ -2439,10 +2519,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	subq	%r11, %rcx
 	movw	%cx, -2(%rsi)
 	cmpq	24(%rsp), %rsi
-	je	.L361
-.L312:
+	je	.L375
+.L326:
 	cmpq	$312, %rbx
-	jne	.L305
+	jne	.L319
 	movq	%rsi, 16(%rsp)
 	leaq	32(%rsp), %rdi
 	vzeroupper
@@ -2450,10 +2530,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	movabsq	$6148914691236517205, %r10
 	movq	2528(%rsp), %rbx
 	movq	16(%rsp), %rsi
-	jmp	.L305
+	jmp	.L319
 	.p2align 4
 	.p2align 3
-.L308:
+.L322:
 	vpbroadcastq	.LC24(%rip), %ymm11
 	vpbroadcastq	.LC23(%rip), %ymm12
 	leaq	1280(%rsp), %rbx
@@ -2508,7 +2588,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	vmovdqa	%ymm10, 96(%rsp)
 	.p2align 4
 	.p2align 3
-.L310:
+.L324:
 	vpand	8(%rdx), %ymm11, %ymm8
 	subq	$-128, %rdx
 	vpand	-128(%rdx), %ymm12, %ymm1
@@ -2571,7 +2651,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	vpxor	%ymm1, %ymm2, %ymm0
 	vmovdqa	%ymm0, -32(%rdx)
 	cmpq	%rdx, %rbx
-	jne	.L310
+	jne	.L324
 	leaq	2496(%rsp), %r15
 	movabsq	$-5403634167711393303, %rcx
 	vpbroadcastq	.LC24(%rip), %ymm11
@@ -2586,11 +2666,11 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	shrq	$5, %r11
 	incq	%r11
 	andl	$3, %r11d
-	je	.L311
+	je	.L325
 	cmpq	$1, %r11
-	je	.L351
+	je	.L365
 	cmpq	$2, %r11
-	je	.L352
+	je	.L366
 	vpand	8(%rbx), %ymm11, %ymm8
 	vpand	1280(%rsp), %ymm12, %ymm3
 	addq	$32, %rbx
@@ -2607,7 +2687,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	vpaddq	%ymm8, %ymm9, %ymm3
 	vpxor	%ymm3, %ymm5, %ymm4
 	vmovdqa	%ymm4, 1280(%rsp)
-.L352:
+.L366:
 	vpand	8(%rbx), %ymm11, %ymm5
 	addq	$32, %rbx
 	vpand	-32(%rbx), %ymm12, %ymm6
@@ -2624,7 +2704,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	vpaddq	%ymm5, %ymm14, %ymm6
 	vpxor	%ymm6, %ymm10, %ymm9
 	vmovdqa	%ymm9, -32(%rbx)
-.L351:
+.L365:
 	vpand	8(%rbx), %ymm11, %ymm7
 	addq	$32, %rbx
 	vpand	-32(%rbx), %ymm12, %ymm10
@@ -2642,10 +2722,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	vpxor	%ymm10, %ymm3, %ymm1
 	vmovdqa	%ymm1, -32(%rbx)
 	cmpq	%rbx, %r15
-	je	.L357
+	je	.L371
 	.p2align 4
 	.p2align 3
-.L311:
+.L325:
 	vpand	8(%rbx), %ymm11, %ymm14
 	subq	$-128, %rbx
 	vpand	-128(%rbx), %ymm12, %ymm3
@@ -2708,8 +2788,8 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	vpxor	%ymm14, %ymm4, %ymm3
 	vmovdqa	%ymm3, -32(%rbx)
 	cmpq	%rbx, %r15
-	jne	.L311
-.L357:
+	jne	.L325
+.L371:
 	movq	2512(%rsp), %rbx
 	movq	2504(%rsp), %rdi
 	movq	2496(%rsp), %r8
@@ -2764,10 +2844,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	xorq	%rdi, %rbx
 	movq	%rbx, 2520(%rsp)
 	movl	$1, %ebx
-	jmp	.L309
+	jmp	.L323
 	.p2align 4
 	.p2align 3
-.L360:
+.L374:
 	movq	%rsi, 16(%rsp)
 	leaq	32(%rsp), %rdi
 	vzeroupper
@@ -2775,10 +2855,10 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	movabsq	$6148914691236517205, %r10
 	movq	2528(%rsp), %rbx
 	movq	16(%rsp), %rsi
-	jmp	.L307
+	jmp	.L321
 	.p2align 4
 	.p2align 3
-.L359:
+.L373:
 	movq	%rsi, 16(%rsp)
 	leaq	32(%rsp), %rdi
 	vzeroupper
@@ -2786,13 +2866,13 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	movabsq	$6148914691236517205, %r10
 	movq	2528(%rsp), %r11
 	movq	16(%rsp), %rsi
-	jmp	.L306
-.L361:
+	jmp	.L320
+.L375:
 	vpxor	%xmm11, %xmm11, %xmm11
 	vmovdqa	%xmm11, 16000(%r13)
 	movq	2552(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L362
+	jne	.L376
 	movq	8(%rsp), %rax
 	vzeroupper
 	leaq	-40(%rbp), %rsp
@@ -2805,7 +2885,7 @@ _ZN12_GLOBAL__N_1L14generate_burstEim.constprop.0:
 	.cfi_remember_state
 	.cfi_def_cfa 7, 8
 	ret
-.L362:
+.L376:
 	.cfi_restore_state
 	vzeroupper
 	call	__stack_chk_fail@PLT
@@ -2869,7 +2949,7 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invoke
 	leaq	13(%rbx), %rax
 	.p2align 4
 	.p2align 3
-.L364:
+.L378:
 	vmovupd	-13(%rax), %ymm0
 	vmovupd	51(%rax), %ymm9
 	addq	$512, %rax
@@ -3041,7 +3121,7 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invoke
 	vpaddq	%ymm2, %ymm12, %ymm15
 	vpaddq	%ymm15, %ymm9, %ymm5
 	cmpq	%rdx, %rax
-	jne	.L364
+	jne	.L378
 	vmovsd	15936(%rbx), %xmm4
 	vmovsd	15904(%rbx), %xmm14
 	vextractf128	$0x1, %ymm7, %xmm15
@@ -3060,7 +3140,7 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invoke
 	vsubsd	%xmm4, %xmm10, %xmm3
 	vandpd	.LC33(%rip), %xmm3, %xmm13
 	vcomisd	.LC34(%rip), %xmm13
-	ja	.L391
+	ja	.L405
 	movzbl	15885(%rbx), %esi
 	movzbl	15901(%rbx), %edi
 	movl	$1, %edx
@@ -3116,12 +3196,12 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invoke
 	vpaddq	%xmm4, %xmm0, %xmm3
 	vmovq	%xmm3, %rsi
 	cmpq	%rcx, %rsi
-	jne	.L390
+	jne	.L404
 	vzeroupper
-	jmp	.L367
-.L391:
+	jmp	.L381
+.L405:
 	leaq	.LC35(%rip), %r8
-.L390:
+.L404:
 	movq	stderr(%rip), %rdi
 	leaq	.LC36(%rip), %rcx
 	leaq	.LC37(%rip), %rdx
@@ -3132,19 +3212,19 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invoke
 	call	__fprintf_chk@PLT
 .LEHE14:
 	xorl	%edx, %edx
-.L367:
+.L381:
 	testq	%rbx, %rbx
-	je	.L369
+	je	.L383
 	movq	%r12, %rsi
 	movq	%rbx, %rdi
 	movb	%dl, 31(%rsp)
 	subq	%rbx, %rsi
 	call	_ZdlPvm@PLT
 	movzbl	31(%rsp), %edx
-.L369:
+.L383:
 	movq	56(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L392
+	jne	.L406
 	leaq	-24(%rbp), %rsp
 	movl	%edx, %eax
 	popq	%rbx
@@ -3154,13 +3234,13 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invoke
 	.cfi_remember_state
 	.cfi_def_cfa 7, 8
 	ret
-.L392:
+.L406:
 	.cfi_restore_state
 	call	__stack_chk_fail@PLT
-.L375:
+.L389:
 	endbr64
 	movq	%rax, %r14
-	jmp	.L370
+	jmp	.L384
 	.section	.gcc_except_table,"a",@progbits
 .LLSDA5919:
 	.byte	0xff
@@ -3174,7 +3254,7 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invoke
 	.uleb128 0
 	.uleb128 .LEHB14-.LFB5919
 	.uleb128 .LEHE14-.LEHB14
-	.uleb128 .L375-.LFB5919
+	.uleb128 .L389-.LFB5919
 	.uleb128 0
 .LLSDACSE5919:
 	.text
@@ -3186,31 +3266,31 @@ _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invoke
 	.type	_ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invokeERKSt9_Any_data.cold, @function
 _ZNSt17_Function_handlerIFbvEN12_GLOBAL__N_1L15val_correctnessMUlvE_EE9_M_invokeERKSt9_Any_data.cold:
 .LFSB5919:
-.L370:
+.L384:
 	.cfi_def_cfa 6, 16
 	.cfi_offset 3, -40
 	.cfi_offset 6, -16
 	.cfi_offset 12, -32
 	.cfi_offset 14, -24
 	testq	%rbx, %rbx
-	je	.L387
+	je	.L401
 	movq	%r12, %rsi
 	movq	%rbx, %rdi
 	subq	%rbx, %rsi
 	vzeroupper
 	call	_ZdlPvm@PLT
-.L371:
+.L385:
 	movq	56(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L393
+	jne	.L407
 	movq	%r14, %rdi
 .LEHB15:
 	call	_Unwind_Resume@PLT
 .LEHE15:
-.L387:
+.L401:
 	vzeroupper
-	jmp	.L371
-.L393:
+	jmp	.L385
+.L407:
 	call	__stack_chk_fail@PLT
 	.cfi_endproc
 .LFE5919:
@@ -3274,8 +3354,8 @@ _GLOBAL__sub_I_main:
 	vmovdqa	%xmm1, 64(%rsp)
 	movzbl	_ZGVZN4hftu17validate_registryEvE3reg(%rip), %edx
 	testb	%dl, %dl
-	je	.L535
-.L396:
+	je	.L549
+.L410:
 	movq	72(%rsp), %rsi
 	movq	64(%rsp), %rbx
 	leaq	.LC36(%rip), %rcx
@@ -3285,17 +3365,17 @@ _GLOBAL__sub_I_main:
 	movq	$0, 104(%rsp)
 	movq	%rsi, 112(%rsp)
 	testq	%rbx, %rbx
-	je	.L398
+	je	.L412
 	vmovdqa	48(%rsp), %xmm4
 	vpxor	%xmm5, %xmm5, %xmm5
 	movq	%rbx, 104(%rsp)
 	vmovdqa	%xmm5, 64(%rsp)
 	vmovdqu	%xmm4, 88(%rsp)
-.L398:
+.L412:
 	movq	8+_ZZN4hftu17validate_registryEvE3reg(%rip), %r9
 	movq	16+_ZZN4hftu17validate_registryEvE3reg(%rip), %r11
 	cmpq	%r11, %r9
-	je	.L399
+	je	.L413
 	movq	104(%rsp), %r8
 	leaq	.LC36(%rip), %rcx
 	vpxor	%xmm11, %xmm11, %xmm11
@@ -3304,31 +3384,31 @@ _GLOBAL__sub_I_main:
 	vmovdqu	%xmm11, 8(%r9)
 	movq	%rsi, 32(%r9)
 	testq	%r8, %r8
-	je	.L400
+	je	.L414
 	vmovdqu	88(%rsp), %xmm12
 	vpxor	%xmm13, %xmm13, %xmm13
 	movq	%r8, 24(%r9)
 	vmovdqu	%xmm13, 104(%rsp)
 	vmovdqu	%xmm12, 8(%r9)
-.L400:
+.L414:
 	addq	$40, 8+_ZZN4hftu17validate_registryEvE3reg(%rip)
-.L401:
+.L415:
 	movq	104(%rsp), %rbx
 	testq	%rbx, %rbx
-	je	.L410
+	je	.L424
 	leaq	88(%rsp), %rdi
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	call	*%rbx
-.L410:
+.L424:
 	movq	64(%rsp), %rax
 	testq	%rax, %rax
-	je	.L412
+	je	.L426
 	leaq	48(%rsp), %rdi
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	call	*%rax
-.L412:
+.L426:
 	vmovq	.LC42(%rip), %xmm15
 	movq	8+_ZN12_GLOBAL__N_1L5burstE(%rip), %rsi
 	leaq	_ZNSt17_Function_handlerIFmiEN12_GLOBAL__N_1L9reg_burstMUliE_EE9_M_invokeERKSt9_Any_dataOi(%rip), %rdi
@@ -3346,8 +3426,8 @@ _GLOBAL__sub_I_main:
 	movq	%rdx, %r10
 	shrq	$4, %r10
 	testb	%r11b, %r11b
-	je	.L536
-.L418:
+	je	.L550
+.L432:
 	movq	72(%rsp), %rcx
 	movq	64(%rsp), %r8
 	leaq	.LC40(%rip), %r9
@@ -3358,17 +3438,17 @@ _GLOBAL__sub_I_main:
 	movq	$0, 112(%rsp)
 	movq	%rcx, 120(%rsp)
 	testq	%r8, %r8
-	je	.L420
+	je	.L434
 	vmovdqa	48(%rsp), %xmm1
 	vpxor	%xmm2, %xmm2, %xmm2
 	movq	%r8, 112(%rsp)
 	vmovdqa	%xmm2, 64(%rsp)
 	vmovdqa	%xmm1, 96(%rsp)
-.L420:
+.L434:
 	movq	8+_ZZN4hftu18benchmark_registryEvE3reg(%rip), %rbx
 	movl	$1, 128(%rsp)
 	cmpq	16+_ZZN4hftu18benchmark_registryEvE3reg(%rip), %rbx
-	je	.L421
+	je	.L435
 	movq	112(%rsp), %r9
 	leaq	.LC40(%rip), %rdx
 	vpxor	%xmm0, %xmm0, %xmm0
@@ -3378,63 +3458,63 @@ _GLOBAL__sub_I_main:
 	movq	$0, 32(%rbx)
 	movq	%rcx, 40(%rbx)
 	testq	%r9, %r9
-	je	.L422
+	je	.L436
 	vmovdqa	96(%rsp), %xmm3
 	vpxor	%xmm1, %xmm1, %xmm1
 	movq	%r9, 32(%rbx)
 	vmovdqa	%xmm1, 112(%rsp)
 	vmovdqu	%xmm3, 16(%rbx)
-.L422:
+.L436:
 	movl	128(%rsp), %edi
 	addq	$56, %rbx
 	movl	%edi, -8(%rbx)
 	movq	%rbx, 8+_ZZN4hftu18benchmark_registryEvE3reg(%rip)
-.L423:
+.L437:
 	movq	112(%rsp), %rbx
 	testq	%rbx, %rbx
-	je	.L432
+	je	.L446
 	leaq	96(%rsp), %rdi
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	call	*%rbx
-.L432:
+.L446:
 	movq	64(%rsp), %rax
 	testq	%rax, %rax
-	je	.L394
+	je	.L408
 	leaq	48(%rsp), %rdi
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	call	*%rax
-.L394:
+.L408:
 	movq	136(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L537
+	jne	.L551
 	addq	$144, %rsp
 	.cfi_remember_state
 	.cfi_def_cfa_offset 16
 	popq	%rbx
 	.cfi_def_cfa_offset 8
 	ret
-.L535:
+.L549:
 	.cfi_restore_state
 	leaq	_ZGVZN4hftu17validate_registryEvE3reg(%rip), %rdi
 	call	__cxa_guard_acquire@PLT
 	testl	%eax, %eax
-	je	.L396
+	je	.L410
 	leaq	__dso_handle(%rip), %rdx
 	leaq	_ZZN4hftu17validate_registryEvE3reg(%rip), %rsi
 	leaq	_ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED1Ev(%rip), %rdi
 	call	__cxa_atexit@PLT
 	leaq	_ZGVZN4hftu17validate_registryEvE3reg(%rip), %rdi
 	call	__cxa_guard_release@PLT
-	jmp	.L396
-.L536:
+	jmp	.L410
+.L550:
 	leaq	_ZGVZN4hftu18benchmark_registryEvE3reg(%rip), %rdi
 	movq	%r10, 8(%rsp)
 	call	__cxa_guard_acquire@PLT
 	testl	%eax, %eax
 	movq	8(%rsp), %r10
-	je	.L418
+	je	.L432
 	leaq	__dso_handle(%rip), %rdx
 	leaq	_ZZN4hftu18benchmark_registryEvE3reg(%rip), %rsi
 	leaq	_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev(%rip), %rdi
@@ -3442,8 +3522,8 @@ _GLOBAL__sub_I_main:
 	leaq	_ZGVZN4hftu18benchmark_registryEvE3reg(%rip), %rdi
 	call	__cxa_guard_release@PLT
 	movq	8(%rsp), %r10
-	jmp	.L418
-.L421:
+	jmp	.L432
+.L435:
 	movq	_ZZN4hftu18benchmark_registryEvE3reg(%rip), %rsi
 	movq	%rbx, %rdx
 	movabsq	$7905747460161236407, %rax
@@ -3453,7 +3533,7 @@ _GLOBAL__sub_I_main:
 	sarq	$3, %rdi
 	imulq	%rax, %rdi
 	cmpq	%r11, %rdi
-	je	.L515
+	je	.L529
 	testq	%rdi, %rdi
 	movq	%r10, 8(%rsp)
 	movl	$1, %r10d
@@ -3488,16 +3568,16 @@ _GLOBAL__sub_I_main:
 	vmovdqu	%xmm4, 16(%r8)
 	movq	%rdi, 32(%r8)
 	movq	%rax, 40(%r8)
-	je	.L426
+	je	.L440
 	vmovdqa	96(%rsp), %xmm5
 	vpxor	%xmm6, %xmm6, %xmm6
 	movq	%r11, 32(%r8)
 	vmovdqa	%xmm6, 112(%rsp)
 	vmovdqu	%xmm5, 16(%r8)
-.L426:
+.L440:
 	movl	$1, 48(%r8)
 	cmpq	%r9, %rdx
-	je	.L444
+	je	.L458
 	movq	%rdx, %rcx
 	movabsq	$988218432520154551, %r8
 	movq	%r9, %rsi
@@ -3510,11 +3590,11 @@ _GLOBAL__sub_I_main:
 	imulq	%r8, %rcx
 	incq	%rcx
 	andl	$3, %ecx
-	je	.L430
+	je	.L444
 	cmpq	$1, %rcx
-	je	.L491
+	je	.L505
 	cmpq	$2, %rcx
-	je	.L492
+	je	.L506
 	movq	(%r9), %rsi
 	movq	8(%r9), %rdi
 	xorl	%eax, %eax
@@ -3526,17 +3606,17 @@ _GLOBAL__sub_I_main:
 	movq	%rdi, 8(%r10)
 	movq	%r11, 40(%r10)
 	testq	%rcx, %rcx
-	je	.L518
+	je	.L532
 	vmovdqu	16(%r9), %xmm9
 	vmovdqu	%xmm8, 32(%r9)
 	movq	%rcx, 32(%r10)
 	vmovdqu	%xmm9, 16(%r10)
 	movl	48(%r9), %esi
 	movl	%esi, 48(%r10)
-.L519:
+.L533:
 	leaq	56(%r9), %rsi
 	leaq	56(%r10), %rax
-.L492:
+.L506:
 	movq	(%rsi), %rdi
 	movq	8(%rsi), %r11
 	xorl	%ecx, %ecx
@@ -3548,17 +3628,17 @@ _GLOBAL__sub_I_main:
 	movq	%r11, 8(%rax)
 	movq	%r8, 40(%rax)
 	testq	%rdi, %rdi
-	je	.L520
+	je	.L534
 	vmovdqu	16(%rsi), %xmm10
 	vmovdqu	%xmm8, 32(%rsi)
 	movq	%rdi, 32(%rax)
 	vmovdqu	%xmm10, 16(%rax)
 	movl	48(%rsi), %ecx
 	movl	%ecx, 48(%rax)
-.L521:
+.L535:
 	addq	$56, %rsi
 	addq	$56, %rax
-.L491:
+.L505:
 	movq	(%rsi), %r8
 	movq	8(%rsi), %rdi
 	xorl	%r11d, %r11d
@@ -3570,19 +3650,19 @@ _GLOBAL__sub_I_main:
 	movq	%rdi, 8(%rax)
 	movq	%rcx, 40(%rax)
 	testq	%r8, %r8
-	je	.L522
+	je	.L536
 	vmovdqu	16(%rsi), %xmm11
 	vmovdqu	%xmm8, 32(%rsi)
 	movq	%r8, 32(%rax)
 	vmovdqu	%xmm11, 16(%rax)
 	movl	48(%rsi), %r11d
 	movl	%r11d, 48(%rax)
-.L523:
+.L537:
 	addq	$56, %rsi
 	addq	$56, %rax
 	cmpq	%rsi, %rdx
-	je	.L427
-.L430:
+	je	.L441
+.L444:
 	movq	(%rsi), %rcx
 	movq	8(%rsi), %r8
 	xorl	%edi, %edi
@@ -3594,12 +3674,12 @@ _GLOBAL__sub_I_main:
 	movq	%r8, 8(%rax)
 	movq	%r11, 40(%rax)
 	testq	%rcx, %rcx
-	je	.L534
+	je	.L548
 	vmovdqu	16(%rsi), %xmm12
 	movq	%rcx, 32(%rax)
 	vmovdqu	%xmm8, 32(%rsi)
 	vmovdqu	%xmm12, 16(%rax)
-.L534:
+.L548:
 	movl	48(%rsi), %r8d
 	leaq	56(%rsi), %rdi
 	leaq	56(%rax), %r11
@@ -3615,14 +3695,14 @@ _GLOBAL__sub_I_main:
 	movq	%r8, 40(%r11)
 	movq	%rax, 8(%r11)
 	testq	%rsi, %rsi
-	je	.L538
+	je	.L552
 	vmovdqu	16(%rdi), %xmm13
 	vmovdqu	%xmm8, 32(%rdi)
 	movq	%rsi, 32(%r11)
 	vmovdqu	%xmm13, 16(%r11)
 	movl	48(%rdi), %ecx
 	movl	%ecx, 48(%r11)
-.L524:
+.L538:
 	movq	56(%rdi), %r8
 	xorl	%eax, %eax
 	movq	64(%rdi), %rsi
@@ -3634,14 +3714,14 @@ _GLOBAL__sub_I_main:
 	movq	%rsi, 64(%r11)
 	movq	%rcx, 96(%r11)
 	testq	%r8, %r8
-	je	.L525
+	je	.L539
 	vmovdqu	72(%rdi), %xmm14
 	vmovdqu	%xmm8, 88(%rdi)
 	movq	%r8, 88(%r11)
 	vmovdqu	%xmm14, 72(%r11)
 	movl	104(%rdi), %eax
 	movl	%eax, 104(%r11)
-.L526:
+.L540:
 	movq	112(%rdi), %rcx
 	xorl	%esi, %esi
 	movq	120(%rdi), %r8
@@ -3653,22 +3733,22 @@ _GLOBAL__sub_I_main:
 	movq	%r8, 120(%r11)
 	movq	%rax, 152(%r11)
 	testq	%rcx, %rcx
-	je	.L527
+	je	.L541
 	vmovdqu	128(%rdi), %xmm15
 	vmovdqu	%xmm8, 144(%rdi)
 	movq	%rcx, 144(%r11)
 	vmovdqu	%xmm15, 128(%r11)
 	movl	160(%rdi), %esi
 	movl	%esi, 160(%r11)
-.L528:
+.L542:
 	leaq	168(%rdi), %rsi
 	leaq	168(%r11), %rax
 	cmpq	%rsi, %rdx
-	jne	.L430
-.L427:
+	jne	.L444
+.L441:
 	addq	$56, %rax
 	testq	%r9, %r9
-	je	.L431
+	je	.L445
 	movq	16+_ZZN4hftu18benchmark_registryEvE3reg(%rip), %rsi
 	movq	%r9, %rdi
 	movq	%r10, 16(%rsp)
@@ -3677,13 +3757,13 @@ _GLOBAL__sub_I_main:
 	call	_ZdlPvm@PLT
 	movq	16(%rsp), %r10
 	movq	8(%rsp), %rax
-.L431:
+.L445:
 	movq	%r10, _ZZN4hftu18benchmark_registryEvE3reg(%rip)
 	addq	%rbx, %r10
 	movq	%rax, 8+_ZZN4hftu18benchmark_registryEvE3reg(%rip)
 	movq	%r10, 16+_ZZN4hftu18benchmark_registryEvE3reg(%rip)
-	jmp	.L423
-.L399:
+	jmp	.L437
+.L413:
 	movq	_ZZN4hftu17validate_registryEvE3reg(%rip), %r8
 	movq	%r9, %r10
 	movabsq	$-3689348814741910323, %rax
@@ -3693,7 +3773,7 @@ _GLOBAL__sub_I_main:
 	sarq	$3, %rdi
 	imulq	%rax, %rdi
 	cmpq	%rdx, %rdi
-	je	.L514
+	je	.L528
 	testq	%rdi, %rdi
 	movl	$1, %ecx
 	movq	%rsi, 8(%rsp)
@@ -3726,31 +3806,31 @@ _GLOBAL__sub_I_main:
 	movq	%rdi, 32(%rax,%r11)
 	movq	104(%rsp), %rax
 	testq	%rax, %rax
-	je	.L404
+	je	.L418
 	vmovdqu	88(%rsp), %xmm7
 	vpxor	%xmm8, %xmm8, %xmm8
 	movq	%rax, 24(%r9,%r11)
 	vmovdqu	%xmm8, 104(%rsp)
 	vmovdqu	%xmm7, 8(%r9,%r11)
-.L404:
+.L418:
 	cmpq	%r8, %rdx
-	je	.L443
+	je	.L457
 	movq	%r8, %rsi
 	movq	%r9, %r11
 	vpxor	%xmm9, %xmm9, %xmm9
-	jmp	.L441
+	jmp	.L455
 	.p2align 4
 	.p2align 3
-.L539:
+.L553:
 	vmovdqu	8(%rsi), %xmm10
 	addq	$40, %rsi
 	movq	%rax, 24(%r11)
 	vmovdqu	%xmm10, 8(%r11)
 	cmpq	%rsi, %rdx
-	je	.L407
-.L533:
+	je	.L421
+.L547:
 	addq	$40, %r11
-.L441:
+.L455:
 	movq	(%rsi), %r10
 	movq	32(%rsi), %rdi
 	vmovdqu	%xmm9, 8(%r11)
@@ -3759,11 +3839,11 @@ _GLOBAL__sub_I_main:
 	movq	%r10, (%r11)
 	movq	%rdi, 32(%r11)
 	testq	%rax, %rax
-	jne	.L539
+	jne	.L553
 	addq	$40, %rsi
 	cmpq	%rsi, %rdx
-	jne	.L533
-.L407:
+	jne	.L547
+.L421:
 	leaq	-40(%rdx), %rsi
 	movabsq	$922337203685477581, %rdx
 	movabsq	$2305843009213693951, %r11
@@ -3774,10 +3854,10 @@ _GLOBAL__sub_I_main:
 	incq	%rsi
 	imulq	$40, %rsi, %r10
 	addq	%r9, %r10
-.L405:
+.L419:
 	addq	$40, %r10
 	testq	%r8, %r8
-	je	.L409
+	je	.L423
 	subq	%r8, %rcx
 	movq	%r8, %rdi
 	movq	%r9, 16(%rsp)
@@ -3786,50 +3866,50 @@ _GLOBAL__sub_I_main:
 	call	_ZdlPvm@PLT
 	movq	16(%rsp), %r9
 	movq	8(%rsp), %r10
-.L409:
+.L423:
 	movq	%r9, _ZZN4hftu17validate_registryEvE3reg(%rip)
 	addq	%rbx, %r9
 	movq	%r10, 8+_ZZN4hftu17validate_registryEvE3reg(%rip)
 	movq	%r9, 16+_ZZN4hftu17validate_registryEvE3reg(%rip)
-	jmp	.L401
-.L522:
+	jmp	.L415
+.L536:
 	movl	48(%rsi), %edi
 	movl	%edi, 48(%rax)
-	jmp	.L523
-.L520:
+	jmp	.L537
+.L534:
 	movl	48(%rsi), %r11d
 	movl	%r11d, 48(%rax)
-	jmp	.L521
-.L444:
+	jmp	.L535
+.L458:
 	movq	%r10, %rax
-	jmp	.L427
-.L443:
+	jmp	.L441
+.L457:
 	movq	%r9, %r10
-	jmp	.L405
-.L518:
+	jmp	.L419
+.L532:
 	movl	48(%r9), %r8d
 	movl	%r8d, 48(%r10)
-	jmp	.L519
-.L538:
+	jmp	.L533
+.L552:
 	movl	48(%rdi), %eax
 	movl	%eax, 48(%r11)
-	jmp	.L524
-.L525:
+	jmp	.L538
+.L539:
 	movl	104(%rdi), %esi
 	movl	%esi, 104(%r11)
-	jmp	.L526
-.L537:
+	jmp	.L540
+.L551:
 	call	__stack_chk_fail@PLT
-.L527:
+.L541:
 	movl	160(%rdi), %r8d
 	movl	%r8d, 160(%r11)
-	jmp	.L528
-.L512:
+	jmp	.L542
+.L526:
 	endbr64
-	jmp	.L513
-.L510:
+	jmp	.L527
+.L524:
 	endbr64
-	jmp	.L511
+	jmp	.L525
 	.section	.gcc_except_table
 .LLSDA6379:
 	.byte	0xff
@@ -3843,11 +3923,11 @@ _GLOBAL__sub_I_main:
 	.uleb128 0
 	.uleb128 .LEHB17-.LFB6379
 	.uleb128 .LEHE17-.LEHB17
-	.uleb128 .L512-.LFB6379
+	.uleb128 .L526-.LFB6379
 	.uleb128 0
 	.uleb128 .LEHB18-.LFB6379
 	.uleb128 .LEHE18-.LEHB18
-	.uleb128 .L510-.LFB6379
+	.uleb128 .L524-.LFB6379
 	.uleb128 0
 .LLSDACSE6379:
 	.section	.text.startup
@@ -3859,93 +3939,93 @@ _GLOBAL__sub_I_main:
 	.type	_GLOBAL__sub_I_main.cold, @function
 _GLOBAL__sub_I_main.cold:
 .LFSB6379:
-.L515:
+.L529:
 	.cfi_def_cfa_offset 160
 	.cfi_offset 3, -16
 	movq	136(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L540
+	jne	.L554
 	leaq	.LC8(%rip), %rdi
 .LEHB19:
 	call	_ZSt20__throw_length_errorPKc@PLT
 .LEHE19:
-.L446:
+.L460:
 	endbr64
-.L513:
+.L527:
 	movq	%rax, %rbx
 	movq	112(%rsp), %rax
 	testq	%rax, %rax
-	jne	.L541
+	jne	.L555
 	vzeroupper
-.L436:
+.L450:
 	movq	64(%rsp), %rax
 	testq	%rax, %rax
-	je	.L438
+	je	.L452
 	leaq	48(%rsp), %rdi
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	call	*%rax
-.L438:
+.L452:
 	movq	136(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L542
+	jne	.L556
 	movq	%rbx, %rdi
 .LEHB20:
 	call	_Unwind_Resume@PLT
 .LEHE20:
-.L540:
+.L554:
 	call	__stack_chk_fail@PLT
-.L514:
+.L528:
 	movq	136(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L543
+	jne	.L557
 	leaq	.LC8(%rip), %rdi
 .LEHB21:
 	call	_ZSt20__throw_length_errorPKc@PLT
 .LEHE21:
-.L543:
+.L557:
 	call	__stack_chk_fail@PLT
-.L541:
+.L555:
 	leaq	96(%rsp), %rdi
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	vzeroupper
 	call	*%rax
-	jmp	.L436
-.L542:
+	jmp	.L450
+.L556:
 	call	__stack_chk_fail@PLT
-.L445:
+.L459:
 	endbr64
-.L511:
+.L525:
 	movq	%rax, %rbx
 	movq	104(%rsp), %rax
 	testq	%rax, %rax
-	jne	.L544
+	jne	.L558
 	vzeroupper
-.L414:
+.L428:
 	movq	64(%rsp), %rax
 	testq	%rax, %rax
-	je	.L416
+	je	.L430
 	leaq	48(%rsp), %rdi
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	call	*%rax
-.L416:
+.L430:
 	movq	136(%rsp), %rax
 	subq	%fs:40, %rax
-	jne	.L545
+	jne	.L559
 	movq	%rbx, %rdi
 .LEHB22:
 	call	_Unwind_Resume@PLT
 .LEHE22:
-.L544:
+.L558:
 	leaq	88(%rsp), %rdi
 	movl	$3, %edx
 	movq	%rdi, %rsi
 	vzeroupper
 	call	*%rax
-	jmp	.L414
-.L545:
+	jmp	.L428
+.L559:
 	call	__stack_chk_fail@PLT
 	.cfi_endproc
 .LFE6379:
@@ -3958,7 +4038,7 @@ _GLOBAL__sub_I_main.cold:
 .LLSDACSBC6379:
 	.uleb128 .LEHB19-.LCOLDB43
 	.uleb128 .LEHE19-.LEHB19
-	.uleb128 .L446-.LCOLDB43
+	.uleb128 .L460-.LCOLDB43
 	.uleb128 0
 	.uleb128 .LEHB20-.LCOLDB43
 	.uleb128 .LEHE20-.LEHB20
@@ -3966,7 +4046,7 @@ _GLOBAL__sub_I_main.cold:
 	.uleb128 0
 	.uleb128 .LEHB21-.LCOLDB43
 	.uleb128 .LEHE21-.LEHB21
-	.uleb128 .L445-.LCOLDB43
+	.uleb128 .L459-.LCOLDB43
 	.uleb128 0
 	.uleb128 .LEHB22-.LCOLDB43
 	.uleb128 .LEHE22-.LEHB22
