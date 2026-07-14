@@ -1,5 +1,5 @@
 
-build/libhotpath.so:     file format elf64-x86-64
+./build/libhotpath.so:     file format elf64-x86-64
 
 
 Disassembly of section .init:
