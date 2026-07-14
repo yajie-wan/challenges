@@ -1,1 +1,1 @@
-CXXFLAGS=-O3 -march=native -fno-plt -flto -finline-functions -fno-semantic-interposition -fvisibility=hidden
+// CXXFLAGS=-O3 -march=native -fno-plt -flto -finline-functions -fno-semantic-interposition -fvisibility=hidden
