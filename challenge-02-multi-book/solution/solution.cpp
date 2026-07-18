@@ -20,17 +20,17 @@ void MultiOrderBook::send_order(uint64_t our_id, uint16_t symbol, int side,
 }
 
 void MultiOrderBook::modify_our_order(uint64_t our_id, int64_t new_price, int64_t new_qty) {
-    auto it = our_orders_.find(our_id);
-    if (it == our_orders_.end()) return;
-    uint64_t new_eid = venue_.modify_order(it->second, new_price, new_qty);
-    it->second = new_eid;
+    uint64_t exchange_id = our_orders_[our_id];
+    if(exchange_id == 0) return; // order not found
+    uint64_t new_eid = venue_.modify_order(exchange_id, new_price, new_qty);
+    our_orders_[our_id] = new_eid;
 }
 
 void MultiOrderBook::cancel_our_order(uint64_t our_id) {
-    auto it = our_orders_.find(our_id);
-    if (it == our_orders_.end()) return;
-    venue_.cancel_order(it->second);
-    our_orders_.erase(it);
+    uint64_t exchange_id = our_orders_[our_id];
+    if(exchange_id == 0) return; // order not found
+    venue_.cancel_order(exchange_id);
+    our_orders_[our_id] = 0;
 }
 
 // === Exchange feed ===
@@ -140,10 +140,9 @@ int64_t MultiOrderBook::volume_near_best(uint16_t symbol, int side, int64_t dept
 }
 
 QueuePosition MultiOrderBook::get_queue_position(uint64_t our_id) const {
-    auto oit = our_orders_.find(our_id);
-    if (oit == our_orders_.end()) return {-1, 0};
+    uint64_t exchange_id = our_orders_[our_id];
+    if (exchange_id == 0) return {-1, 0};
 
-    uint64_t exchange_id = oit->second;
     auto eit = orders_.find(exchange_id);
     if (eit == orders_.end()) return {-1, 0}; // not in book yet
 
