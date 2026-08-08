@@ -8,6 +8,7 @@
 #include <map>
 #include <unordered_map>
 #include <array>
+#include <memory>
 
 namespace hftu {
 
@@ -46,11 +47,11 @@ private:
     Venue& venue_;
 
     struct Order {
-        uint16_t symbol;
-        int8_t side;
-        int64_t price;
-        int64_t qty;
-    };
+        uint16_t symbol; // 2
+        int8_t side; // 1
+        int64_t price; // 8
+        int64_t qty; // 8
+    };// 19 bytes per order
 
     // Per-level FIFO queue
     struct Level {
@@ -64,10 +65,16 @@ private:
         std::map<int64_t, Level> asks; // begin() = best ask
     };
 
-    std::unordered_map<uint64_t, Order> orders_;        // exchange_id -> order
+    //std::unordered_map<uint64_t, Order> orders_;        // exchange_id -> order
+    //std::array<Order, 600'000>   orders_;
     //std::unordered_map<uint64_t, uint64_t> our_orders_; // our_id -> exchange_id
-    std::array<uint64_t, 200'000> our_orders_; // our_id -> exchange_id (fixed-size array for speed)
+    //std::array<uint64_t, 600'000> our_orders_; // our_id -> exchange_id (fixed-size array for speed)
+    std::unique_ptr<Order[]> orders_;
+    std::unique_ptr<uint64_t[]> our_orders_;
     SymbolBook books_[NUM_SYMBOLS];
+
+    static constexpr size_t ORDER_CAPACITY = 600'000;
+    static constexpr size_t OUR_ORDER_CAPACITY = 600'000;
 };
 
 } // namespace hftu

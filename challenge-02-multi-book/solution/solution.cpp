@@ -5,9 +5,16 @@
 
 namespace hftu {
 
-MultiOrderBook::MultiOrderBook(Venue& venue) : venue_(venue) {
-    orders_.reserve(1'000'000);
-}
+// MultiOrderBook::MultiOrderBook(Venue& venue) : venue_(venue) {
+//     //orders_.reserve(1'000'000);
+//     orders_.fill({0, 0, 0, 0});
+//     our_orders_.fill(0);
+// }
+
+MultiOrderBook::MultiOrderBook(Venue& venue) 
+: venue_(venue), 
+orders_(std::make_unique<Order[]>(ORDER_CAPACITY)), 
+our_orders_(std::make_unique<uint64_t[]>(OUR_ORDER_CAPACITY)) { }
 
 MultiOrderBook::~MultiOrderBook() = default;
 
@@ -46,9 +53,10 @@ void MultiOrderBook::add_order(uint64_t exchange_id, uint16_t symbol, int side,
 }
 
 void MultiOrderBook::modify_order(uint64_t exchange_id, int64_t new_qty) {
-    auto it = orders_.find(exchange_id);
-    if (it == orders_.end()) return;
-    auto& order = it->second;
+    //auto it = orders_.find(exchange_id);
+    auto& order = orders_[exchange_id];
+    //if (it == orders_.end()) return;
+    //auto& order = it->second;
     int64_t old_qty = order.qty;
     order.qty = new_qty;
 
@@ -66,9 +74,10 @@ void MultiOrderBook::modify_order(uint64_t exchange_id, int64_t new_qty) {
 }
 
 void MultiOrderBook::cancel_order(uint64_t exchange_id) {
-    auto it = orders_.find(exchange_id);
-    if (it == orders_.end()) return;
-    auto& order = it->second;
+    //auto it = orders_.find(exchange_id);
+    //if (it == orders_.end()) return;
+    //auto& order = it->second;
+    auto& order = orders_[exchange_id];
 
     auto& levels = (order.side == 0) ? books_[order.symbol].bids : books_[order.symbol].asks;
     auto lit = levels.find(order.price);
@@ -85,7 +94,8 @@ void MultiOrderBook::cancel_order(uint64_t exchange_id) {
         if (level.count == 0)
             levels.erase(lit);
     }
-    orders_.erase(it);
+    //orders_.erase(it);
+    orders_[exchange_id] = {0, 0, 0, 0};
 }
 
 // === Queries ===
@@ -143,10 +153,11 @@ QueuePosition MultiOrderBook::get_queue_position(uint64_t our_id) const {
     uint64_t exchange_id = our_orders_[our_id];
     if (exchange_id == 0) return {-1, 0};
 
-    auto eit = orders_.find(exchange_id);
-    if (eit == orders_.end()) return {-1, 0}; // not in book yet
+    //auto eit = orders_.find(exchange_id);
+    //if (eit == orders_.end()) return {-1, 0}; // not in book yet
 
-    auto& order = eit->second;
+    //auto& order = eit->second;
+    auto& order = orders_[exchange_id];
     auto& levels = (order.side == 0) ? books_[order.symbol].bids : books_[order.symbol].asks;
     auto lit = levels.find(order.price);
     if (lit == levels.end()) return {-1, 0};

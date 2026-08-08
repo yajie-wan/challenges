@@ -13,6 +13,8 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+#include <iostream>
+#include <cassert>
 
 namespace {
 
@@ -263,6 +265,7 @@ GeneratedWorkload generate_workload(const WorkloadConfig& cfg) {
     };
 
     for (size_t i = 0; i < cfg.timed_ops; ++i) {
+
         drain_pending();
 
         int r = op_dist(gen);
@@ -438,7 +441,6 @@ GeneratedWorkload generate_workload(const WorkloadConfig& cfg) {
                 wl.timed.push_back({Operation::BEST_BID, 0, sym, 0, 0, 0, 0});
             }
         }
-
         op_idx = wl.timed.size();
     }
 
@@ -454,6 +456,8 @@ GeneratedWorkload generate_workload(const WorkloadConfig& cfg) {
 // ---------------------------------------------------------------------------
 // Latency percentile computation
 // ---------------------------------------------------------------------------
+
+
 
 struct LatencyStats {
     uint64_t p50;
@@ -495,7 +499,10 @@ static hftu::RegisterBenchmark reg_solution(
         const auto wl = generate_workload(cfg);
 
         std::vector<uint64_t> all_latencies;
+        std::array<std::vector<uint64_t>, 11> per_op_latencies;
         all_latencies.reserve(wl.timed.size() * static_cast<size_t>(iterations));
+        per_op_latencies.fill(std::vector<uint64_t>());
+        for (auto& v : per_op_latencies) v.reserve(wl.timed.size() * static_cast<size_t>(iterations));
 
         uint64_t total_cycles = 0;
 
@@ -518,14 +525,32 @@ static hftu::RegisterBenchmark reg_solution(
                 uint64_t t1 = hftu::cycle_end();
                 uint64_t lat = t1 - t0;
                 all_latencies.push_back(lat);
+                per_op_latencies[static_cast<size_t>(op.type)].push_back(lat);
                 total_cycles += lat;
             }
         }
 
         // Print latency stats to stderr for user feedback
         auto stats = compute_stats(all_latencies);
-        std::fprintf(stderr, "  Latency (cycles): p50=%lu  p99=%lu  p999=%lu  max=%lu  avg=%.0f\n",
+        std::fprintf(stderr, " Total Latency (cycles): p50=%lu  p99=%lu  p999=%lu  max=%lu  avg=%.0f\n",
                      stats.p50, stats.p99, stats.p999, stats.max, stats.avg);
+        
+        std::array<uint64_t, Operation::QUEUE_POSITION + 1> all_latencies_tally;
+        for (size_t op = 0; op < per_op_latencies.size(); ++op) {
+            auto stats = compute_stats(per_op_latencies[op]);
+            std::fprintf(stderr, " Op Type: %lu  Latency (cycles): p50=%lu  p99=%lu  p999=%lu  max=%lu  avg=%.0f\n",
+                         op, stats.p50, stats.p99, stats.p999, stats.max, stats.avg);
+            for (size_t i = 0; i < per_op_latencies[op].size(); ++i) {
+                if(per_op_latencies[op][i] > stats.p99){
+                    all_latencies_tally[op]++;
+                }
+            }
+        }
+
+        for(size_t j = 0; j < all_latencies_tally.size(); ++j){
+            std::fprintf(stderr, " Op Type: %lu  Latency > p99 count: %lu\n", j, all_latencies_tally[j]);
+        }
+        
 
         return total_cycles;
     }
