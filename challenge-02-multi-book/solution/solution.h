@@ -46,20 +46,22 @@ public:
 private:
     Venue& venue_;
 
-    struct Order {
-        uint16_t symbol; // 2
-        int8_t side; // 1
-        int64_t price; // 8
-        int64_t qty; // 8
-        std::list<std::pair<uint64_t, int64_t>>::iterator queue_it; // iterator into level queue
-    };// 27 bytes per order
-
-    // Per-level FIFO queue
+        // Per-level FIFO queue
     struct Level {
         int64_t total_qty = 0;
         int32_t count = 0;
         std::list<std::pair<uint64_t, int64_t>> queue; // (exchange_id, qty) in FIFO order
     };
+
+    struct Order {
+        uint16_t symbol; // 2
+        int8_t side; // 1
+        int64_t price; // 8
+        int64_t qty; // 8
+        std::list<std::pair<uint64_t, int64_t>>::iterator queue_it; // 8 iterator into level queue
+        std::map<int64_t, Level>::iterator level_it; // 8 iterator into symbol book level map
+    };// 35 bytes per order
+
 
     struct SymbolBook {
         std::map<int64_t, Level> bids; // rbegin() = best bid
