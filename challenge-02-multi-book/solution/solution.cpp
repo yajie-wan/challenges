@@ -67,11 +67,15 @@ void MultiOrderBook::modify_order(uint64_t exchange_id, int64_t new_qty) {
     if (lit == levels.end()) return;
 
     lit->second.total_qty += (new_qty - old_qty);
-    for (auto& [eid, qty] : lit->second.queue) {
-        if (eid == exchange_id) {
-            qty = new_qty;
-            break;
-        }
+    // for (auto& [eid, qty] : lit->second.queue) {
+    //    if (eid == exchange_id) {
+    //        qty = new_qty;
+    //        break;
+    //    }
+    // }
+    auto& qit = order.queue_it;
+    if (qit != std::list<std::pair<uint64_t, int64_t>>::iterator{}) {
+        qit->second = new_qty;
     }
 }
 
