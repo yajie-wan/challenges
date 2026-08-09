@@ -51,7 +51,8 @@ private:
         int8_t side; // 1
         int64_t price; // 8
         int64_t qty; // 8
-    };// 19 bytes per order
+        std::list<std::pair<uint64_t, int64_t>>::iterator queue_it; // iterator into level queue
+    };// 27 bytes per order
 
     // Per-level FIFO queue
     struct Level {

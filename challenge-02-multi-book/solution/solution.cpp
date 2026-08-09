@@ -3,6 +3,8 @@
 
 #include "solution.h"
 
+#include <iterator>
+
 namespace hftu {
 
 // MultiOrderBook::MultiOrderBook(Venue& venue) : venue_(venue) {
@@ -44,12 +46,13 @@ void MultiOrderBook::cancel_our_order(uint64_t our_id) {
 
 void MultiOrderBook::add_order(uint64_t exchange_id, uint16_t symbol, int side,
                                int64_t price, int64_t qty) {
-    orders_[exchange_id] = {symbol, static_cast<int8_t>(side), price, qty};
     auto& levels = (side == 0) ? books_[symbol].bids : books_[symbol].asks;
     auto& level = levels[price];
-    level.queue.push_back({exchange_id, qty});
+    auto it = level.queue.end();
+    level.queue.emplace(it, exchange_id, qty);
     level.total_qty += qty;
     level.count++;
+    orders_[exchange_id] = Order{symbol, static_cast<int8_t>(side), price, qty, it};
 }
 
 void MultiOrderBook::modify_order(uint64_t exchange_id, int64_t new_qty) {
@@ -74,9 +77,6 @@ void MultiOrderBook::modify_order(uint64_t exchange_id, int64_t new_qty) {
 }
 
 void MultiOrderBook::cancel_order(uint64_t exchange_id) {
-    //auto it = orders_.find(exchange_id);
-    //if (it == orders_.end()) return;
-    //auto& order = it->second;
     auto& order = orders_[exchange_id];
 
     auto& levels = (order.side == 0) ? books_[order.symbol].bids : books_[order.symbol].asks;
@@ -94,8 +94,7 @@ void MultiOrderBook::cancel_order(uint64_t exchange_id) {
         if (level.count == 0)
             levels.erase(lit);
     }
-    //orders_.erase(it);
-    orders_[exchange_id] = {0, 0, 0, 0};
+    orders_[exchange_id] = Order{0, 0, 0, 0, {}};
 }
 
 // === Queries ===
