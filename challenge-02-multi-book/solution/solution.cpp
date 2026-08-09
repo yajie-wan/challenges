@@ -48,8 +48,7 @@ void MultiOrderBook::add_order(uint64_t exchange_id, uint16_t symbol, int side,
                                int64_t price, int64_t qty) {
     auto& levels = (side == 0) ? books_[symbol].bids : books_[symbol].asks;
     auto& level = levels[price];
-    auto it = level.queue.end();
-    level.queue.emplace(it, exchange_id, qty);
+    auto it = level.queue.emplace(level.queue.end(), exchange_id, qty);
     level.total_qty += qty;
     level.count++;
     orders_[exchange_id] = Order{symbol, static_cast<int8_t>(side), price, qty, it};
@@ -78,19 +77,20 @@ void MultiOrderBook::modify_order(uint64_t exchange_id, int64_t new_qty) {
 
 void MultiOrderBook::cancel_order(uint64_t exchange_id) {
     auto& order = orders_[exchange_id];
-
+    auto qit = order.queue_it;
+    if (qit == std::list<std::pair<uint64_t, int64_t>>::iterator{}) return; // not in book
     auto& levels = (order.side == 0) ? books_[order.symbol].bids : books_[order.symbol].asks;
     auto lit = levels.find(order.price);
     if (lit != levels.end()) {
         auto& level = lit->second;
-        for (auto qit = level.queue.begin(); qit != level.queue.end(); ++qit) {
-            if (qit->first == exchange_id) {
+        //for (auto qit = level.queue.begin(); qit != level.queue.end(); ++qit) {
+        //    if (qit->first == exchange_id) {
                 level.total_qty -= qit->second;
                 level.count--;
                 level.queue.erase(qit);
-                break;
-            }
-        }
+        //        break;
+        //    }
+        //}
         if (level.count == 0)
             levels.erase(lit);
     }
