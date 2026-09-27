@@ -9,8 +9,18 @@
 #include <unordered_map>
 #include <array>
 #include <memory>
+#include <cassert>
+#include <cstddef>
 
 namespace hftu {
+
+// Per-level FIFO queue
+struct Level {
+    int64_t total_qty = 0;
+    int32_t count = 0;
+    uint32_t head = 0;
+    uint32_t tail = 0;
+};
 
 class MultiOrderBook {
 public:
@@ -43,22 +53,38 @@ public:
     // Queue position for one of our orders.
     QueuePosition get_queue_position(uint64_t our_id) const; // find exchange id for our id, find order, find level queue, find position in queue
 
+
+    // === Node Pool Management ===
+    void append_to_level(Level* level, uint32_t node_id, uint16_t qty);
+    void unlink_from_level(Level* level, uint32_t node_id);
+
 private:
     Venue& venue_;
 
-        // Per-level FIFO queue
-    struct Level {
-        int64_t total_qty = 0;
-        int32_t count = 0;
-        std::list<std::pair<uint64_t, int64_t>> queue; // (exchange_id, qty) in FIFO order
+    struct Node {
+        int64_t qty;
+        uint32_t prev;
+        uint32_t next;
     };
+
+    uint32_t allocate_node() {
+        assert(free_head_ != INVALID);
+        uint32_t node_id = free_head_;
+        free_head_ = node_pool_[node_id].next;
+        return node_id;
+    }
+
+    void free_node(uint32_t node_id) {
+        node_pool_[node_id].next = free_head_;
+        free_head_ = node_id;
+    }
 
     struct Order {
         uint16_t symbol; // 2
         int8_t side; // 1
         int64_t price; // 8
         int64_t qty; // 8
-        std::list<std::pair<uint64_t, int64_t>>::iterator queue_it; // 8 iterator into level queue
+        uint32_t node_id; // 8 iterator into level queue
         std::map<int64_t, Level>::iterator level_it; // 8 iterator into symbol book level map
     };// 35 bytes per order
 
@@ -75,9 +101,13 @@ private:
     std::unique_ptr<Order[]> orders_;
     std::unique_ptr<uint64_t[]> our_orders_;
     SymbolBook books_[NUM_SYMBOLS];
+    std::unique_ptr<Node[]> node_pool_;
+    uint32_t free_head_;
 
-    static constexpr size_t ORDER_CAPACITY = 600'000;
-    static constexpr size_t OUR_ORDER_CAPACITY = 600'000;
+    static constexpr std::size_t ORDER_CAPACITY = 600'000;
+    static constexpr std::size_t OUR_ORDER_CAPACITY = 600'000;
+    static constexpr uint32_t INVALID = 0;
+    static constexpr uint32_t NODE_CAPACITY = 600000;
 };
 
 } // namespace hftu

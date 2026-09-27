@@ -4,6 +4,7 @@
 #include "solution.h"
 
 #include <iterator>
+#include <cassert>
 
 namespace hftu {
 
@@ -16,7 +17,16 @@ namespace hftu {
 MultiOrderBook::MultiOrderBook(Venue& venue) 
 : venue_(venue), 
 orders_(std::make_unique<Order[]>(ORDER_CAPACITY)), 
-our_orders_(std::make_unique<uint64_t[]>(OUR_ORDER_CAPACITY)) { }
+our_orders_(std::make_unique<uint64_t[]>(OUR_ORDER_CAPACITY)),
+node_pool_(std::make_unique<Node[]>(NODE_CAPACITY + 1)),
+free_head_(INVALID){
+
+    for (uint32_t i = 1; i < NODE_CAPACITY; ++i)
+        node_pool_[i].next = i + 1;
+
+    node_pool_[NODE_CAPACITY].next = INVALID;
+    free_head_ = 1;
+ }
 
 MultiOrderBook::~MultiOrderBook() = default;
 
@@ -49,62 +59,41 @@ void MultiOrderBook::add_order(uint64_t exchange_id, uint16_t symbol, int side,
     auto& levels = (side == 0) ? books_[symbol].bids : books_[symbol].asks;
     //auto& level = levels[price];
     auto [level_it, is_new] = levels.try_emplace(price);
-    auto queue_it = level_it->second.queue.emplace(level_it->second.queue.end(), exchange_id, qty);
-    level_it->second.total_qty += qty;
-    level_it->second.count++;
-    orders_[exchange_id] = Order{symbol, static_cast<int8_t>(side), price, qty, queue_it, level_it};
+    uint32_t node_id = allocate_node();
+    append_to_level(&level_it->second, node_id, qty);
+    orders_[exchange_id] = Order{symbol, static_cast<int8_t>(side), price, qty, node_id, level_it};
 }
 
 void MultiOrderBook::modify_order(uint64_t exchange_id, int64_t new_qty) {
-    //auto it = orders_.find(exchange_id);
+
     auto& order = orders_[exchange_id];
-    //if (it == orders_.end()) return;
-    //auto& order = it->second;
+
+    auto node_id = order.node_id;
+    if(node_id == INVALID) return; // not in book
+
     int64_t old_qty = order.qty;
     order.qty = new_qty;
-
-    //auto& levels = (order.side == 0) ? books_[order.symbol].bids : books_[order.symbol].asks;
-    //auto lit = levels.find(order.price);
-    //if (lit == levels.end()) return;
     auto lit = order.level_it;
     lit->second.total_qty += (new_qty - old_qty);
-    // for (auto& [eid, qty] : lit->second.queue) {
-    //    if (eid == exchange_id) {
-    //        qty = new_qty;
-    //        break;
-    //    }
-    // }
-    auto& qit = order.queue_it;
-    if (qit != std::list<std::pair<uint64_t, int64_t>>::iterator{}) {
-        qit->second = new_qty;
-    }
+    
+    node_pool_[node_id].qty = new_qty;
 }
 
 void MultiOrderBook::cancel_order(uint64_t exchange_id) {
     auto& order = orders_[exchange_id];
-    auto qit = order.queue_it;
-    if (qit == std::list<std::pair<uint64_t, int64_t>>::iterator{}) return; // not in book
+    auto node_id = order.node_id;
+    if (node_id == INVALID) return; // not in book
     auto& levels = (order.side == 0) ? books_[order.symbol].bids : books_[order.symbol].asks;
     //auto lit = levels.find(order.price);
     auto lit = order.level_it;
-    if (lit != std::map<int64_t, Level>::iterator()) {
-        auto& level = lit->second;
-        //for (auto qit = level.queue.begin(); qit != level.queue.end(); ++qit) {
-        //    if (qit->first == exchange_id) {
-                level.total_qty -= qit->second;
-                level.count--;
-                level.queue.erase(qit);
-        //        break;
-        //    }
-        //}
-        if (level.count == 0){
-            levels.erase(lit);
-            orders_[exchange_id] = Order{0, 0, 0, 0, std::list<std::pair<uint64_t, int64_t>>::iterator{}, std::map<int64_t, Level>::iterator{}};
-            return;
-        }
-            
+    auto& level = lit->second;
+    unlink_from_level(&level, node_id);
+    free_node(node_id);
+
+    if (level.count == 0){
+        levels.erase(lit);
     }
-    orders_[exchange_id] = Order{0, 0, 0, 0, {}, lit};
+    orders_[exchange_id].node_id = INVALID;
 }
 
 // === Queries ===
@@ -173,13 +162,49 @@ QueuePosition MultiOrderBook::get_queue_position(uint64_t our_id) const {
 
     int32_t index = 0;
     int64_t qty_ahead = 0;
-    for (auto& [eid, qty] : lit->second.queue) {
+    for (uint32_t eid = lit->second.head; eid != INVALID; eid = node_pool_[eid].next) {
         if (eid == exchange_id)
             return {index, qty_ahead};
         index++;
-        qty_ahead += qty;
+        qty_ahead += node_pool_[eid].qty;
     }
     return {-1, 0};
+}
+
+
+// ==== Node Pool Management ====
+
+void hftu::MultiOrderBook::append_to_level(Level* level, uint32_t node_id, uint16_t qty) {
+    if (level->head == 0) {
+        level->head = node_id;
+        level->tail = node_id;
+        node_pool_[node_id].prev = INVALID;
+        node_pool_[node_id].next = INVALID;
+    } else {
+        node_pool_[level->tail].next = node_id;
+        node_pool_[node_id].prev = level->tail;
+        level->tail = node_id;
+        node_pool_[node_id].next = INVALID;
+    }
+    level->total_qty += qty;
+    node_pool_[node_id].qty = qty;
+    level->count++;
+}
+
+void hftu::MultiOrderBook::unlink_from_level(Level* level, uint32_t node_id) {
+    uint32_t prev = node_pool_[node_id].prev;
+    uint32_t next = node_pool_[node_id].next;
+    if (prev != INVALID)
+        node_pool_[prev].next = next;
+    else
+        level->head = next;
+    if (next != INVALID)
+        node_pool_[next].prev = prev;
+    else
+        level->tail = prev;
+    level->total_qty -= node_pool_[node_id].qty;
+    level->count--;
+
 }
 
 } // namespace hftu
