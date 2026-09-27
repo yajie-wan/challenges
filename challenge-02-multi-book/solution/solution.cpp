@@ -149,24 +149,29 @@ int64_t MultiOrderBook::volume_near_best(uint16_t symbol, int side, int64_t dept
 
 QueuePosition MultiOrderBook::get_queue_position(uint64_t our_id) const {
     uint64_t exchange_id = our_orders_[our_id];
-    if (exchange_id == 0) return {-1, 0};
+    if (exchange_id == INVALID) return {-1, 0};
 
     //auto eit = orders_.find(exchange_id);
     //if (eit == orders_.end()) return {-1, 0}; // not in book yet
 
     //auto& order = eit->second;
     auto& order = orders_[exchange_id];
-    auto& levels = (order.side == 0) ? books_[order.symbol].bids : books_[order.symbol].asks;
-    auto lit = levels.find(order.price);
-    if (lit == levels.end()) return {-1, 0};
+    auto node_id = order.node_id;
+    if (node_id == INVALID) return {-1, 0}; // not in book
+
+    //auto& levels = (order.side == 0) ? books_[order.symbol].bids : books_[order.symbol].asks;
+    auto lit = order.level_it;
+    auto& level = lit->second;
+    // auto lit = levels.find(order.price);
+    // if (lit == levels.end()) return {-1, 0};
 
     int32_t index = 0;
     int64_t qty_ahead = 0;
-    for (uint32_t eid = lit->second.head; eid != INVALID; eid = node_pool_[eid].next) {
-        if (eid == exchange_id)
+    for (uint32_t curr_node_id = lit->second.head; curr_node_id != INVALID; curr_node_id = node_pool_[curr_node_id].next) {
+        if (curr_node_id == order.node_id)
             return {index, qty_ahead};
         index++;
-        qty_ahead += node_pool_[eid].qty;
+        qty_ahead += node_pool_[curr_node_id].qty;
     }
     return {-1, 0};
 }
