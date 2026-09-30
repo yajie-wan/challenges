@@ -11,7 +11,7 @@ RingBuffer::RingBuffer(size_t capacity)
 
 bool RingBuffer::push(const Message& msg) {
     //std::lock_guard<std::mutex> lock(mtx_);
-    if (head_.load(std::memory_order_acquire) - tail_.load(std::memory_order_acquire) == capacity_) return false;
+    if ((tail_.load(std::memory_order_acquire) + 1) % capacity_ == head_.load(std::memory_order_acquire)) return false;
     buf_[tail_.load(std::memory_order_acquire)] = msg;
     tail_.store((tail_.load(std::memory_order_acquire) + 1) % capacity_, std::memory_order_release);
     return true;
