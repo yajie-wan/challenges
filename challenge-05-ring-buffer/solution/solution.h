@@ -42,7 +42,9 @@ public:
 private:
     std::vector<Message> buf_;
     size_t capacity_;
+    size_t head_cached_{0};
     std::atomic<size_t> head_{0};
+    size_t tail_cached_{0};
     std::atomic<size_t> tail_{0};
     //size_t count_ = 0;
     //mutable std::mutex mtx_;
