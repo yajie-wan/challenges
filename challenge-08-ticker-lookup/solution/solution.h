@@ -38,7 +38,7 @@ public:
     inline uint16_t hash(const char* symbol) const;
 
 private:
-    //std::unordered_map<std::string, uint32_t> map_;
+    std::unordered_map<std::string, uint32_t> map_;
     MapNode* entries_ = nullptr;
     static constexpr size_t CAPACITY = 65536;
     static constexpr size_t BIT_MASK = CAPACITY - 1;

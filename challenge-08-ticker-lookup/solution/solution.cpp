@@ -14,12 +14,13 @@ TickerLookup::TickerLookup() {}
 
 void TickerLookup::build(const TickerEntry* entries, size_t count) {
 
-    entries_ = new MapNode[65536];
-    //std::memcpy(entries_, entries, count * sizeof(TickerEntry));
-    //map_.reserve(count);
-    for (size_t i = 0; i < count; ++i) {
-    //    map_.emplace(std::string(entries[i].symbol, entries[i].symbol_len), entries[i].value);
+    // map_.reserve(count);
+    // for (size_t i = 0; i < count; ++i) {
+    //     map_.emplace(std::string(entries[i].symbol, entries[i].symbol_len), entries[i].value);
+    // }
 
+    entries_ = new MapNode[65536];
+    for (size_t i = 0; i < count; ++i) {
         uint16_t index = hash(entries[i].symbol);
         if(entries_[index].symbol[0] != '\0'){
             size_t j = (index + 1) & BIT_MASK;
@@ -38,9 +39,11 @@ void TickerLookup::build(const TickerEntry* entries, size_t count) {
 }
 
 const uint32_t* TickerLookup::find(const char* symbol, size_t symbol_len) const {
-    //auto it = map_.find(std::string(symbol, symbol_len));
-    //if (it == map_.end()) return nullptr;
-    //return &it->second;
+    // auto it = map_.find(std::string(symbol, symbol_len));
+    // if (it == map_.end()) return nullptr;
+    // return &it->second;
+
+
     uint16_t index = hash(symbol);
     while(true){
         if(entries_[index].symbol[0] == '\0'){
