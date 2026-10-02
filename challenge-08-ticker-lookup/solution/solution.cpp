@@ -26,11 +26,11 @@ void TickerLookup::build(const TickerEntry* entries, size_t count) {
             while(entries_[j].symbol[0] != '\0'){
                 j = (j + 1) & BIT_MASK;
             }
-            std::memcpy(entries_[j].symbol, entries[i].symbol, 8);
+            std::memcpy(entries_[j].symbol, entries[i].symbol, entries[i].symbol_len);
             entries_[j].value = entries[i].value;
         }
         else{
-            std::memcpy(entries_[index].symbol, entries[i].symbol, 8);
+            std::memcpy(entries_[index].symbol, entries[i].symbol, entries[i].symbol_len);
             entries_[index].value = entries[i].value;
         }
 

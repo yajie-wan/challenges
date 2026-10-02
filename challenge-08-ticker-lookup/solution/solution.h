@@ -20,7 +20,7 @@ struct TickerEntry {
     uint32_t value; // 4 byte
 }; // 14 - 19 bytes
 
-alignas(16) struct MapNode{
+struct alignas(16) MapNode{
     char symbol[8]; // 8 bytes
     uint32_t value; // 4 bytes
 };
