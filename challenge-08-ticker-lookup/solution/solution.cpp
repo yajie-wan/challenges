@@ -23,16 +23,17 @@ void TickerLookup::build(const TickerEntry* entries, size_t count) {
     memset(entries_, 0, sizeof(MapNode) * CAPACITY);
     for (size_t i = 0; i < count; ++i) {
         uint16_t index = hash(entries[i].symbol, entries[i].symbol_len);
+        uint64_t key = pack_key(entries[i].symbol, entries[i].symbol_len);
         if(entries_[index].symbol != 0){
             size_t j = (index + 1) & BIT_MASK;
             while(entries_[j].symbol != 0){
                 j = (j + 1) & BIT_MASK;
             }
-            entries_[j].symbol = pack_key(entries[i].symbol, entries[i].symbol_len);
+            entries_[j].symbol = key;
             entries_[j].value = entries[i].value;
         }
         else{
-            entries_[index].symbol = pack_key(entries[i].symbol, entries[i].symbol_len);
+            entries_[index].symbol = key;
             entries_[index].value = entries[i].value;
         }
 
@@ -46,11 +47,12 @@ const uint32_t* TickerLookup::find(const char* symbol, size_t symbol_len) const 
 
 
     uint16_t index = hash(symbol, symbol_len);
+    uint64_t key = pack_key(symbol, symbol_len);
     while(true){
         if(entries_[index].symbol == 0){
             return nullptr;
         }
-        if(entries_[index].symbol == pack_key(symbol, symbol_len)){
+        if(entries_[index].symbol == key){
             return &entries_[index].value;
         }
         index = (index + 1) & BIT_MASK;        
