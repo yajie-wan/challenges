@@ -54,47 +54,47 @@ const uint32_t* TickerLookup::find(const char* symbol, size_t symbol_len) const 
     uint16_t index = static_cast<uint16_t>(key_for_index * 0x517cc1b727220a95ULL) >> 3;
     while(true){
 
-        __m256i symbol_register = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&symbols[index]));
-        __m256i key_register = _mm256_set1_epi64x(key);
-        __m256i zero_register = _mm256_setzero_si256();
+        // __m256i symbol_register = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&symbols[index]));
+        // __m256i key_register = _mm256_set1_epi64x(key);
+        // __m256i zero_register = _mm256_setzero_si256();
 
-        __m256i match = _mm256_cmpeq_epi64(symbol_register, key_register);
-        __m256i miss = _mm256_cmpeq_epi64(symbol_register, zero_register);
+        // __m256i match = _mm256_cmpeq_epi64(symbol_register, key_register);
+        // __m256i miss = _mm256_cmpeq_epi64(symbol_register, zero_register);
 
-        int zero_mask = _mm256_movemask_pd(_mm256_castsi256_pd(miss));
-        int match_mask = _mm256_movemask_pd(_mm256_castsi256_pd(match));
+        // int zero_mask = _mm256_movemask_pd(_mm256_castsi256_pd(miss));
+        // int match_mask = _mm256_movemask_pd(_mm256_castsi256_pd(match));
 
-        if((match_mask | zero_mask) != 0){
+        // if((match_mask | zero_mask) != 0){
             
-            int first_match_index = match_mask ? __builtin_ctzll(match_mask) : 4;
-            int first_zero_index = zero_mask ? __builtin_ctzll(zero_mask) : 4;
+        //     int first_match_index = match_mask ? __builtin_ctzll(match_mask) : 4;
+        //     int first_zero_index = zero_mask ? __builtin_ctzll(zero_mask) : 4;
 
-            if(first_match_index < first_zero_index){
-                return &values_[index + first_match_index];
+        //     if(first_match_index < first_zero_index){
+        //         return &values_[index + first_match_index];
+        //     }
+        //     else{
+        //         return nullptr;
+        //     }
+
+            if(symbols[index] == key){
+                return &values_[index];
             }
-            else{
+            
+            if(symbols[index] == 0){
                 return nullptr;
-            }
-
-            // if(symbols[index] == key){
-            //     return &values_[index];
-            // }
-            
-            // if(symbols[index] == 0){
-            //     return nullptr;
-            // }            
+            }         
+            index = (index + 1) & BIT_MASK;        
         }
-        index = (index + 1) & BIT_MASK;        
-    }
-    return nullptr;
+           return nullptr;
 }
+    
 
 
 inline uint16_t TickerLookup::hash(const char* symbol, size_t symbol_len) const {
     uint64_t key = pack_key(symbol, symbol_len);
     key |= static_cast<uint64_t>(symbol_len) << 48;
     key *= 0x517cc1b727220a95ULL;
-    return static_cast<uint16_t>(key) >> 3;
+    return static_cast<uint16_t>(key);
 }
 
 
