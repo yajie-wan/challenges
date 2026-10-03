@@ -32,6 +32,9 @@ public:
     const uint32_t* find(const char* symbol, size_t symbol_len) const;
     inline uint64_t pack_key(const char* s, size_t len) const;
     inline uint16_t hash(const char* symbol, size_t symbol_len) const;
+    inline uint16_t hash_with_multiplier(const char* symbol, size_t symbol_len, uint64_t multiplier) const;
+    const uint64_t search_best_multiplier(const TickerEntry* entries, size_t count) const;
+    void build_with_multiplier(const TickerEntry* entries, uint64_t multiplier, size_t count);
 
 private:
     //std::unordered_map<std::string, uint32_t> map_;

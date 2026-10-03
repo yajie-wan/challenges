@@ -14,17 +14,50 @@ TickerLookup::TickerLookup() {}
 
 void TickerLookup::build(const TickerEntry* entries, size_t count) {
 
+
+    uint64_t best_multiplier = search_best_multiplier(entries, count);
+    build_with_multiplier(entries, best_multiplier, count);
+
     // map_.reserve(count);
     // for (size_t i = 0; i < count; ++i) {
     //     map_.emplace(std::string(entries[i].symbol, entries[i].symbol_len), entries[i].value);
     // }
+
+
+
+
+
+    // symbols = new uint64_t[CAPACITY];
+    // memset(symbols, 0, sizeof(uint64_t) * CAPACITY);
+    // values_ = new uint32_t[CAPACITY];
+    // memset(values_, 0, sizeof(uint32_t) * CAPACITY);
+    // for (size_t i = 0; i < count; ++i) {
+    //     uint16_t index = hash(entries[i].symbol, entries[i].symbol_len);
+    //     uint64_t key = pack_key(entries[i].symbol, entries[i].symbol_len);
+    //     if(symbols[index] != 0){
+    //         size_t j = (index + 1) & BIT_MASK;
+    //         while(symbols[j] != 0){
+    //             j = (j + 1) & BIT_MASK;
+    //         }
+    //         symbols[j] = key;
+    //         values_[j] = entries[i].value;
+    //     }
+    //     else{
+    //         symbols[index] = key;
+    //         values_[index] = entries[i].value;
+    //     }
+
+    // }
+}
+
+void TickerLookup::build_with_multiplier(const TickerEntry* entries, uint64_t multiplier, size_t count){
 
     symbols = new uint64_t[CAPACITY];
     memset(symbols, 0, sizeof(uint64_t) * CAPACITY);
     values_ = new uint32_t[CAPACITY];
     memset(values_, 0, sizeof(uint32_t) * CAPACITY);
     for (size_t i = 0; i < count; ++i) {
-        uint16_t index = hash(entries[i].symbol, entries[i].symbol_len);
+        uint16_t index = hash_with_multiplier(entries[i].symbol, entries[i].symbol_len, multiplier);
         uint64_t key = pack_key(entries[i].symbol, entries[i].symbol_len);
         if(symbols[index] != 0){
             size_t j = (index + 1) & BIT_MASK;
@@ -40,6 +73,37 @@ void TickerLookup::build(const TickerEntry* entries, size_t count) {
         }
 
     }
+
+}
+
+const uint64_t TickerLookup::search_best_multiplier(const TickerEntry* entries, size_t count) const {
+    uint64_t best_multiplier = 0;
+    size_t best_collisions = SIZE_MAX;
+
+    for (uint64_t multiplier = 1; multiplier < 65536; ++multiplier) {
+        size_t collisions = 0;
+        std::unordered_map<uint16_t, bool> seen_indices;
+
+        for (size_t i = 0; i < count; ++i) {
+            uint16_t index = hash_with_multiplier(entries[i].symbol, entries[i].symbol_len, multiplier);
+            if (seen_indices.find(index) != seen_indices.end()) {
+                collisions++;
+            } else {
+                seen_indices[index] = true;
+            }
+        }
+
+        if (collisions < best_collisions) {
+            best_collisions = collisions;
+            best_multiplier = multiplier;
+        }
+
+        if (best_collisions == 0) {
+            break; // Found a perfect hash
+        }
+    }
+
+    return best_multiplier;
 }
 
 const uint32_t* TickerLookup::find(const char* symbol, size_t symbol_len) const {
@@ -97,6 +161,16 @@ inline uint16_t TickerLookup::hash(const char* symbol, size_t symbol_len) const 
     return static_cast<uint16_t>(key);
 }
 
+
+inline uint16_t TickerLookup::hash_with_multiplier(const char* symbol, size_t symbol_len, uint64_t multiplier) const {
+    uint64_t key = pack_key(symbol, symbol_len);
+    key ^= key >> 8;
+    key ^= key >> 16;
+    key ^= key >> 32;
+
+    return static_cast<uint16_t>((key * multiplier) & BIT_MASK);
+
+}
 
 inline uint64_t TickerLookup::pack_key(const char* s, size_t len) const {
     uint64_t key = 0;
