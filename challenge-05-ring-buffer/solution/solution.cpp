@@ -10,7 +10,6 @@ RingBuffer::RingBuffer(size_t capacity)
     : buf_(capacity), capacity_(capacity) {}
 
 bool RingBuffer::push(const Message& msg) {
-    //std::lock_guard<std::mutex> lock(mtx_);
     size_t tail_curr = tail_.load(std::memory_order_acquire);
     if (((tail_curr + 1) & (capacity_ - 1)) == head_cached_){
         head_cached_ = head_.load(std::memory_order_acquire);
@@ -24,7 +23,6 @@ bool RingBuffer::push(const Message& msg) {
 }
 
 bool RingBuffer::pop(Message& out) {
-    //std::lock_guard<std::mutex> lock(mtx_);
     size_t head_curr = head_.load(std::memory_order_acquire);
 
     if (head_curr == tail_cached_) {

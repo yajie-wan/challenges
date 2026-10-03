@@ -14,7 +14,7 @@
 namespace hftu {
 
 // 48-byte market data message — realistic size, not power-of-2 aligned.
-struct Message {
+struct alignas(64) Message {
     uint64_t timestamp;   // 8
     uint32_t symbol_id;   // 4
     uint16_t side;        // 2
