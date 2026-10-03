@@ -20,10 +20,6 @@ struct TickerEntry {
     uint32_t value; // 4 byte
 }; // 14 - 19 bytes
 
-struct alignas(16) MapNode{
-    uint64_t symbol; // 8 bytes
-    uint32_t value; // 4 bytes
-};
 
 class TickerLookup {
 public:
@@ -39,7 +35,8 @@ public:
 
 private:
     //std::unordered_map<std::string, uint32_t> map_;
-    MapNode* entries_ = nullptr;
+    uint64_t* symbols = nullptr;
+    uint32_t* values_ = nullptr;
     static constexpr size_t CAPACITY = 1 << 16;
     static constexpr size_t BIT_MASK = CAPACITY - 1;
 };

@@ -19,22 +19,24 @@ void TickerLookup::build(const TickerEntry* entries, size_t count) {
     //     map_.emplace(std::string(entries[i].symbol, entries[i].symbol_len), entries[i].value);
     // }
 
-    entries_ = new MapNode[CAPACITY];
-    memset(entries_, 0, sizeof(MapNode) * CAPACITY);
+    symbols = new uint64_t[CAPACITY];
+    memset(symbols, 0, sizeof(uint64_t) * CAPACITY);
+    values_ = new uint32_t[CAPACITY];
+    memset(values_, 0, sizeof(uint32_t) * CAPACITY);
     for (size_t i = 0; i < count; ++i) {
         uint16_t index = hash(entries[i].symbol, entries[i].symbol_len);
         uint64_t key = pack_key(entries[i].symbol, entries[i].symbol_len);
-        if(entries_[index].symbol != 0){
+        if(symbols[index] != 0){
             size_t j = (index + 1) & BIT_MASK;
-            while(entries_[j].symbol != 0){
+            while(symbols[j] != 0){
                 j = (j + 1) & BIT_MASK;
             }
-            entries_[j].symbol = key;
-            entries_[j].value = entries[i].value;
+            symbols[j] = key;
+            values_[j] = entries[i].value;
         }
         else{
-            entries_[index].symbol = key;
-            entries_[index].value = entries[i].value;
+            symbols[index] = key;
+            values_[index] = entries[i].value;
         }
 
     }
@@ -49,12 +51,13 @@ const uint32_t* TickerLookup::find(const char* symbol, size_t symbol_len) const 
     uint16_t index = hash(symbol, symbol_len);
     uint64_t key = pack_key(symbol, symbol_len);
     while(true){
-        if(entries_[index].symbol == 0){
+        if(symbols[index] == key){
+            return &values_[index];
+        }
+        if(symbols[index] == 0){
             return nullptr;
         }
-        if(entries_[index].symbol == key){
-            return &entries_[index].value;
-        }
+
         index = (index + 1) & BIT_MASK;        
     }
     return nullptr;
@@ -73,6 +76,18 @@ inline uint64_t TickerLookup::pack_key(const char* s, size_t len) const {
     uint64_t key = 0;
 
     switch (len) {
+
+        case 4:
+            key = *reinterpret_cast<const uint32_t*>(s);
+            break;
+
+        case 3:
+            key = *reinterpret_cast<const uint16_t*>(s);
+            key |= static_cast<uint64_t>(
+                static_cast<unsigned char>(s[2])
+            ) << 16;
+            break;
+    
         case 6:
             key |= static_cast<uint64_t>(
                 *reinterpret_cast<const uint32_t*>(s)
@@ -91,16 +106,7 @@ inline uint64_t TickerLookup::pack_key(const char* s, size_t len) const {
             ) << 32;
             break;
 
-        case 4:
-            key = *reinterpret_cast<const uint32_t*>(s);
-            break;
-
-        case 3:
-            key = *reinterpret_cast<const uint16_t*>(s);
-            key |= static_cast<uint64_t>(
-                static_cast<unsigned char>(s[2])
-            ) << 16;
-            break;
+        
 
         case 2:
             key = *reinterpret_cast<const uint16_t*>(s);
