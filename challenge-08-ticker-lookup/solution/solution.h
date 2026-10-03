@@ -40,7 +40,7 @@ public:
 private:
     //std::unordered_map<std::string, uint32_t> map_;
     MapNode* entries_ = nullptr;
-    static constexpr size_t CAPACITY = 65536;
+    static constexpr size_t CAPACITY = 1 << 16;
     static constexpr size_t BIT_MASK = CAPACITY - 1;
 };
 
