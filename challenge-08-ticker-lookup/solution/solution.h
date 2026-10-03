@@ -37,7 +37,7 @@ private:
     //std::unordered_map<std::string, uint32_t> map_;
     uint64_t* symbols = nullptr;
     uint32_t* values_ = nullptr;
-    static constexpr size_t CAPACITY = 1 << 16;
+    static constexpr size_t CAPACITY = 1 << 13;
     static constexpr size_t BIT_MASK = CAPACITY - 1;
 };
 
