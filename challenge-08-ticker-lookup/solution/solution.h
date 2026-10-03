@@ -21,7 +21,7 @@ struct TickerEntry {
 }; // 14 - 19 bytes
 
 struct alignas(16) MapNode{
-    char symbol[8]; // 8 bytes
+    uint64_t symbol; // 8 bytes
     uint32_t value; // 4 bytes
 };
 
@@ -34,11 +34,11 @@ public:
 
     // Look up a symbol. Returns pointer to value, or nullptr if not found.
     const uint32_t* find(const char* symbol, size_t symbol_len) const;
-
-    inline uint16_t hash(const char* symbol) const;
+    inline uint64_t pack_key(const char* s, size_t len) const;
+    inline uint16_t hash(const char* symbol, size_t symbol_len) const;
 
 private:
-    std::unordered_map<std::string, uint32_t> map_;
+    //std::unordered_map<std::string, uint32_t> map_;
     MapNode* entries_ = nullptr;
     static constexpr size_t CAPACITY = 65536;
     static constexpr size_t BIT_MASK = CAPACITY - 1;
