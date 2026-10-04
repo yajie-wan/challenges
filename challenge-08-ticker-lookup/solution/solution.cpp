@@ -15,8 +15,8 @@ TickerLookup::TickerLookup() {}
 void TickerLookup::build(const TickerEntry* entries, size_t count) {
 
 
-    uint64_t best_multiplier = search_best_multiplier(entries, count);
-    build_with_multiplier(entries, best_multiplier, count);
+    best_multiplier_ = search_best_multiplier(entries, count);
+    build_with_multiplier(entries, best_multiplier_, count);
 
     // map_.reserve(count);
     // for (size_t i = 0; i < count; ++i) {
@@ -113,9 +113,8 @@ const uint32_t* TickerLookup::find(const char* symbol, size_t symbol_len) const 
 
 
     //uint16_t index = hash(symbol, symbol_len);
+    uint16_t index = hash_with_multiplier(symbol, symbol_len, best_multiplier_);
     uint64_t key = pack_key(symbol, symbol_len);
-    uint64_t key_for_index = key | (static_cast<uint64_t>(symbol_len) << 48);
-    uint16_t index = static_cast<uint16_t>(key_for_index * 0x517cc1b727220a95ULL);
     while(true){
 
         // __m256i symbol_register = _mm256_loadu_si256(reinterpret_cast<const __m256i*>(&symbols[index]));
