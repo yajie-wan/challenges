@@ -12,37 +12,40 @@ RingBuffer::RingBuffer(size_t capacity)
     : buf_(capacity), capacity_(capacity) {}
 
 bool RingBuffer::push(const Message& msg) {
-    size_t tail_curr = tail_state_._index.load(std::memory_order_acquire);
+    size_t tail_curr = tail_state_._published_index.load(std::memory_order_acquire);
     size_t next_tail = (tail_curr + 1) & (capacity_ - 1);
     if (next_tail == tail_state_._cached_other_index){
-        tail_state_._cached_other_index = head_state_._index.load(std::memory_order_acquire);
+        tail_state_._cached_other_index = head_state_._published_index.load(std::memory_order_acquire);
         if (next_tail == tail_state_._cached_other_index){
             return false;
         }
     }
     buf_[tail_curr] = msg;
-    tail_state_._index.store(next_tail, std::memory_order_release);
+    tail_state_._published_index.store(next_tail, std::memory_order_release);
     return true;
 }
 
 bool RingBuffer::pop(Message& out) {
-    size_t head_curr = head_state_._index.load(std::memory_order_acquire);
+    size_t head_curr = head_state_._local_index;
     if (head_curr == head_state_._cached_other_index) {
-        head_state_._cached_other_index = tail_state_._index.load(std::memory_order_acquire);
+        head_state_._cached_other_index = tail_state_._published_index.load(std::memory_order_acquire);
         if (head_curr == head_state_._cached_other_index) {
             return false;
         }
     }
 
     out = buf_[head_curr];
-    head_state_._index.store((head_curr + 1) & (capacity_ - 1), std::memory_order_release);
+    head_state_._local_index = (head_state_._local_index + 1) & (capacity_ - 1);
+    if((head_state_._local_index & 7) == 0){
+        head_state_._published_index.store((head_curr + 1) & (capacity_ - 1), std::memory_order_release);
+    }
     return true;
 }
 
 size_t RingBuffer::size() const {
     //std::lock_guard<std::mutex> lock(mtx_);
-    size_t tail_curr = tail_state_._index.load(std::memory_order_acquire);
-    size_t head_curr = head_state_._index.load(std::memory_order_acquire);
+    size_t tail_curr = tail_state_._published_index.load(std::memory_order_acquire);
+    size_t head_curr = head_state_._published_index.load(std::memory_order_acquire);
     if (tail_curr >= head_curr) {
         return tail_curr - head_curr;
     } else {

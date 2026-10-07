@@ -41,7 +41,8 @@ public:
 
     struct alignas(64) ThreadState{
         size_t _cached_other_index{0};
-        std::atomic<size_t> _index{0};
+        std::atomic<size_t> _published_index{0};
+        size_t _local_index{0};
     };
 
 private:
