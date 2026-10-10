@@ -33,13 +33,13 @@ private:
     size_t capacity_;
 
     // Producer-private cached consumer head.
-    std::atomic<size_t> head_cached_{0};
+    alignas(64) std::atomic<size_t> head_cached_{0};
 
     // Consumer publishes head here.
     alignas(64) std::atomic<size_t> head_{0};
 
     // Consumer-private cached producer tail.
-    std::atomic<size_t> tail_cached_{0};
+    alignas(64) std::atomic<size_t> tail_cached_{0};
 
     // Producer publishes tail here.
     alignas(64) std::atomic<size_t> tail_{0};
