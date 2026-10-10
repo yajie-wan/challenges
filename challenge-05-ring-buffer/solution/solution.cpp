@@ -33,7 +33,7 @@ bool RingBuffer::push(const Message& msg) {
     }
 
     // Write payload first.
-     __builtin_prefetch(&buf_[next_tail], 1, 3);
+     __builtin_prefetch(&buf_[next_tail + 2], 1, 3);
     buf_[tail_curr] = msg;
 
     // Then publish it to consumer.
