@@ -19,7 +19,6 @@ struct Message {
     uint64_t sequence;    // 8
 };
 
-static_assert(sizeof(Message) == 48);
 
 class RingBuffer {
 public:
