@@ -9,6 +9,16 @@
 
 #include <thread>
 #include <atomic>
+#include <iostream>
+
+// namespace hftu {
+// extern uint64_t producer_refresh;
+// extern uint64_t producer_push;
+// extern uint64_t consumer_refresh;
+// extern uint64_t consumer_pop;
+// extern uint64_t consumer_failure;
+// }
+
 
 namespace {
 
@@ -92,5 +102,10 @@ static hftu::RegisterBenchmark reg_solution(
 
 int main() {
     hftu::run_benchmarks();
+    // std::cout << "Producer refreshes: " << hftu::producer_refresh << std::endl;
+    // std::cout << "Producer pushes: " << hftu::producer_push << std::endl;
+    // std::cout << "Consumer refreshes: " << hftu::consumer_refresh << std::endl;
+    // std::cout << "Consumer pops: " << hftu::consumer_pop << std::endl;
+    // std::cout << "Consumer failures: " << hftu::consumer_failure << std::endl;
     return 0;
 }
