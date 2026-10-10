@@ -29,7 +29,7 @@ public:
     size_t size() const;
 
 private:
-    std::vector<Message> buf_;
+    alignas(64) std::vector<Message> buf_;
     size_t capacity_;
 
     // Producer-private cached consumer head.
