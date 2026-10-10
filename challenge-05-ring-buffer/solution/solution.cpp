@@ -46,17 +46,27 @@ bool RingBuffer::pop(Message& out) {
     const size_t head_curr =
         head_.load(std::memory_order_relaxed);
 
-    // Only refresh producer tail when cached value says empty.
-    if (head_curr == tail_cached_) {
-        //consumer_refresh++;
-        tail_cached_ =
-            tail_.load(std::memory_order_acquire);
-
-        if (head_curr == tail_cached_) {
-            //consumer_failure++;
-            return false;
-        }
+    const size_t tail_curr =
+        tail_.load(std::memory_order_acquire);
+    if (head_curr == tail_curr){
+        return false;
     }
+
+
+    // // Only refresh producer tail when cached value says empty.
+    // if (head_curr == tail_cached_) {
+    //     //consumer_refresh++;
+    //     tail_cached_ =
+    //         tail_.load(std::memory_order_acquire);
+
+    //     if (head_curr == tail_cached_) {
+    //         //consumer_failure++;
+    //         return false;
+    //     }
+    // }
+
+
+    
 
     // Safe after acquiring producer's published tail.
     out = buf_[head_curr];
