@@ -7,7 +7,8 @@
 // No mutexes allowed in your final solution — this is a lock-free exercise.
 
 #include <cstdint>
-#include <mutex>
+#include <atomic>
+//#include <mutex>
 
 namespace hftu {
 
@@ -16,7 +17,7 @@ struct Payload {
     int64_t b;
     int64_t c;
     int64_t d;
-};
+}; // 32 bytes
 
 class Seqlock {
 public:
@@ -30,7 +31,8 @@ public:
 
 private:
     Payload data_{};
-    mutable std::mutex mtx_;
+    std::atomic<uint64_t> seq{0};
+    //mutable std::mutex mtx_;
 };
 
 } // namespace hftu
