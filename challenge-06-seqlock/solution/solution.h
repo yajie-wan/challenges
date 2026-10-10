@@ -31,7 +31,7 @@ public:
 
 private:
     Payload data_{};
-    std::atomic<uint64_t> seq{0};
+    alignas(64) std::atomic<uint64_t> seq{0};
     //mutable std::mutex mtx_;
 };
 

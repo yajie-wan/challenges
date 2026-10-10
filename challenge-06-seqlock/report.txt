@@ -1,0 +1,91 @@
+=================================================
+            Trace Event Information              
+=================================================
+  Total records                     :       2415
+  Locked Load/Store Operations      :          0
+  Load Operations                   :        573
+  Loads - uncacheable               :          0
+  Loads - IO                        :          0
+  Loads - Miss                      :          0
+  Loads - no mapping                :        190
+  Load Fill Buffer Hit              :          0
+  Load L1D hit                      :        363
+  Load L2D hit                      :          1
+  Load LLC hit                      :         19
+  Load Local HITM                   :         18
+  Load Remote HITM                  :         18
+  Load Remote HIT                   :          0
+  Load Local DRAM                   :          0
+  Load Remote DRAM                  :          0
+  Load MESI State Exclusive         :          0
+  Load MESI State Shared            :          0
+  Load LLC Misses                   :         18
+  Load access blocked by data       :          0
+  Load access blocked by address    :          0
+  Load HIT Local Peer               :          0
+  Load HIT Remote Peer              :          0
+  LLC Misses to Local DRAM          :        0.0%
+  LLC Misses to Remote DRAM         :        0.0%
+  LLC Misses to Remote cache (HIT)  :        0.0%
+  LLC Misses to Remote cache (HITM) :      100.0%
+  Store Operations                  :        158
+  Store - uncacheable               :          0
+  Store - no mapping                :          0
+  Store L1D Hit                     :        119
+  Store L1D Miss                    :          0
+  Store No available memory level   :          1
+  No Page Map Rejects               :        158
+  Unable to parse data source       :       1684
+
+=================================================
+    Global Shared Cache Line Event Information   
+=================================================
+  Total Shared Cache Lines          :          1
+  Load HITs on shared lines         :         71
+  Fill Buffer Hits on shared lines  :          0
+  L1D hits on shared lines          :         53
+  L2D hits on shared lines          :          0
+  LLC hits on shared lines          :         18
+  Load hits on peer cache or nodes  :          0
+  Locked Access on shared lines     :          0
+  Blocked Access on shared lines    :          0
+  Store HITs on shared lines        :         57
+  Store L1D hits on shared lines    :         22
+  Store No available memory level   :          0
+  Total Merged records              :         93
+
+=================================================
+                 c2c details                     
+=================================================
+  Events                            : ibs_op//
+  Cachelines sort on                : Total HITMs
+  Cacheline data grouping           : offset,iaddr
+
+=================================================
+           Shared Data Cache Line Table          
+=================================================
+#
+#        ----------- Cacheline ----------      Tot  ------- Load Hitm -------    Total    Total    Total  --------- Stores --------  ----- Core Load Hit -----  - LLC Load Hit --  - RMT Load Hit --  --- Load Dram ----
+# Index             Address  Node  PA cnt     Hitm    Total  LclHitm  RmtHitm  records    Loads   Stores    L1Hit   L1Miss      N/A       FB       L1       L2    LclHit  LclHitm    RmtHit  RmtHitm       Lcl       Rmt
+# .....  ..................  ....  ......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  ........  .......  ........  .......  ........  ........
+#
+      0      0x7fff0e0a1dc0     0      24  100.00%       36       18       18      111       89       57       22        0        0        0       53        0         0       18         0       18         0         0
+
+=================================================
+      Shared Cache Line Distribution Pareto      
+=================================================
+#
+# ----- HITM -----  ------- Store Refs ------  ------- CL --------                      ---------- cycles ----------    Total       cpu                                     Shared                                      
+# RmtHitm  LclHitm   L1 Hit  L1 Miss      N/A    Off  Node  PA cnt        Code address  rmt hitm  lcl hitm      load  records       cnt                          Symbol     Object                     Source:Line  Node
+# .......  .......  .......  .......  .......  .....  ....  ......  ..................  ........  ........  ........  .......  ........  ..............................  .........  ..............................  ....
+#
+  ----------------------------------------------------------------------
+      0       18       18       22        0        0      0x7fff0e0a1dc0
+  ----------------------------------------------------------------------
+   27.78%   27.78%    0.00%    0.00%    0.00%   0x10     0       1      0x6487db8f9647       195         0         0       19         6  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+23   0
+    0.00%    0.00%   54.55%    0.00%    0.00%   0x10     0       1      0x6487db8f9618         0         0         0       12         5  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+   44.44%   44.44%    0.00%    0.00%    0.00%   0x30     0       1      0x6487db8f9640       182         0         0       27         7  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+16   0
+   16.67%   16.67%    0.00%    0.00%    0.00%   0x30     0       1      0x6487db8f964f       380         0         0       31         6  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+31   0
+   11.11%   11.11%    0.00%    0.00%    0.00%   0x30     0       1      0x6487db8f9604       121         0         0       12         3  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+    0.00%    0.00%   13.64%    0.00%    0.00%   0x30     0       1      0x6487db8f9610         0         0         0        3         3  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+    0.00%    0.00%   31.82%    0.00%    0.00%   0x30     0       1      0x6487db8f961c         0         0         0        7         4  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
