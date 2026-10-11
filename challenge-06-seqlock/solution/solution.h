@@ -30,8 +30,11 @@ public:
     Payload read() const;
 
 private:
-    Payload data_{};
+    // Payload data0_{};
+    // Payload data1_{};
+    
     std::atomic<uint64_t> seq{0};
+    Payload data_[2];
     //mutable std::mutex mtx_;
 };
 

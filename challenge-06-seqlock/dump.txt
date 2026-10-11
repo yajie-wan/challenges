@@ -1485,24 +1485,26 @@ Disassembly of section .text:
 0000000000002630 <hftu::Seqlock::read() const>:
     2630:	f3 0f 1e fa          	endbr64
     2634:	48 8d 56 20          	lea    0x20(%rsi),%rdx
-    2638:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
-    263f:	00 
-    2640:	48 8b 02             	mov    (%rdx),%rax
-    2643:	a8 01                	test   $0x1,%al
-    2645:	75 f9                	jne    2640 <hftu::Seqlock::read() const+0x10>
-    2647:	48 8b 0a             	mov    (%rdx),%rcx
-    264a:	48 39 c8             	cmp    %rcx,%rax
-    264d:	75 f1                	jne    2640 <hftu::Seqlock::read() const+0x10>
-    264f:	c5 fe 6f 06          	vmovdqu (%rsi),%ymm0
-    2653:	48 89 f8             	mov    %rdi,%rax
-    2656:	c5 fe 7f 07          	vmovdqu %ymm0,(%rdi)
-    265a:	c5 f8 77             	vzeroupper
-    265d:	c3                   	ret
+    2638:	eb 08                	jmp    2642 <hftu::Seqlock::read() const+0x12>
+    263a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    2640:	f3 90                	pause
+    2642:	48 8b 02             	mov    (%rdx),%rax
+    2645:	a8 01                	test   $0x1,%al
+    2647:	75 f7                	jne    2640 <hftu::Seqlock::read() const+0x10>
+    2649:	c5 fe 6f 06          	vmovdqu (%rsi),%ymm0
+    264d:	c5 fe 7f 07          	vmovdqu %ymm0,(%rdi)
+    2651:	48 8b 0a             	mov    (%rdx),%rcx
+    2654:	48 8b 02             	mov    (%rdx),%rax
+    2657:	48 39 c1             	cmp    %rax,%rcx
+    265a:	75 e6                	jne    2642 <hftu::Seqlock::read() const+0x12>
+    265c:	48 89 f8             	mov    %rdi,%rax
+    265f:	c5 f8 77             	vzeroupper
+    2662:	c3                   	ret
 
 Disassembly of section .fini:
 
-0000000000002660 <_fini>:
-    2660:	f3 0f 1e fa          	endbr64
-    2664:	48 83 ec 08          	sub    $0x8,%rsp
-    2668:	48 83 c4 08          	add    $0x8,%rsp
-    266c:	c3                   	ret
+0000000000002664 <_fini>:
+    2664:	f3 0f 1e fa          	endbr64
+    2668:	48 83 ec 08          	sub    $0x8,%rsp
+    266c:	48 83 c4 08          	add    $0x8,%rsp
+    2670:	c3                   	ret

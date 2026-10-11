@@ -10,10 +10,16 @@ Seqlock::Seqlock() {}
 
 void Seqlock::write(const Payload& data) {
     //std::lock_guard<std::mutex> lock(mtx_);
+    // uint64_t seq = this->seq.load(std::memory_order_relaxed);
+    // this->seq.store(seq + 1, std::memory_order_release);
+    // data_ = data;
+    // this->seq.store(seq + 2, std::memory_order_release);
     uint64_t seq = this->seq.load(std::memory_order_relaxed);
+    uint64_t next_slot = ((seq >> 1) & 1) ^ 1;
     this->seq.store(seq + 1, std::memory_order_release);
-    data_ = data;
+    data_[next_slot] = data;
     this->seq.store(seq + 2, std::memory_order_release);
+
 }
 
 Payload Seqlock::read() const {
@@ -28,19 +34,32 @@ Payload Seqlock::read() const {
     //         return data_;
     //     }
     // }
-    uint64_t seq2;
+
+
+    // uint64_t seq2;
+    // Payload data;
+    // do{
+    //     while(this->seq.load(std::memory_order_acquire) & 1){
+    //         __builtin_ia32_pause();
+    //     }
+
+    //     data = data_;
+
+    //     seq2 = this->seq.load(std::memory_order_acquire);
+
+    // }while(seq2 != seq);
+
+    // return data;
+
+    uint64_t s1, s2;
     Payload data;
     do{
-        while(this->seq.load(std::memory_order_acquire) & 1){
-            __builtin_ia32_pause();
-        }
-
-        data = data_;
-
-        seq2 = this->seq.load(std::memory_order_acquire);
-
-    }while(seq2 != seq);
-
+        s1 = this->seq.load(std::memory_order_acquire);
+        uint64_t slot = (s1 & 1) ? ((s1 >> 1) & 1) ^ 1 : (s1 >> 1) & 1;
+        data = data_[slot];
+        s2 = this->seq.load(std::memory_order_acquire);
+    }while(s2 != s1);
+    
     return data;
 }
 
