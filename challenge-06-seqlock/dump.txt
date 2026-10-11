@@ -103,24 +103,24 @@ Disassembly of section .plt.sec:
     1154:	ff 25 f6 3d 00 00    	jmp    *0x3df6(%rip)        # 4f50 <__printf_chk@GLIBC_2.3.4>
     115a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000001160 <_ZSt9terminatev@plt>:
+0000000000001160 <std::terminate()@plt>:
     1160:	f3 0f 1e fa          	endbr64
-    1164:	ff 25 ee 3d 00 00    	jmp    *0x3dee(%rip)        # 4f58 <_ZSt9terminatev@GLIBCXX_3.4>
+    1164:	ff 25 ee 3d 00 00    	jmp    *0x3dee(%rip)        # 4f58 <std::terminate()@GLIBCXX_3.4>
     116a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000001170 <_ZSt25__throw_bad_function_callv@plt>:
+0000000000001170 <std::__throw_bad_function_call()@plt>:
     1170:	f3 0f 1e fa          	endbr64
-    1174:	ff 25 e6 3d 00 00    	jmp    *0x3de6(%rip)        # 4f60 <_ZSt25__throw_bad_function_callv@GLIBCXX_3.4.14>
+    1174:	ff 25 e6 3d 00 00    	jmp    *0x3de6(%rip)        # 4f60 <std::__throw_bad_function_call()@GLIBCXX_3.4.14>
     117a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000001180 <_ZNSt6thread6_StateD2Ev@plt>:
+0000000000001180 <std::thread::_State::~_State()@plt>:
     1180:	f3 0f 1e fa          	endbr64
-    1184:	ff 25 de 3d 00 00    	jmp    *0x3dde(%rip)        # 4f68 <_ZNSt6thread6_StateD2Ev@GLIBCXX_3.4.22>
+    1184:	ff 25 de 3d 00 00    	jmp    *0x3dde(%rip)        # 4f68 <std::thread::_State::~_State()@GLIBCXX_3.4.22>
     118a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000001190 <_ZSt20__throw_length_errorPKc@plt>:
+0000000000001190 <std::__throw_length_error(char const*)@plt>:
     1190:	f3 0f 1e fa          	endbr64
-    1194:	ff 25 d6 3d 00 00    	jmp    *0x3dd6(%rip)        # 4f70 <_ZSt20__throw_length_errorPKc@GLIBCXX_3.4>
+    1194:	ff 25 d6 3d 00 00    	jmp    *0x3dd6(%rip)        # 4f70 <std::__throw_length_error(char const*)@GLIBCXX_3.4>
     119a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
 00000000000011a0 <__cxa_guard_release@plt>:
@@ -138,19 +138,19 @@ Disassembly of section .plt.sec:
     11c4:	ff 25 be 3d 00 00    	jmp    *0x3dbe(%rip)        # 4f88 <__cxa_atexit@GLIBC_2.2.5>
     11ca:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-00000000000011d0 <_ZNSt6thread15_M_start_threadESt10unique_ptrINS_6_StateESt14default_deleteIS1_EEPFvvE@plt>:
+00000000000011d0 <std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())@plt>:
     11d0:	f3 0f 1e fa          	endbr64
-    11d4:	ff 25 b6 3d 00 00    	jmp    *0x3db6(%rip)        # 4f90 <_ZNSt6thread15_M_start_threadESt10unique_ptrINS_6_StateESt14default_deleteIS1_EEPFvvE@GLIBCXX_3.4.22>
+    11d4:	ff 25 b6 3d 00 00    	jmp    *0x3db6(%rip)        # 4f90 <std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())@GLIBCXX_3.4.22>
     11da:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-00000000000011e0 <_Znwm@plt>:
+00000000000011e0 <operator new(unsigned long)@plt>:
     11e0:	f3 0f 1e fa          	endbr64
-    11e4:	ff 25 ae 3d 00 00    	jmp    *0x3dae(%rip)        # 4f98 <_Znwm@GLIBCXX_3.4>
+    11e4:	ff 25 ae 3d 00 00    	jmp    *0x3dae(%rip)        # 4f98 <operator new(unsigned long)@GLIBCXX_3.4>
     11ea:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-00000000000011f0 <_ZdlPvm@plt>:
+00000000000011f0 <operator delete(void*, unsigned long)@plt>:
     11f0:	f3 0f 1e fa          	endbr64
-    11f4:	ff 25 a6 3d 00 00    	jmp    *0x3da6(%rip)        # 4fa0 <_ZdlPvm@CXXABI_1.3.9>
+    11f4:	ff 25 a6 3d 00 00    	jmp    *0x3da6(%rip)        # 4fa0 <operator delete(void*, unsigned long)@CXXABI_1.3.9>
     11fa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
 0000000000001200 <__stack_chk_fail@plt>:
@@ -168,9 +168,9 @@ Disassembly of section .plt.sec:
     1224:	ff 25 8e 3d 00 00    	jmp    *0x3d8e(%rip)        # 4fb8 <__fprintf_chk@GLIBC_2.3.4>
     122a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000001230 <_ZNSt6thread4joinEv@plt>:
+0000000000001230 <std::thread::join()@plt>:
     1230:	f3 0f 1e fa          	endbr64
-    1234:	ff 25 86 3d 00 00    	jmp    *0x3d86(%rip)        # 4fc0 <_ZNSt6thread4joinEv@GLIBCXX_3.4.11>
+    1234:	ff 25 86 3d 00 00    	jmp    *0x3d86(%rip)        # 4fc0 <std::thread::join()@GLIBCXX_3.4.11>
     123a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
 0000000000001240 <_Unwind_Resume@plt>:
@@ -193,7 +193,7 @@ Disassembly of section .text:
     1270:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
     1276:	c4 e3 d1 22 eb 01    	vpinsrq $0x1,%rbx,%xmm5,%xmm5
     127c:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
-    1282:	e8 e9 fe ff ff       	call   1170 <_ZSt25__throw_bad_function_callv@plt>
+    1282:	e8 e9 fe ff ff       	call   1170 <std::__throw_bad_function_call()@plt>
     1287:	f3 0f 1e fa          	endbr64
     128b:	48 89 c3             	mov    %rax,%rbx
     128e:	c5 f9 6f 6c 24 10    	vmovdqa 0x10(%rsp),%xmm5
@@ -202,7 +202,7 @@ Disassembly of section .text:
     129e:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
     12a3:	c5 f9 7f 6c 24 50    	vmovdqa %xmm5,0x50(%rsp)
     12a9:	c5 f8 77             	vzeroupper
-    12ac:	e8 cf 12 00 00       	call   2580 <_ZNSt12_Vector_baseIN4hftu15BenchmarkResultESaIS1_EED1Ev>
+    12ac:	e8 cf 12 00 00       	call   2580 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>
     12b1:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
     12b6:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     12bd:	00 00 
@@ -218,7 +218,7 @@ Disassembly of section .text:
     12e3:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
     12e9:	c4 e3 d1 22 eb 01    	vpinsrq $0x1,%rbx,%xmm5,%xmm5
     12ef:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
-    12f5:	e8 76 fe ff ff       	call   1170 <_ZSt25__throw_bad_function_callv@plt>
+    12f5:	e8 76 fe ff ff       	call   1170 <std::__throw_bad_function_call()@plt>
     12fa:	e8 01 ff ff ff       	call   1200 <__stack_chk_fail@plt>
     12ff:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
     1304:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
@@ -229,7 +229,7 @@ Disassembly of section .text:
     131c:	c4 e3 d1 22 6c 24 30 	vpinsrq $0x1,0x30(%rsp),%xmm5,%xmm5
     1323:	01 
     1324:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
-    132a:	e8 61 fe ff ff       	call   1190 <_ZSt20__throw_length_errorPKc@plt>
+    132a:	e8 61 fe ff ff       	call   1190 <std::__throw_length_error(char const*)@plt>
     132f:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
     1334:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     133b:	00 00 
@@ -237,7 +237,7 @@ Disassembly of section .text:
     133f:	c5 fa 7e 6c 24 08    	vmovq  0x8(%rsp),%xmm5
     1345:	c4 e3 d1 22 eb 01    	vpinsrq $0x1,%rbx,%xmm5,%xmm5
     134b:	c5 f9 7f 6c 24 10    	vmovdqa %xmm5,0x10(%rsp)
-    1351:	e8 1a fe ff ff       	call   1170 <_ZSt25__throw_bad_function_callv@plt>
+    1351:	e8 1a fe ff ff       	call   1170 <std::__throw_bad_function_call()@plt>
     1356:	e8 a5 fe ff ff       	call   1200 <__stack_chk_fail@plt>
     135b:	31 c0                	xor    %eax,%eax
     135d:	c5 d1 ef ed          	vpxor  %xmm5,%xmm5,%xmm5
@@ -246,38 +246,38 @@ Disassembly of section .text:
     136c:	e9 1d ff ff ff       	jmp    128e <main.cold+0x2e>
     1371:	e8 8a fe ff ff       	call   1200 <__stack_chk_fail@plt>
 
-0000000000001376 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold>:
+0000000000001376 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]>:
     1376:	48 83 7c 24 78 00    	cmpq   $0x0,0x78(%rsp)
-    137c:	74 33                	je     13b1 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0x3b>
+    137c:	74 33                	je     13b1 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x3b>
     137e:	c5 f8 77             	vzeroupper
-    1381:	e8 da fd ff ff       	call   1160 <_ZSt9terminatev@plt>
+    1381:	e8 da fd ff ff       	call   1160 <std::terminate()@plt>
     1386:	48 8d bc 24 88 00 00 	lea    0x88(%rsp),%rdi
     138d:	00 
     138e:	c5 f8 77             	vzeroupper
-    1391:	e8 1a 12 00 00       	call   25b0 <_ZNSt10unique_ptrINSt6thread6_StateESt14default_deleteIS1_EED1Ev>
+    1391:	e8 1a 12 00 00       	call   25b0 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>
     1396:	48 8b 84 24 b8 00 00 	mov    0xb8(%rsp),%rax
     139d:	00 
     139e:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     13a5:	00 00 
-    13a7:	75 43                	jne    13ec <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0x76>
+    13a7:	75 43                	jne    13ec <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x76>
     13a9:	48 89 df             	mov    %rbx,%rdi
     13ac:	e8 8f fe ff ff       	call   1240 <_Unwind_Resume@plt>
     13b1:	48 89 c7             	mov    %rax,%rdi
     13b4:	c5 f8 77             	vzeroupper
     13b7:	48 83 7c 24 70 00    	cmpq   $0x0,0x70(%rsp)
-    13bd:	75 c2                	jne    1381 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0xb>
+    13bd:	75 c2                	jne    1381 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0xb>
     13bf:	48 8b 84 24 b8 00 00 	mov    0xb8(%rsp),%rax
     13c6:	00 
     13c7:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     13ce:	00 00 
-    13d0:	75 1f                	jne    13f1 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0x7b>
+    13d0:	75 1f                	jne    13f1 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x7b>
     13d2:	e8 69 fe ff ff       	call   1240 <_Unwind_Resume@plt>
     13d7:	48 8d bc 24 88 00 00 	lea    0x88(%rsp),%rdi
     13de:	00 
     13df:	c5 f8 77             	vzeroupper
-    13e2:	e8 c9 11 00 00       	call   25b0 <_ZNSt10unique_ptrINSt6thread6_StateESt14default_deleteIS1_EED1Ev>
+    13e2:	e8 c9 11 00 00       	call   25b0 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>
     13e7:	48 89 df             	mov    %rbx,%rdi
-    13ea:	eb cb                	jmp    13b7 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0x41>
+    13ea:	eb cb                	jmp    13b7 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x41>
     13ec:	e8 0f fe ff ff       	call   1200 <__stack_chk_fail@plt>
     13f1:	e8 0a fe ff ff       	call   1200 <__stack_chk_fail@plt>
 
@@ -287,15 +287,15 @@ Disassembly of section .text:
     1402:	00 00 
     1404:	75 0c                	jne    1412 <_GLOBAL__sub_I_main.cold+0x1c>
     1406:	48 8d 3d 2b 1c 00 00 	lea    0x1c2b(%rip),%rdi        # 3038 <_IO_stdin_used+0x38>
-    140d:	e8 7e fd ff ff       	call   1190 <_ZSt20__throw_length_errorPKc@plt>
+    140d:	e8 7e fd ff ff       	call   1190 <std::__throw_length_error(char const*)@plt>
     1412:	e8 e9 fd ff ff       	call   1200 <__stack_chk_fail@plt>
     1417:	f3 0f 1e fa          	endbr64
     141b:	48 8d 7c 24 50       	lea    0x50(%rsp),%rdi
     1420:	48 89 c3             	mov    %rax,%rbx
     1423:	c5 f8 77             	vzeroupper
-    1426:	e8 e5 0f 00 00       	call   2410 <_ZNSt14_Function_baseD1Ev>
+    1426:	e8 e5 0f 00 00       	call   2410 <std::_Function_base::~_Function_base()>
     142b:	48 8d 7c 24 20       	lea    0x20(%rsp),%rdi
-    1430:	e8 db 0f 00 00       	call   2410 <_ZNSt14_Function_baseD1Ev>
+    1430:	e8 db 0f 00 00       	call   2410 <std::_Function_base::~_Function_base()>
     1435:	48 8b 44 24 78       	mov    0x78(%rsp),%rax
     143a:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     1441:	00 00 
@@ -320,14 +320,14 @@ Disassembly of section .text:
     1479:	00 00 
     147b:	48 89 44 24 68       	mov    %rax,0x68(%rsp)
     1480:	31 c0                	xor    %eax,%eax
-    1482:	e8 b9 0f 00 00       	call   2440 <_ZN4hftu15run_validationsEv>
+    1482:	e8 b9 0f 00 00       	call   2440 <hftu::run_validations()>
     1487:	84 c0                	test   %al,%al
     1489:	0f 84 59 05 00 00    	je     19e8 <main+0x588>
-    148f:	0f b6 05 9a 3b 00 00 	movzbl 0x3b9a(%rip),%eax        # 5030 <_ZGVZN4hftu18benchmark_registryEvE3reg>
+    148f:	0f b6 05 9a 3b 00 00 	movzbl 0x3b9a(%rip),%eax        # 5030 <guard variable for hftu::benchmark_registry()::reg>
     1496:	84 c0                	test   %al,%al
     1498:	0f 84 7e 01 00 00    	je     161c <main+0x1bc>
-    149e:	4c 8b 25 a3 3b 00 00 	mov    0x3ba3(%rip),%r12        # 5048 <_ZZN4hftu18benchmark_registryEvE3reg+0x8>
-    14a5:	4c 8b 35 94 3b 00 00 	mov    0x3b94(%rip),%r14        # 5040 <_ZZN4hftu18benchmark_registryEvE3reg>
+    149e:	4c 8b 25 a3 3b 00 00 	mov    0x3ba3(%rip),%r12        # 5048 <hftu::benchmark_registry()::reg+0x8>
+    14a5:	4c 8b 35 94 3b 00 00 	mov    0x3b94(%rip),%r14        # 5040 <hftu::benchmark_registry()::reg>
     14ac:	4c 89 e3             	mov    %r12,%rbx
     14af:	4c 29 f3             	sub    %r14,%rbx
     14b2:	0f 85 34 01 00 00    	jne    15ec <main+0x18c>
@@ -407,20 +407,20 @@ Disassembly of section .text:
     15fa:	48 0f af d8          	imul   %rax,%rbx
     15fe:	48 c1 e3 05          	shl    $0x5,%rbx
     1602:	48 89 df             	mov    %rbx,%rdi
-    1605:	e8 d6 fb ff ff       	call   11e0 <_Znwm@plt>
+    1605:	e8 d6 fb ff ff       	call   11e0 <operator new(unsigned long)@plt>
     160a:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
     160f:	48 01 d8             	add    %rbx,%rax
     1612:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
     1617:	e9 a8 fe ff ff       	jmp    14c4 <main+0x64>
-    161c:	48 8d 3d 0d 3a 00 00 	lea    0x3a0d(%rip),%rdi        # 5030 <_ZGVZN4hftu18benchmark_registryEvE3reg>
+    161c:	48 8d 3d 0d 3a 00 00 	lea    0x3a0d(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
     1623:	e8 28 fc ff ff       	call   1250 <__cxa_guard_acquire@plt>
     1628:	85 c0                	test   %eax,%eax
     162a:	0f 84 6e fe ff ff    	je     149e <main+0x3e>
     1630:	48 8d 15 d1 39 00 00 	lea    0x39d1(%rip),%rdx        # 5008 <__dso_handle>
-    1637:	48 8d 35 02 3a 00 00 	lea    0x3a02(%rip),%rsi        # 5040 <_ZZN4hftu18benchmark_registryEvE3reg>
-    163e:	48 8d 3d 5b 0d 00 00 	lea    0xd5b(%rip),%rdi        # 23a0 <_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev>
+    1637:	48 8d 35 02 3a 00 00 	lea    0x3a02(%rip),%rsi        # 5040 <hftu::benchmark_registry()::reg>
+    163e:	48 8d 3d 5b 0d 00 00 	lea    0xd5b(%rip),%rdi        # 23a0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>
     1645:	e8 76 fb ff ff       	call   11c0 <__cxa_atexit@plt>
-    164a:	48 8d 3d df 39 00 00 	lea    0x39df(%rip),%rdi        # 5030 <_ZGVZN4hftu18benchmark_registryEvE3reg>
+    164a:	48 8d 3d df 39 00 00 	lea    0x39df(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
     1651:	e8 4a fb ff ff       	call   11a0 <__cxa_guard_release@plt>
     1656:	e9 43 fe ff ff       	jmp    149e <main+0x3e>
     165b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
@@ -449,7 +449,7 @@ Disassembly of section .text:
     16c2:	48 c1 e5 05          	shl    $0x5,%rbp
     16c6:	48 89 ef             	mov    %rbp,%rdi
     16c9:	c5 f9 7f 4c 24 10    	vmovdqa %xmm1,0x10(%rsp)
-    16cf:	e8 0c fb ff ff       	call   11e0 <_Znwm@plt>
+    16cf:	e8 0c fb ff ff       	call   11e0 <operator new(unsigned long)@plt>
     16d4:	c5 fa 7e 44 24 28    	vmovq  0x28(%rsp),%xmm0
     16da:	49 89 c5             	mov    %rax,%r13
     16dd:	48 8b 74 24 20       	mov    0x20(%rsp),%rsi
@@ -470,7 +470,7 @@ Disassembly of section .text:
     171e:	74 0d                	je     172d <main+0x2cd>
     1720:	48 8b 74 24 30       	mov    0x30(%rsp),%rsi
     1725:	48 29 fe             	sub    %rdi,%rsi
-    1728:	e8 c3 fa ff ff       	call   11f0 <_ZdlPvm@plt>
+    1728:	e8 c3 fa ff ff       	call   11f0 <operator delete(void*, unsigned long)@plt>
     172d:	49 8d 44 2d 00       	lea    0x0(%r13,%rbp,1),%rax
     1732:	4c 89 6c 24 08       	mov    %r13,0x8(%rsp)
     1737:	48 89 44 24 30       	mov    %rax,0x30(%rsp)
@@ -609,7 +609,7 @@ Disassembly of section .text:
     19b2:	48 8b 44 24 30       	mov    0x30(%rsp),%rax
     19b7:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
     19bc:	c5 f9 7f 6c 24 50    	vmovdqa %xmm5,0x50(%rsp)
-    19c2:	e8 b9 0b 00 00       	call   2580 <_ZNSt12_Vector_baseIN4hftu15BenchmarkResultESaIS1_EED1Ev>
+    19c2:	e8 b9 0b 00 00       	call   2580 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>
     19c7:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
     19cc:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     19d3:	00 00 
@@ -641,17 +641,17 @@ Disassembly of section .text:
     1a24:	53                   	push   %rbx
     1a25:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
     1a29:	48 83 c4 80          	add    $0xffffffffffffff80,%rsp
-    1a2d:	c5 fa 7e 1d ab 32 00 	vmovq  0x32ab(%rip),%xmm3        # 4ce0 <_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEEE+0x28>
+    1a2d:	c5 fa 7e 1d ab 32 00 	vmovq  0x32ab(%rip),%xmm3        # 4ce0 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >+0x28>
     1a34:	00 
     1a35:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
     1a3c:	00 00 
     1a3e:	48 89 44 24 78       	mov    %rax,0x78(%rsp)
     1a43:	31 c0                	xor    %eax,%eax
-    1a45:	48 8d 05 a4 06 00 00 	lea    0x6a4(%rip),%rax        # 20f0 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi>
+    1a45:	48 8d 05 a4 06 00 00 	lea    0x6a4(%rip),%rax        # 20f0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)>
     1a4c:	c5 f9 7f 44 24 20    	vmovdqa %xmm0,0x20(%rsp)
     1a52:	c4 e3 e1 22 c0 01    	vpinsrq $0x1,%rax,%xmm3,%xmm0
     1a58:	c5 f9 7f 44 24 30    	vmovdqa %xmm0,0x30(%rsp)
-    1a5e:	0f b6 05 cb 35 00 00 	movzbl 0x35cb(%rip),%eax        # 5030 <_ZGVZN4hftu18benchmark_registryEvE3reg>
+    1a5e:	0f b6 05 cb 35 00 00 	movzbl 0x35cb(%rip),%eax        # 5030 <guard variable for hftu::benchmark_registry()::reg>
     1a65:	84 c0                	test   %al,%al
     1a67:	0f 84 0c 01 00 00    	je     1b79 <_GLOBAL__sub_I_main+0x159>
     1a6d:	48 8d 05 6f 16 00 00 	lea    0x166f(%rip),%rax        # 30e3 <_IO_stdin_used+0xe3>
@@ -672,10 +672,10 @@ Disassembly of section .text:
     1ab4:	c5 f9 7f 44 24 50    	vmovdqa %xmm0,0x50(%rsp)
     1aba:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
     1abe:	c5 f9 7f 44 24 30    	vmovdqa %xmm0,0x30(%rsp)
-    1ac4:	48 8b 0d 7d 35 00 00 	mov    0x357d(%rip),%rcx        # 5048 <_ZZN4hftu18benchmark_registryEvE3reg+0x8>
+    1ac4:	48 8b 0d 7d 35 00 00 	mov    0x357d(%rip),%rcx        # 5048 <hftu::benchmark_registry()::reg+0x8>
     1acb:	c7 44 24 70 00 00 00 	movl   $0x0,0x70(%rsp)
     1ad2:	00 
-    1ad3:	48 3b 0d 76 35 00 00 	cmp    0x3576(%rip),%rcx        # 5050 <_ZZN4hftu18benchmark_registryEvE3reg+0x10>
+    1ad3:	48 3b 0d 76 35 00 00 	cmp    0x3576(%rip),%rcx        # 5050 <hftu::benchmark_registry()::reg+0x10>
     1ada:	0f 84 d8 00 00 00    	je     1bb8 <_GLOBAL__sub_I_main+0x198>
     1ae0:	48 8d 05 fc 15 00 00 	lea    0x15fc(%rip),%rax        # 30e3 <_IO_stdin_used+0xe3>
     1ae7:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
@@ -697,7 +697,7 @@ Disassembly of section .text:
     1b2a:	8b 44 24 70          	mov    0x70(%rsp),%eax
     1b2e:	48 83 c1 38          	add    $0x38,%rcx
     1b32:	89 41 f8             	mov    %eax,-0x8(%rcx)
-    1b35:	48 89 0d 0c 35 00 00 	mov    %rcx,0x350c(%rip)        # 5048 <_ZZN4hftu18benchmark_registryEvE3reg+0x8>
+    1b35:	48 89 0d 0c 35 00 00 	mov    %rcx,0x350c(%rip)        # 5048 <hftu::benchmark_registry()::reg+0x8>
     1b3c:	48 8b 44 24 60       	mov    0x60(%rsp),%rax
     1b41:	48 85 c0             	test   %rax,%rax
     1b44:	74 0f                	je     1b55 <_GLOBAL__sub_I_main+0x135>
@@ -706,7 +706,7 @@ Disassembly of section .text:
     1b50:	48 89 fe             	mov    %rdi,%rsi
     1b53:	ff d0                	call   *%rax
     1b55:	48 8d 7c 24 20       	lea    0x20(%rsp),%rdi
-    1b5a:	e8 b1 08 00 00       	call   2410 <_ZNSt14_Function_baseD1Ev>
+    1b5a:	e8 b1 08 00 00       	call   2410 <std::_Function_base::~_Function_base()>
     1b5f:	48 8b 44 24 78       	mov    0x78(%rsp),%rax
     1b64:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     1b6b:	00 00 
@@ -714,18 +714,18 @@ Disassembly of section .text:
     1b73:	48 83 ec 80          	sub    $0xffffffffffffff80,%rsp
     1b77:	5b                   	pop    %rbx
     1b78:	c3                   	ret
-    1b79:	48 8d 3d b0 34 00 00 	lea    0x34b0(%rip),%rdi        # 5030 <_ZGVZN4hftu18benchmark_registryEvE3reg>
+    1b79:	48 8d 3d b0 34 00 00 	lea    0x34b0(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
     1b80:	e8 cb f6 ff ff       	call   1250 <__cxa_guard_acquire@plt>
     1b85:	85 c0                	test   %eax,%eax
     1b87:	0f 84 e0 fe ff ff    	je     1a6d <_GLOBAL__sub_I_main+0x4d>
     1b8d:	48 8d 15 74 34 00 00 	lea    0x3474(%rip),%rdx        # 5008 <__dso_handle>
-    1b94:	48 8d 35 a5 34 00 00 	lea    0x34a5(%rip),%rsi        # 5040 <_ZZN4hftu18benchmark_registryEvE3reg>
-    1b9b:	48 8d 3d fe 07 00 00 	lea    0x7fe(%rip),%rdi        # 23a0 <_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev>
+    1b94:	48 8d 35 a5 34 00 00 	lea    0x34a5(%rip),%rsi        # 5040 <hftu::benchmark_registry()::reg>
+    1b9b:	48 8d 3d fe 07 00 00 	lea    0x7fe(%rip),%rdi        # 23a0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>
     1ba2:	e8 19 f6 ff ff       	call   11c0 <__cxa_atexit@plt>
-    1ba7:	48 8d 3d 82 34 00 00 	lea    0x3482(%rip),%rdi        # 5030 <_ZGVZN4hftu18benchmark_registryEvE3reg>
+    1ba7:	48 8d 3d 82 34 00 00 	lea    0x3482(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
     1bae:	e8 ed f5 ff ff       	call   11a0 <__cxa_guard_release@plt>
     1bb3:	e9 b5 fe ff ff       	jmp    1a6d <_GLOBAL__sub_I_main+0x4d>
-    1bb8:	4c 8b 05 81 34 00 00 	mov    0x3481(%rip),%r8        # 5040 <_ZZN4hftu18benchmark_registryEvE3reg>
+    1bb8:	4c 8b 05 81 34 00 00 	mov    0x3481(%rip),%r8        # 5040 <hftu::benchmark_registry()::reg>
     1bbf:	48 89 ca             	mov    %rcx,%rdx
     1bc2:	48 b8 b7 6d db b6 6d 	movabs $0x6db6db6db6db6db7,%rax
     1bc9:	db b6 6d 
@@ -751,7 +751,7 @@ Disassembly of section .text:
     1c1c:	48 0f 47 c7          	cmova  %rdi,%rax
     1c20:	48 6b f8 38          	imul   $0x38,%rax,%rdi
     1c24:	48 6b d8 38          	imul   $0x38,%rax,%rbx
-    1c28:	e8 b3 f5 ff ff       	call   11e0 <_Znwm@plt>
+    1c28:	e8 b3 f5 ff ff       	call   11e0 <operator new(unsigned long)@plt>
     1c2d:	48 8b 54 24 18       	mov    0x18(%rsp),%rdx
     1c32:	49 89 c1             	mov    %rax,%r9
     1c35:	48 8b 34 24          	mov    (%rsp),%rsi
@@ -809,18 +809,18 @@ Disassembly of section .text:
     1d02:	48 83 c0 38          	add    $0x38,%rax
     1d06:	4d 85 c0             	test   %r8,%r8
     1d09:	74 24                	je     1d2f <_GLOBAL__sub_I_main+0x30f>
-    1d0b:	48 8b 35 3e 33 00 00 	mov    0x333e(%rip),%rsi        # 5050 <_ZZN4hftu18benchmark_registryEvE3reg+0x10>
+    1d0b:	48 8b 35 3e 33 00 00 	mov    0x333e(%rip),%rsi        # 5050 <hftu::benchmark_registry()::reg+0x10>
     1d12:	4c 89 c7             	mov    %r8,%rdi
     1d15:	4c 89 4c 24 08       	mov    %r9,0x8(%rsp)
     1d1a:	48 89 04 24          	mov    %rax,(%rsp)
     1d1e:	4c 29 c6             	sub    %r8,%rsi
-    1d21:	e8 ca f4 ff ff       	call   11f0 <_ZdlPvm@plt>
+    1d21:	e8 ca f4 ff ff       	call   11f0 <operator delete(void*, unsigned long)@plt>
     1d26:	4c 8b 4c 24 08       	mov    0x8(%rsp),%r9
     1d2b:	48 8b 04 24          	mov    (%rsp),%rax
-    1d2f:	4c 89 0d 0a 33 00 00 	mov    %r9,0x330a(%rip)        # 5040 <_ZZN4hftu18benchmark_registryEvE3reg>
+    1d2f:	4c 89 0d 0a 33 00 00 	mov    %r9,0x330a(%rip)        # 5040 <hftu::benchmark_registry()::reg>
     1d36:	49 01 d9             	add    %rbx,%r9
-    1d39:	48 89 05 08 33 00 00 	mov    %rax,0x3308(%rip)        # 5048 <_ZZN4hftu18benchmark_registryEvE3reg+0x8>
-    1d40:	4c 89 0d 09 33 00 00 	mov    %r9,0x3309(%rip)        # 5050 <_ZZN4hftu18benchmark_registryEvE3reg+0x10>
+    1d39:	48 89 05 08 33 00 00 	mov    %rax,0x3308(%rip)        # 5048 <hftu::benchmark_registry()::reg+0x8>
+    1d40:	4c 89 0d 09 33 00 00 	mov    %r9,0x3309(%rip)        # 5050 <hftu::benchmark_registry()::reg+0x10>
     1d47:	e9 f0 fd ff ff       	jmp    1b3c <_GLOBAL__sub_I_main+0x11c>
     1d4c:	4c 89 c8             	mov    %r9,%rax
     1d4f:	eb b1                	jmp    1d02 <_GLOBAL__sub_I_main+0x2e2>
@@ -901,12 +901,12 @@ Disassembly of section .text:
     1e44:	e9 77 ff ff ff       	jmp    1dc0 <register_tm_clones>
     1e49:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
 
-0000000000001e50 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation>:
+0000000000001e50 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)>:
     1e50:	f3 0f 1e fa          	endbr64
     1e54:	85 d2                	test   %edx,%edx
-    1e56:	74 18                	je     1e70 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation+0x20>
+    1e56:	74 18                	je     1e70 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)+0x20>
     1e58:	83 fa 01             	cmp    $0x1,%edx
-    1e5b:	74 03                	je     1e60 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE10_M_managerERSt9_Any_dataRKS4_St18_Manager_operation+0x10>
+    1e5b:	74 03                	je     1e60 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation)+0x10>
     1e5d:	31 c0                	xor    %eax,%eax
     1e5f:	c3                   	ret
     1e60:	48 89 37             	mov    %rsi,(%rdi)
@@ -914,14 +914,14 @@ Disassembly of section .text:
     1e65:	c3                   	ret
     1e66:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
     1e6d:	00 00 00 
-    1e70:	48 8d 05 a1 2e 00 00 	lea    0x2ea1(%rip),%rax        # 4d18 <_ZTVN10__cxxabiv117__class_type_infoE@CXXABI_1.3>
+    1e70:	48 8d 05 a1 2e 00 00 	lea    0x2ea1(%rip),%rax        # 4d18 <vtable for __cxxabiv1::__class_type_info@CXXABI_1.3>
     1e77:	48 89 07             	mov    %rax,(%rdi)
     1e7a:	31 c0                	xor    %eax,%eax
     1e7c:	c3                   	ret
     1e7d:	90                   	nop
     1e7e:	66 90                	xchg   %ax,%ax
 
-0000000000001e80 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEE6_M_runEv>:
+0000000000001e80 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()>:
     1e80:	f3 0f 1e fa          	endbr64
     1e84:	55                   	push   %rbp
     1e85:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
@@ -942,7 +942,7 @@ Disassembly of section .text:
     1eb8:	48 63 00             	movslq (%rax),%rax
     1ebb:	48 0f af 02          	imul   (%rdx),%rax
     1ebf:	48 83 f8 63          	cmp    $0x63,%rax
-    1ec3:	0f 86 97 00 00 00    	jbe    1f60 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEE6_M_runEv+0xe0>
+    1ec3:	0f 86 97 00 00 00    	jbe    1f60 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()+0xe0>
     1ec9:	48 c1 e8 02          	shr    $0x2,%rax
     1ecd:	48 ba c3 f5 28 5c 8f 	movabs $0x28f5c28f5c28f5c3,%rdx
     1ed4:	c2 f5 28 
@@ -967,13 +967,13 @@ Disassembly of section .text:
     1f23:	c5 fd 7f 04 24       	vmovdqa %ymm0,(%rsp)
     1f28:	c5 f8 77             	vzeroupper
     1f2b:	48 ff c3             	inc    %rbx
-    1f2e:	e8 cd 06 00 00       	call   2600 <_ZN4hftu7Seqlock5writeERKNS_7PayloadE>
+    1f2e:	e8 cd 06 00 00       	call   2600 <hftu::Seqlock::write(hftu::Payload const&)>
     1f33:	4c 39 e3             	cmp    %r12,%rbx
-    1f36:	72 b8                	jb     1ef0 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEE6_M_runEv+0x70>
+    1f36:	72 b8                	jb     1ef0 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()+0x70>
     1f38:	48 8b 44 24 38       	mov    0x38(%rsp),%rax
     1f3d:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     1f44:	00 00 
-    1f46:	75 1d                	jne    1f65 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEE6_M_runEv+0xe5>
+    1f46:	75 1d                	jne    1f65 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()+0xe5>
     1f48:	48 8d 65 e0          	lea    -0x20(%rbp),%rsp
     1f4c:	5b                   	pop    %rbx
     1f4d:	41 5c                	pop    %r12
@@ -984,57 +984,57 @@ Disassembly of section .text:
     1f55:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
     1f5c:	00 00 00 00 
     1f60:	c5 f8 77             	vzeroupper
-    1f63:	eb d3                	jmp    1f38 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEE6_M_runEv+0xb8>
+    1f63:	eb d3                	jmp    1f38 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()+0xb8>
     1f65:	e8 96 f2 ff ff       	call   1200 <__stack_chk_fail@plt>
     1f6a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000001f70 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEED1Ev>:
+0000000000001f70 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::~_State_impl()>:
     1f70:	f3 0f 1e fa          	endbr64
-    1f74:	48 8d 05 25 2d 00 00 	lea    0x2d25(%rip),%rax        # 4ca0 <_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEEE+0x10>
+    1f74:	48 8d 05 25 2d 00 00 	lea    0x2d25(%rip),%rax        # 4ca0 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >+0x10>
     1f7b:	48 89 07             	mov    %rax,(%rdi)
-    1f7e:	e9 fd f1 ff ff       	jmp    1180 <_ZNSt6thread6_StateD2Ev@plt>
+    1f7e:	e9 fd f1 ff ff       	jmp    1180 <std::thread::_State::~_State()@plt>
     1f83:	90                   	nop
     1f84:	90                   	nop
     1f85:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
     1f8c:	00 00 00 00 
 
-0000000000001f90 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEED0Ev>:
+0000000000001f90 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::~_State_impl()>:
     1f90:	f3 0f 1e fa          	endbr64
-    1f94:	48 8d 05 05 2d 00 00 	lea    0x2d05(%rip),%rax        # 4ca0 <_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEEE+0x10>
+    1f94:	48 8d 05 05 2d 00 00 	lea    0x2d05(%rip),%rax        # 4ca0 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >+0x10>
     1f9b:	48 83 ec 18          	sub    $0x18,%rsp
     1f9f:	48 89 07             	mov    %rax,(%rdi)
     1fa2:	48 89 7c 24 08       	mov    %rdi,0x8(%rsp)
-    1fa7:	e8 d4 f1 ff ff       	call   1180 <_ZNSt6thread6_StateD2Ev@plt>
+    1fa7:	e8 d4 f1 ff ff       	call   1180 <std::thread::_State::~_State()@plt>
     1fac:	be 20 00 00 00       	mov    $0x20,%esi
     1fb1:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
     1fb6:	48 83 c4 18          	add    $0x18,%rsp
-    1fba:	e9 31 f2 ff ff       	jmp    11f0 <_ZdlPvm@plt>
+    1fba:	e9 31 f2 ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
     1fbf:	90                   	nop
 
-0000000000001fc0 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEED1Ev>:
+0000000000001fc0 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::~_State_impl()>:
     1fc0:	f3 0f 1e fa          	endbr64
-    1fc4:	48 8d 05 fd 2c 00 00 	lea    0x2cfd(%rip),%rax        # 4cc8 <_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEEE+0x10>
+    1fc4:	48 8d 05 fd 2c 00 00 	lea    0x2cfd(%rip),%rax        # 4cc8 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >+0x10>
     1fcb:	48 89 07             	mov    %rax,(%rdi)
-    1fce:	e9 ad f1 ff ff       	jmp    1180 <_ZNSt6thread6_StateD2Ev@plt>
+    1fce:	e9 ad f1 ff ff       	jmp    1180 <std::thread::_State::~_State()@plt>
     1fd3:	90                   	nop
     1fd4:	90                   	nop
     1fd5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
     1fdc:	00 00 00 00 
 
-0000000000001fe0 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEED0Ev>:
+0000000000001fe0 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::~_State_impl()>:
     1fe0:	f3 0f 1e fa          	endbr64
-    1fe4:	48 8d 05 dd 2c 00 00 	lea    0x2cdd(%rip),%rax        # 4cc8 <_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEEE+0x10>
+    1fe4:	48 8d 05 dd 2c 00 00 	lea    0x2cdd(%rip),%rax        # 4cc8 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >+0x10>
     1feb:	48 83 ec 18          	sub    $0x18,%rsp
     1fef:	48 89 07             	mov    %rax,(%rdi)
     1ff2:	48 89 7c 24 08       	mov    %rdi,0x8(%rsp)
-    1ff7:	e8 84 f1 ff ff       	call   1180 <_ZNSt6thread6_StateD2Ev@plt>
+    1ff7:	e8 84 f1 ff ff       	call   1180 <std::thread::_State::~_State()@plt>
     1ffc:	be 28 00 00 00       	mov    $0x28,%esi
     2001:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
     2006:	48 83 c4 18          	add    $0x18,%rsp
-    200a:	e9 e1 f1 ff ff       	jmp    11f0 <_ZdlPvm@plt>
+    200a:	e9 e1 f1 ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
     200f:	90                   	nop
 
-0000000000002010 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEE6_M_runEv>:
+0000000000002010 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()>:
     2010:	f3 0f 1e fa          	endbr64
     2014:	55                   	push   %rbp
     2015:	48 89 e5             	mov    %rsp,%rbp
@@ -1062,7 +1062,7 @@ Disassembly of section .text:
     2057:	48 98                	cltq
     2059:	48 0f af 02          	imul   (%rdx),%rax
     205d:	48 83 f8 63          	cmp    $0x63,%rax
-    2061:	76 42                	jbe    20a5 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEE6_M_runEv+0x95>
+    2061:	76 42                	jbe    20a5 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0x95>
     2063:	48 c1 e8 02          	shr    $0x2,%rax
     2067:	48 ba c3 f5 28 5c 8f 	movabs $0x28f5c28f5c28f5c3,%rdx
     206e:	c2 f5 28 
@@ -1070,17 +1070,17 @@ Disassembly of section .text:
     2073:	48 f7 e2             	mul    %rdx
     2076:	48 c1 ea 02          	shr    $0x2,%rdx
     207a:	49 89 d4             	mov    %rdx,%r12
-    207d:	eb 04                	jmp    2083 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEE6_M_runEv+0x73>
+    207d:	eb 04                	jmp    2083 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0x73>
     207f:	90                   	nop
     2080:	c5 f8 77             	vzeroupper
     2083:	49 8b 76 18          	mov    0x18(%r14),%rsi
     2087:	48 89 e7             	mov    %rsp,%rdi
-    208a:	e8 a1 05 00 00       	call   2630 <_ZNK4hftu7Seqlock4readEv>
+    208a:	e8 a1 05 00 00       	call   2630 <hftu::Seqlock::read() const>
     208f:	c5 fe 6f 04 24       	vmovdqu (%rsp),%ymm0
     2094:	c5 fe 7f 44 24 20    	vmovdqu %ymm0,0x20(%rsp)
     209a:	48 ff c3             	inc    %rbx
     209d:	4c 39 e3             	cmp    %r12,%rbx
-    20a0:	72 de                	jb     2080 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEE6_M_runEv+0x70>
+    20a0:	72 de                	jb     2080 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0x70>
     20a2:	c5 f8 77             	vzeroupper
     20a5:	0f 01 f9             	rdtscp
     20a8:	89 c7                	mov    %eax,%edi
@@ -1095,7 +1095,7 @@ Disassembly of section .text:
     20c1:	48 8b 44 24 48       	mov    0x48(%rsp),%rax
     20c6:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     20cd:	00 00 
-    20cf:	75 0f                	jne    20e0 <_ZNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEE6_M_runEv+0xd0>
+    20cf:	75 0f                	jne    20e0 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0xd0>
     20d1:	48 83 c4 58          	add    $0x58,%rsp
     20d5:	5b                   	pop    %rbx
     20d6:	41 5c                	pop    %r12
@@ -1108,7 +1108,7 @@ Disassembly of section .text:
     20e5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
     20ec:	00 00 00 00 
 
-00000000000020f0 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi>:
+00000000000020f0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)>:
     20f0:	f3 0f 1e fa          	endbr64
     20f4:	55                   	push   %rbp
     20f5:	48 89 e5             	mov    %rsp,%rbp
@@ -1126,9 +1126,9 @@ Disassembly of section .text:
     211d:	8b 06                	mov    (%rsi),%eax
     211f:	89 44 24 5c          	mov    %eax,0x5c(%rsp)
     2123:	85 c0                	test   %eax,%eax
-    2125:	0f 8e b5 01 00 00    	jle    22e0 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi+0x1f0>
+    2125:	0f 8e b5 01 00 00    	jle    22e0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x1f0>
     212b:	48 8d 44 24 64       	lea    0x64(%rsp),%rax
-    2130:	48 8d 0d 69 2b 00 00 	lea    0x2b69(%rip),%rcx        # 4ca0 <_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE_EEEEEE+0x10>
+    2130:	48 8d 0d 69 2b 00 00 	lea    0x2b69(%rip),%rcx        # 4ca0 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >+0x10>
     2137:	48 8d 94 24 90 00 00 	lea    0x90(%rsp),%rdx
     213e:	00 
     213f:	31 db                	xor    %ebx,%ebx
@@ -1136,7 +1136,7 @@ Disassembly of section .text:
     2146:	c4 e1 f9 6e c9       	vmovq  %rcx,%xmm1
     214b:	48 8d 84 24 80 00 00 	lea    0x80(%rsp),%rax
     2152:	00 
-    2153:	48 8d 0d 6e 2b 00 00 	lea    0x2b6e(%rip),%rcx        # 4cc8 <_ZTVNSt6thread11_State_implINS_8_InvokerISt5tupleIJZN12_GLOBAL__N_1L14run_concurrentEmiEUlvE0_EEEEEE+0x10>
+    2153:	48 8d 0d 6e 2b 00 00 	lea    0x2b6e(%rip),%rcx        # 4cc8 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >+0x10>
     215a:	c4 e3 f1 22 c8 01    	vpinsrq $0x1,%rax,%xmm1,%xmm1
     2160:	c4 e3 f9 22 c2 01    	vpinsrq $0x1,%rdx,%xmm0,%xmm0
     2166:	48 89 54 24 50       	mov    %rdx,0x50(%rsp)
@@ -1156,14 +1156,14 @@ Disassembly of section .text:
     21ac:	00 
     21ad:	48 c7 84 24 80 00 00 	movq   $0xf4240,0x80(%rsp)
     21b4:	00 40 42 0f 00 
-    21b9:	e8 22 04 00 00       	call   25e0 <_ZN4hftu7SeqlockC1Ev>
+    21b9:	e8 22 04 00 00       	call   25e0 <hftu::Seqlock::Seqlock()>
     21be:	bf 20 00 00 00       	mov    $0x20,%edi
     21c3:	48 c7 44 24 68 00 00 	movq   $0x0,0x68(%rsp)
     21ca:	00 00 
     21cc:	48 c7 44 24 70 00 00 	movq   $0x0,0x70(%rsp)
     21d3:	00 00 
-    21d5:	e8 06 f0 ff ff       	call   11e0 <_Znwm@plt>
-    21da:	48 8d 15 3f 01 00 00 	lea    0x13f(%rip),%rdx        # 2320 <_ZNSt6thread24_M_thread_deps_never_runEv>
+    21d5:	e8 06 f0 ff ff       	call   11e0 <operator new(unsigned long)@plt>
+    21da:	48 8d 15 3f 01 00 00 	lea    0x13f(%rip),%rdx        # 2320 <std::thread::_M_thread_deps_never_run()>
     21e1:	48 8d b4 24 88 00 00 	lea    0x88(%rsp),%rsi
     21e8:	00 
     21e9:	48 8d 7c 24 70       	lea    0x70(%rsp),%rdi
@@ -1172,52 +1172,52 @@ Disassembly of section .text:
     21fb:	00 
     21fc:	c5 fe 7f 10          	vmovdqu %ymm2,(%rax)
     2200:	c5 f8 77             	vzeroupper
-    2203:	e8 c8 ef ff ff       	call   11d0 <_ZNSt6thread15_M_start_threadESt10unique_ptrINS_6_StateESt14default_deleteIS1_EEPFvvE@plt>
+    2203:	e8 c8 ef ff ff       	call   11d0 <std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())@plt>
     2208:	48 8b bc 24 88 00 00 	mov    0x88(%rsp),%rdi
     220f:	00 
     2210:	48 85 ff             	test   %rdi,%rdi
-    2213:	74 06                	je     221b <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi+0x12b>
+    2213:	74 06                	je     221b <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x12b>
     2215:	48 8b 07             	mov    (%rdi),%rax
     2218:	ff 50 08             	call   *0x8(%rax)
     221b:	bf 28 00 00 00       	mov    $0x28,%edi
     2220:	48 c7 44 24 78 00 00 	movq   $0x0,0x78(%rsp)
     2227:	00 00 
-    2229:	e8 b2 ef ff ff       	call   11e0 <_Znwm@plt>
+    2229:	e8 b2 ef ff ff       	call   11e0 <operator new(unsigned long)@plt>
     222e:	c5 fd 6f 1c 24       	vmovdqa (%rsp),%ymm3
     2233:	48 8b 4c 24 48       	mov    0x48(%rsp),%rcx
     2238:	48 89 84 24 88 00 00 	mov    %rax,0x88(%rsp)
     223f:	00 
-    2240:	48 8d 15 d9 00 00 00 	lea    0xd9(%rip),%rdx        # 2320 <_ZNSt6thread24_M_thread_deps_never_runEv>
+    2240:	48 8d 15 d9 00 00 00 	lea    0xd9(%rip),%rdx        # 2320 <std::thread::_M_thread_deps_never_run()>
     2247:	48 8d b4 24 88 00 00 	lea    0x88(%rsp),%rsi
     224e:	00 
     224f:	48 8d 7c 24 78       	lea    0x78(%rsp),%rdi
     2254:	48 89 48 20          	mov    %rcx,0x20(%rax)
     2258:	c5 fe 7f 18          	vmovdqu %ymm3,(%rax)
     225c:	c5 f8 77             	vzeroupper
-    225f:	e8 6c ef ff ff       	call   11d0 <_ZNSt6thread15_M_start_threadESt10unique_ptrINS_6_StateESt14default_deleteIS1_EEPFvvE@plt>
+    225f:	e8 6c ef ff ff       	call   11d0 <std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())@plt>
     2264:	48 8b bc 24 88 00 00 	mov    0x88(%rsp),%rdi
     226b:	00 
     226c:	48 85 ff             	test   %rdi,%rdi
-    226f:	74 06                	je     2277 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi+0x187>
+    226f:	74 06                	je     2277 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x187>
     2271:	48 8b 07             	mov    (%rdi),%rax
     2274:	ff 50 08             	call   *0x8(%rax)
     2277:	48 8d 7c 24 70       	lea    0x70(%rsp),%rdi
-    227c:	e8 af ef ff ff       	call   1230 <_ZNSt6thread4joinEv@plt>
+    227c:	e8 af ef ff ff       	call   1230 <std::thread::join()@plt>
     2281:	48 8d 7c 24 78       	lea    0x78(%rsp),%rdi
-    2286:	e8 a5 ef ff ff       	call   1230 <_ZNSt6thread4joinEv@plt>
+    2286:	e8 a5 ef ff ff       	call   1230 <std::thread::join()@plt>
     228b:	48 83 7c 24 78 00    	cmpq   $0x0,0x78(%rsp)
-    2291:	0f 85 ea f0 ff ff    	jne    1381 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0xb>
+    2291:	0f 85 ea f0 ff ff    	jne    1381 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0xb>
     2297:	48 83 7c 24 70 00    	cmpq   $0x0,0x70(%rsp)
-    229d:	0f 85 de f0 ff ff    	jne    1381 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0xb>
+    229d:	0f 85 de f0 ff ff    	jne    1381 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0xb>
     22a3:	4c 03 6c 24 68       	add    0x68(%rsp),%r13
     22a8:	ff c3                	inc    %ebx
     22aa:	39 5c 24 5c          	cmp    %ebx,0x5c(%rsp)
-    22ae:	0f 85 ec fe ff ff    	jne    21a0 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi+0xb0>
+    22ae:	0f 85 ec fe ff ff    	jne    21a0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0xb0>
     22b4:	48 8b 84 24 b8 00 00 	mov    0xb8(%rsp),%rax
     22bb:	00 
     22bc:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     22c3:	00 00 
-    22c5:	75 1e                	jne    22e5 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi+0x1f5>
+    22c5:	75 1e                	jne    22e5 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x1f5>
     22c7:	48 8d 65 d8          	lea    -0x28(%rbp),%rsp
     22cb:	4c 89 e8             	mov    %r13,%rax
     22ce:	5b                   	pop    %rbx
@@ -1229,30 +1229,30 @@ Disassembly of section .text:
     22d8:	c3                   	ret
     22d9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
     22e0:	45 31 ed             	xor    %r13d,%r13d
-    22e3:	eb cf                	jmp    22b4 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi+0x1c4>
+    22e3:	eb cf                	jmp    22b4 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x1c4>
     22e5:	e8 16 ef ff ff       	call   1200 <__stack_chk_fail@plt>
     22ea:	f3 0f 1e fa          	endbr64
-    22ee:	e9 83 f0 ff ff       	jmp    1376 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold>
+    22ee:	e9 83 f0 ff ff       	jmp    1376 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]>
     22f3:	f3 0f 1e fa          	endbr64
     22f7:	48 89 c3             	mov    %rax,%rbx
-    22fa:	e9 d8 f0 ff ff       	jmp    13d7 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0x61>
+    22fa:	e9 d8 f0 ff ff       	jmp    13d7 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x61>
     22ff:	f3 0f 1e fa          	endbr64
     2303:	48 89 c3             	mov    %rax,%rbx
-    2306:	e9 7b f0 ff ff       	jmp    1386 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0x10>
+    2306:	e9 7b f0 ff ff       	jmp    1386 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x10>
     230b:	f3 0f 1e fa          	endbr64
     230f:	48 89 c7             	mov    %rax,%rdi
     2312:	c5 f8 77             	vzeroupper
-    2315:	e9 9d f0 ff ff       	jmp    13b7 <_ZNSt17_Function_handlerIFmiENL12reg_solutionMUliE_EE9_M_invokeERKSt9_Any_dataOi.cold+0x41>
+    2315:	e9 9d f0 ff ff       	jmp    13b7 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x41>
     231a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000002320 <_ZNSt6thread24_M_thread_deps_never_runEv>:
+0000000000002320 <std::thread::_M_thread_deps_never_run()>:
     2320:	f3 0f 1e fa          	endbr64
     2324:	c3                   	ret
     2325:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
     232c:	00 00 00 
     232f:	90                   	nop
 
-0000000000002330 <_ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED1Ev>:
+0000000000002330 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()>:
     2330:	f3 0f 1e fa          	endbr64
     2334:	41 54                	push   %r12
     2336:	55                   	push   %rbp
@@ -1261,29 +1261,29 @@ Disassembly of section .text:
     233b:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
     233f:	48 8b 1f             	mov    (%rdi),%rbx
     2342:	48 39 dd             	cmp    %rbx,%rbp
-    2345:	74 2d                	je     2374 <_ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED1Ev+0x44>
+    2345:	74 2d                	je     2374 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x44>
     2347:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
     234e:	00 00 
     2350:	48 8b 43 18          	mov    0x18(%rbx),%rax
     2354:	48 85 c0             	test   %rax,%rax
-    2357:	74 0e                	je     2367 <_ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED1Ev+0x37>
+    2357:	74 0e                	je     2367 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x37>
     2359:	48 8d 7b 08          	lea    0x8(%rbx),%rdi
     235d:	ba 03 00 00 00       	mov    $0x3,%edx
     2362:	48 89 fe             	mov    %rdi,%rsi
     2365:	ff d0                	call   *%rax
     2367:	48 83 c3 28          	add    $0x28,%rbx
     236b:	48 39 dd             	cmp    %rbx,%rbp
-    236e:	75 e0                	jne    2350 <_ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED1Ev+0x20>
+    236e:	75 e0                	jne    2350 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x20>
     2370:	49 8b 1c 24          	mov    (%r12),%rbx
     2374:	48 85 db             	test   %rbx,%rbx
-    2377:	74 17                	je     2390 <_ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED1Ev+0x60>
+    2377:	74 17                	je     2390 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x60>
     2379:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
     237e:	48 89 df             	mov    %rbx,%rdi
     2381:	48 29 de             	sub    %rbx,%rsi
     2384:	5b                   	pop    %rbx
     2385:	5d                   	pop    %rbp
     2386:	41 5c                	pop    %r12
-    2388:	e9 63 ee ff ff       	jmp    11f0 <_ZdlPvm@plt>
+    2388:	e9 63 ee ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
     238d:	0f 1f 00             	nopl   (%rax)
     2390:	5b                   	pop    %rbx
     2391:	5d                   	pop    %rbp
@@ -1293,7 +1293,7 @@ Disassembly of section .text:
     239c:	00 00 00 
     239f:	90                   	nop
 
-00000000000023a0 <_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev>:
+00000000000023a0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>:
     23a0:	f3 0f 1e fa          	endbr64
     23a4:	41 54                	push   %r12
     23a6:	55                   	push   %rbp
@@ -1302,29 +1302,29 @@ Disassembly of section .text:
     23ab:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
     23af:	48 8b 1f             	mov    (%rdi),%rbx
     23b2:	48 39 dd             	cmp    %rbx,%rbp
-    23b5:	74 2d                	je     23e4 <_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev+0x44>
+    23b5:	74 2d                	je     23e4 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x44>
     23b7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
     23be:	00 00 
     23c0:	48 8b 43 20          	mov    0x20(%rbx),%rax
     23c4:	48 85 c0             	test   %rax,%rax
-    23c7:	74 0e                	je     23d7 <_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev+0x37>
+    23c7:	74 0e                	je     23d7 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x37>
     23c9:	48 8d 7b 10          	lea    0x10(%rbx),%rdi
     23cd:	ba 03 00 00 00       	mov    $0x3,%edx
     23d2:	48 89 fe             	mov    %rdi,%rsi
     23d5:	ff d0                	call   *%rax
     23d7:	48 83 c3 38          	add    $0x38,%rbx
     23db:	48 39 dd             	cmp    %rbx,%rbp
-    23de:	75 e0                	jne    23c0 <_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev+0x20>
+    23de:	75 e0                	jne    23c0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x20>
     23e0:	49 8b 1c 24          	mov    (%r12),%rbx
     23e4:	48 85 db             	test   %rbx,%rbx
-    23e7:	74 17                	je     2400 <_ZNSt6vectorIN4hftu12BenchmarkDefESaIS1_EED1Ev+0x60>
+    23e7:	74 17                	je     2400 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x60>
     23e9:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
     23ee:	48 89 df             	mov    %rbx,%rdi
     23f1:	48 29 de             	sub    %rbx,%rsi
     23f4:	5b                   	pop    %rbx
     23f5:	5d                   	pop    %rbp
     23f6:	41 5c                	pop    %r12
-    23f8:	e9 f3 ed ff ff       	jmp    11f0 <_ZdlPvm@plt>
+    23f8:	e9 f3 ed ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
     23fd:	0f 1f 00             	nopl   (%rax)
     2400:	5b                   	pop    %rbx
     2401:	5d                   	pop    %rbp
@@ -1334,11 +1334,11 @@ Disassembly of section .text:
     240c:	00 00 00 
     240f:	90                   	nop
 
-0000000000002410 <_ZNSt14_Function_baseD1Ev>:
+0000000000002410 <std::_Function_base::~_Function_base()>:
     2410:	f3 0f 1e fa          	endbr64
     2414:	48 8b 47 10          	mov    0x10(%rdi),%rax
     2418:	48 85 c0             	test   %rax,%rax
-    241b:	74 13                	je     2430 <_ZNSt14_Function_baseD1Ev+0x20>
+    241b:	74 13                	je     2430 <std::_Function_base::~_Function_base()+0x20>
     241d:	48 83 ec 08          	sub    $0x8,%rsp
     2421:	ba 03 00 00 00       	mov    $0x3,%edx
     2426:	48 89 fe             	mov    %rdi,%rsi
@@ -1350,21 +1350,21 @@ Disassembly of section .text:
     2438:	00 00 00 
     243b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
 
-0000000000002440 <_ZN4hftu15run_validationsEv>:
+0000000000002440 <hftu::run_validations()>:
     2440:	f3 0f 1e fa          	endbr64
     2444:	41 56                	push   %r14
     2446:	41 55                	push   %r13
     2448:	41 54                	push   %r12
     244a:	55                   	push   %rbp
     244b:	53                   	push   %rbx
-    244c:	0f b6 05 05 2c 00 00 	movzbl 0x2c05(%rip),%eax        # 5058 <_ZGVZN4hftu17validate_registryEvE3reg>
+    244c:	0f b6 05 05 2c 00 00 	movzbl 0x2c05(%rip),%eax        # 5058 <guard variable for hftu::validate_registry()::reg>
     2453:	84 c0                	test   %al,%al
-    2455:	0f 84 d5 00 00 00    	je     2530 <_ZN4hftu15run_validationsEv+0xf0>
-    245b:	48 8b 0d 06 2c 00 00 	mov    0x2c06(%rip),%rcx        # 5068 <_ZZN4hftu17validate_registryEvE3reg+0x8>
-    2462:	48 8b 05 f7 2b 00 00 	mov    0x2bf7(%rip),%rax        # 5060 <_ZZN4hftu17validate_registryEvE3reg>
+    2455:	0f 84 d5 00 00 00    	je     2530 <hftu::run_validations()+0xf0>
+    245b:	48 8b 0d 06 2c 00 00 	mov    0x2c06(%rip),%rcx        # 5068 <hftu::validate_registry()::reg+0x8>
+    2462:	48 8b 05 f7 2b 00 00 	mov    0x2bf7(%rip),%rax        # 5060 <hftu::validate_registry()::reg>
     2469:	41 bc 01 00 00 00    	mov    $0x1,%r12d
     246f:	48 39 c1             	cmp    %rax,%rcx
-    2472:	0f 84 a2 00 00 00    	je     251a <_ZN4hftu15run_validationsEv+0xda>
+    2472:	0f 84 a2 00 00 00    	je     251a <hftu::run_validations()+0xda>
     2478:	48 29 c1             	sub    %rax,%rcx
     247b:	48 8b 3d 9e 2b 00 00 	mov    0x2b9e(%rip),%rdi        # 5020 <stderr@GLIBC_2.2.5>
     2482:	48 b8 cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rax
@@ -1375,16 +1375,16 @@ Disassembly of section .text:
     249c:	48 0f af c8          	imul   %rax,%rcx
     24a0:	31 c0                	xor    %eax,%eax
     24a2:	e8 79 ed ff ff       	call   1220 <__fprintf_chk@plt>
-    24a7:	48 8b 1d b2 2b 00 00 	mov    0x2bb2(%rip),%rbx        # 5060 <_ZZN4hftu17validate_registryEvE3reg>
-    24ae:	4c 8b 2d b3 2b 00 00 	mov    0x2bb3(%rip),%r13        # 5068 <_ZZN4hftu17validate_registryEvE3reg+0x8>
+    24a7:	48 8b 1d b2 2b 00 00 	mov    0x2bb2(%rip),%rbx        # 5060 <hftu::validate_registry()::reg>
+    24ae:	4c 8b 2d b3 2b 00 00 	mov    0x2bb3(%rip),%r13        # 5068 <hftu::validate_registry()::reg+0x8>
     24b5:	49 39 dd             	cmp    %rbx,%r13
-    24b8:	74 60                	je     251a <_ZN4hftu15run_validationsEv+0xda>
+    24b8:	74 60                	je     251a <hftu::run_validations()+0xda>
     24ba:	4c 8d 35 43 0b 00 00 	lea    0xb43(%rip),%r14        # 3004 <_IO_stdin_used+0x4>
     24c1:	0f 1f 40 00          	nopl   0x0(%rax)
     24c5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
     24cc:	00 00 00 00 
     24d0:	48 83 7b 18 00       	cmpq   $0x0,0x18(%rbx)
-    24d5:	0f 84 94 00 00 00    	je     256f <_ZN4hftu15run_validationsEv+0x12f>
+    24d5:	0f 84 94 00 00 00    	je     256f <hftu::run_validations()+0x12f>
     24db:	48 8d 7b 08          	lea    0x8(%rbx),%rdi
     24df:	ff 53 20             	call   *0x20(%rbx)
     24e2:	48 8b 0b             	mov    (%rbx),%rcx
@@ -1400,7 +1400,7 @@ Disassembly of section .text:
     250d:	41 21 ec             	and    %ebp,%r12d
     2510:	e8 0b ed ff ff       	call   1220 <__fprintf_chk@plt>
     2515:	49 39 dd             	cmp    %rbx,%r13
-    2518:	75 b6                	jne    24d0 <_ZN4hftu15run_validationsEv+0x90>
+    2518:	75 b6                	jne    24d0 <hftu::run_validations()+0x90>
     251a:	5b                   	pop    %rbx
     251b:	44 89 e0             	mov    %r12d,%eax
     251e:	5d                   	pop    %rbp
@@ -1410,42 +1410,42 @@ Disassembly of section .text:
     2525:	c3                   	ret
     2526:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
     252d:	00 00 00 
-    2530:	48 8d 3d 21 2b 00 00 	lea    0x2b21(%rip),%rdi        # 5058 <_ZGVZN4hftu17validate_registryEvE3reg>
+    2530:	48 8d 3d 21 2b 00 00 	lea    0x2b21(%rip),%rdi        # 5058 <guard variable for hftu::validate_registry()::reg>
     2537:	e8 14 ed ff ff       	call   1250 <__cxa_guard_acquire@plt>
     253c:	85 c0                	test   %eax,%eax
-    253e:	0f 84 17 ff ff ff    	je     245b <_ZN4hftu15run_validationsEv+0x1b>
+    253e:	0f 84 17 ff ff ff    	je     245b <hftu::run_validations()+0x1b>
     2544:	48 8d 15 bd 2a 00 00 	lea    0x2abd(%rip),%rdx        # 5008 <__dso_handle>
-    254b:	48 8d 35 0e 2b 00 00 	lea    0x2b0e(%rip),%rsi        # 5060 <_ZZN4hftu17validate_registryEvE3reg>
-    2552:	48 8d 3d d7 fd ff ff 	lea    -0x229(%rip),%rdi        # 2330 <_ZNSt6vectorIN4hftu11ValidateDefESaIS1_EED1Ev>
+    254b:	48 8d 35 0e 2b 00 00 	lea    0x2b0e(%rip),%rsi        # 5060 <hftu::validate_registry()::reg>
+    2552:	48 8d 3d d7 fd ff ff 	lea    -0x229(%rip),%rdi        # 2330 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()>
     2559:	e8 62 ec ff ff       	call   11c0 <__cxa_atexit@plt>
-    255e:	48 8d 3d f3 2a 00 00 	lea    0x2af3(%rip),%rdi        # 5058 <_ZGVZN4hftu17validate_registryEvE3reg>
+    255e:	48 8d 3d f3 2a 00 00 	lea    0x2af3(%rip),%rdi        # 5058 <guard variable for hftu::validate_registry()::reg>
     2565:	e8 36 ec ff ff       	call   11a0 <__cxa_guard_release@plt>
-    256a:	e9 ec fe ff ff       	jmp    245b <_ZN4hftu15run_validationsEv+0x1b>
-    256f:	e8 fc eb ff ff       	call   1170 <_ZSt25__throw_bad_function_callv@plt>
+    256a:	e9 ec fe ff ff       	jmp    245b <hftu::run_validations()+0x1b>
+    256f:	e8 fc eb ff ff       	call   1170 <std::__throw_bad_function_call()@plt>
     2574:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
     257b:	00 00 00 
     257e:	66 90                	xchg   %ax,%ax
 
-0000000000002580 <_ZNSt12_Vector_baseIN4hftu15BenchmarkResultESaIS1_EED1Ev>:
+0000000000002580 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>:
     2580:	f3 0f 1e fa          	endbr64
     2584:	48 89 f8             	mov    %rdi,%rax
     2587:	48 8b 3f             	mov    (%rdi),%rdi
     258a:	48 85 ff             	test   %rdi,%rdi
-    258d:	74 11                	je     25a0 <_ZNSt12_Vector_baseIN4hftu15BenchmarkResultESaIS1_EED1Ev+0x20>
+    258d:	74 11                	je     25a0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()+0x20>
     258f:	48 8b 70 10          	mov    0x10(%rax),%rsi
     2593:	48 29 fe             	sub    %rdi,%rsi
-    2596:	e9 55 ec ff ff       	jmp    11f0 <_ZdlPvm@plt>
+    2596:	e9 55 ec ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
     259b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
     25a0:	c3                   	ret
     25a1:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
     25a8:	00 00 00 
     25ab:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
 
-00000000000025b0 <_ZNSt10unique_ptrINSt6thread6_StateESt14default_deleteIS1_EED1Ev>:
+00000000000025b0 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>:
     25b0:	f3 0f 1e fa          	endbr64
     25b4:	48 8b 3f             	mov    (%rdi),%rdi
     25b7:	48 85 ff             	test   %rdi,%rdi
-    25ba:	74 14                	je     25d0 <_ZNSt10unique_ptrINSt6thread6_StateESt14default_deleteIS1_EED1Ev+0x20>
+    25ba:	74 14                	je     25d0 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()+0x20>
     25bc:	48 8b 07             	mov    (%rdi),%rax
     25bf:	ff 60 08             	jmp    *0x8(%rax)
     25c2:	0f 1f 00             	nopl   (%rax)
@@ -1456,7 +1456,7 @@ Disassembly of section .text:
     25d8:	00 00 00 
     25db:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
 
-00000000000025e0 <_ZN4hftu7SeqlockC1Ev>:
+00000000000025e0 <hftu::Seqlock::Seqlock()>:
     25e0:	f3 0f 1e fa          	endbr64
     25e4:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
     25e8:	48 c7 47 20 00 00 00 	movq   $0x0,0x20(%rdi)
@@ -1467,7 +1467,7 @@ Disassembly of section .text:
     25f8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
     25ff:	00 
 
-0000000000002600 <_ZN4hftu7Seqlock5writeERKNS_7PayloadE>:
+0000000000002600 <hftu::Seqlock::write(hftu::Payload const&)>:
     2600:	f3 0f 1e fa          	endbr64
     2604:	48 8b 47 20          	mov    0x20(%rdi),%rax
     2608:	48 8d 50 01          	lea    0x1(%rax),%rdx
@@ -1482,20 +1482,20 @@ Disassembly of section .text:
     2625:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
     262c:	00 00 00 00 
 
-0000000000002630 <_ZNK4hftu7Seqlock4readEv>:
+0000000000002630 <hftu::Seqlock::read() const>:
     2630:	f3 0f 1e fa          	endbr64
     2634:	48 8d 56 20          	lea    0x20(%rsi),%rdx
     2638:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
     263f:	00 
     2640:	48 8b 02             	mov    (%rdx),%rax
     2643:	a8 01                	test   $0x1,%al
-    2645:	75 f9                	jne    2640 <_ZNK4hftu7Seqlock4readEv+0x10>
-    2647:	c5 fe 6f 06          	vmovdqu (%rsi),%ymm0
-    264b:	c5 fe 7f 07          	vmovdqu %ymm0,(%rdi)
-    264f:	48 8b 0a             	mov    (%rdx),%rcx
-    2652:	48 39 c8             	cmp    %rcx,%rax
-    2655:	75 e9                	jne    2640 <_ZNK4hftu7Seqlock4readEv+0x10>
-    2657:	48 89 f8             	mov    %rdi,%rax
+    2645:	75 f9                	jne    2640 <hftu::Seqlock::read() const+0x10>
+    2647:	48 8b 0a             	mov    (%rdx),%rcx
+    264a:	48 39 c8             	cmp    %rcx,%rax
+    264d:	75 f1                	jne    2640 <hftu::Seqlock::read() const+0x10>
+    264f:	c5 fe 6f 06          	vmovdqu (%rsi),%ymm0
+    2653:	48 89 f8             	mov    %rdi,%rax
+    2656:	c5 fe 7f 07          	vmovdqu %ymm0,(%rdi)
     265a:	c5 f8 77             	vzeroupper
     265d:	c3                   	ret
 
