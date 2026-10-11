@@ -20,13 +20,14 @@ Payload Seqlock::read() const {
     //std::lock_guard<std::mutex> lock(mtx_);
     while(true){
         uint64_t seq = this->seq.load(std::memory_order_acquire);
-        if(seq & 1) continue; 
+        if(seq & 1 ) continue; 
         //__builtin_ia32_pause(); 
         //Payload data = data_;
-        if(this->seq.load(std::memory_order_acquire) == seq) 
-        {
-            return data_;
-        }
+        return data_;
+        // if(this->seq.load(std::memory_order_acquire) == seq) 
+        // {
+        //     return data_;
+        // }
     }
     return data_;
 }
