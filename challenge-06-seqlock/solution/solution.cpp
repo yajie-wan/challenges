@@ -54,9 +54,13 @@ Payload Seqlock::read() const {
     uint64_t s1, s2;
     Payload data;
     do{
-        s1 = this->seq.load(std::memory_order_acquire);
-        uint64_t slot = (s1 & 1) ? (s1 >> 1) & 1 : ((s1 >> 1) & 1) ^ 1;
-        data = data_[slot];
+        //uint64_t slot = (s1 & 1) ? (s1 >> 1) & 1 : ;
+        do{
+            __builtin_ia32_pause();
+            s1 = this->seq.load(std::memory_order_acquire);
+        }while(s1 & 1);
+
+        data = data_[((s1 >> 1) & 1) ^ 1];
         s2 = this->seq.load(std::memory_order_acquire);
     }while(s2 != s1);
     return data;
