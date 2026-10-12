@@ -3,6 +3,7 @@
 // The real seqlock uses a sequence counter and memory fences — no mutexes.
 
 #include "solution.h"
+#include <immintrin.h>
 
 namespace hftu {
 
@@ -32,17 +33,19 @@ Payload Seqlock::read() const {
     
     
     
-    
-    while(true){
-        uint64_t seq = this->seq.load(std::memory_order_acquire);
-        if(seq & 1 ) continue; 
-        //__builtin_ia32_pause(); 
-        //Payload data = data_;
-        if(this->seq.load(std::memory_order_acquire) == seq) 
-        {
-            return data_;
-        }
-    }
+    uint64_t seq1;
+    Payload data;
+    do{
+        do{
+            //__builtin_ia32_pause();
+            seq1 = this->seq.load(std::memory_order_acquire);
+        }while(seq1 & 1); 
+        
+        data = data_;
+
+    }while(this->seq.load(std::memory_order_acquire) != seq1);
+
+    return data;
 
 
     // uint64_t seq2;

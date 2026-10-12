@@ -33,10 +33,10 @@ private:
     // Payload data0_{};
     // Payload data1_{};
     // alignas(64) Payload data_[2]{};
-    
+    Payload data_{};
     std::atomic<uint64_t> seq{0};
     
-    Payload data_{};
+    
     //mutable std::mutex mtx_;
 };
 
