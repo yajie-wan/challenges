@@ -12,7 +12,7 @@
 
 namespace hftu {
 
-struct alignas(64) Payload {
+struct Payload {
     int64_t a;
     int64_t b;
     int64_t c;
@@ -33,8 +33,8 @@ private:
     // Payload data0_{};
     // Payload data1_{};
     // alignas(64) Payload data_[2]{};
-    Payload data_{};
-    std::atomic<uint64_t> seq{0};
+    Payload data_{}; // 32 byte
+    std::atomic<uint64_t> seq{0}; // 8 byte
     
     
     //mutable std::mutex mtx_;
