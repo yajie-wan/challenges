@@ -67,11 +67,11 @@ __attribute__((always_inline)) inline Payload Seqlock::read() const {
         
         seq1 = this->seq.load(std::memory_order_acquire);
         
-        if (__builtin_expect(seq0 != seq1 || (seq0 & 1), 0)) {
-            __builtin_ia32_pause();
-        }
-        
-    } while (__builtin_expect(seq0 != seq1 || (seq0 & 1), 0));
+    } while (__builtin_expect(
+        (seq0 != seq1 && ([]() { __builtin_ia32_pause(); return true; }())) || 
+        ((seq0 & 1) && ([]() { asm volatile("nop; nop; nop; nop;"); return true; }())), 
+        0
+    ));
 
     return data;
 }
