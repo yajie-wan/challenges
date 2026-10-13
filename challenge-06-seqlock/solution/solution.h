@@ -24,7 +24,7 @@ public:
     Seqlock();
 
     // Update the protected payload.
-    void write(const Payload& data);
+    __attribute__((always_inline)) inline void write(const Payload& data);
 
     // Read the payload. Must never return a torn value.
     Payload read() const;
@@ -39,5 +39,19 @@ private:
     
     //mutable std::mutex mtx_;
 };
+
+__attribute__((always_inline)) inline void Seqlock::write(const Payload& data) {
+    uint64_t seq0 = this->seq.load(std::memory_order_relaxed);
+    
+    this->seq.store(seq0 + 1, std::memory_order_release);
+    
+    std::atomic_signal_fence(std::memory_order_acq_rel);
+    
+    data_ = data;
+    
+    std::atomic_signal_fence(std::memory_order_acq_rel);
+    
+    this->seq.store(seq0 + 2, std::memory_order_release);
+}
 
 } // namespace hftu
