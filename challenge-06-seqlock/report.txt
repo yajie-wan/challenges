@@ -1,25 +1,25 @@
 =================================================
             Trace Event Information              
 =================================================
-  Total records                     :       3369
-  Locked Load/Store Operations      :          0
-  Load Operations                   :        838
+  Total records                     :       2941
+  Locked Load/Store Operations      :          2
+  Load Operations                   :        717
   Loads - uncacheable               :          0
   Loads - IO                        :          0
   Loads - Miss                      :          0
-  Loads - no mapping                :         85
+  Loads - no mapping                :        204
   Load Fill Buffer Hit              :          0
-  Load L1D hit                      :        589
-  Load L2D hit                      :          0
-  Load LLC hit                      :        164
-  Load Local HITM                   :        161
-  Load Remote HITM                  :        161
+  Load L1D hit                      :        464
+  Load L2D hit                      :          1
+  Load LLC hit                      :         48
+  Load Local HITM                   :         44
+  Load Remote HITM                  :         44
   Load Remote HIT                   :          0
   Load Local DRAM                   :          0
   Load Remote DRAM                  :          0
   Load MESI State Exclusive         :          0
   Load MESI State Shared            :          0
-  Load LLC Misses                   :        161
+  Load LLC Misses                   :         44
   Load access blocked by data       :          0
   Load access blocked by address    :          0
   Load HIT Local Peer               :          0
@@ -28,31 +28,31 @@
   LLC Misses to Remote DRAM         :        0.0%
   LLC Misses to Remote cache (HIT)  :        0.0%
   LLC Misses to Remote cache (HITM) :      100.0%
-  Store Operations                  :       1027
+  Store Operations                  :        191
   Store - uncacheable               :          0
-  Store - no mapping                :          4
-  Store L1D Hit                     :        869
+  Store - no mapping                :          1
+  Store L1D Hit                     :        152
   Store L1D Miss                    :          0
-  Store No available memory level   :          4
-  No Page Map Rejects               :        131
-  Unable to parse data source       :       1504
+  Store No available memory level   :          0
+  No Page Map Rejects               :        183
+  Unable to parse data source       :       2033
 
 =================================================
     Global Shared Cache Line Event Information   
 =================================================
-  Total Shared Cache Lines          :          3
-  Load HITs on shared lines         :        413
+  Total Shared Cache Lines          :          4
+  Load HITs on shared lines         :        126
   Fill Buffer Hits on shared lines  :          0
-  L1D hits on shared lines          :        251
+  L1D hits on shared lines          :         81
   L2D hits on shared lines          :          0
-  LLC hits on shared lines          :        162
+  LLC hits on shared lines          :         45
   Load hits on peer cache or nodes  :          0
-  Locked Access on shared lines     :          0
+  Locked Access on shared lines     :          1
   Blocked Access on shared lines    :          0
-  Store HITs on shared lines        :        571
-  Store L1D hits on shared lines    :        417
-  Store No available memory level   :          4
-  Total Merged records              :        893
+  Store HITs on shared lines        :         47
+  Store L1D hits on shared lines    :         14
+  Store No available memory level   :          0
+  Total Merged records              :        135
 
 =================================================
                  c2c details                     
@@ -69,9 +69,10 @@
 # Index             Address  Node  PA cnt     Hitm    Total  LclHitm  RmtHitm  records    Loads   Stores    L1Hit   L1Miss      N/A       FB       L1       L2    LclHit  LclHitm    RmtHit  RmtHitm       Lcl       Rmt
 # .....  ..................  ....  ......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  ........  .......  ........  .......  ........  ........
 #
-      0      0x7ffcfc170740     0     257   86.34%      278      139      139      547      299      313      245        0        3        0       20        0         1      139         0      139         0         0
-      1      0x7ffcfc170780     0       1   13.04%       42       21       21      445      272      258      172        0        1        0      230        0         0       21         0       21         0         0
-      2  0xffff8ec500ac3d00     0       1    0.62%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
+      0      0x7fff6f8aad40     0      63   93.18%       82       41       41      176      162       47       14        0        0        0       79        0         1       41         0       41         0         0
+      1  0xffff8ec4763b61c0     0       1    2.27%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
+      2  0xffff8ec500e5f1c0     0       1    2.27%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
+      3  0xffff8ec60771e300     0       1    2.27%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
 
 =================================================
       Shared Cache Line Distribution Pareto      
@@ -82,21 +83,26 @@
 # .......  .......  .......  .......  .......  .....  ....  ......  ..................  ........  ........  ........  .......  ........  ..............................  .........  ..............................  ....
 #
   ----------------------------------------------------------------------
-      0      139      139      245        0        3      0x7ffcfc170740
+      0       41       41       14        0        0      0x7fff6f8aad40
   ----------------------------------------------------------------------
-   58.27%   58.27%    0.00%    0.00%    0.00%    0x0     0       1      0x59a44e7266a7       217         0         8      176         6  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+23   0
-    0.00%    0.00%   45.31%    0.00%  100.00%    0x0     0       1      0x59a44e726678         0         0         0      114         6  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
-   41.73%   41.73%    0.00%    0.00%    0.00%   0x20     0       1      0x59a44e7266af       206         0         0      123         6  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+31   0
-    0.00%    0.00%   54.69%    0.00%    0.00%   0x20     0       1      0x59a44e726681         0         0         0      134         6  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+   58.54%   58.54%    0.00%    0.00%    0.00%   0x10     0       1      0x5a39bc8d9647        90         0         0       66         4  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+23   0
+    0.00%    0.00%   50.00%    0.00%    0.00%   0x10     0       1      0x5a39bc8d9618         0         0         0        7         4  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+   26.83%   26.83%    0.00%    0.00%    0.00%   0x30     0       1      0x5a39bc8d9640       122         0         0       40         5  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+16   0
+   14.63%   14.63%    0.00%    0.00%    0.00%   0x30     0       1      0x5a39bc8d964f       102         0         0       47         6  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+31   0
+    0.00%    0.00%   50.00%    0.00%    0.00%   0x30     0       1      0x5a39bc8d9610         0         0         0        7         4  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+    0.00%    0.00%    0.00%    0.00%    0.00%   0x30     0       1      0x5a39bc8d961c         0         0         0        0         3  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
 
   ----------------------------------------------------------------------
-      1       21       21      172        0        1      0x7ffcfc170780
+      1        1        1        0        0        0  0xffff8ec4763b61c0
   ----------------------------------------------------------------------
-  100.00%  100.00%    0.00%    0.00%    0.00%    0x0     0       1      0x59a44e7266a0       182         0         0      265         6  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+16   0
-    0.00%    0.00%   13.95%    0.00%    0.00%    0x0     0       1      0x59a44e726670         0         0         0       24         6  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
-    0.00%    0.00%   86.05%    0.00%  100.00%    0x0     0       1      0x59a44e726686         0         0         0      149         6  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+  100.00%  100.00%    0.00%    0.00%    0.00%   0x38     0       1  0xffffffffb0d6208c        76         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
 
   ----------------------------------------------------------------------
-      2        1        1        0        0        0  0xffff8ec500ac3d00
+      2        1        1        0        0        0  0xffff8ec500e5f1c0
   ----------------------------------------------------------------------
-  100.00%  100.00%    0.00%    0.00%    0.00%    0x0     0       1  0xffffffffb0d6208c       255         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
+  100.00%  100.00%    0.00%    0.00%    0.00%   0x10     0       1  0xffffffffb0d6208c        31         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
+
+  ----------------------------------------------------------------------
+      3        1        1        0        0        0  0xffff8ec60771e300
+  ----------------------------------------------------------------------
+  100.00%  100.00%    0.00%    0.00%    0.00%    0x0     0       1  0xffffffffb1d32943       167         0         0        2         1  [k] _raw_spin_lock  [kernel.kallsyms]  _raw_spin_lock+19   0

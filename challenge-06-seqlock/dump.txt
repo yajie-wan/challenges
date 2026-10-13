@@ -202,7 +202,7 @@ Disassembly of section .text:
     129e:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
     12a3:	c5 f9 7f 6c 24 50    	vmovdqa %xmm5,0x50(%rsp)
     12a9:	c5 f8 77             	vzeroupper
-    12ac:	e8 2f 13 00 00       	call   25e0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>
+    12ac:	e8 ff 12 00 00       	call   25b0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>
     12b1:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
     12b6:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     12bd:	00 00 
@@ -247,16 +247,16 @@ Disassembly of section .text:
     1371:	e8 8a fe ff ff       	call   1200 <__stack_chk_fail@plt>
 
 0000000000001376 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]>:
-    1376:	48 83 bc 24 a8 00 00 	cmpq   $0x0,0xa8(%rsp)
+    1376:	48 83 bc 24 88 00 00 	cmpq   $0x0,0x88(%rsp)
     137d:	00 00 
     137f:	74 33                	je     13b4 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x3e>
     1381:	c5 f8 77             	vzeroupper
     1384:	e8 d7 fd ff ff       	call   1160 <std::terminate()@plt>
-    1389:	48 8d bc 24 b8 00 00 	lea    0xb8(%rsp),%rdi
+    1389:	48 8d bc 24 98 00 00 	lea    0x98(%rsp),%rdi
     1390:	00 
     1391:	c5 f8 77             	vzeroupper
-    1394:	e8 77 12 00 00       	call   2610 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>
-    1399:	48 8b 84 24 78 01 00 	mov    0x178(%rsp),%rax
+    1394:	e8 47 12 00 00       	call   25e0 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>
+    1399:	48 8b 84 24 f8 00 00 	mov    0xf8(%rsp),%rax
     13a0:	00 
     13a1:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     13a8:	00 00 
@@ -265,19 +265,19 @@ Disassembly of section .text:
     13af:	e8 8c fe ff ff       	call   1240 <_Unwind_Resume@plt>
     13b4:	48 89 c7             	mov    %rax,%rdi
     13b7:	c5 f8 77             	vzeroupper
-    13ba:	48 83 bc 24 a0 00 00 	cmpq   $0x0,0xa0(%rsp)
+    13ba:	48 83 bc 24 80 00 00 	cmpq   $0x0,0x80(%rsp)
     13c1:	00 00 
     13c3:	75 bf                	jne    1384 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0xe>
-    13c5:	48 8b 84 24 78 01 00 	mov    0x178(%rsp),%rax
+    13c5:	48 8b 84 24 f8 00 00 	mov    0xf8(%rsp),%rax
     13cc:	00 
     13cd:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     13d4:	00 00 
     13d6:	75 1f                	jne    13f7 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x81>
     13d8:	e8 63 fe ff ff       	call   1240 <_Unwind_Resume@plt>
-    13dd:	48 8d bc 24 b8 00 00 	lea    0xb8(%rsp),%rdi
+    13dd:	48 8d bc 24 98 00 00 	lea    0x98(%rsp),%rdi
     13e4:	00 
     13e5:	c5 f8 77             	vzeroupper
-    13e8:	e8 23 12 00 00       	call   2610 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>
+    13e8:	e8 f3 11 00 00       	call   25e0 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>
     13ed:	48 89 df             	mov    %rbx,%rdi
     13f0:	eb c8                	jmp    13ba <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x44>
     13f2:	e8 09 fe ff ff       	call   1200 <__stack_chk_fail@plt>
@@ -295,9 +295,9 @@ Disassembly of section .text:
     1421:	48 8d 7c 24 50       	lea    0x50(%rsp),%rdi
     1426:	48 89 c3             	mov    %rax,%rbx
     1429:	c5 f8 77             	vzeroupper
-    142c:	e8 3f 10 00 00       	call   2470 <std::_Function_base::~_Function_base()>
+    142c:	e8 0f 10 00 00       	call   2440 <std::_Function_base::~_Function_base()>
     1431:	48 8d 7c 24 20       	lea    0x20(%rsp),%rdi
-    1436:	e8 35 10 00 00       	call   2470 <std::_Function_base::~_Function_base()>
+    1436:	e8 05 10 00 00       	call   2440 <std::_Function_base::~_Function_base()>
     143b:	48 8b 44 24 78       	mov    0x78(%rsp),%rax
     1440:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     1447:	00 00 
@@ -321,7 +321,7 @@ Disassembly of section .text:
     1479:	00 00 
     147b:	48 89 44 24 68       	mov    %rax,0x68(%rsp)
     1480:	31 c0                	xor    %eax,%eax
-    1482:	e8 19 10 00 00       	call   24a0 <hftu::run_validations()>
+    1482:	e8 e9 0f 00 00       	call   2470 <hftu::run_validations()>
     1487:	84 c0                	test   %al,%al
     1489:	0f 84 59 05 00 00    	je     19e8 <main+0x588>
     148f:	0f b6 05 9a 3b 00 00 	movzbl 0x3b9a(%rip),%eax        # 5030 <guard variable for hftu::benchmark_registry()::reg>
@@ -419,7 +419,7 @@ Disassembly of section .text:
     162a:	0f 84 6e fe ff ff    	je     149e <main+0x3e>
     1630:	48 8d 15 d1 39 00 00 	lea    0x39d1(%rip),%rdx        # 5008 <__dso_handle>
     1637:	48 8d 35 02 3a 00 00 	lea    0x3a02(%rip),%rsi        # 5040 <hftu::benchmark_registry()::reg>
-    163e:	48 8d 3d bb 0d 00 00 	lea    0xdbb(%rip),%rdi        # 2400 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>
+    163e:	48 8d 3d 8b 0d 00 00 	lea    0xd8b(%rip),%rdi        # 23d0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>
     1645:	e8 76 fb ff ff       	call   11c0 <__cxa_atexit@plt>
     164a:	48 8d 3d df 39 00 00 	lea    0x39df(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
     1651:	e8 4a fb ff ff       	call   11a0 <__cxa_guard_release@plt>
@@ -610,7 +610,7 @@ Disassembly of section .text:
     19b2:	48 8b 44 24 30       	mov    0x30(%rsp),%rax
     19b7:	48 89 44 24 60       	mov    %rax,0x60(%rsp)
     19bc:	c5 f9 7f 6c 24 50    	vmovdqa %xmm5,0x50(%rsp)
-    19c2:	e8 19 0c 00 00       	call   25e0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>
+    19c2:	e8 e9 0b 00 00       	call   25b0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>
     19c7:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
     19cc:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     19d3:	00 00 
@@ -648,7 +648,7 @@ Disassembly of section .text:
     1a3c:	00 00 
     1a3e:	48 89 44 24 78       	mov    %rax,0x78(%rsp)
     1a43:	31 c0                	xor    %eax,%eax
-    1a45:	48 8d 05 c4 06 00 00 	lea    0x6c4(%rip),%rax        # 2110 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)>
+    1a45:	48 8d 05 b4 06 00 00 	lea    0x6b4(%rip),%rax        # 2100 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)>
     1a4c:	c5 f9 7f 44 24 20    	vmovdqa %xmm0,0x20(%rsp)
     1a52:	c4 e3 e1 22 c0 01    	vpinsrq $0x1,%rax,%xmm3,%xmm0
     1a58:	c5 f9 7f 44 24 30    	vmovdqa %xmm0,0x30(%rsp)
@@ -707,7 +707,7 @@ Disassembly of section .text:
     1b50:	48 89 fe             	mov    %rdi,%rsi
     1b53:	ff d0                	call   *%rax
     1b55:	48 8d 7c 24 20       	lea    0x20(%rsp),%rdi
-    1b5a:	e8 11 09 00 00       	call   2470 <std::_Function_base::~_Function_base()>
+    1b5a:	e8 e1 08 00 00       	call   2440 <std::_Function_base::~_Function_base()>
     1b5f:	48 8b 44 24 78       	mov    0x78(%rsp),%rax
     1b64:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     1b6b:	00 00 
@@ -721,7 +721,7 @@ Disassembly of section .text:
     1b87:	0f 84 e0 fe ff ff    	je     1a6d <_GLOBAL__sub_I_main+0x4d>
     1b8d:	48 8d 15 74 34 00 00 	lea    0x3474(%rip),%rdx        # 5008 <__dso_handle>
     1b94:	48 8d 35 a5 34 00 00 	lea    0x34a5(%rip),%rsi        # 5040 <hftu::benchmark_registry()::reg>
-    1b9b:	48 8d 3d 5e 08 00 00 	lea    0x85e(%rip),%rdi        # 2400 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>
+    1b9b:	48 8d 3d 2e 08 00 00 	lea    0x82e(%rip),%rdi        # 23d0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>
     1ba2:	e8 19 f6 ff ff       	call   11c0 <__cxa_atexit@plt>
     1ba7:	48 8d 3d 82 34 00 00 	lea    0x3482(%rip),%rdi        # 5030 <guard variable for hftu::benchmark_registry()::reg>
     1bae:	e8 ed f5 ff ff       	call   11a0 <__cxa_guard_release@plt>
@@ -931,29 +931,29 @@ Disassembly of section .text:
     1e8e:	41 55                	push   %r13
     1e90:	41 54                	push   %r12
     1e92:	53                   	push   %rbx
-    1e93:	48 83 e4 c0          	and    $0xffffffffffffffc0,%rsp
-    1e97:	48 83 c4 80          	add    $0xffffffffffffff80,%rsp
+    1e93:	48 83 e4 e0          	and    $0xffffffffffffffe0,%rsp
+    1e97:	48 83 ec 40          	sub    $0x40,%rsp
     1e9b:	48 8b 57 08          	mov    0x8(%rdi),%rdx
     1e9f:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
     1ea6:	00 00 
-    1ea8:	48 89 44 24 78       	mov    %rax,0x78(%rsp)
+    1ea8:	48 89 44 24 38       	mov    %rax,0x38(%rsp)
     1ead:	31 c0                	xor    %eax,%eax
     1eaf:	48 8b 47 10          	mov    0x10(%rdi),%rax
     1eb3:	c5 fd 7f 04 24       	vmovdqa %ymm0,(%rsp)
-    1eb8:	c5 fd 7f 44 24 20    	vmovdqa %ymm0,0x20(%rsp)
-    1ebe:	48 63 00             	movslq (%rax),%rax
-    1ec1:	48 0f af 02          	imul   (%rdx),%rax
-    1ec5:	48 83 f8 63          	cmp    $0x63,%rax
-    1ec9:	0f 86 91 00 00 00    	jbe    1f60 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()+0xe0>
-    1ecf:	48 c1 e8 02          	shr    $0x2,%rax
-    1ed3:	48 ba c3 f5 28 5c 8f 	movabs $0x28f5c28f5c28f5c3,%rdx
-    1eda:	c2 f5 28 
-    1edd:	49 89 fe             	mov    %rdi,%r14
-    1ee0:	31 db                	xor    %ebx,%ebx
-    1ee2:	48 f7 e2             	mul    %rdx
-    1ee5:	48 c1 ea 02          	shr    $0x2,%rdx
-    1ee9:	49 89 d4             	mov    %rdx,%r12
-    1eec:	0f 1f 40 00          	nopl   0x0(%rax)
+    1eb8:	48 63 00             	movslq (%rax),%rax
+    1ebb:	48 0f af 02          	imul   (%rdx),%rax
+    1ebf:	48 83 f8 63          	cmp    $0x63,%rax
+    1ec3:	0f 86 97 00 00 00    	jbe    1f60 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()+0xe0>
+    1ec9:	48 c1 e8 02          	shr    $0x2,%rax
+    1ecd:	48 ba c3 f5 28 5c 8f 	movabs $0x28f5c28f5c28f5c3,%rdx
+    1ed4:	c2 f5 28 
+    1ed7:	49 89 fe             	mov    %rdi,%r14
+    1eda:	31 db                	xor    %ebx,%ebx
+    1edc:	48 f7 e2             	mul    %rdx
+    1edf:	48 c1 ea 02          	shr    $0x2,%rdx
+    1ee3:	49 89 d4             	mov    %rdx,%r12
+    1ee6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    1eed:	00 00 00 
     1ef0:	48 8d 04 1b          	lea    (%rbx,%rbx,1),%rax
     1ef4:	c4 e1 f9 6e d3       	vmovq  %rbx,%xmm2
     1ef9:	48 8d 14 9d 00 00 00 	lea    0x0(,%rbx,4),%rdx
@@ -968,10 +968,10 @@ Disassembly of section .text:
     1f23:	c5 fd 7f 04 24       	vmovdqa %ymm0,(%rsp)
     1f28:	c5 f8 77             	vzeroupper
     1f2b:	48 ff c3             	inc    %rbx
-    1f2e:	e8 2d 07 00 00       	call   2660 <hftu::Seqlock::write(hftu::Payload const&)>
+    1f2e:	e8 fd 06 00 00       	call   2630 <hftu::Seqlock::write(hftu::Payload const&)>
     1f33:	4c 39 e3             	cmp    %r12,%rbx
     1f36:	72 b8                	jb     1ef0 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()+0x70>
-    1f38:	48 8b 44 24 78       	mov    0x78(%rsp),%rax
+    1f38:	48 8b 44 24 38       	mov    0x38(%rsp),%rax
     1f3d:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
     1f44:	00 00 
     1f46:	75 1d                	jne    1f65 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >::_M_run()+0xe5>
@@ -1045,487 +1045,476 @@ Disassembly of section .text:
     201e:	41 54                	push   %r12
     2020:	53                   	push   %rbx
     2021:	49 89 fe             	mov    %rdi,%r14
-    2024:	48 83 e4 c0          	and    $0xffffffffffffffc0,%rsp
-    2028:	48 81 ec c0 00 00 00 	sub    $0xc0,%rsp
-    202f:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
-    2036:	00 00 
-    2038:	48 89 84 24 b8 00 00 	mov    %rax,0xb8(%rsp)
-    203f:	00 
-    2040:	31 c0                	xor    %eax,%eax
-    2042:	0f a2                	cpuid
-    2044:	0f 31                	rdtsc
-    2046:	89 c0                	mov    %eax,%eax
-    2048:	48 c1 e2 20          	shl    $0x20,%rdx
-    204c:	48 09 c2             	or     %rax,%rdx
-    204f:	b8 64 00 00 00       	mov    $0x64,%eax
-    2054:	49 89 d5             	mov    %rdx,%r13
-    2057:	48 8b 57 10          	mov    0x10(%rdi),%rdx
-    205b:	2b 02                	sub    (%rdx),%eax
-    205d:	48 8b 57 08          	mov    0x8(%rdi),%rdx
-    2061:	48 98                	cltq
-    2063:	48 0f af 02          	imul   (%rdx),%rax
-    2067:	48 83 f8 63          	cmp    $0x63,%rax
-    206b:	76 54                	jbe    20c1 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0xb1>
-    206d:	48 c1 e8 02          	shr    $0x2,%rax
-    2071:	48 ba c3 f5 28 5c 8f 	movabs $0x28f5c28f5c28f5c3,%rdx
-    2078:	c2 f5 28 
-    207b:	31 db                	xor    %ebx,%ebx
-    207d:	48 f7 e2             	mul    %rdx
-    2080:	48 c1 ea 02          	shr    $0x2,%rdx
-    2084:	49 89 d4             	mov    %rdx,%r12
-    2087:	eb 0a                	jmp    2093 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0x83>
-    2089:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    2024:	48 83 e4 e0          	and    $0xffffffffffffffe0,%rsp
+    2028:	48 83 ec 60          	sub    $0x60,%rsp
+    202c:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    2033:	00 00 
+    2035:	48 89 44 24 58       	mov    %rax,0x58(%rsp)
+    203a:	31 c0                	xor    %eax,%eax
+    203c:	0f a2                	cpuid
+    203e:	0f 31                	rdtsc
+    2040:	89 c0                	mov    %eax,%eax
+    2042:	48 c1 e2 20          	shl    $0x20,%rdx
+    2046:	48 09 c2             	or     %rax,%rdx
+    2049:	b8 64 00 00 00       	mov    $0x64,%eax
+    204e:	49 89 d5             	mov    %rdx,%r13
+    2051:	48 8b 57 10          	mov    0x10(%rdi),%rdx
+    2055:	2b 02                	sub    (%rdx),%eax
+    2057:	48 8b 57 08          	mov    0x8(%rdi),%rdx
+    205b:	48 98                	cltq
+    205d:	48 0f af 02          	imul   (%rdx),%rax
+    2061:	48 83 f8 63          	cmp    $0x63,%rax
+    2065:	76 4e                	jbe    20b5 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0xa5>
+    2067:	48 c1 e8 02          	shr    $0x2,%rax
+    206b:	48 ba c3 f5 28 5c 8f 	movabs $0x28f5c28f5c28f5c3,%rdx
+    2072:	c2 f5 28 
+    2075:	31 db                	xor    %ebx,%ebx
+    2077:	48 f7 e2             	mul    %rdx
+    207a:	48 c1 ea 02          	shr    $0x2,%rdx
+    207e:	49 89 d4             	mov    %rdx,%r12
+    2081:	eb 10                	jmp    2093 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0x83>
+    2083:	66 90                	xchg   %ax,%ax
+    2085:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    208c:	00 00 00 00 
     2090:	c5 f8 77             	vzeroupper
     2093:	49 8b 76 18          	mov    0x18(%r14),%rsi
     2097:	48 89 e7             	mov    %rsp,%rdi
-    209a:	e8 f1 05 00 00       	call   2690 <hftu::Seqlock::read() const>
+    209a:	e8 c1 05 00 00       	call   2660 <hftu::Seqlock::read() const>
     209f:	c5 fd 6f 04 24       	vmovdqa (%rsp),%ymm0
-    20a4:	c5 fd 7f 44 24 40    	vmovdqa %ymm0,0x40(%rsp)
-    20aa:	c5 fd 6f 44 24 20    	vmovdqa 0x20(%rsp),%ymm0
-    20b0:	c5 fd 7f 44 24 60    	vmovdqa %ymm0,0x60(%rsp)
-    20b6:	48 ff c3             	inc    %rbx
-    20b9:	4c 39 e3             	cmp    %r12,%rbx
-    20bc:	72 d2                	jb     2090 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0x80>
-    20be:	c5 f8 77             	vzeroupper
-    20c1:	0f 01 f9             	rdtscp
-    20c4:	89 c7                	mov    %eax,%edi
-    20c6:	89 d6                	mov    %edx,%esi
-    20c8:	0f a2                	cpuid
-    20ca:	49 8b 46 20          	mov    0x20(%r14),%rax
-    20ce:	48 c1 e6 20          	shl    $0x20,%rsi
-    20d2:	89 ff                	mov    %edi,%edi
-    20d4:	48 09 fe             	or     %rdi,%rsi
-    20d7:	4c 29 ee             	sub    %r13,%rsi
-    20da:	48 89 30             	mov    %rsi,(%rax)
-    20dd:	48 8b 84 24 b8 00 00 	mov    0xb8(%rsp),%rax
-    20e4:	00 
-    20e5:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
-    20ec:	00 00 
-    20ee:	75 0f                	jne    20ff <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0xef>
-    20f0:	48 8d 65 d8          	lea    -0x28(%rbp),%rsp
-    20f4:	5b                   	pop    %rbx
-    20f5:	41 5c                	pop    %r12
-    20f7:	41 5d                	pop    %r13
-    20f9:	41 5e                	pop    %r14
-    20fb:	41 5f                	pop    %r15
-    20fd:	5d                   	pop    %rbp
-    20fe:	c3                   	ret
-    20ff:	e8 fc f0 ff ff       	call   1200 <__stack_chk_fail@plt>
-    2104:	90                   	nop
-    2105:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
-    210c:	00 00 00 00 
+    20a4:	c5 fd 7f 44 24 20    	vmovdqa %ymm0,0x20(%rsp)
+    20aa:	48 ff c3             	inc    %rbx
+    20ad:	4c 39 e3             	cmp    %r12,%rbx
+    20b0:	72 de                	jb     2090 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0x80>
+    20b2:	c5 f8 77             	vzeroupper
+    20b5:	0f 01 f9             	rdtscp
+    20b8:	89 c7                	mov    %eax,%edi
+    20ba:	89 d6                	mov    %edx,%esi
+    20bc:	0f a2                	cpuid
+    20be:	49 8b 46 20          	mov    0x20(%r14),%rax
+    20c2:	48 c1 e6 20          	shl    $0x20,%rsi
+    20c6:	89 ff                	mov    %edi,%edi
+    20c8:	48 09 fe             	or     %rdi,%rsi
+    20cb:	4c 29 ee             	sub    %r13,%rsi
+    20ce:	48 89 30             	mov    %rsi,(%rax)
+    20d1:	48 8b 44 24 58       	mov    0x58(%rsp),%rax
+    20d6:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    20dd:	00 00 
+    20df:	75 0f                	jne    20f0 <std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >::_M_run()+0xe0>
+    20e1:	48 8d 65 d8          	lea    -0x28(%rbp),%rsp
+    20e5:	5b                   	pop    %rbx
+    20e6:	41 5c                	pop    %r12
+    20e8:	41 5d                	pop    %r13
+    20ea:	41 5e                	pop    %r14
+    20ec:	41 5f                	pop    %r15
+    20ee:	5d                   	pop    %rbp
+    20ef:	c3                   	ret
+    20f0:	e8 0b f1 ff ff       	call   1200 <__stack_chk_fail@plt>
+    20f5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    20fc:	00 00 00 00 
 
-0000000000002110 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)>:
-    2110:	f3 0f 1e fa          	endbr64
-    2114:	55                   	push   %rbp
-    2115:	48 89 e5             	mov    %rsp,%rbp
-    2118:	41 57                	push   %r15
-    211a:	41 56                	push   %r14
-    211c:	41 55                	push   %r13
-    211e:	41 54                	push   %r12
-    2120:	53                   	push   %rbx
-    2121:	48 83 e4 c0          	and    $0xffffffffffffffc0,%rsp
-    2125:	48 81 ec 80 01 00 00 	sub    $0x180,%rsp
-    212c:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
-    2133:	00 00 
-    2135:	48 89 84 24 78 01 00 	mov    %rax,0x178(%rsp)
-    213c:	00 
-    213d:	8b 06                	mov    (%rsi),%eax
-    213f:	89 84 24 8c 00 00 00 	mov    %eax,0x8c(%rsp)
-    2146:	85 c0                	test   %eax,%eax
-    2148:	0f 8e f2 01 00 00    	jle    2340 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x230>
-    214e:	48 8d 84 24 94 00 00 	lea    0x94(%rsp),%rax
-    2155:	00 
-    2156:	48 8d 0d 43 2b 00 00 	lea    0x2b43(%rip),%rcx        # 4ca0 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >+0x10>
-    215d:	48 8d 94 24 c0 00 00 	lea    0xc0(%rsp),%rdx
-    2164:	00 
-    2165:	31 db                	xor    %ebx,%ebx
-    2167:	c4 e1 f9 6e c0       	vmovq  %rax,%xmm0
-    216c:	c4 e1 f9 6e c9       	vmovq  %rcx,%xmm1
-    2171:	48 8d 84 24 b0 00 00 	lea    0xb0(%rsp),%rax
-    2178:	00 
-    2179:	48 8d 0d 48 2b 00 00 	lea    0x2b48(%rip),%rcx        # 4cc8 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >+0x10>
-    2180:	c4 e3 f1 22 c8 01    	vpinsrq $0x1,%rax,%xmm1,%xmm1
-    2186:	c4 e3 f9 22 c2 01    	vpinsrq $0x1,%rdx,%xmm0,%xmm0
-    218c:	48 89 94 24 80 00 00 	mov    %rdx,0x80(%rsp)
-    2193:	00 
-    2194:	45 31 ed             	xor    %r13d,%r13d
-    2197:	c4 e3 75 38 e0 01    	vinserti128 $0x1,%xmm0,%ymm1,%ymm4
-    219d:	c4 e1 f9 6e c9       	vmovq  %rcx,%xmm1
-    21a2:	c4 e3 f1 22 c8 01    	vpinsrq $0x1,%rax,%xmm1,%xmm1
-    21a8:	48 8d 84 24 98 00 00 	lea    0x98(%rsp),%rax
-    21af:	00 
-    21b0:	c5 fd 7f 64 24 60    	vmovdqa %ymm4,0x60(%rsp)
-    21b6:	c4 e3 75 38 e8 01    	vinserti128 $0x1,%xmm0,%ymm1,%ymm5
-    21bc:	48 89 44 24 38       	mov    %rax,0x38(%rsp)
-    21c1:	c5 fd 7f 6c 24 40    	vmovdqa %ymm5,0x40(%rsp)
-    21c7:	c5 f8 77             	vzeroupper
-    21ca:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
-    21d0:	48 8b bc 24 80 00 00 	mov    0x80(%rsp),%rdi
-    21d7:	00 
-    21d8:	c7 84 24 94 00 00 00 	movl   $0x32,0x94(%rsp)
-    21df:	32 00 00 00 
-    21e3:	48 c7 84 24 b0 00 00 	movq   $0xf4240,0xb0(%rsp)
-    21ea:	00 40 42 0f 00 
-    21ef:	e8 4c 04 00 00       	call   2640 <hftu::Seqlock::Seqlock()>
-    21f4:	bf 20 00 00 00       	mov    $0x20,%edi
-    21f9:	48 c7 84 24 98 00 00 	movq   $0x0,0x98(%rsp)
-    2200:	00 00 00 00 00 
-    2205:	48 c7 84 24 a0 00 00 	movq   $0x0,0xa0(%rsp)
-    220c:	00 00 00 00 00 
-    2211:	e8 ca ef ff ff       	call   11e0 <operator new(unsigned long)@plt>
-    2216:	48 8d 15 63 01 00 00 	lea    0x163(%rip),%rdx        # 2380 <std::thread::_M_thread_deps_never_run()>
-    221d:	48 8d b4 24 b8 00 00 	lea    0xb8(%rsp),%rsi
-    2224:	00 
-    2225:	48 8d bc 24 a0 00 00 	lea    0xa0(%rsp),%rdi
-    222c:	00 
-    222d:	c5 fd 6f 54 24 60    	vmovdqa 0x60(%rsp),%ymm2
-    2233:	48 89 84 24 b8 00 00 	mov    %rax,0xb8(%rsp)
-    223a:	00 
-    223b:	c5 fe 7f 10          	vmovdqu %ymm2,(%rax)
-    223f:	c5 f8 77             	vzeroupper
-    2242:	e8 89 ef ff ff       	call   11d0 <std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())@plt>
-    2247:	48 8b bc 24 b8 00 00 	mov    0xb8(%rsp),%rdi
-    224e:	00 
-    224f:	48 85 ff             	test   %rdi,%rdi
-    2252:	74 06                	je     225a <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x14a>
-    2254:	48 8b 07             	mov    (%rdi),%rax
-    2257:	ff 50 08             	call   *0x8(%rax)
-    225a:	bf 28 00 00 00       	mov    $0x28,%edi
-    225f:	48 c7 84 24 a8 00 00 	movq   $0x0,0xa8(%rsp)
-    2266:	00 00 00 00 00 
-    226b:	e8 70 ef ff ff       	call   11e0 <operator new(unsigned long)@plt>
-    2270:	c5 fd 6f 5c 24 40    	vmovdqa 0x40(%rsp),%ymm3
-    2276:	48 8b 4c 24 38       	mov    0x38(%rsp),%rcx
-    227b:	48 89 84 24 b8 00 00 	mov    %rax,0xb8(%rsp)
-    2282:	00 
-    2283:	48 8d 15 f6 00 00 00 	lea    0xf6(%rip),%rdx        # 2380 <std::thread::_M_thread_deps_never_run()>
-    228a:	48 8d b4 24 b8 00 00 	lea    0xb8(%rsp),%rsi
-    2291:	00 
-    2292:	48 8d bc 24 a8 00 00 	lea    0xa8(%rsp),%rdi
-    2299:	00 
-    229a:	48 89 48 20          	mov    %rcx,0x20(%rax)
-    229e:	c5 fe 7f 18          	vmovdqu %ymm3,(%rax)
-    22a2:	c5 f8 77             	vzeroupper
-    22a5:	e8 26 ef ff ff       	call   11d0 <std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())@plt>
-    22aa:	48 8b bc 24 b8 00 00 	mov    0xb8(%rsp),%rdi
-    22b1:	00 
-    22b2:	48 85 ff             	test   %rdi,%rdi
-    22b5:	74 06                	je     22bd <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x1ad>
-    22b7:	48 8b 07             	mov    (%rdi),%rax
-    22ba:	ff 50 08             	call   *0x8(%rax)
-    22bd:	48 8d bc 24 a0 00 00 	lea    0xa0(%rsp),%rdi
-    22c4:	00 
-    22c5:	e8 66 ef ff ff       	call   1230 <std::thread::join()@plt>
-    22ca:	48 8d bc 24 a8 00 00 	lea    0xa8(%rsp),%rdi
-    22d1:	00 
-    22d2:	e8 59 ef ff ff       	call   1230 <std::thread::join()@plt>
-    22d7:	48 83 bc 24 a8 00 00 	cmpq   $0x0,0xa8(%rsp)
-    22de:	00 00 
-    22e0:	0f 85 9e f0 ff ff    	jne    1384 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0xe>
-    22e6:	48 83 bc 24 a0 00 00 	cmpq   $0x0,0xa0(%rsp)
-    22ed:	00 00 
-    22ef:	0f 85 8f f0 ff ff    	jne    1384 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0xe>
-    22f5:	4c 03 ac 24 98 00 00 	add    0x98(%rsp),%r13
-    22fc:	00 
-    22fd:	ff c3                	inc    %ebx
-    22ff:	39 9c 24 8c 00 00 00 	cmp    %ebx,0x8c(%rsp)
-    2306:	0f 85 c4 fe ff ff    	jne    21d0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0xc0>
-    230c:	48 8b 84 24 78 01 00 	mov    0x178(%rsp),%rax
-    2313:	00 
-    2314:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
-    231b:	00 00 
-    231d:	75 26                	jne    2345 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x235>
-    231f:	48 8d 65 d8          	lea    -0x28(%rbp),%rsp
-    2323:	4c 89 e8             	mov    %r13,%rax
-    2326:	5b                   	pop    %rbx
-    2327:	41 5c                	pop    %r12
-    2329:	41 5d                	pop    %r13
-    232b:	41 5e                	pop    %r14
-    232d:	41 5f                	pop    %r15
-    232f:	5d                   	pop    %rbp
-    2330:	c3                   	ret
-    2331:	0f 1f 40 00          	nopl   0x0(%rax)
-    2335:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
-    233c:	00 00 00 00 
-    2340:	45 31 ed             	xor    %r13d,%r13d
-    2343:	eb c7                	jmp    230c <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x1fc>
-    2345:	e8 b6 ee ff ff       	call   1200 <__stack_chk_fail@plt>
-    234a:	f3 0f 1e fa          	endbr64
-    234e:	e9 23 f0 ff ff       	jmp    1376 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]>
-    2353:	f3 0f 1e fa          	endbr64
-    2357:	48 89 c3             	mov    %rax,%rbx
-    235a:	e9 7e f0 ff ff       	jmp    13dd <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x67>
-    235f:	f3 0f 1e fa          	endbr64
-    2363:	48 89 c3             	mov    %rax,%rbx
-    2366:	e9 1e f0 ff ff       	jmp    1389 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x13>
-    236b:	f3 0f 1e fa          	endbr64
-    236f:	48 89 c7             	mov    %rax,%rdi
-    2372:	c5 f8 77             	vzeroupper
-    2375:	e9 40 f0 ff ff       	jmp    13ba <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x44>
-    237a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+0000000000002100 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)>:
+    2100:	f3 0f 1e fa          	endbr64
+    2104:	55                   	push   %rbp
+    2105:	48 89 e5             	mov    %rsp,%rbp
+    2108:	41 57                	push   %r15
+    210a:	41 56                	push   %r14
+    210c:	41 55                	push   %r13
+    210e:	41 54                	push   %r12
+    2110:	53                   	push   %rbx
+    2111:	48 83 e4 e0          	and    $0xffffffffffffffe0,%rsp
+    2115:	48 81 ec 00 01 00 00 	sub    $0x100,%rsp
+    211c:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    2123:	00 00 
+    2125:	48 89 84 24 f8 00 00 	mov    %rax,0xf8(%rsp)
+    212c:	00 
+    212d:	8b 06                	mov    (%rsi),%eax
+    212f:	89 44 24 6c          	mov    %eax,0x6c(%rsp)
+    2133:	85 c0                	test   %eax,%eax
+    2135:	0f 8e d5 01 00 00    	jle    2310 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x210>
+    213b:	48 8d 44 24 74       	lea    0x74(%rsp),%rax
+    2140:	48 8d 0d 59 2b 00 00 	lea    0x2b59(%rip),%rcx        # 4ca0 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#1}> > >+0x10>
+    2147:	48 8d 94 24 a0 00 00 	lea    0xa0(%rsp),%rdx
+    214e:	00 
+    214f:	31 db                	xor    %ebx,%ebx
+    2151:	c4 e1 f9 6e c0       	vmovq  %rax,%xmm0
+    2156:	c4 e1 f9 6e c9       	vmovq  %rcx,%xmm1
+    215b:	48 8d 84 24 90 00 00 	lea    0x90(%rsp),%rax
+    2162:	00 
+    2163:	48 8d 0d 5e 2b 00 00 	lea    0x2b5e(%rip),%rcx        # 4cc8 <vtable for std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_concurrent(unsigned long, int)::{lambda()#2}> > >+0x10>
+    216a:	c4 e3 f1 22 c8 01    	vpinsrq $0x1,%rax,%xmm1,%xmm1
+    2170:	c4 e3 f9 22 c2 01    	vpinsrq $0x1,%rdx,%xmm0,%xmm0
+    2176:	48 89 54 24 60       	mov    %rdx,0x60(%rsp)
+    217b:	45 31 ed             	xor    %r13d,%r13d
+    217e:	c4 e3 75 38 e0 01    	vinserti128 $0x1,%xmm0,%ymm1,%ymm4
+    2184:	c4 e1 f9 6e c9       	vmovq  %rcx,%xmm1
+    2189:	c4 e3 f1 22 c8 01    	vpinsrq $0x1,%rax,%xmm1,%xmm1
+    218f:	48 8d 44 24 78       	lea    0x78(%rsp),%rax
+    2194:	c5 fd 7f 64 24 40    	vmovdqa %ymm4,0x40(%rsp)
+    219a:	c4 e3 75 38 e8 01    	vinserti128 $0x1,%xmm0,%ymm1,%ymm5
+    21a0:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+    21a5:	c5 fd 7f 6c 24 20    	vmovdqa %ymm5,0x20(%rsp)
+    21ab:	c5 f8 77             	vzeroupper
+    21ae:	66 90                	xchg   %ax,%ax
+    21b0:	48 8b 7c 24 60       	mov    0x60(%rsp),%rdi
+    21b5:	c7 44 24 74 32 00 00 	movl   $0x32,0x74(%rsp)
+    21bc:	00 
+    21bd:	48 c7 84 24 90 00 00 	movq   $0xf4240,0x90(%rsp)
+    21c4:	00 40 42 0f 00 
+    21c9:	e8 42 04 00 00       	call   2610 <hftu::Seqlock::Seqlock()>
+    21ce:	bf 20 00 00 00       	mov    $0x20,%edi
+    21d3:	48 c7 44 24 78 00 00 	movq   $0x0,0x78(%rsp)
+    21da:	00 00 
+    21dc:	48 c7 84 24 80 00 00 	movq   $0x0,0x80(%rsp)
+    21e3:	00 00 00 00 00 
+    21e8:	e8 f3 ef ff ff       	call   11e0 <operator new(unsigned long)@plt>
+    21ed:	48 8d 15 5c 01 00 00 	lea    0x15c(%rip),%rdx        # 2350 <std::thread::_M_thread_deps_never_run()>
+    21f4:	48 8d b4 24 98 00 00 	lea    0x98(%rsp),%rsi
+    21fb:	00 
+    21fc:	48 8d bc 24 80 00 00 	lea    0x80(%rsp),%rdi
+    2203:	00 
+    2204:	c5 fd 6f 54 24 40    	vmovdqa 0x40(%rsp),%ymm2
+    220a:	48 89 84 24 98 00 00 	mov    %rax,0x98(%rsp)
+    2211:	00 
+    2212:	c5 fe 7f 10          	vmovdqu %ymm2,(%rax)
+    2216:	c5 f8 77             	vzeroupper
+    2219:	e8 b2 ef ff ff       	call   11d0 <std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())@plt>
+    221e:	48 8b bc 24 98 00 00 	mov    0x98(%rsp),%rdi
+    2225:	00 
+    2226:	48 85 ff             	test   %rdi,%rdi
+    2229:	74 06                	je     2231 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x131>
+    222b:	48 8b 07             	mov    (%rdi),%rax
+    222e:	ff 50 08             	call   *0x8(%rax)
+    2231:	bf 28 00 00 00       	mov    $0x28,%edi
+    2236:	48 c7 84 24 88 00 00 	movq   $0x0,0x88(%rsp)
+    223d:	00 00 00 00 00 
+    2242:	e8 99 ef ff ff       	call   11e0 <operator new(unsigned long)@plt>
+    2247:	c5 fd 6f 5c 24 20    	vmovdqa 0x20(%rsp),%ymm3
+    224d:	48 8b 4c 24 18       	mov    0x18(%rsp),%rcx
+    2252:	48 89 84 24 98 00 00 	mov    %rax,0x98(%rsp)
+    2259:	00 
+    225a:	48 8d 15 ef 00 00 00 	lea    0xef(%rip),%rdx        # 2350 <std::thread::_M_thread_deps_never_run()>
+    2261:	48 8d b4 24 98 00 00 	lea    0x98(%rsp),%rsi
+    2268:	00 
+    2269:	48 8d bc 24 88 00 00 	lea    0x88(%rsp),%rdi
+    2270:	00 
+    2271:	48 89 48 20          	mov    %rcx,0x20(%rax)
+    2275:	c5 fe 7f 18          	vmovdqu %ymm3,(%rax)
+    2279:	c5 f8 77             	vzeroupper
+    227c:	e8 4f ef ff ff       	call   11d0 <std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)())@plt>
+    2281:	48 8b bc 24 98 00 00 	mov    0x98(%rsp),%rdi
+    2288:	00 
+    2289:	48 85 ff             	test   %rdi,%rdi
+    228c:	74 06                	je     2294 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x194>
+    228e:	48 8b 07             	mov    (%rdi),%rax
+    2291:	ff 50 08             	call   *0x8(%rax)
+    2294:	48 8d bc 24 80 00 00 	lea    0x80(%rsp),%rdi
+    229b:	00 
+    229c:	e8 8f ef ff ff       	call   1230 <std::thread::join()@plt>
+    22a1:	48 8d bc 24 88 00 00 	lea    0x88(%rsp),%rdi
+    22a8:	00 
+    22a9:	e8 82 ef ff ff       	call   1230 <std::thread::join()@plt>
+    22ae:	48 83 bc 24 88 00 00 	cmpq   $0x0,0x88(%rsp)
+    22b5:	00 00 
+    22b7:	0f 85 c7 f0 ff ff    	jne    1384 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0xe>
+    22bd:	48 83 bc 24 80 00 00 	cmpq   $0x0,0x80(%rsp)
+    22c4:	00 00 
+    22c6:	0f 85 b8 f0 ff ff    	jne    1384 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0xe>
+    22cc:	4c 03 6c 24 78       	add    0x78(%rsp),%r13
+    22d1:	ff c3                	inc    %ebx
+    22d3:	39 5c 24 6c          	cmp    %ebx,0x6c(%rsp)
+    22d7:	0f 85 d3 fe ff ff    	jne    21b0 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0xb0>
+    22dd:	48 8b 84 24 f8 00 00 	mov    0xf8(%rsp),%rax
+    22e4:	00 
+    22e5:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    22ec:	00 00 
+    22ee:	75 25                	jne    2315 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x215>
+    22f0:	48 8d 65 d8          	lea    -0x28(%rbp),%rsp
+    22f4:	4c 89 e8             	mov    %r13,%rax
+    22f7:	5b                   	pop    %rbx
+    22f8:	41 5c                	pop    %r12
+    22fa:	41 5d                	pop    %r13
+    22fc:	41 5e                	pop    %r14
+    22fe:	41 5f                	pop    %r15
+    2300:	5d                   	pop    %rbp
+    2301:	c3                   	ret
+    2302:	0f 1f 00             	nopl   (%rax)
+    2305:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    230c:	00 00 00 00 
+    2310:	45 31 ed             	xor    %r13d,%r13d
+    2313:	eb c8                	jmp    22dd <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)+0x1dd>
+    2315:	e8 e6 ee ff ff       	call   1200 <__stack_chk_fail@plt>
+    231a:	f3 0f 1e fa          	endbr64
+    231e:	e9 53 f0 ff ff       	jmp    1376 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]>
+    2323:	f3 0f 1e fa          	endbr64
+    2327:	48 89 c3             	mov    %rax,%rbx
+    232a:	e9 ae f0 ff ff       	jmp    13dd <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x67>
+    232f:	f3 0f 1e fa          	endbr64
+    2333:	48 89 c3             	mov    %rax,%rbx
+    2336:	e9 4e f0 ff ff       	jmp    1389 <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x13>
+    233b:	f3 0f 1e fa          	endbr64
+    233f:	48 89 c7             	mov    %rax,%rdi
+    2342:	c5 f8 77             	vzeroupper
+    2345:	e9 70 f0 ff ff       	jmp    13ba <std::_Function_handler<unsigned long (int), reg_solution::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&) [clone .cold]+0x44>
+    234a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
 
-0000000000002380 <std::thread::_M_thread_deps_never_run()>:
-    2380:	f3 0f 1e fa          	endbr64
-    2384:	c3                   	ret
-    2385:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
-    238c:	00 00 00 
-    238f:	90                   	nop
+0000000000002350 <std::thread::_M_thread_deps_never_run()>:
+    2350:	f3 0f 1e fa          	endbr64
+    2354:	c3                   	ret
+    2355:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    235c:	00 00 00 
+    235f:	90                   	nop
 
-0000000000002390 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()>:
-    2390:	f3 0f 1e fa          	endbr64
-    2394:	41 54                	push   %r12
-    2396:	55                   	push   %rbp
-    2397:	53                   	push   %rbx
-    2398:	49 89 fc             	mov    %rdi,%r12
-    239b:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
-    239f:	48 8b 1f             	mov    (%rdi),%rbx
-    23a2:	48 39 dd             	cmp    %rbx,%rbp
-    23a5:	74 2d                	je     23d4 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x44>
-    23a7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
-    23ae:	00 00 
-    23b0:	48 8b 43 18          	mov    0x18(%rbx),%rax
-    23b4:	48 85 c0             	test   %rax,%rax
-    23b7:	74 0e                	je     23c7 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x37>
-    23b9:	48 8d 7b 08          	lea    0x8(%rbx),%rdi
-    23bd:	ba 03 00 00 00       	mov    $0x3,%edx
-    23c2:	48 89 fe             	mov    %rdi,%rsi
-    23c5:	ff d0                	call   *%rax
-    23c7:	48 83 c3 28          	add    $0x28,%rbx
-    23cb:	48 39 dd             	cmp    %rbx,%rbp
-    23ce:	75 e0                	jne    23b0 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x20>
-    23d0:	49 8b 1c 24          	mov    (%r12),%rbx
-    23d4:	48 85 db             	test   %rbx,%rbx
-    23d7:	74 17                	je     23f0 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x60>
-    23d9:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
-    23de:	48 89 df             	mov    %rbx,%rdi
-    23e1:	48 29 de             	sub    %rbx,%rsi
-    23e4:	5b                   	pop    %rbx
-    23e5:	5d                   	pop    %rbp
-    23e6:	41 5c                	pop    %r12
-    23e8:	e9 03 ee ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
-    23ed:	0f 1f 00             	nopl   (%rax)
-    23f0:	5b                   	pop    %rbx
-    23f1:	5d                   	pop    %rbp
-    23f2:	41 5c                	pop    %r12
-    23f4:	c3                   	ret
-    23f5:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
-    23fc:	00 00 00 
-    23ff:	90                   	nop
+0000000000002360 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()>:
+    2360:	f3 0f 1e fa          	endbr64
+    2364:	41 54                	push   %r12
+    2366:	55                   	push   %rbp
+    2367:	53                   	push   %rbx
+    2368:	49 89 fc             	mov    %rdi,%r12
+    236b:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
+    236f:	48 8b 1f             	mov    (%rdi),%rbx
+    2372:	48 39 dd             	cmp    %rbx,%rbp
+    2375:	74 2d                	je     23a4 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x44>
+    2377:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    237e:	00 00 
+    2380:	48 8b 43 18          	mov    0x18(%rbx),%rax
+    2384:	48 85 c0             	test   %rax,%rax
+    2387:	74 0e                	je     2397 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x37>
+    2389:	48 8d 7b 08          	lea    0x8(%rbx),%rdi
+    238d:	ba 03 00 00 00       	mov    $0x3,%edx
+    2392:	48 89 fe             	mov    %rdi,%rsi
+    2395:	ff d0                	call   *%rax
+    2397:	48 83 c3 28          	add    $0x28,%rbx
+    239b:	48 39 dd             	cmp    %rbx,%rbp
+    239e:	75 e0                	jne    2380 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x20>
+    23a0:	49 8b 1c 24          	mov    (%r12),%rbx
+    23a4:	48 85 db             	test   %rbx,%rbx
+    23a7:	74 17                	je     23c0 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()+0x60>
+    23a9:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
+    23ae:	48 89 df             	mov    %rbx,%rdi
+    23b1:	48 29 de             	sub    %rbx,%rsi
+    23b4:	5b                   	pop    %rbx
+    23b5:	5d                   	pop    %rbp
+    23b6:	41 5c                	pop    %r12
+    23b8:	e9 33 ee ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
+    23bd:	0f 1f 00             	nopl   (%rax)
+    23c0:	5b                   	pop    %rbx
+    23c1:	5d                   	pop    %rbp
+    23c2:	41 5c                	pop    %r12
+    23c4:	c3                   	ret
+    23c5:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    23cc:	00 00 00 
+    23cf:	90                   	nop
 
-0000000000002400 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>:
-    2400:	f3 0f 1e fa          	endbr64
-    2404:	41 54                	push   %r12
-    2406:	55                   	push   %rbp
-    2407:	53                   	push   %rbx
-    2408:	49 89 fc             	mov    %rdi,%r12
-    240b:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
-    240f:	48 8b 1f             	mov    (%rdi),%rbx
-    2412:	48 39 dd             	cmp    %rbx,%rbp
-    2415:	74 2d                	je     2444 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x44>
-    2417:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
-    241e:	00 00 
-    2420:	48 8b 43 20          	mov    0x20(%rbx),%rax
-    2424:	48 85 c0             	test   %rax,%rax
-    2427:	74 0e                	je     2437 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x37>
-    2429:	48 8d 7b 10          	lea    0x10(%rbx),%rdi
-    242d:	ba 03 00 00 00       	mov    $0x3,%edx
-    2432:	48 89 fe             	mov    %rdi,%rsi
-    2435:	ff d0                	call   *%rax
-    2437:	48 83 c3 38          	add    $0x38,%rbx
-    243b:	48 39 dd             	cmp    %rbx,%rbp
-    243e:	75 e0                	jne    2420 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x20>
-    2440:	49 8b 1c 24          	mov    (%r12),%rbx
-    2444:	48 85 db             	test   %rbx,%rbx
-    2447:	74 17                	je     2460 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x60>
-    2449:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
-    244e:	48 89 df             	mov    %rbx,%rdi
-    2451:	48 29 de             	sub    %rbx,%rsi
-    2454:	5b                   	pop    %rbx
-    2455:	5d                   	pop    %rbp
-    2456:	41 5c                	pop    %r12
-    2458:	e9 93 ed ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
-    245d:	0f 1f 00             	nopl   (%rax)
-    2460:	5b                   	pop    %rbx
-    2461:	5d                   	pop    %rbp
-    2462:	41 5c                	pop    %r12
-    2464:	c3                   	ret
-    2465:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
-    246c:	00 00 00 
-    246f:	90                   	nop
+00000000000023d0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()>:
+    23d0:	f3 0f 1e fa          	endbr64
+    23d4:	41 54                	push   %r12
+    23d6:	55                   	push   %rbp
+    23d7:	53                   	push   %rbx
+    23d8:	49 89 fc             	mov    %rdi,%r12
+    23db:	48 8b 6f 08          	mov    0x8(%rdi),%rbp
+    23df:	48 8b 1f             	mov    (%rdi),%rbx
+    23e2:	48 39 dd             	cmp    %rbx,%rbp
+    23e5:	74 2d                	je     2414 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x44>
+    23e7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+    23ee:	00 00 
+    23f0:	48 8b 43 20          	mov    0x20(%rbx),%rax
+    23f4:	48 85 c0             	test   %rax,%rax
+    23f7:	74 0e                	je     2407 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x37>
+    23f9:	48 8d 7b 10          	lea    0x10(%rbx),%rdi
+    23fd:	ba 03 00 00 00       	mov    $0x3,%edx
+    2402:	48 89 fe             	mov    %rdi,%rsi
+    2405:	ff d0                	call   *%rax
+    2407:	48 83 c3 38          	add    $0x38,%rbx
+    240b:	48 39 dd             	cmp    %rbx,%rbp
+    240e:	75 e0                	jne    23f0 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x20>
+    2410:	49 8b 1c 24          	mov    (%r12),%rbx
+    2414:	48 85 db             	test   %rbx,%rbx
+    2417:	74 17                	je     2430 <std::vector<hftu::BenchmarkDef, std::allocator<hftu::BenchmarkDef> >::~vector()+0x60>
+    2419:	49 8b 74 24 10       	mov    0x10(%r12),%rsi
+    241e:	48 89 df             	mov    %rbx,%rdi
+    2421:	48 29 de             	sub    %rbx,%rsi
+    2424:	5b                   	pop    %rbx
+    2425:	5d                   	pop    %rbp
+    2426:	41 5c                	pop    %r12
+    2428:	e9 c3 ed ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
+    242d:	0f 1f 00             	nopl   (%rax)
+    2430:	5b                   	pop    %rbx
+    2431:	5d                   	pop    %rbp
+    2432:	41 5c                	pop    %r12
+    2434:	c3                   	ret
+    2435:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    243c:	00 00 00 
+    243f:	90                   	nop
 
-0000000000002470 <std::_Function_base::~_Function_base()>:
+0000000000002440 <std::_Function_base::~_Function_base()>:
+    2440:	f3 0f 1e fa          	endbr64
+    2444:	48 8b 47 10          	mov    0x10(%rdi),%rax
+    2448:	48 85 c0             	test   %rax,%rax
+    244b:	74 13                	je     2460 <std::_Function_base::~_Function_base()+0x20>
+    244d:	48 83 ec 08          	sub    $0x8,%rsp
+    2451:	ba 03 00 00 00       	mov    $0x3,%edx
+    2456:	48 89 fe             	mov    %rdi,%rsi
+    2459:	ff d0                	call   *%rax
+    245b:	48 83 c4 08          	add    $0x8,%rsp
+    245f:	c3                   	ret
+    2460:	c3                   	ret
+    2461:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    2468:	00 00 00 
+    246b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+
+0000000000002470 <hftu::run_validations()>:
     2470:	f3 0f 1e fa          	endbr64
-    2474:	48 8b 47 10          	mov    0x10(%rdi),%rax
-    2478:	48 85 c0             	test   %rax,%rax
-    247b:	74 13                	je     2490 <std::_Function_base::~_Function_base()+0x20>
-    247d:	48 83 ec 08          	sub    $0x8,%rsp
-    2481:	ba 03 00 00 00       	mov    $0x3,%edx
-    2486:	48 89 fe             	mov    %rdi,%rsi
-    2489:	ff d0                	call   *%rax
-    248b:	48 83 c4 08          	add    $0x8,%rsp
-    248f:	c3                   	ret
-    2490:	c3                   	ret
-    2491:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
-    2498:	00 00 00 
-    249b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+    2474:	41 56                	push   %r14
+    2476:	41 55                	push   %r13
+    2478:	41 54                	push   %r12
+    247a:	55                   	push   %rbp
+    247b:	53                   	push   %rbx
+    247c:	0f b6 05 d5 2b 00 00 	movzbl 0x2bd5(%rip),%eax        # 5058 <guard variable for hftu::validate_registry()::reg>
+    2483:	84 c0                	test   %al,%al
+    2485:	0f 84 d5 00 00 00    	je     2560 <hftu::run_validations()+0xf0>
+    248b:	48 8b 0d d6 2b 00 00 	mov    0x2bd6(%rip),%rcx        # 5068 <hftu::validate_registry()::reg+0x8>
+    2492:	48 8b 05 c7 2b 00 00 	mov    0x2bc7(%rip),%rax        # 5060 <hftu::validate_registry()::reg>
+    2499:	41 bc 01 00 00 00    	mov    $0x1,%r12d
+    249f:	48 39 c1             	cmp    %rax,%rcx
+    24a2:	0f 84 a2 00 00 00    	je     254a <hftu::run_validations()+0xda>
+    24a8:	48 29 c1             	sub    %rax,%rcx
+    24ab:	48 8b 3d 6e 2b 00 00 	mov    0x2b6e(%rip),%rdi        # 5020 <stderr@GLIBC_2.2.5>
+    24b2:	48 b8 cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rax
+    24b9:	cc cc cc 
+    24bc:	48 8d 15 4b 0b 00 00 	lea    0xb4b(%rip),%rdx        # 300e <_IO_stdin_used+0xe>
+    24c3:	48 c1 f9 03          	sar    $0x3,%rcx
+    24c7:	be 02 00 00 00       	mov    $0x2,%esi
+    24cc:	48 0f af c8          	imul   %rax,%rcx
+    24d0:	31 c0                	xor    %eax,%eax
+    24d2:	e8 49 ed ff ff       	call   1220 <__fprintf_chk@plt>
+    24d7:	48 8b 1d 82 2b 00 00 	mov    0x2b82(%rip),%rbx        # 5060 <hftu::validate_registry()::reg>
+    24de:	4c 8b 2d 83 2b 00 00 	mov    0x2b83(%rip),%r13        # 5068 <hftu::validate_registry()::reg+0x8>
+    24e5:	49 39 dd             	cmp    %rbx,%r13
+    24e8:	74 60                	je     254a <hftu::run_validations()+0xda>
+    24ea:	4c 8d 35 13 0b 00 00 	lea    0xb13(%rip),%r14        # 3004 <_IO_stdin_used+0x4>
+    24f1:	0f 1f 40 00          	nopl   0x0(%rax)
+    24f5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    24fc:	00 00 00 00 
+    2500:	48 83 7b 18 00       	cmpq   $0x0,0x18(%rbx)
+    2505:	0f 84 94 00 00 00    	je     259f <hftu::run_validations()+0x12f>
+    250b:	48 8d 7b 08          	lea    0x8(%rbx),%rdi
+    250f:	ff 53 20             	call   *0x20(%rbx)
+    2512:	48 8b 0b             	mov    (%rbx),%rcx
+    2515:	4c 8d 05 ed 0a 00 00 	lea    0xaed(%rip),%r8        # 3009 <_IO_stdin_used+0x9>
+    251c:	48 8b 3d fd 2a 00 00 	mov    0x2afd(%rip),%rdi        # 5020 <stderr@GLIBC_2.2.5>
+    2523:	84 c0                	test   %al,%al
+    2525:	89 c5                	mov    %eax,%ebp
+    2527:	48 8d 15 fe 0a 00 00 	lea    0xafe(%rip),%rdx        # 302c <_IO_stdin_used+0x2c>
+    252e:	4d 0f 45 c6          	cmovne %r14,%r8
+    2532:	be 02 00 00 00       	mov    $0x2,%esi
+    2537:	31 c0                	xor    %eax,%eax
+    2539:	48 83 c3 28          	add    $0x28,%rbx
+    253d:	41 21 ec             	and    %ebp,%r12d
+    2540:	e8 db ec ff ff       	call   1220 <__fprintf_chk@plt>
+    2545:	49 39 dd             	cmp    %rbx,%r13
+    2548:	75 b6                	jne    2500 <hftu::run_validations()+0x90>
+    254a:	5b                   	pop    %rbx
+    254b:	44 89 e0             	mov    %r12d,%eax
+    254e:	5d                   	pop    %rbp
+    254f:	41 5c                	pop    %r12
+    2551:	41 5d                	pop    %r13
+    2553:	41 5e                	pop    %r14
+    2555:	c3                   	ret
+    2556:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    255d:	00 00 00 
+    2560:	48 8d 3d f1 2a 00 00 	lea    0x2af1(%rip),%rdi        # 5058 <guard variable for hftu::validate_registry()::reg>
+    2567:	e8 e4 ec ff ff       	call   1250 <__cxa_guard_acquire@plt>
+    256c:	85 c0                	test   %eax,%eax
+    256e:	0f 84 17 ff ff ff    	je     248b <hftu::run_validations()+0x1b>
+    2574:	48 8d 15 8d 2a 00 00 	lea    0x2a8d(%rip),%rdx        # 5008 <__dso_handle>
+    257b:	48 8d 35 de 2a 00 00 	lea    0x2ade(%rip),%rsi        # 5060 <hftu::validate_registry()::reg>
+    2582:	48 8d 3d d7 fd ff ff 	lea    -0x229(%rip),%rdi        # 2360 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()>
+    2589:	e8 32 ec ff ff       	call   11c0 <__cxa_atexit@plt>
+    258e:	48 8d 3d c3 2a 00 00 	lea    0x2ac3(%rip),%rdi        # 5058 <guard variable for hftu::validate_registry()::reg>
+    2595:	e8 06 ec ff ff       	call   11a0 <__cxa_guard_release@plt>
+    259a:	e9 ec fe ff ff       	jmp    248b <hftu::run_validations()+0x1b>
+    259f:	e8 cc eb ff ff       	call   1170 <std::__throw_bad_function_call()@plt>
+    25a4:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    25ab:	00 00 00 
+    25ae:	66 90                	xchg   %ax,%ax
 
-00000000000024a0 <hftu::run_validations()>:
-    24a0:	f3 0f 1e fa          	endbr64
-    24a4:	41 56                	push   %r14
-    24a6:	41 55                	push   %r13
-    24a8:	41 54                	push   %r12
-    24aa:	55                   	push   %rbp
-    24ab:	53                   	push   %rbx
-    24ac:	0f b6 05 a5 2b 00 00 	movzbl 0x2ba5(%rip),%eax        # 5058 <guard variable for hftu::validate_registry()::reg>
-    24b3:	84 c0                	test   %al,%al
-    24b5:	0f 84 d5 00 00 00    	je     2590 <hftu::run_validations()+0xf0>
-    24bb:	48 8b 0d a6 2b 00 00 	mov    0x2ba6(%rip),%rcx        # 5068 <hftu::validate_registry()::reg+0x8>
-    24c2:	48 8b 05 97 2b 00 00 	mov    0x2b97(%rip),%rax        # 5060 <hftu::validate_registry()::reg>
-    24c9:	41 bc 01 00 00 00    	mov    $0x1,%r12d
-    24cf:	48 39 c1             	cmp    %rax,%rcx
-    24d2:	0f 84 a2 00 00 00    	je     257a <hftu::run_validations()+0xda>
-    24d8:	48 29 c1             	sub    %rax,%rcx
-    24db:	48 8b 3d 3e 2b 00 00 	mov    0x2b3e(%rip),%rdi        # 5020 <stderr@GLIBC_2.2.5>
-    24e2:	48 b8 cd cc cc cc cc 	movabs $0xcccccccccccccccd,%rax
-    24e9:	cc cc cc 
-    24ec:	48 8d 15 1b 0b 00 00 	lea    0xb1b(%rip),%rdx        # 300e <_IO_stdin_used+0xe>
-    24f3:	48 c1 f9 03          	sar    $0x3,%rcx
-    24f7:	be 02 00 00 00       	mov    $0x2,%esi
-    24fc:	48 0f af c8          	imul   %rax,%rcx
-    2500:	31 c0                	xor    %eax,%eax
-    2502:	e8 19 ed ff ff       	call   1220 <__fprintf_chk@plt>
-    2507:	48 8b 1d 52 2b 00 00 	mov    0x2b52(%rip),%rbx        # 5060 <hftu::validate_registry()::reg>
-    250e:	4c 8b 2d 53 2b 00 00 	mov    0x2b53(%rip),%r13        # 5068 <hftu::validate_registry()::reg+0x8>
-    2515:	49 39 dd             	cmp    %rbx,%r13
-    2518:	74 60                	je     257a <hftu::run_validations()+0xda>
-    251a:	4c 8d 35 e3 0a 00 00 	lea    0xae3(%rip),%r14        # 3004 <_IO_stdin_used+0x4>
-    2521:	0f 1f 40 00          	nopl   0x0(%rax)
-    2525:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
-    252c:	00 00 00 00 
-    2530:	48 83 7b 18 00       	cmpq   $0x0,0x18(%rbx)
-    2535:	0f 84 94 00 00 00    	je     25cf <hftu::run_validations()+0x12f>
-    253b:	48 8d 7b 08          	lea    0x8(%rbx),%rdi
-    253f:	ff 53 20             	call   *0x20(%rbx)
-    2542:	48 8b 0b             	mov    (%rbx),%rcx
-    2545:	4c 8d 05 bd 0a 00 00 	lea    0xabd(%rip),%r8        # 3009 <_IO_stdin_used+0x9>
-    254c:	48 8b 3d cd 2a 00 00 	mov    0x2acd(%rip),%rdi        # 5020 <stderr@GLIBC_2.2.5>
-    2553:	84 c0                	test   %al,%al
-    2555:	89 c5                	mov    %eax,%ebp
-    2557:	48 8d 15 ce 0a 00 00 	lea    0xace(%rip),%rdx        # 302c <_IO_stdin_used+0x2c>
-    255e:	4d 0f 45 c6          	cmovne %r14,%r8
-    2562:	be 02 00 00 00       	mov    $0x2,%esi
-    2567:	31 c0                	xor    %eax,%eax
-    2569:	48 83 c3 28          	add    $0x28,%rbx
-    256d:	41 21 ec             	and    %ebp,%r12d
-    2570:	e8 ab ec ff ff       	call   1220 <__fprintf_chk@plt>
-    2575:	49 39 dd             	cmp    %rbx,%r13
-    2578:	75 b6                	jne    2530 <hftu::run_validations()+0x90>
-    257a:	5b                   	pop    %rbx
-    257b:	44 89 e0             	mov    %r12d,%eax
-    257e:	5d                   	pop    %rbp
-    257f:	41 5c                	pop    %r12
-    2581:	41 5d                	pop    %r13
-    2583:	41 5e                	pop    %r14
-    2585:	c3                   	ret
-    2586:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
-    258d:	00 00 00 
-    2590:	48 8d 3d c1 2a 00 00 	lea    0x2ac1(%rip),%rdi        # 5058 <guard variable for hftu::validate_registry()::reg>
-    2597:	e8 b4 ec ff ff       	call   1250 <__cxa_guard_acquire@plt>
-    259c:	85 c0                	test   %eax,%eax
-    259e:	0f 84 17 ff ff ff    	je     24bb <hftu::run_validations()+0x1b>
-    25a4:	48 8d 15 5d 2a 00 00 	lea    0x2a5d(%rip),%rdx        # 5008 <__dso_handle>
-    25ab:	48 8d 35 ae 2a 00 00 	lea    0x2aae(%rip),%rsi        # 5060 <hftu::validate_registry()::reg>
-    25b2:	48 8d 3d d7 fd ff ff 	lea    -0x229(%rip),%rdi        # 2390 <std::vector<hftu::ValidateDef, std::allocator<hftu::ValidateDef> >::~vector()>
-    25b9:	e8 02 ec ff ff       	call   11c0 <__cxa_atexit@plt>
-    25be:	48 8d 3d 93 2a 00 00 	lea    0x2a93(%rip),%rdi        # 5058 <guard variable for hftu::validate_registry()::reg>
-    25c5:	e8 d6 eb ff ff       	call   11a0 <__cxa_guard_release@plt>
-    25ca:	e9 ec fe ff ff       	jmp    24bb <hftu::run_validations()+0x1b>
-    25cf:	e8 9c eb ff ff       	call   1170 <std::__throw_bad_function_call()@plt>
-    25d4:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
-    25db:	00 00 00 
-    25de:	66 90                	xchg   %ax,%ax
+00000000000025b0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>:
+    25b0:	f3 0f 1e fa          	endbr64
+    25b4:	48 89 f8             	mov    %rdi,%rax
+    25b7:	48 8b 3f             	mov    (%rdi),%rdi
+    25ba:	48 85 ff             	test   %rdi,%rdi
+    25bd:	74 11                	je     25d0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()+0x20>
+    25bf:	48 8b 70 10          	mov    0x10(%rax),%rsi
+    25c3:	48 29 fe             	sub    %rdi,%rsi
+    25c6:	e9 25 ec ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
+    25cb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+    25d0:	c3                   	ret
+    25d1:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    25d8:	00 00 00 
+    25db:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
 
-00000000000025e0 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()>:
+00000000000025e0 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>:
     25e0:	f3 0f 1e fa          	endbr64
-    25e4:	48 89 f8             	mov    %rdi,%rax
-    25e7:	48 8b 3f             	mov    (%rdi),%rdi
-    25ea:	48 85 ff             	test   %rdi,%rdi
-    25ed:	74 11                	je     2600 <std::_Vector_base<hftu::BenchmarkResult, std::allocator<hftu::BenchmarkResult> >::~_Vector_base()+0x20>
-    25ef:	48 8b 70 10          	mov    0x10(%rax),%rsi
-    25f3:	48 29 fe             	sub    %rdi,%rsi
-    25f6:	e9 f5 eb ff ff       	jmp    11f0 <operator delete(void*, unsigned long)@plt>
-    25fb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+    25e4:	48 8b 3f             	mov    (%rdi),%rdi
+    25e7:	48 85 ff             	test   %rdi,%rdi
+    25ea:	74 14                	je     2600 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()+0x20>
+    25ec:	48 8b 07             	mov    (%rdi),%rax
+    25ef:	ff 60 08             	jmp    *0x8(%rax)
+    25f2:	0f 1f 00             	nopl   (%rax)
+    25f5:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    25fc:	00 00 00 00 
     2600:	c3                   	ret
     2601:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
     2608:	00 00 00 
     260b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
 
-0000000000002610 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()>:
+0000000000002610 <hftu::Seqlock::Seqlock()>:
     2610:	f3 0f 1e fa          	endbr64
-    2614:	48 8b 3f             	mov    (%rdi),%rdi
-    2617:	48 85 ff             	test   %rdi,%rdi
-    261a:	74 14                	je     2630 <std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >::~unique_ptr()+0x20>
-    261c:	48 8b 07             	mov    (%rdi),%rax
-    261f:	ff 60 08             	jmp    *0x8(%rax)
-    2622:	0f 1f 00             	nopl   (%rax)
-    2625:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
-    262c:	00 00 00 00 
-    2630:	c3                   	ret
-    2631:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
-    2638:	00 00 00 
-    263b:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+    2614:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
+    2618:	48 c7 47 20 00 00 00 	movq   $0x0,0x20(%rdi)
+    261f:	00 
+    2620:	c5 fd 7f 07          	vmovdqa %ymm0,(%rdi)
+    2624:	c5 f8 77             	vzeroupper
+    2627:	c3                   	ret
+    2628:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    262f:	00 
 
-0000000000002640 <hftu::Seqlock::Seqlock()>:
-    2640:	f3 0f 1e fa          	endbr64
-    2644:	c5 f9 ef c0          	vpxor  %xmm0,%xmm0,%xmm0
-    2648:	48 c7 47 40 00 00 00 	movq   $0x0,0x40(%rdi)
-    264f:	00 
-    2650:	c5 fd 7f 07          	vmovdqa %ymm0,(%rdi)
-    2654:	c5 fd 7f 47 20       	vmovdqa %ymm0,0x20(%rdi)
-    2659:	c5 f8 77             	vzeroupper
-    265c:	c3                   	ret
-    265d:	90                   	nop
-    265e:	66 90                	xchg   %ax,%ax
+0000000000002630 <hftu::Seqlock::write(hftu::Payload const&)>:
+    2630:	f3 0f 1e fa          	endbr64
+    2634:	48 8b 47 20          	mov    0x20(%rdi),%rax
+    2638:	48 8d 50 01          	lea    0x1(%rax),%rdx
+    263c:	48 83 c0 02          	add    $0x2,%rax
+    2640:	48 89 57 20          	mov    %rdx,0x20(%rdi)
+    2644:	c5 fd 6f 06          	vmovdqa (%rsi),%ymm0
+    2648:	c5 fd 7f 07          	vmovdqa %ymm0,(%rdi)
+    264c:	48 89 47 20          	mov    %rax,0x20(%rdi)
+    2650:	c5 f8 77             	vzeroupper
+    2653:	c3                   	ret
+    2654:	90                   	nop
+    2655:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    265c:	00 00 00 00 
 
-0000000000002660 <hftu::Seqlock::write(hftu::Payload const&)>:
+0000000000002660 <hftu::Seqlock::read() const>:
     2660:	f3 0f 1e fa          	endbr64
-    2664:	48 8b 47 40          	mov    0x40(%rdi),%rax
-    2668:	48 8d 50 01          	lea    0x1(%rax),%rdx
-    266c:	48 83 c0 02          	add    $0x2,%rax
-    2670:	48 89 57 40          	mov    %rdx,0x40(%rdi)
-    2674:	c5 fd 6f 06          	vmovdqa (%rsi),%ymm0
-    2678:	c5 fd 7f 07          	vmovdqa %ymm0,(%rdi)
-    267c:	c5 fd 6f 46 20       	vmovdqa 0x20(%rsi),%ymm0
-    2681:	c5 fd 7f 47 20       	vmovdqa %ymm0,0x20(%rdi)
-    2686:	48 89 47 40          	mov    %rax,0x40(%rdi)
+    2664:	48 8d 56 20          	lea    0x20(%rsi),%rdx
+    2668:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+    266f:	00 
+    2670:	48 8b 02             	mov    (%rdx),%rax
+    2673:	a8 01                	test   $0x1,%al
+    2675:	75 f9                	jne    2670 <hftu::Seqlock::read() const+0x10>
+    2677:	c5 fd 6f 06          	vmovdqa (%rsi),%ymm0
+    267b:	c5 fd 7f 07          	vmovdqa %ymm0,(%rdi)
+    267f:	48 8b 0a             	mov    (%rdx),%rcx
+    2682:	48 39 c8             	cmp    %rcx,%rax
+    2685:	75 e9                	jne    2670 <hftu::Seqlock::read() const+0x10>
+    2687:	48 89 f8             	mov    %rdi,%rax
     268a:	c5 f8 77             	vzeroupper
     268d:	c3                   	ret
-    268e:	66 90                	xchg   %ax,%ax
-
-0000000000002690 <hftu::Seqlock::read() const>:
-    2690:	f3 0f 1e fa          	endbr64
-    2694:	48 8d 56 40          	lea    0x40(%rsi),%rdx
-    2698:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
-    269f:	00 
-    26a0:	48 8b 02             	mov    (%rdx),%rax
-    26a3:	a8 01                	test   $0x1,%al
-    26a5:	75 f9                	jne    26a0 <hftu::Seqlock::read() const+0x10>
-    26a7:	c5 fd 6f 06          	vmovdqa (%rsi),%ymm0
-    26ab:	c5 fd 7f 07          	vmovdqa %ymm0,(%rdi)
-    26af:	c5 fd 6f 46 20       	vmovdqa 0x20(%rsi),%ymm0
-    26b4:	c5 fd 7f 47 20       	vmovdqa %ymm0,0x20(%rdi)
-    26b9:	48 8b 0a             	mov    (%rdx),%rcx
-    26bc:	48 39 c8             	cmp    %rcx,%rax
-    26bf:	75 df                	jne    26a0 <hftu::Seqlock::read() const+0x10>
-    26c1:	48 89 f8             	mov    %rdi,%rax
-    26c4:	c5 f8 77             	vzeroupper
-    26c7:	c3                   	ret
 
 Disassembly of section .fini:
 
-00000000000026c8 <_fini>:
-    26c8:	f3 0f 1e fa          	endbr64
-    26cc:	48 83 ec 08          	sub    $0x8,%rsp
-    26d0:	48 83 c4 08          	add    $0x8,%rsp
-    26d4:	c3                   	ret
+0000000000002690 <_fini>:
+    2690:	f3 0f 1e fa          	endbr64
+    2694:	48 83 ec 08          	sub    $0x8,%rsp
+    2698:	48 83 c4 08          	add    $0x8,%rsp
+    269c:	c3                   	ret

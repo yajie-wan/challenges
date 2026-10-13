@@ -12,7 +12,7 @@
 
 namespace hftu {
 
-struct Payload {
+struct alignas(32) Payload {
     int64_t a;
     int64_t b;
     int64_t c;
