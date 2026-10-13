@@ -1,25 +1,25 @@
 =================================================
             Trace Event Information              
 =================================================
-  Total records                     :       2941
-  Locked Load/Store Operations      :          2
-  Load Operations                   :        717
+  Total records                     :       3579
+  Locked Load/Store Operations      :          0
+  Load Operations                   :        830
   Loads - uncacheable               :          0
   Loads - IO                        :          0
   Loads - Miss                      :          0
-  Loads - no mapping                :        204
+  Loads - no mapping                :        247
   Load Fill Buffer Hit              :          0
-  Load L1D hit                      :        464
-  Load L2D hit                      :          1
-  Load LLC hit                      :         48
-  Load Local HITM                   :         44
-  Load Remote HITM                  :         44
+  Load L1D hit                      :        534
+  Load L2D hit                      :          9
+  Load LLC hit                      :         40
+  Load Local HITM                   :         37
+  Load Remote HITM                  :         37
   Load Remote HIT                   :          0
   Load Local DRAM                   :          0
   Load Remote DRAM                  :          0
   Load MESI State Exclusive         :          0
   Load MESI State Shared            :          0
-  Load LLC Misses                   :         44
+  Load LLC Misses                   :         37
   Load access blocked by data       :          0
   Load access blocked by address    :          0
   Load HIT Local Peer               :          0
@@ -28,31 +28,31 @@
   LLC Misses to Remote DRAM         :        0.0%
   LLC Misses to Remote cache (HIT)  :        0.0%
   LLC Misses to Remote cache (HITM) :      100.0%
-  Store Operations                  :        191
+  Store Operations                  :        277
   Store - uncacheable               :          0
-  Store - no mapping                :          1
-  Store L1D Hit                     :        152
+  Store - no mapping                :          2
+  Store L1D Hit                     :        225
   Store L1D Miss                    :          0
-  Store No available memory level   :          0
-  No Page Map Rejects               :        183
-  Unable to parse data source       :       2033
+  Store No available memory level   :          1
+  No Page Map Rejects               :        205
+  Unable to parse data source       :       2472
 
 =================================================
     Global Shared Cache Line Event Information   
 =================================================
-  Total Shared Cache Lines          :          4
-  Load HITs on shared lines         :        126
+  Total Shared Cache Lines          :          9
+  Load HITs on shared lines         :        159
   Fill Buffer Hits on shared lines  :          0
-  L1D hits on shared lines          :         81
+  L1D hits on shared lines          :        120
   L2D hits on shared lines          :          0
-  LLC hits on shared lines          :         45
+  LLC hits on shared lines          :         39
   Load hits on peer cache or nodes  :          0
-  Locked Access on shared lines     :          1
+  Locked Access on shared lines     :          0
   Blocked Access on shared lines    :          0
-  Store HITs on shared lines        :         47
-  Store L1D hits on shared lines    :         14
+  Store HITs on shared lines        :         70
+  Store L1D hits on shared lines    :         33
   Store No available memory level   :          0
-  Total Merged records              :        135
+  Total Merged records              :        144
 
 =================================================
                  c2c details                     
@@ -69,10 +69,15 @@
 # Index             Address  Node  PA cnt     Hitm    Total  LclHitm  RmtHitm  records    Loads   Stores    L1Hit   L1Miss      N/A       FB       L1       L2    LclHit  LclHitm    RmtHit  RmtHitm       Lcl       Rmt
 # .....  ..................  ....  ......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  ........  .......  ........  .......  ........  ........
 #
-      0      0x7fff6f8aad40     0      63   93.18%       82       41       41      176      162       47       14        0        0        0       79        0         1       41         0       41         0         0
-      1  0xffff8ec4763b61c0     0       1    2.27%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
-      2  0xffff8ec500e5f1c0     0       1    2.27%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
-      3  0xffff8ec60771e300     0       1    2.27%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
+      0      0x7fff3a5fe200     0     108   78.38%       58       29       29      205      172       70       33        0        0        0      112        0         2       29         0       29         0         0
+      1  0xffffffffb3b01700     0       2    2.70%        2        1        1        4        4        0        0        0        0        0        2        0         0        1         0        1         0         0
+      2  0xffff8ec4763b71c0     0       1    2.70%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
+      3  0xffff8ec500d371c0     0       1    2.70%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
+      4  0xffff8ec51861ec80     0       1    2.70%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
+      5  0xffff8ec524c33d00     0       1    2.70%        2        1        1        3        3        0        0        0        0        0        1        0         0        1         0        1         0         0
+      6  0xffff8ec52a916c80     0       1    2.70%        2        1        1        4        4        0        0        0        0        0        2        0         0        1         0        1         0         0
+      7  0xffff8ec54e1352c0     0       1    2.70%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
+      8      0x7b09c53ff980     0       1    2.70%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
 
 =================================================
       Shared Cache Line Distribution Pareto      
@@ -83,26 +88,51 @@
 # .......  .......  .......  .......  .......  .....  ....  ......  ..................  ........  ........  ........  .......  ........  ..............................  .........  ..............................  ....
 #
   ----------------------------------------------------------------------
-      0       41       41       14        0        0      0x7fff6f8aad40
+      0       29       29       33        0        0      0x7fff3a5fe200
   ----------------------------------------------------------------------
-   58.54%   58.54%    0.00%    0.00%    0.00%   0x10     0       1      0x5a39bc8d9647        90         0         0       66         4  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+23   0
-    0.00%    0.00%   50.00%    0.00%    0.00%   0x10     0       1      0x5a39bc8d9618         0         0         0        7         4  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
-   26.83%   26.83%    0.00%    0.00%    0.00%   0x30     0       1      0x5a39bc8d9640       122         0         0       40         5  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+16   0
-   14.63%   14.63%    0.00%    0.00%    0.00%   0x30     0       1      0x5a39bc8d964f       102         0         0       47         6  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+31   0
-    0.00%    0.00%   50.00%    0.00%    0.00%   0x30     0       1      0x5a39bc8d9610         0         0         0        7         4  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
-    0.00%    0.00%    0.00%    0.00%    0.00%   0x30     0       1      0x5a39bc8d961c         0         0         0        0         3  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+   37.93%   37.93%    0.00%    0.00%    0.00%    0x0     0       1      0x60e420329677       136         0         0       54         5  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+23   0
+    0.00%    0.00%   54.55%    0.00%    0.00%    0x0     0       1      0x60e420329648         0         0         0       18         3  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+   37.93%   37.93%    0.00%    0.00%    0.00%   0x20     0       1      0x60e420329670       135         0         0       44         5  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+16   0
+   24.14%   24.14%    0.00%    0.00%    0.00%   0x20     0       1      0x60e42032967f       103         0         0       56         5  [.] hftu::Seqlock::read() cons  benchmark  hftu::Seqlock::read() const+31   0
+    0.00%    0.00%   24.24%    0.00%    0.00%   0x20     0       1      0x60e420329640         0         0         0        8         4  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
+    0.00%    0.00%   21.21%    0.00%    0.00%   0x20     0       1      0x60e42032964c         0         0         0        7         3  [.] hftu::Seqlock::write(hftu:  benchmark  hftu::Seqlock::write(hftu::Pay   0
 
   ----------------------------------------------------------------------
-      1        1        1        0        0        0  0xffff8ec4763b61c0
+      1        1        1        0        0        0  0xffffffffb3b01700
   ----------------------------------------------------------------------
-  100.00%  100.00%    0.00%    0.00%    0.00%   0x38     0       1  0xffffffffb0d6208c        76         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
+  100.00%  100.00%    0.00%    0.00%    0.00%    0x8     0       1  0xffffffffb0b79971       174         0         0        3         1  [k] ktime_get                   [kernel.kallsyms]  ktime_get+65                     0
 
   ----------------------------------------------------------------------
-      2        1        1        0        0        0  0xffff8ec500e5f1c0
+      2        1        1        0        0        0  0xffff8ec4763b71c0
   ----------------------------------------------------------------------
-  100.00%  100.00%    0.00%    0.00%    0.00%   0x10     0       1  0xffffffffb0d6208c        31         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
+  100.00%  100.00%    0.00%    0.00%    0.00%   0x10     0       1  0xffffffffb0d6208c       175         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
 
   ----------------------------------------------------------------------
-      3        1        1        0        0        0  0xffff8ec60771e300
+      3        1        1        0        0        0  0xffff8ec500d371c0
   ----------------------------------------------------------------------
-  100.00%  100.00%    0.00%    0.00%    0.00%    0x0     0       1  0xffffffffb1d32943       167         0         0        2         1  [k] _raw_spin_lock  [kernel.kallsyms]  _raw_spin_lock+19   0
+  100.00%  100.00%    0.00%    0.00%    0.00%   0x10     0       1  0xffffffffb0d6208c       156         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
+
+  ----------------------------------------------------------------------
+      4        1        1        0        0        0  0xffff8ec51861ec80
+  ----------------------------------------------------------------------
+  100.00%  100.00%    0.00%    0.00%    0.00%    0x8     0       1  0xffffffffb0d6208c       155         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
+
+  ----------------------------------------------------------------------
+      5        1        1        0        0        0  0xffff8ec524c33d00
+  ----------------------------------------------------------------------
+  100.00%  100.00%    0.00%    0.00%    0.00%    0x0     0       1  0xffffffffb0d6208c        81         0         0        3         1  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
+
+  ----------------------------------------------------------------------
+      6        1        1        0        0        0  0xffff8ec52a916c80
+  ----------------------------------------------------------------------
+  100.00%  100.00%    0.00%    0.00%    0.00%    0x8     0       1  0xffffffffb0d6208c       156         0         0        4         2  [k] perf_event_update_userpage  [kernel.kallsyms]  perf_event_update_userpage+60   0
+
+  ----------------------------------------------------------------------
+      7        1        1        0        0        0  0xffff8ec54e1352c0
+  ----------------------------------------------------------------------
+  100.00%  100.00%    0.00%    0.00%    0.00%    0x0     0       1  0xffffffffb09b4a31       193         0         0        2         1  [k] restore_fpregs_from_fpstat  [kernel.kallsyms]  restore_fpregs_from_fpstate+81   0
+
+  ----------------------------------------------------------------------
+      8        1        1        0        0        0      0x7b09c53ff980
+  ----------------------------------------------------------------------
+  100.00%  100.00%    0.00%    0.00%    0.00%   0x10     0       1      0x7b09c54a3a46       174         0         0        2         1  [.] name_stack_maps  libc.so.6  allocatestack.c:689   0

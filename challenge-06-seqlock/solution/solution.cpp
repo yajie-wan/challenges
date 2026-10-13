@@ -37,7 +37,7 @@ Payload Seqlock::read() const {
     Payload data;
     do{
         do{
-            //__builtin_ia32_pause();
+            __builtin_ia32_pause();
             seq1 = this->seq.load(std::memory_order_acquire);
         }while(seq1 & 1); 
         

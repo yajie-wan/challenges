@@ -19,7 +19,7 @@ struct alignas(32) Payload {
     int64_t d;
 }; // 32 bytes
 
-class Seqlock {
+class alignas(64) Seqlock {
 public:
     Seqlock();
 
