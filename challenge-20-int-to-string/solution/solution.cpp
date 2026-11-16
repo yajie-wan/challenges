@@ -13,7 +13,7 @@ namespace hftu {
 
 size_t u64_to_chars(uint64_t value, char* buf) {
     
-    auto [ptr, ec] = std::to_chars(buf, buf + 20, value, 16);
+    auto [ptr, ec] = std::to_chars(buf, buf + 20, value);
     if(ec == std::errc{}){
         *ptr = '\0';
         return static_cast<size_t>(ptr - buf);
