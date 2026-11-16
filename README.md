@@ -1,6 +1,6 @@
-# HFT University — C++ Microbenchmark Challenges
+# HFT University — Microbenchmark Challenges (C++, Rust & FPGA)
 
-High-performance C++ coding challenges with certified benchmark results.
+High-performance coding challenges with certified benchmark results.
 
 ## How It Works
 
@@ -14,12 +14,48 @@ High-performance C++ coding challenges with certified benchmark results.
    ```
 3. **Set up** your repo at [hftuniversity.com/challenges/setup](https://hftuniversity.com/challenges/setup)
 4. **Solve** challenges by editing files in each challenge's `solution/` directory
-5. **Test locally** using CMake + Google Benchmark
+5. **Test locally** — the benchmark harness is self-contained, no external dependencies
 6. **Submit** on the challenge page — our server builds and benchmarks your code on controlled hardware
 
-## Building Locally
+## Challenge Index
 
-Requirements: GCC 13+ or Clang 17+, CMake 3.20+, Google Benchmark
+| # | Challenge | C++ | Rust |
+|---|-----------|-----|------|
+| 01 | Order Book | `challenge-01-order-book` | `challenge-01-order-book-rust` |
+| 02 | Multi-Symbol Order Book | `challenge-02-multi-book` | `challenge-02-multi-book-rust` |
+| 03 | Event Scheduler | `challenge-03-event-scheduler` | `challenge-03-event-scheduler-rust` |
+| 04 | Event Scheduler (No Cancel) | `challenge-04-event-scheduler` | `challenge-04-event-scheduler-rust` |
+| 05 | SPSC Ring Buffer | `challenge-05-ring-buffer` | — |
+| 06 | Seqlock | `challenge-06-seqlock` | — |
+| 07 | String Map | `challenge-07-string-map` | `challenge-07-string-map-rust` |
+| 08 | Ticker Lookup | `challenge-08-ticker-lookup` | `challenge-08-ticker-lookup-rust` |
+| 09 | FIX Parser | `challenge-09-fix-parser` | `challenge-09-fix-parser-rust` |
+| 10 | FIX Encoder | `challenge-10-fix-builder` | `challenge-10-fix-builder-rust` |
+| 11 | Rolling Counter | `challenge-11-rolling-counter` | `challenge-11-rolling-counter-rust` |
+| 12 | Feed Arbiter | `challenge-12-feed-arbiter` | `challenge-12-feed-arbiter-rust` |
+| 13 | Implied Book | `challenge-13-implied-book` | `challenge-13-implied-book-rust` |
+| 14 | Build Optimization (flags only) | `challenge-14-build-optimization` | — |
+| 15 | Implied Volatility | `challenge-15-implied-vol` | `challenge-15-implied-vol-rust` |
+| 16 | Monte Carlo Pricer | `challenge-16-monte-carlo` | `challenge-16-monte-carlo-rust` |
+| 17 | Cross-CCX Ring Buffer | `challenge-17-cross-ccx-ring` | — |
+| 18 | Build Optimization II (flags only) | `challenge-18-build-optimization-2` | — |
+| 19 | Memory Triathlon | `challenge-19-memory-triathlon` | — |
+| 20 | Fast Integer-to-String | `challenge-20-int-to-string` | — |
+
+| # | FPGA challenge | Verilog / SystemVerilog | C++ (Vitis HLS) |
+|---|----------------|-------------------------|-----------------|
+| FPGA 01 | Cut-Through UDP Echo | `fpga-01-udp-echo` | `fpga-01-udp-echo-hls` |
+| FPGA 02 | Low-Latency 10GBASE-R Receive Path | `fpga-02-10g-rx` | — |
+
+Challenges 05, 06 and 17 are multi-threaded and are not ported to Rust (they would
+require `unsafe`, which is not allowed in Rust solutions). Full problem statements,
+scoring goals and badge thresholds are on each challenge's page at
+[hftuniversity.com/challenges](https://hftuniversity.com/challenges).
+
+## Building Locally — C++
+
+Requirements: GCC 13+ or Clang 17+, CMake 3.20+. The benchmark harness
+(`common/benchmark_harness.h`) is a standalone header with no external dependencies.
 
 ```bash
 cd challenge-01-order-book
@@ -28,19 +64,77 @@ cmake --build build
 ./build/benchmark
 ```
 
+## Building Locally — Rust
+
+Requirements: a recent Rust toolchain (rustup stable is fine). Rust challenges use the
+zero-dependency `common/hftu-bench` crate via a path dependency.
+
+```bash
+cd challenge-01-order-book-rust
+cargo run --release
+```
+
+The binary is named `benchmark` (`cargo build --release` puts it at
+`target/release/benchmark`).
+
+## Testing Locally — FPGA
+
+Requirements: podman or docker. Each FPGA challenge's `test.sh` builds a small simulation
+image (cocotb, Icarus Verilog, Verilator) on first use and runs the challenge's tests on your
+`solution/`. The HLS lane needs Vitis HLS 2026.1 (`./build.sh`) to turn your C++ into RTL first,
+and `./timing.sh` needs Vivado 2026.1; both are free for Alveo targets, setup in
+[common/fpga/SETUP.md](common/fpga/SETUP.md).
+
+```bash
+cd fpga-01-udp-echo
+./test.sh              # writes results/results.json
+```
+
+The server runs the same tests with its own seeds and more traffic, then checks timing in a
+nightly Vivado run: a score counts only once the design meets timing.
+
+> Local runs are for iterating on your solution. Local numbers are **not** comparable to
+> certified scores — the server runs a private variant of each benchmark with fixed
+> iteration counts and different seeds on isolated CPU cores.
+
 ## Rules
 
 - Edit **only** files inside `solution/` directories
-- Your code must compile with `-std=c++20 -O2`
-- No inline assembly, no compiler-specific intrinsics (unless stated otherwise)
-- [Pre-installed libraries](https://hftuniversity.com/challenges/libraries) (Boost, Abseil, TBB, etc.) are available — see the full list on the website
-- Time limit and memory limit are per-challenge (see each challenge's README)
+- **C++**: the default build is C++23 with `-O2 -march=native` (see `common/challenge.cmake`).
+  Compiler intrinsics (`<immintrin.h>`, `__builtin_*`, etc.) and inline assembly are allowed
+- **C++ build options are yours to tune.** If `solution/libraries.cmake` exists, the build
+  includes it: use it for link libraries and for compile options, LTO included
+  (`target_compile_options(benchmark PRIVATE ...)`). Pragmas and attributes in your own
+  sources are fine too. The benchmark, timing code and correctness checks are fixed.
+  Challenges 14 and 18 are the dedicated build-tuning challenges.
+- Exploring is welcome: flags, pragmas, data layouts and local experiments, and if you find a
+  trick that moves the numbers, share it on the forum. **A submission is for scoring, not for
+  measuring.** Do not use submissions to probe the certified server or to carry data back to
+  you (through validation messages, deliberately failing runs, the score itself, build output
+  or any other channel); the worker rejects solutions that print, exit, open files or touch
+  the harness registries, and shows you only the names of failed checks. The public harness is
+  identical to the certified one except for seeds, so measure locally
+- **Rust**: solutions must be 100% safe Rust — `unsafe`, `std::process`, `std::net`,
+  `std::fs`, `asm!` and FFI are rejected by the submission scanner
+- [Pre-installed libraries](https://hftuniversity.com/challenges/libraries) (Boost, Abseil,
+  TBB, etc.) are available for C++ — see the full list on the website
+- **FPGA**: `solution/` is flat (no subdirectories or symlinks). RTL lane: Verilog/SystemVerilog
+  sources plus `.mem`/`.hex`/`.dat` data files; system tasks that touch the host (`$system`,
+  `$fopen`, ...) are rejected, and `$readmem*` may only read a file in your `solution/`. HLS lane:
+  C++ including only your own files, the standard library and the `ap_*`/`hls_*` headers. Each
+  challenge's README lists the details
+- Time limits, memory limits and daily submission limits are per-challenge — see the
+  challenge's page on the website
 
 ## Getting New Challenges
 
-When new challenges are published, pull from upstream:
+Run the bundled sync script from your repo root:
 
 ```bash
-git remote add upstream https://github.com/Vitorian/hft-challenges.git
-git pull upstream main
+./sync.sh
 ```
+
+It fetches the latest scaffolding from this repo (harness, CMake files, benchmark
+drivers, new challenge directories) while **never touching your `solution/` files**,
+then stages the changes for you to review and commit. Don't use a raw
+`git pull upstream main` — it will conflict against every solution you've edited.
