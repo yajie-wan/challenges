@@ -18,23 +18,22 @@ bool RingBuffer::push(const Message& msg) {
     const size_t tail_curr =
         tail_.load(std::memory_order_relaxed);
 
-    const size_t next_tail =
-        (tail_curr + 1) & (capacity_ - 1);
+    const size_t next_tail = tail_curr + 1;
 
     // Only refresh consumer head when cached value says full.
-    if (next_tail == head_cached_) {
+    if (tail_curr - head_cached_ == capacity_) {
         //producer_refresh++;
         head_cached_ =
             head_.load(std::memory_order_acquire);
 
-        if (next_tail == head_cached_) {
+        if (tail_curr - head_cached_ == capacity_) {
             return false;
         }
     }
 
     // Write payload first.
     //__builtin_prefetch(&buf_[next_tail + 2], 1, 3);
-    buf_[tail_curr] = Slot{msg};
+    buf_[tail_curr & (capacity_ - 1)].msg = msg;
 
     // Then publish it to consumer.
     tail_.store(next_tail, std::memory_order_release);
@@ -68,10 +67,9 @@ bool RingBuffer::pop(Message& out) {
 
 
     // Safe after acquiring producer's published tail.
-    out = buf_[head_curr].msg;
+    out = buf_[head_curr & (capacity_ - 1)].msg;
 
-    const size_t next_head =
-        (head_curr + 1) & (capacity_ - 1);
+    const size_t next_head = head_curr + 1;
     // size_t next_head = head_curr + 1;
     // if(next_head == capacity_){
     //     next_head = 0;
@@ -90,11 +88,7 @@ size_t RingBuffer::size() const {
     const size_t head_curr =
         head_.load(std::memory_order_acquire);
 
-    if (tail_curr >= head_curr) {
-        return tail_curr - head_curr;
-    }
-
-    return capacity_ - (head_curr - tail_curr);
+   return tail_curr - head_curr;
 }
 
 } // namespace hftu
