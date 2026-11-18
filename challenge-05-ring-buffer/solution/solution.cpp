@@ -1,96 +1,75 @@
 #include "solution.h"
-#include <immintrin.h>
+#include <cstring>
+#include <algorithm>
 
 namespace hftu {
 
-// uint64_t producer_refresh = 0;
-// uint64_t consumer_refresh = 0;
-// uint64_t producer_push = 0;
-// uint64_t consumer_pop = 0;
-// uint64_t consumer_failure = 0;
-
-
 RingBuffer::RingBuffer(size_t capacity)
     : buf_(capacity),
-      capacity_(capacity) {}
+      mask_(capacity - 1),
+      // 动态计算批量归还步长：capacity >= 64 时每 16 条归还一次；capacity 较小时按 1/4 容量归还，防死锁
+      batch_mask_(std::min<size_t>(15, std::max<size_t>(1, (capacity >> 2) - 1))) {
+    for (size_t i = 0; i < capacity; ++i) {
+        std::memset(&buf_[i].msg, 0, sizeof(Message));
+        buf_[i].seq.store(i, std::memory_order_relaxed);
+    }
+}
 
+[[gnu::hot]]
 bool RingBuffer::push(const Message& msg) {
-    //producer_push++;
-    const size_t tail_curr =
-        tail_.load(std::memory_order_relaxed);
+    const size_t t = tail_local_;
 
-    const size_t next_tail = tail_curr + 1;
-
-    // Only refresh consumer head when cached value says full.
-    if (tail_curr - head_cached_ == capacity_) {
-        //producer_refresh++;
-        head_cached_ =
-            head_.load(std::memory_order_acquire);
-
-        if (tail_curr - head_cached_ == capacity_) {
-            _mm_pause();
+    // 1. 判满：仅当本地缓存的 head 显示已满时，才跨核读取一次 head_
+    if (t - head_cached_ > mask_) [[unlikely]] {
+        head_cached_ = head_.load(std::memory_order_acquire);
+        if (t - head_cached_ > mask_) [[unlikely]] {
             return false;
         }
     }
 
-    // Write payload first.
-    //__builtin_prefetch(&buf_[next_tail + 2], 1, 3);
-    buf_[tail_curr & (capacity_ - 1)] = msg;
+    // 2. 写意图预取：提前在后台作废远端旧缓存行，隐藏回绕时的 RFO 延迟
+    __builtin_prefetch(&buf_[(t + 4) & mask_], 1, 3);
 
-    // Then publish it to consumer.
-    tail_.store(next_tail, std::memory_order_release);
+    Slot& slot = buf_[t & mask_];
+
+    // 3. 写入 48 字节有效载荷
+    std::memcpy(&slot.msg, &msg, sizeof(Message));
+
+    // 4. 带内发布：将同缓存行内的 seq 设为 t + 1，载荷与信号一次性同步！
+    slot.seq.store(t + 1, std::memory_order_release);
+    tail_local_ = t + 1;
 
     return true;
 }
 
+[[gnu::hot]]
 bool RingBuffer::pop(Message& out) {
-    //consumer_pop++;
-    const size_t head_curr =
-        head_.load(std::memory_order_relaxed);
+    const size_t h = head_local_;
+    Slot& slot = buf_[h & mask_];
 
-    // const size_t tail_curr =
-    //     tail_.load(std::memory_order_acquire);
-    // if (head_curr == tail_curr){
-    //     return false;
-    // }
-
-
-    // Only refresh producer tail when cached value says empty.
-    if (head_curr == tail_cached_) {
-        //consumer_refresh++;
-        tail_cached_ =
-            tail_.load(std::memory_order_acquire);
-
-        if (head_curr == tail_cached_) {
-            //consumer_failure++;
-            return false;
-        }
+    // 1. 带内检测：直接检查目标槽位的 seq 是否等于 h + 1
+    // 一旦成立，整条 64B 缓存行（包含前面的 48B msg）已经一并进入本地 L1 Cache
+    if (slot.seq.load(std::memory_order_acquire) != h + 1) [[unlikely]] {
+        return false;
     }
 
+    // 2. 100% 本地 L1 Cache 命中读取载荷
+    std::memcpy(&out, &slot.msg, sizeof(Message));
 
-    // Safe after acquiring producer's published tail.
-    out = buf_[head_curr & (capacity_ - 1)];
+    const size_t next_h = h + 1;
+    head_local_ = next_h;
 
-    const size_t next_head = head_curr + 1;
-    // size_t next_head = head_curr + 1;
-    // if(next_head == capacity_){
-    //     next_head = 0;
-    // }
-
-    // Publish consumed position every successful pop.
-    head_.store(next_head, std::memory_order_release);
+    // 3. 批量异步归还槽位给生产者，大幅削减 head_ 缓存行的跨核失效频率
+    if ((next_h & batch_mask_) == 0) {
+        head_.store(next_h, std::memory_order_release);
+    }
 
     return true;
 }
 
 size_t RingBuffer::size() const {
-    const size_t tail_curr =
-        tail_.load(std::memory_order_acquire);
-
-    const size_t head_curr =
-        head_.load(std::memory_order_acquire);
-
-   return tail_curr - head_curr;
+    const size_t h = head_.load(std::memory_order_acquire);
+    return tail_local_ >= h ? (tail_local_ - h) : 0;
 }
 
 } // namespace hftu

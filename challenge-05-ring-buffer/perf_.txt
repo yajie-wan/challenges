@@ -1,0 +1,234 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 8K of event 'cycles'
+# Event count (approx.): 15045560073
+#
+# Overhead  Command    Shared Object      Symbol                                                                                                             
+# ........  .........  .................  ...................................................................................................................
+#
+    48.52%  benchmark  benchmark          [.] (anonymous namespace)::run_round(std::vector<unsigned long, std::allocator<unsigned long> > const&, int)
+            |
+            ---(anonymous namespace)::run_round(std::vector<unsigned long, std::allocator<unsigned long> > const&, int)
+               (anonymous namespace)::run_workload(std::vector<unsigned long, std::allocator<unsigned long> > const&)
+               |          
+               |--37.01%--std::_Function_handler<unsigned long (int), reg_feed::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+               |          
+                --11.51%--std::_Function_handler<unsigned long (int), reg_steady::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+                          call_init (inlined)
+                          __libc_start_main@@GLIBC_2.34
+                          _start
+
+    36.48%  benchmark  benchmark          [.] hftu::RingBuffer::pop(hftu::Message&)
+            |
+            ---hftu::RingBuffer::pop(hftu::Message&)
+               0x7662950f5ef9
+               start_thread
+               __GI___clone3
+
+    12.36%  benchmark  benchmark          [.] (anonymous namespace)::consumer_thread_fn()
+            |
+            ---(anonymous namespace)::consumer_thread_fn()
+               0x7662950f5ef9
+               start_thread
+               __GI___clone3
+
+     1.55%  benchmark  benchmark          [.] hftu::RingBuffer::push(hftu::Message const&)
+            |
+            ---hftu::RingBuffer::push(hftu::Message const&)
+               (anonymous namespace)::run_workload(std::vector<unsigned long, std::allocator<unsigned long> > const&)
+               |          
+                --1.05%--std::_Function_handler<unsigned long (int), reg_feed::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+
+     0.77%  benchmark  [kernel.kallsyms]  [k] read_hpet
+            |
+            ---read_hpet
+               |          
+                --0.77%--ktime_get_ts64
+                          posix_get_monotonic_timespec
+                          __x64_sys_clock_gettime
+                          x64_sys_call
+                          do_syscall_64
+                          entry_SYSCALL_64_after_hwframe
+                          0x766295378ab4
+                          clock_gettime@@GLIBC_2.17
+                          (anonymous namespace)::tsc_per_ns()
+
+     0.03%  benchmark  benchmark          [.] std::_Function_handler<unsigned long (int), reg_feed::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+     0.03%  benchmark  [kernel.kallsyms]  [k] posix_get_monotonic_timespec
+     0.03%  benchmark  [kernel.kallsyms]  [k] __irqentry_text_end
+     0.02%  benchmark  [kernel.kallsyms]  [k] entry_SYSCALL_64_after_hwframe
+     0.02%  benchmark  [kernel.kallsyms]  [k] arch_exit_to_user_mode_prepare.isra.0
+     0.02%  benchmark  [kernel.kallsyms]  [k] entry_SYSCALL_64
+     0.01%  benchmark  [kernel.kallsyms]  [k] kernel_init_pages
+     0.01%  benchmark  [kernel.kallsyms]  [k] remove_wait_queue
+     0.01%  benchmark  [kernel.kallsyms]  [k] __futex_wait
+     0.01%  benchmark  [kernel.kallsyms]  [k] mas_empty_area_rev
+     0.01%  benchmark  libc.so.6          [.] __memset_avx2_unaligned_erms
+     0.01%  benchmark  [kernel.kallsyms]  [k] alloc_anon_folio
+     0.01%  benchmark  [kernel.kallsyms]  [k] asm_exc_page_fault
+     0.01%  benchmark  [kernel.kallsyms]  [k] __kmalloc_cache_node_noprof
+     0.01%  benchmark  libm.so.6          [.] __ieee754_log_fma
+     0.01%  benchmark  [kernel.kallsyms]  [k] srso_safe_ret
+     0.01%  benchmark  [kernel.kallsyms]  [k] mas_walk
+     0.01%  benchmark  [kernel.kallsyms]  [k] __x64_sys_clock_gettime
+     0.01%  benchmark  [kernel.kallsyms]  [k] syscall_return_via_sysret
+     0.01%  benchmark  [kernel.kallsyms]  [k] rep_movs_alternative
+     0.00%  benchmark  [kernel.kallsyms]  [k] _copy_to_user
+     0.00%  benchmark  [kernel.kallsyms]  [k] charge_memcg
+     0.00%  benchmark  [kernel.kallsyms]  [k] rmqueue_pcplist
+     0.00%  benchmark  [kernel.kallsyms]  [k] pud_val
+     0.00%  benchmark  [kernel.kallsyms]  [k] mod_memcg_lruvec_state
+     0.00%  benchmark  [kernel.kallsyms]  [k] timerqueue_add
+     0.00%  benchmark  [kernel.kallsyms]  [k] kmem_cache_free
+     0.00%  benchmark  [kernel.kallsyms]  [k] nohz_balancer_kick
+     0.00%  benchmark  [kernel.kallsyms]  [k] update_rt_rq_load_avg
+     0.00%  taskset    [kernel.kallsyms]  [k] nohz_balancer_kick
+     0.00%  taskset    [kernel.kallsyms]  [k] nohz_balance_exit_idle
+     0.00%  benchmark  [kernel.kallsyms]  [k] __hrtimer_run_queues
+     0.00%  benchmark  [kernel.kallsyms]  [k] idle_cpu
+     0.00%  taskset    [kernel.kallsyms]  [k] native_write_msr
+     0.00%  benchmark  [kernel.kallsyms]  [k] native_write_msr
+     0.00%  benchmark  [kernel.kallsyms]  [k] x86_pmu_enable
+     0.00%  perf-exec  [kernel.kallsyms]  [k] native_write_msr
+
+
+# Samples: 7K of event 'L1-dcache-load-misses'
+# Event count (approx.): 29406694
+#
+# Overhead  Command    Shared Object      Symbol                                                                                                               
+# ........  .........  .................  .....................................................................................................................
+#
+    45.63%  benchmark  benchmark          [.] (anonymous namespace)::run_round(std::vector<unsigned long, std::allocator<unsigned long> > const&, int)
+            |
+            ---(anonymous namespace)::run_round(std::vector<unsigned long, std::allocator<unsigned long> > const&, int)
+               (anonymous namespace)::run_workload(std::vector<unsigned long, std::allocator<unsigned long> > const&)
+               |          
+               |--31.95%--std::_Function_handler<unsigned long (int), reg_steady::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+               |          call_init (inlined)
+               |          __libc_start_main@@GLIBC_2.34
+               |          _start
+               |          
+                --13.68%--std::_Function_handler<unsigned long (int), reg_feed::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+
+    26.71%  benchmark  benchmark          [.] hftu::RingBuffer::pop(hftu::Message&)
+            |
+            ---hftu::RingBuffer::pop(hftu::Message&)
+               0x7662950f5ef9
+               start_thread
+               __GI___clone3
+
+    20.85%  benchmark  benchmark          [.] (anonymous namespace)::consumer_thread_fn()
+            |
+            ---(anonymous namespace)::consumer_thread_fn()
+               0x7662950f5ef9
+               start_thread
+               __GI___clone3
+
+     3.82%  benchmark  benchmark          [.] hftu::RingBuffer::push(hftu::Message const&)
+            |
+            ---hftu::RingBuffer::push(hftu::Message const&)
+               (anonymous namespace)::run_workload(std::vector<unsigned long, std::allocator<unsigned long> > const&)
+               |          
+                --3.47%--std::_Function_handler<unsigned long (int), reg_feed::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+
+     0.89%  benchmark  [kernel.kallsyms]  [k] read_hpet
+            |
+            ---read_hpet
+               |          
+                --0.51%--ktime_get
+
+     0.22%  benchmark  libc.so.6          [.] __memset_avx2_unaligned_erms
+     0.20%  benchmark  [kernel.kallsyms]  [k] native_write_msr
+     0.14%  benchmark  [kernel.kallsyms]  [k] task_tick_fair
+     0.13%  benchmark  [kernel.kallsyms]  [k] native_read_msr
+     0.09%  benchmark  [kernel.kallsyms]  [k] x86_pmu_disable_all
+     0.07%  benchmark  [kernel.kallsyms]  [k] __update_load_avg_se
+     0.07%  benchmark  [kernel.kallsyms]  [k] __update_load_avg_cfs_rq
+     0.06%  benchmark  [kernel.kallsyms]  [k] update_curr
+     0.06%  benchmark  [kernel.kallsyms]  [k] perf_adjust_freq_unthr_context
+     0.05%  benchmark  [kernel.kallsyms]  [k] arch_scale_freq_tick
+     0.05%  benchmark  [kernel.kallsyms]  [k] get_jiffies_update
+     0.05%  benchmark  [kernel.kallsyms]  [k] sched_clock_tick
+     0.05%  benchmark  [kernel.kallsyms]  [k] kernel_init_pages
+     0.04%  benchmark  [kernel.kallsyms]  [k] amd_pmu_addr_offset
+     0.04%  benchmark  benchmark          [.] std::_Function_handler<unsigned long (int), reg_steady::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+     0.04%  benchmark  [kernel.kallsyms]  [k] charge_memcg
+     0.04%  benchmark  [kernel.kallsyms]  [k] blk_cgroup_congested
+     0.04%  benchmark  [kernel.kallsyms]  [k] native_sched_clock
+     0.03%  benchmark  [kernel.kallsyms]  [k] sched_clock_cpu
+     0.03%  benchmark  [kernel.kallsyms]  [k] srso_safe_ret
+     0.03%  benchmark  [kernel.kallsyms]  [k] reweight_entity
+     0.03%  benchmark  [kernel.kallsyms]  [k] update_cfs_group
+     0.02%  benchmark  [kernel.kallsyms]  [k] rcu_pending
+     0.02%  benchmark  [kernel.kallsyms]  [k] __calc_delta.constprop.0
+     0.02%  benchmark  [kernel.kallsyms]  [k] propagate_entity_load_avg
+     0.02%  benchmark  [kernel.kallsyms]  [k] sched_tick
+     0.02%  benchmark  [kernel.kallsyms]  [k] tmigr_requires_handle_remote
+     0.02%  benchmark  [kernel.kallsyms]  [k] place_entity
+     0.02%  benchmark  [kernel.kallsyms]  [k] update_deadline
+     0.02%  benchmark  [kernel.kallsyms]  [k] account_user_time
+     0.02%  benchmark  [kernel.kallsyms]  [k] ktime_get
+     0.02%  benchmark  [kernel.kallsyms]  [k] update_process_times
+     0.01%  benchmark  [kernel.kallsyms]  [k] sugov_update_single_freq
+     0.01%  benchmark  [kernel.kallsyms]  [k] acct_account_cputime
+     0.01%  benchmark  [kernel.kallsyms]  [k] irq_enter_rcu
+     0.01%  benchmark  [kernel.kallsyms]  [k] tick_nohz_handler
+     0.01%  benchmark  [kernel.kallsyms]  [k] do_anonymous_page
+     0.01%  benchmark  benchmark          [.] std::_Function_handler<unsigned long (int), reg_feed::{lambda(int)#1}>::_M_invoke(std::_Any_data const&, int&&)
+     0.01%  benchmark  libm.so.6          [.] __ieee754_log_fma
+     0.01%  benchmark  [kernel.kallsyms]  [k] __raw_spin_lock_irqsave
+     0.01%  benchmark  [kernel.kallsyms]  [k] mas_empty_area_rev
+     0.01%  benchmark  [kernel.kallsyms]  [k] update_entity_lag
+     0.01%  benchmark  [kernel.kallsyms]  [k] account_process_tick
+     0.01%  benchmark  [kernel.kallsyms]  [k] sugov_should_update_freq.part.0
+     0.01%  benchmark  [kernel.kallsyms]  [k] sugov_hold_freq
+     0.01%  benchmark  [kernel.kallsyms]  [k] cpuacct_charge
+     0.01%  benchmark  [kernel.kallsyms]  [k] __sysvec_apic_timer_interrupt
+     0.01%  benchmark  [kernel.kallsyms]  [k] tick_nohz_get_idle_calls_cpu
+     0.01%  benchmark  [kernel.kallsyms]  [k] __sched_balance_update_blocked_averages
+     0.01%  benchmark  [kernel.kallsyms]  [k] default_send_IPI_single_phys
+     0.01%  benchmark  [kernel.kallsyms]  [k] lock_vma_under_rcu
+     0.01%  benchmark  [kernel.kallsyms]  [k] mod_memcg_lruvec_state
+     0.01%  benchmark  [kernel.kallsyms]  [k] hrtimer_interrupt
+     0.01%  benchmark  [kernel.kallsyms]  [k] irq_work_run_list
+     0.01%  benchmark  [kernel.kallsyms]  [k] perf_adjust_freq_unthr_events
+     0.01%  benchmark  [kernel.kallsyms]  [k] sugov_iowait_apply
+     0.01%  benchmark  [kernel.kallsyms]  [k] check_cpu_stall
+     0.01%  benchmark  [kernel.kallsyms]  [k] __cgroup_account_cputime
+     0.01%  benchmark  [kernel.kallsyms]  [k] calc_global_load_tick
+     0.01%  benchmark  [kernel.kallsyms]  [k] sugov_get_util
+     0.01%  benchmark  [kernel.kallsyms]  [k] tmigr_handle_remote_up
+     0.01%  benchmark  [kernel.kallsyms]  [k] avg_vruntime
+     0.01%  benchmark  [kernel.kallsyms]  [k] get_next_freq
+     0.01%  benchmark  [kernel.kallsyms]  [k] sched_balance_update_blocked_averages
+     0.01%  benchmark  [kernel.kallsyms]  [k] x86_pmu_disable
+     0.01%  benchmark  [kernel.kallsyms]  [k] _raw_spin_lock
+     0.01%  benchmark  [kernel.kallsyms]  [k] update_wall_time
+     0.01%  benchmark  [kernel.kallsyms]  [k] update_se
+     0.01%  benchmark  [kernel.kallsyms]  [k] tick_program_event
+     0.01%  benchmark  [kernel.kallsyms]  [k] rcu_sched_clock_irq
+     0.00%  benchmark  [kernel.kallsyms]  [k] __pte
+     0.00%  benchmark  [kernel.kallsyms]  [k] post_alloc_hook
+     0.00%  benchmark  [kernel.kallsyms]  [k] __mem_cgroup_charge
+     0.00%  benchmark  [kernel.kallsyms]  [k] entry_SYSCALL_64_after_hwframe
+     0.00%  benchmark  [kernel.kallsyms]  [k] filemap_map_pages
+     0.00%  benchmark  [kernel.kallsyms]  [k] perf_ctx_disable
+     0.00%  benchmark  [kernel.kallsyms]  [k] kmem_cache_free
+     0.00%  benchmark  [kernel.kallsyms]  [k] timerqueue_add
+     0.00%  benchmark  [kernel.kallsyms]  [k] update_rt_rq_load_avg
+     0.00%  benchmark  [kernel.kallsyms]  [k] nohz_balancer_kick
+     0.00%  benchmark  [kernel.kallsyms]  [k] __hrtimer_run_queues
+     0.00%  benchmark  [kernel.kallsyms]  [k] idle_cpu
+     0.00%  taskset    [kernel.kallsyms]  [k] nohz_balancer_kick
+     0.00%  taskset    [kernel.kallsyms]  [k] nohz_balance_exit_idle
+     0.00%  taskset    [kernel.kallsyms]  [k] native_write_msr
+     0.00%  benchmark  [kernel.kallsyms]  [k] x86_pmu_enable
+     0.00%  perf-exec  [kernel.kallsyms]  [k] native_write_msr
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

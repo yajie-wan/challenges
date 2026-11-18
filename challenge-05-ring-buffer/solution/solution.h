@@ -19,7 +19,6 @@ struct Message {
     uint64_t sequence;    // 8
 };
 
-
 class RingBuffer {
 public:
     explicit RingBuffer(size_t capacity);
@@ -29,19 +28,24 @@ public:
     size_t size() const;
 
 private:
-    alignas(64) std::vector<Message> buf_;
-    size_t capacity_;
+    // 64-byte aligned slot: 48B payload + 8B in-band sequence + 8B padding
+    struct alignas(64) Slot {
+        Message msg;
+        std::atomic<size_t> seq{0};
+    };
 
+    // Read-only metadata
+    std::vector<Slot> buf_;
+    size_t mask_;
+    size_t batch_mask_;
 
-    // Consumer publishes head here.
-    alignas(64) std::atomic<size_t> head_{0};
-    // Consumer-private cached producer tail.
-    size_t tail_cached_{0};
-
-    // Producer publishes tail here.
-    alignas(64) std::atomic<size_t> tail_{0};
-        // Producer-private cached consumer head.
+    // Producer-owned cache line (No atomic tail_ needed anymore!)
+    alignas(64) size_t tail_local_{0};
     size_t head_cached_{0};
+
+    // Consumer-owned cache line
+    alignas(64) std::atomic<size_t> head_{0};
+    size_t head_local_{0};
 };
 
 } // namespace hftu
