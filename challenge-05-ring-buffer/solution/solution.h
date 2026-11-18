@@ -20,10 +20,6 @@ struct Message {
 };
 
 
-struct alignas(64) Slot{
-    Message msg;
-};
-
 class RingBuffer {
 public:
     explicit RingBuffer(size_t capacity);
@@ -33,9 +29,8 @@ public:
     size_t size() const;
 
 private:
-    alignas(64) std::vector<Slot> buf_;
+    alignas(64) std::vector<Message> buf_;
     size_t capacity_;
-
 
 
     // Consumer publishes head here.

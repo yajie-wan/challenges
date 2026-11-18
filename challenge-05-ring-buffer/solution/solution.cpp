@@ -1,4 +1,5 @@
 #include "solution.h"
+#include <immintrin.h>
 
 namespace hftu {
 
@@ -27,13 +28,14 @@ bool RingBuffer::push(const Message& msg) {
             head_.load(std::memory_order_acquire);
 
         if (tail_curr - head_cached_ == capacity_) {
+            _mm_pause();
             return false;
         }
     }
 
     // Write payload first.
     //__builtin_prefetch(&buf_[next_tail + 2], 1, 3);
-    buf_[tail_curr & (capacity_ - 1)].msg = msg;
+    buf_[tail_curr & (capacity_ - 1)] = msg;
 
     // Then publish it to consumer.
     tail_.store(next_tail, std::memory_order_release);
@@ -67,7 +69,7 @@ bool RingBuffer::pop(Message& out) {
 
 
     // Safe after acquiring producer's published tail.
-    out = buf_[head_curr & (capacity_ - 1)].msg;
+    out = buf_[head_curr & (capacity_ - 1)];
 
     const size_t next_head = head_curr + 1;
     // size_t next_head = head_curr + 1;
