@@ -33,8 +33,8 @@ bool RingBuffer::push(const Message& msg) {
     }
 
     // Write payload first.
-     __builtin_prefetch(&buf_[next_tail + 2], 1, 3);
-    buf_[tail_curr] = msg;
+    //__builtin_prefetch(&buf_[next_tail + 2], 1, 3);
+    buf_[tail_curr] = Slot{msg};
 
     // Then publish it to consumer.
     tail_.store(next_tail, std::memory_order_release);
@@ -68,10 +68,14 @@ bool RingBuffer::pop(Message& out) {
 
 
     // Safe after acquiring producer's published tail.
-    out = buf_[head_curr];
+    out = buf_[head_curr].msg;
 
     const size_t next_head =
         (head_curr + 1) & (capacity_ - 1);
+    // size_t next_head = head_curr + 1;
+    // if(next_head == capacity_){
+    //     next_head = 0;
+    // }
 
     // Publish consumed position every successful pop.
     head_.store(next_head, std::memory_order_release);

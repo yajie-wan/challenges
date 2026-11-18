@@ -1,0 +1,159 @@
+=================================================
+            Trace Event Information              
+=================================================
+  Total records                     :       2592
+  Locked Load/Store Operations      :         11
+  Load Operations                   :        857
+  Loads - uncacheable               :          0
+  Loads - IO                        :          0
+  Loads - Miss                      :          0
+  Loads - no mapping                :        637
+  Load Fill Buffer Hit              :          0
+  Load L1D hit                      :        208
+  Load L2D hit                      :          2
+  Load LLC hit                      :          8
+  Load Local HITM                   :          6
+  Load Remote HITM                  :          6
+  Load Remote HIT                   :          0
+  Load Local DRAM                   :          2
+  Load Remote DRAM                  :          0
+  Load MESI State Exclusive         :          2
+  Load MESI State Shared            :          0
+  Load LLC Misses                   :          8
+  Load access blocked by data       :          0
+  Load access blocked by address    :          0
+  Load HIT Local Peer               :          0
+  Load HIT Remote Peer              :          0
+  LLC Misses to Local DRAM          :       25.0%
+  LLC Misses to Remote DRAM         :        0.0%
+  LLC Misses to Remote cache (HIT)  :        0.0%
+  LLC Misses to Remote cache (HITM) :       75.0%
+  Store Operations                  :        129
+  Store - uncacheable               :          0
+  Store - no mapping                :         49
+  Store L1D Hit                     :         77
+  Store L1D Miss                    :          0
+  Store No available memory level   :          0
+  No Page Map Rejects               :          6
+  Unable to parse data source       :       1606
+
+=================================================
+    Global Shared Cache Line Event Information   
+=================================================
+  Total Shared Cache Lines          :          6
+  Load HITs on shared lines         :          6
+  Fill Buffer Hits on shared lines  :          0
+  L1D hits on shared lines          :          0
+  L2D hits on shared lines          :          0
+  LLC hits on shared lines          :          6
+  Load hits on peer cache or nodes  :          0
+  Locked Access on shared lines     :          0
+  Blocked Access on shared lines    :          0
+  Store HITs on shared lines        :          2
+  Store L1D hits on shared lines    :          2
+  Store No available memory level   :          0
+  Total Merged records              :         14
+
+=================================================
+                 c2c details                     
+=================================================
+  Events                            : ibs_op//
+                                    : dummy:u
+  Cachelines sort on                : Local HITMs
+  Cacheline data grouping           : offset,iaddr
+
+=================================================
+           Shared Data Cache Line Table          
+=================================================
+#
+#        ----------- Cacheline ----------      Lcl  ------- Load Hitm -------    Total    Total    Total  --------- Stores --------  ----- Core Load Hit -----  - LLC Load Hit --  - RMT Load Hit --  --- Load Dram ----
+# Index             Address  Node  PA cnt     Hitm    Total  LclHitm  RmtHitm  records    Loads   Stores    L1Hit   L1Miss      N/A       FB       L1       L2    LclHit  LclHitm    RmtHit  RmtHitm       Lcl       Rmt
+# .....  ..................  ....  ......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  .......  ........  .......  ........  .......  ........  ........
+#
+      0      0x59d524be1640     0       1   16.67%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
+      1      0x59d524be2c00     0       1   16.67%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
+      2      0x59d524be5540     0       1   16.67%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
+      3      0x59d524be56c0     0       1   16.67%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
+      4      0x59d524be6f80     0       1   16.67%        2        1        1        2        2        0        0        0        0        0        0        0         0        1         0        1         0         0
+      5      0x7ffe7ffbdb80     0       1   16.67%        2        1        1        4        2        2        2        0        0        0        0        0         0        1         0        1         0         0
+
+=================================================
+      Shared Cache Line Distribution Pareto      
+=================================================
+#
+#        ----- HITM -----  ------- Store Refs ------  --------- Data address ---------                      ---------- cycles ----------    Total       cpu                                     Shared                                      
+#   Num  RmtHitm  LclHitm   L1 Hit  L1 Miss      N/A              Offset  Node  PA cnt        Code address  rmt hitm  lcl hitm      load  records       cnt                          Symbol     Object                     Source:Line  Node
+# .....  .......  .......  .......  .......  .......  ..................  ....  ......  ..................  ........  ........  ........  .......  ........  ..............................  .........  ..............................  ....
+#
+  ----------------------------------------------------------------------
+      0        1        1        0        0        0      0x59d524be1640
+  ----------------------------------------------------------------------
+         100.00%  100.00%    0.00%    0.00%    0.00%                 0x0     0       1      0x59d501abc7b6       254         0         0        2         1  [.] hftu::RingBuffer::pop(hftu  benchmark  hftu::RingBuffer::pop(hftu::Me   0
+            |
+            ---hftu::RingBuffer::pop(hftu::Message&)
+               0x78cab1cf5ef9
+               start_thread
+               __GI___clone3
+
+
+  ----------------------------------------------------------------------
+      1        1        1        0        0        0      0x59d524be2c00
+  ----------------------------------------------------------------------
+         100.00%  100.00%    0.00%    0.00%    0.00%                 0x0     0       1      0x59d501abc7b6       317         0         0        2         1  [.] hftu::RingBuffer::pop(hftu  benchmark  hftu::RingBuffer::pop(hftu::Me   0
+            |
+            ---hftu::RingBuffer::pop(hftu::Message&)
+               0x78cab1cf5ef9
+               start_thread
+               __GI___clone3
+
+
+  ----------------------------------------------------------------------
+      2        1        1        0        0        0      0x59d524be5540
+  ----------------------------------------------------------------------
+         100.00%  100.00%    0.00%    0.00%    0.00%                 0x0     0       1      0x59d501abc7b6       255         0         0        2         1  [.] hftu::RingBuffer::pop(hftu  benchmark  hftu::RingBuffer::pop(hftu::Me   0
+            |
+            ---hftu::RingBuffer::pop(hftu::Message&)
+               0x78cab1cf5ef9
+               start_thread
+               __GI___clone3
+
+
+  ----------------------------------------------------------------------
+      3        1        1        0        0        0      0x59d524be56c0
+  ----------------------------------------------------------------------
+         100.00%  100.00%    0.00%    0.00%    0.00%                 0x0     0       1      0x59d501abc7b6       279         0         0        2         1  [.] hftu::RingBuffer::pop(hftu  benchmark  hftu::RingBuffer::pop(hftu::Me   0
+            |
+            ---std::thread::_State_impl<std::thread::_Invoker<std::tuple<(anonymous namespace)::run_latency(unsigned long, unsigned long)::{lambda()#1}> > >::_M_run()
+               0x78cab1cf5ef9
+               start_thread
+               __GI___clone3
+
+
+  ----------------------------------------------------------------------
+      4        1        1        0        0        0      0x59d524be6f80
+  ----------------------------------------------------------------------
+         100.00%  100.00%    0.00%    0.00%    0.00%                0x30     0       1      0x59d501abc7b6       408         0         0        2         1  [.] hftu::RingBuffer::pop(hftu  benchmark  hftu::RingBuffer::pop(hftu::Me   0
+            |
+            ---hftu::RingBuffer::pop(hftu::Message&)
+               0x78cab1cf5ef9
+               start_thread
+               __GI___clone3
+
+
+  ----------------------------------------------------------------------
+      5        1        1        2        0        0      0x7ffe7ffbdb80
+  ----------------------------------------------------------------------
+         100.00%  100.00%    0.00%    0.00%    0.00%                 0x0     0       1      0x59d501abc7e0       254         0         0        2         1  [.] hftu::RingBuffer::pop(hftu  benchmark  hftu::RingBuffer::pop(hftu::Me   0
+            |
+            ---hftu::RingBuffer::pop(hftu::Message&)
+               0x78cab1cf5ef9
+               start_thread
+               __GI___clone3
+
+           0.00%    0.00%  100.00%    0.00%    0.00%                 0x0     0       1      0x59d501abc75a         0         0         0        2         2  [.] hftu::RingBuffer::push(hft  benchmark  hftu::RingBuffer::push(hftu::M   0
+            |
+            ---hftu::RingBuffer::push(hftu::Message const&)
+               0x78cab1cf5ef9
+               start_thread
+               __GI___clone3
+

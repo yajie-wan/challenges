@@ -20,6 +20,10 @@ struct Message {
 };
 
 
+struct alignas(64) Slot{
+    Message msg;
+};
+
 class RingBuffer {
 public:
     explicit RingBuffer(size_t capacity);
@@ -29,17 +33,17 @@ public:
     size_t size() const;
 
 private:
-    std::vector<Message> buf_;
+    alignas(64) std::vector<Slot> buf_;
     size_t capacity_;
 
     // Producer-private cached consumer head.
-    alignas(64) std::atomic<size_t> head_cached_{0};
+    size_t head_cached_{0};
 
     // Consumer publishes head here.
     alignas(64) std::atomic<size_t> head_{0};
 
     // Consumer-private cached producer tail.
-    alignas(64) std::atomic<size_t> tail_cached_{0};
+    size_t tail_cached_{0};
 
     // Producer publishes tail here.
     alignas(64) std::atomic<size_t> tail_{0};
