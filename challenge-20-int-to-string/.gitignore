@@ -1,0 +1,5 @@
+
+# Compiled artifacts (*.o, output, executables)
+*.o
+*.obj
+solution/output
