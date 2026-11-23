@@ -40,7 +40,9 @@ size_t u64_to_chars(uint64_t value, char* buf) {
         auto v2_low = _mm_sub_epi16(v_packed, v2_low_middle);
 
         auto v2_packed = _mm_unpacklo_epi16(v2_high, v2_low);
-        _mm_storeu_si128(reinterpret_cast<__m128i*>(buf + digits - 16), v2_packed);
+        auto ascii = _mm_set1_epi16('0');
+        auto final = _mm_add_epi16(v2_packed, ascii);
+        _mm_storeu_si128(reinterpret_cast<__m128i*>(buf + digits - 16), final);
 
     }
     
