@@ -1,0 +1,1113 @@
+
+./output:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000001000 <_init>:
+    1000:	f3 0f 1e fa          	endbr64
+    1004:	48 83 ec 08          	sub    $0x8,%rsp
+    1008:	48 8b 05 e1 2f 00 00 	mov    0x2fe1(%rip),%rax        # 3ff0 <__gmon_start__>
+    100f:	48 85 c0             	test   %rax,%rax
+    1012:	74 02                	je     1016 <_init+0x16>
+    1014:	ff d0                	call   *%rax
+    1016:	48 83 c4 08          	add    $0x8,%rsp
+    101a:	c3                   	ret
+
+Disassembly of section .plt:
+
+0000000000001020 <.plt>:
+    1020:	ff 35 7a 2f 00 00    	push   0x2f7a(%rip)        # 3fa0 <_GLOBAL_OFFSET_TABLE_+0x8>
+    1026:	ff 25 7c 2f 00 00    	jmp    *0x2f7c(%rip)        # 3fa8 <_GLOBAL_OFFSET_TABLE_+0x10>
+    102c:	0f 1f 40 00          	nopl   0x0(%rax)
+    1030:	f3 0f 1e fa          	endbr64
+    1034:	68 00 00 00 00       	push   $0x0
+    1039:	e9 e2 ff ff ff       	jmp    1020 <_init+0x20>
+    103e:	66 90                	xchg   %ax,%ax
+    1040:	f3 0f 1e fa          	endbr64
+    1044:	68 01 00 00 00       	push   $0x1
+    1049:	e9 d2 ff ff ff       	jmp    1020 <_init+0x20>
+    104e:	66 90                	xchg   %ax,%ax
+    1050:	f3 0f 1e fa          	endbr64
+    1054:	68 02 00 00 00       	push   $0x2
+    1059:	e9 c2 ff ff ff       	jmp    1020 <_init+0x20>
+    105e:	66 90                	xchg   %ax,%ax
+    1060:	f3 0f 1e fa          	endbr64
+    1064:	68 03 00 00 00       	push   $0x3
+    1069:	e9 b2 ff ff ff       	jmp    1020 <_init+0x20>
+    106e:	66 90                	xchg   %ax,%ax
+
+Disassembly of section .plt.got:
+
+0000000000001070 <__cxa_finalize@plt>:
+    1070:	f3 0f 1e fa          	endbr64
+    1074:	ff 25 56 2f 00 00    	jmp    *0x2f56(%rip)        # 3fd0 <__cxa_finalize@GLIBC_2.2.5>
+    107a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+Disassembly of section .plt.sec:
+
+0000000000001080 <std::ostream::operator<<(unsigned long)@plt>:
+    1080:	f3 0f 1e fa          	endbr64
+    1084:	ff 25 26 2f 00 00    	jmp    *0x2f26(%rip)        # 3fb0 <std::ostream::operator<<(unsigned long)@GLIBCXX_3.4>
+    108a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000001090 <std::__glibcxx_assert_fail(char const*, int, char const*, char const*)@plt>:
+    1090:	f3 0f 1e fa          	endbr64
+    1094:	ff 25 1e 2f 00 00    	jmp    *0x2f1e(%rip)        # 3fb8 <std::__glibcxx_assert_fail(char const*, int, char const*, char const*)@GLIBCXX_3.4.30>
+    109a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000010a0 <std::ostream::operator<<(std::ostream& (*)(std::ostream&))@plt>:
+    10a0:	f3 0f 1e fa          	endbr64
+    10a4:	ff 25 16 2f 00 00    	jmp    *0x2f16(%rip)        # 3fc0 <std::ostream::operator<<(std::ostream& (*)(std::ostream&))@GLIBCXX_3.4>
+    10aa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+00000000000010b0 <__stack_chk_fail@plt>:
+    10b0:	f3 0f 1e fa          	endbr64
+    10b4:	ff 25 0e 2f 00 00    	jmp    *0x2f0e(%rip)        # 3fc8 <__stack_chk_fail@GLIBC_2.4>
+    10ba:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+Disassembly of section .text:
+
+00000000000010c0 <_start>:
+    10c0:	f3 0f 1e fa          	endbr64
+    10c4:	31 ed                	xor    %ebp,%ebp
+    10c6:	49 89 d1             	mov    %rdx,%r9
+    10c9:	5e                   	pop    %rsi
+    10ca:	48 89 e2             	mov    %rsp,%rdx
+    10cd:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+    10d1:	50                   	push   %rax
+    10d2:	54                   	push   %rsp
+    10d3:	45 31 c0             	xor    %r8d,%r8d
+    10d6:	31 c9                	xor    %ecx,%ecx
+    10d8:	48 8d 3d 71 01 00 00 	lea    0x171(%rip),%rdi        # 1250 <main>
+    10df:	ff 15 fb 2e 00 00    	call   *0x2efb(%rip)        # 3fe0 <__libc_start_main@GLIBC_2.34>
+    10e5:	f4                   	hlt
+    10e6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    10ed:	00 00 00 
+
+00000000000010f0 <deregister_tm_clones>:
+    10f0:	48 8d 3d 19 2f 00 00 	lea    0x2f19(%rip),%rdi        # 4010 <__TMC_END__>
+    10f7:	48 8d 05 12 2f 00 00 	lea    0x2f12(%rip),%rax        # 4010 <__TMC_END__>
+    10fe:	48 39 f8             	cmp    %rdi,%rax
+    1101:	74 15                	je     1118 <deregister_tm_clones+0x28>
+    1103:	48 8b 05 de 2e 00 00 	mov    0x2ede(%rip),%rax        # 3fe8 <_ITM_deregisterTMCloneTable>
+    110a:	48 85 c0             	test   %rax,%rax
+    110d:	74 09                	je     1118 <deregister_tm_clones+0x28>
+    110f:	ff e0                	jmp    *%rax
+    1111:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    1118:	c3                   	ret
+    1119:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001120 <register_tm_clones>:
+    1120:	48 8d 3d e9 2e 00 00 	lea    0x2ee9(%rip),%rdi        # 4010 <__TMC_END__>
+    1127:	48 8d 35 e2 2e 00 00 	lea    0x2ee2(%rip),%rsi        # 4010 <__TMC_END__>
+    112e:	48 29 fe             	sub    %rdi,%rsi
+    1131:	48 89 f0             	mov    %rsi,%rax
+    1134:	48 c1 ee 3f          	shr    $0x3f,%rsi
+    1138:	48 c1 f8 03          	sar    $0x3,%rax
+    113c:	48 01 c6             	add    %rax,%rsi
+    113f:	48 d1 fe             	sar    $1,%rsi
+    1142:	74 14                	je     1158 <register_tm_clones+0x38>
+    1144:	48 8b 05 ad 2e 00 00 	mov    0x2ead(%rip),%rax        # 3ff8 <_ITM_registerTMCloneTable>
+    114b:	48 85 c0             	test   %rax,%rax
+    114e:	74 08                	je     1158 <register_tm_clones+0x38>
+    1150:	ff e0                	jmp    *%rax
+    1152:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    1158:	c3                   	ret
+    1159:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+0000000000001160 <__do_global_dtors_aux>:
+    1160:	f3 0f 1e fa          	endbr64
+    1164:	80 3d e5 2f 00 00 00 	cmpb   $0x0,0x2fe5(%rip)        # 4150 <completed.0>
+    116b:	75 2b                	jne    1198 <__do_global_dtors_aux+0x38>
+    116d:	55                   	push   %rbp
+    116e:	48 83 3d 5a 2e 00 00 	cmpq   $0x0,0x2e5a(%rip)        # 3fd0 <__cxa_finalize@GLIBC_2.2.5>
+    1175:	00 
+    1176:	48 89 e5             	mov    %rsp,%rbp
+    1179:	74 0c                	je     1187 <__do_global_dtors_aux+0x27>
+    117b:	48 8b 3d 86 2e 00 00 	mov    0x2e86(%rip),%rdi        # 4008 <__dso_handle>
+    1182:	e8 e9 fe ff ff       	call   1070 <__cxa_finalize@plt>
+    1187:	e8 64 ff ff ff       	call   10f0 <deregister_tm_clones>
+    118c:	c6 05 bd 2f 00 00 01 	movb   $0x1,0x2fbd(%rip)        # 4150 <completed.0>
+    1193:	5d                   	pop    %rbp
+    1194:	c3                   	ret
+    1195:	0f 1f 00             	nopl   (%rax)
+    1198:	c3                   	ret
+    1199:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+
+00000000000011a0 <frame_dummy>:
+    11a0:	f3 0f 1e fa          	endbr64
+    11a4:	e9 77 ff ff ff       	jmp    1120 <register_tm_clones>
+
+00000000000011a9 <hftu::u64_to_chars(unsigned long, char*)>:
+    11a9:	f3 0f 1e fa          	endbr64
+    11ad:	55                   	push   %rbp
+    11ae:	48 89 e5             	mov    %rsp,%rbp
+    11b1:	48 83 ec 20          	sub    $0x20,%rsp
+    11b5:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    11b9:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    11bd:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    11c1:	48 8d 70 20          	lea    0x20(%rax),%rsi
+    11c5:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    11c9:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    11cd:	b9 0a 00 00 00       	mov    $0xa,%ecx
+    11d2:	48 89 c7             	mov    %rax,%rdi
+    11d5:	e8 54 01 00 00       	call   132e <std::to_chars(char*, char*, unsigned long, int)>
+    11da:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+    11de:	48 89 55 f8          	mov    %rdx,-0x8(%rbp)
+    11e2:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+    11e6:	48 2b 45 e0          	sub    -0x20(%rbp),%rax
+    11ea:	c9                   	leave
+    11eb:	c3                   	ret
+
+00000000000011ec <hftu::how_many_digits(unsigned long)>:
+    11ec:	f3 0f 1e fa          	endbr64
+    11f0:	55                   	push   %rbp
+    11f1:	48 89 e5             	mov    %rsp,%rbp
+    11f4:	48 83 ec 20          	sub    $0x20,%rsp
+    11f8:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    11fc:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1200:	48 83 c8 01          	or     $0x1,%rax
+    1204:	48 89 c7             	mov    %rax,%rdi
+    1207:	e8 ea 05 00 00       	call   17f6 <_ZSt11countl_zeroITkSt18__unsigned_integeryEiT_>
+    120c:	ba 3f 00 00 00       	mov    $0x3f,%edx
+    1211:	29 c2                	sub    %eax,%edx
+    1213:	89 55 fc             	mov    %edx,-0x4(%rbp)
+    1216:	8b 45 fc             	mov    -0x4(%rbp),%eax
+    1219:	48 8d 15 20 0e 00 00 	lea    0xe20(%rip),%rdx        # 2040 <hftu::kKwTable16>
+    1220:	48 89 c6             	mov    %rax,%rsi
+    1223:	48 89 d7             	mov    %rdx,%rdi
+    1226:	e8 e9 05 00 00       	call   1814 <std::array<unsigned long, 54ul>::operator[](unsigned long) const>
+    122b:	48 8b 10             	mov    (%rax),%rdx
+    122e:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1232:	48 01 d0             	add    %rdx,%rax
+    1235:	48 c1 e8 3a          	shr    $0x3a,%rax
+    1239:	89 c0                	mov    %eax,%eax
+    123b:	c9                   	leave
+    123c:	c3                   	ret
+
+000000000000123d <hftu::handle_less_than_16_decimals(unsigned long, char*)>:
+    123d:	f3 0f 1e fa          	endbr64
+    1241:	55                   	push   %rbp
+    1242:	48 89 e5             	mov    %rsp,%rbp
+    1245:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1249:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    124d:	90                   	nop
+    124e:	5d                   	pop    %rbp
+    124f:	c3                   	ret
+
+0000000000001250 <main>:
+    1250:	f3 0f 1e fa          	endbr64
+    1254:	55                   	push   %rbp
+    1255:	48 89 e5             	mov    %rsp,%rbp
+    1258:	48 83 ec 10          	sub    $0x10,%rsp
+    125c:	bf ea 9d cb 00       	mov    $0xcb9dea,%edi
+    1261:	e8 86 ff ff ff       	call   11ec <hftu::how_many_digits(unsigned long)>
+    1266:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    126a:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    126e:	48 8d 15 cb 2d 00 00 	lea    0x2dcb(%rip),%rdx        # 4040 <std::cout@GLIBCXX_3.4>
+    1275:	48 89 c6             	mov    %rax,%rsi
+    1278:	48 89 d7             	mov    %rdx,%rdi
+    127b:	e8 00 fe ff ff       	call   1080 <std::ostream::operator<<(unsigned long)@plt>
+    1280:	48 8b 15 51 2d 00 00 	mov    0x2d51(%rip),%rdx        # 3fd8 <std::basic_ostream<char, std::char_traits<char> >& std::endl<char, std::char_traits<char> >(std::basic_ostream<char, std::char_traits<char> >&)@GLIBCXX_3.4>
+    1287:	48 89 d6             	mov    %rdx,%rsi
+    128a:	48 89 c7             	mov    %rax,%rdi
+    128d:	e8 0e fe ff ff       	call   10a0 <std::ostream::operator<<(std::ostream& (*)(std::ostream&))@plt>
+    1292:	b8 01 00 00 00       	mov    $0x1,%eax
+    1297:	c9                   	leave
+    1298:	c3                   	ret
+
+0000000000001299 <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)>:
+    1299:	f3 0f 1e fa          	endbr64
+    129d:	55                   	push   %rbp
+    129e:	48 89 e5             	mov    %rsp,%rbp
+    12a1:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+    12a5:	89 75 d4             	mov    %esi,-0x2c(%rbp)
+    12a8:	c7 45 ec 01 00 00 00 	movl   $0x1,-0x14(%rbp)
+    12af:	8b 45 d4             	mov    -0x2c(%rbp),%eax
+    12b2:	0f af c0             	imul   %eax,%eax
+    12b5:	89 45 f0             	mov    %eax,-0x10(%rbp)
+    12b8:	8b 45 d4             	mov    -0x2c(%rbp),%eax
+    12bb:	8b 55 f0             	mov    -0x10(%rbp),%edx
+    12be:	0f af c2             	imul   %edx,%eax
+    12c1:	89 45 f4             	mov    %eax,-0xc(%rbp)
+    12c4:	8b 45 d4             	mov    -0x2c(%rbp),%eax
+    12c7:	0f af 45 f4          	imul   -0xc(%rbp),%eax
+    12cb:	89 c0                	mov    %eax,%eax
+    12cd:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    12d1:	8b 45 d4             	mov    -0x2c(%rbp),%eax
+    12d4:	89 c0                	mov    %eax,%eax
+    12d6:	48 39 45 d8          	cmp    %rax,-0x28(%rbp)
+    12da:	73 05                	jae    12e1 <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x48>
+    12dc:	8b 45 ec             	mov    -0x14(%rbp),%eax
+    12df:	eb 4b                	jmp    132c <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x93>
+    12e1:	8b 45 f0             	mov    -0x10(%rbp),%eax
+    12e4:	48 39 45 d8          	cmp    %rax,-0x28(%rbp)
+    12e8:	73 08                	jae    12f2 <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x59>
+    12ea:	8b 45 ec             	mov    -0x14(%rbp),%eax
+    12ed:	83 c0 01             	add    $0x1,%eax
+    12f0:	eb 3a                	jmp    132c <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x93>
+    12f2:	8b 45 f4             	mov    -0xc(%rbp),%eax
+    12f5:	48 39 45 d8          	cmp    %rax,-0x28(%rbp)
+    12f9:	73 08                	jae    1303 <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x6a>
+    12fb:	8b 45 ec             	mov    -0x14(%rbp),%eax
+    12fe:	83 c0 02             	add    $0x2,%eax
+    1301:	eb 29                	jmp    132c <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x93>
+    1303:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1307:	48 3b 45 f8          	cmp    -0x8(%rbp),%rax
+    130b:	73 08                	jae    1315 <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x7c>
+    130d:	8b 45 ec             	mov    -0x14(%rbp),%eax
+    1310:	83 c0 03             	add    $0x3,%eax
+    1313:	eb 17                	jmp    132c <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x93>
+    1315:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1319:	ba 00 00 00 00       	mov    $0x0,%edx
+    131e:	48 f7 75 f8          	divq   -0x8(%rbp)
+    1322:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+    1326:	83 45 ec 04          	addl   $0x4,-0x14(%rbp)
+    132a:	eb a5                	jmp    12d1 <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)+0x38>
+    132c:	5d                   	pop    %rbp
+    132d:	c3                   	ret
+
+000000000000132e <std::to_chars(char*, char*, unsigned long, int)>:
+    132e:	f3 0f 1e fa          	endbr64
+    1332:	55                   	push   %rbp
+    1333:	48 89 e5             	mov    %rsp,%rbp
+    1336:	48 83 ec 20          	sub    $0x20,%rsp
+    133a:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    133e:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+    1342:	48 89 55 e8          	mov    %rdx,-0x18(%rbp)
+    1346:	89 4d e4             	mov    %ecx,-0x1c(%rbp)
+    1349:	8b 4d e4             	mov    -0x1c(%rbp),%ecx
+    134c:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1350:	48 8b 75 f0          	mov    -0x10(%rbp),%rsi
+    1354:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    1358:	48 89 c7             	mov    %rax,%rdi
+    135b:	e8 1f 03 00 00       	call   167f <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)>
+    1360:	c9                   	leave
+    1361:	c3                   	ret
+
+0000000000001362 <void std::__detail::__to_chars_10_impl<unsigned long>(char*, unsigned int, unsigned long)>:
+    1362:	f3 0f 1e fa          	endbr64
+    1366:	55                   	push   %rbp
+    1367:	48 89 e5             	mov    %rsp,%rbp
+    136a:	48 81 ec 20 01 00 00 	sub    $0x120,%rsp
+    1371:	48 89 bd f8 fe ff ff 	mov    %rdi,-0x108(%rbp)
+    1378:	89 b5 f4 fe ff ff    	mov    %esi,-0x10c(%rbp)
+    137e:	48 89 95 e8 fe ff ff 	mov    %rdx,-0x118(%rbp)
+    1385:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    138c:	00 00 
+    138e:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    1392:	31 c0                	xor    %eax,%eax
+    1394:	48 b8 30 30 30 31 30 	movabs $0x3330323031303030,%rax
+    139b:	32 30 33 
+    139e:	48 ba 30 34 30 35 30 	movabs $0x3730363035303430,%rdx
+    13a5:	36 30 37 
+    13a8:	48 89 85 20 ff ff ff 	mov    %rax,-0xe0(%rbp)
+    13af:	48 89 95 28 ff ff ff 	mov    %rdx,-0xd8(%rbp)
+    13b6:	48 b8 30 38 30 39 31 	movabs $0x3131303139303830,%rax
+    13bd:	30 31 31 
+    13c0:	48 ba 31 32 31 33 31 	movabs $0x3531343133313231,%rdx
+    13c7:	34 31 35 
+    13ca:	48 89 85 30 ff ff ff 	mov    %rax,-0xd0(%rbp)
+    13d1:	48 89 95 38 ff ff ff 	mov    %rdx,-0xc8(%rbp)
+    13d8:	48 b8 31 36 31 37 31 	movabs $0x3931383137313631,%rax
+    13df:	38 31 39 
+    13e2:	48 ba 32 30 32 31 32 	movabs $0x3332323231323032,%rdx
+    13e9:	32 32 33 
+    13ec:	48 89 85 40 ff ff ff 	mov    %rax,-0xc0(%rbp)
+    13f3:	48 89 95 48 ff ff ff 	mov    %rdx,-0xb8(%rbp)
+    13fa:	48 b8 32 34 32 35 32 	movabs $0x3732363235323432,%rax
+    1401:	36 32 37 
+    1404:	48 ba 32 38 32 39 33 	movabs $0x3133303339323832,%rdx
+    140b:	30 33 31 
+    140e:	48 89 85 50 ff ff ff 	mov    %rax,-0xb0(%rbp)
+    1415:	48 89 95 58 ff ff ff 	mov    %rdx,-0xa8(%rbp)
+    141c:	48 b8 33 32 33 33 33 	movabs $0x3533343333333233,%rax
+    1423:	34 33 35 
+    1426:	48 ba 33 36 33 37 33 	movabs $0x3933383337333633,%rdx
+    142d:	38 33 39 
+    1430:	48 89 85 60 ff ff ff 	mov    %rax,-0xa0(%rbp)
+    1437:	48 89 95 68 ff ff ff 	mov    %rdx,-0x98(%rbp)
+    143e:	48 b8 34 30 34 31 34 	movabs $0x3334323431343034,%rax
+    1445:	32 34 33 
+    1448:	48 ba 34 34 34 35 34 	movabs $0x3734363435343434,%rdx
+    144f:	36 34 37 
+    1452:	48 89 85 70 ff ff ff 	mov    %rax,-0x90(%rbp)
+    1459:	48 89 95 78 ff ff ff 	mov    %rdx,-0x88(%rbp)
+    1460:	48 b8 34 38 34 39 35 	movabs $0x3135303539343834,%rax
+    1467:	30 35 31 
+    146a:	48 ba 35 32 35 33 35 	movabs $0x3535343533353235,%rdx
+    1471:	34 35 35 
+    1474:	48 89 45 80          	mov    %rax,-0x80(%rbp)
+    1478:	48 89 55 88          	mov    %rdx,-0x78(%rbp)
+    147c:	48 b8 35 36 35 37 35 	movabs $0x3935383537353635,%rax
+    1483:	38 35 39 
+    1486:	48 ba 36 30 36 31 36 	movabs $0x3336323631363036,%rdx
+    148d:	32 36 33 
+    1490:	48 89 45 90          	mov    %rax,-0x70(%rbp)
+    1494:	48 89 55 98          	mov    %rdx,-0x68(%rbp)
+    1498:	48 b8 36 34 36 35 36 	movabs $0x3736363635363436,%rax
+    149f:	36 36 37 
+    14a2:	48 ba 36 38 36 39 37 	movabs $0x3137303739363836,%rdx
+    14a9:	30 37 31 
+    14ac:	48 89 45 a0          	mov    %rax,-0x60(%rbp)
+    14b0:	48 89 55 a8          	mov    %rdx,-0x58(%rbp)
+    14b4:	48 b8 37 32 37 33 37 	movabs $0x3537343733373237,%rax
+    14bb:	34 37 35 
+    14be:	48 ba 37 36 37 37 37 	movabs $0x3937383737373637,%rdx
+    14c5:	38 37 39 
+    14c8:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+    14cc:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+    14d0:	48 b8 38 30 38 31 38 	movabs $0x3338323831383038,%rax
+    14d7:	32 38 33 
+    14da:	48 ba 38 34 38 35 38 	movabs $0x3738363835383438,%rdx
+    14e1:	36 38 37 
+    14e4:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+    14e8:	48 89 55 c8          	mov    %rdx,-0x38(%rbp)
+    14ec:	48 b8 38 38 38 39 39 	movabs $0x3139303939383838,%rax
+    14f3:	30 39 31 
+    14f6:	48 ba 39 32 39 33 39 	movabs $0x3539343933393239,%rdx
+    14fd:	34 39 35 
+    1500:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    1504:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+    1508:	48 b8 32 39 33 39 34 	movabs $0x3935393439333932,%rax
+    150f:	39 35 39 
+    1512:	48 ba 36 39 37 39 38 	movabs $0x39393839373936,%rdx
+    1519:	39 39 00 
+    151c:	48 89 45 d9          	mov    %rax,-0x27(%rbp)
+    1520:	48 89 55 e1          	mov    %rdx,-0x1f(%rbp)
+    1524:	8b 85 f4 fe ff ff    	mov    -0x10c(%rbp),%eax
+    152a:	83 e8 01             	sub    $0x1,%eax
+    152d:	89 85 0c ff ff ff    	mov    %eax,-0xf4(%rbp)
+    1533:	e9 b3 00 00 00       	jmp    15eb <void std::__detail::__to_chars_10_impl<unsigned long>(char*, unsigned int, unsigned long)+0x289>
+    1538:	48 8b 8d e8 fe ff ff 	mov    -0x118(%rbp),%rcx
+    153f:	48 89 c8             	mov    %rcx,%rax
+    1542:	48 c1 e8 02          	shr    $0x2,%rax
+    1546:	48 ba c3 f5 28 5c 8f 	movabs $0x28f5c28f5c28f5c3,%rdx
+    154d:	c2 f5 28 
+    1550:	48 f7 e2             	mul    %rdx
+    1553:	48 89 d0             	mov    %rdx,%rax
+    1556:	48 c1 e8 02          	shr    $0x2,%rax
+    155a:	48 6b d0 64          	imul   $0x64,%rax,%rdx
+    155e:	48 89 c8             	mov    %rcx,%rax
+    1561:	48 29 d0             	sub    %rdx,%rax
+    1564:	48 01 c0             	add    %rax,%rax
+    1567:	48 89 85 18 ff ff ff 	mov    %rax,-0xe8(%rbp)
+    156e:	48 8b 85 e8 fe ff ff 	mov    -0x118(%rbp),%rax
+    1575:	48 c1 e8 02          	shr    $0x2,%rax
+    1579:	48 ba c3 f5 28 5c 8f 	movabs $0x28f5c28f5c28f5c3,%rdx
+    1580:	c2 f5 28 
+    1583:	48 f7 e2             	mul    %rdx
+    1586:	48 89 d0             	mov    %rdx,%rax
+    1589:	48 c1 e8 02          	shr    $0x2,%rax
+    158d:	48 89 85 e8 fe ff ff 	mov    %rax,-0x118(%rbp)
+    1594:	48 8b 85 18 ff ff ff 	mov    -0xe8(%rbp),%rax
+    159b:	48 83 c0 01          	add    $0x1,%rax
+    159f:	8b 8d 0c ff ff ff    	mov    -0xf4(%rbp),%ecx
+    15a5:	48 8b 95 f8 fe ff ff 	mov    -0x108(%rbp),%rdx
+    15ac:	48 01 ca             	add    %rcx,%rdx
+    15af:	0f b6 84 05 20 ff ff 	movzbl -0xe0(%rbp,%rax,1),%eax
+    15b6:	ff 
+    15b7:	88 02                	mov    %al,(%rdx)
+    15b9:	8b 85 0c ff ff ff    	mov    -0xf4(%rbp),%eax
+    15bf:	83 e8 01             	sub    $0x1,%eax
+    15c2:	89 c2                	mov    %eax,%edx
+    15c4:	48 8b 85 f8 fe ff ff 	mov    -0x108(%rbp),%rax
+    15cb:	48 01 c2             	add    %rax,%rdx
+    15ce:	48 8d 8d 20 ff ff ff 	lea    -0xe0(%rbp),%rcx
+    15d5:	48 8b 85 18 ff ff ff 	mov    -0xe8(%rbp),%rax
+    15dc:	48 01 c8             	add    %rcx,%rax
+    15df:	0f b6 00             	movzbl (%rax),%eax
+    15e2:	88 02                	mov    %al,(%rdx)
+    15e4:	83 ad 0c ff ff ff 02 	subl   $0x2,-0xf4(%rbp)
+    15eb:	48 83 bd e8 fe ff ff 	cmpq   $0x63,-0x118(%rbp)
+    15f2:	63 
+    15f3:	0f 87 3f ff ff ff    	ja     1538 <void std::__detail::__to_chars_10_impl<unsigned long>(char*, unsigned int, unsigned long)+0x1d6>
+    15f9:	48 83 bd e8 fe ff ff 	cmpq   $0x9,-0x118(%rbp)
+    1600:	09 
+    1601:	76 50                	jbe    1653 <void std::__detail::__to_chars_10_impl<unsigned long>(char*, unsigned int, unsigned long)+0x2f1>
+    1603:	48 8b 85 e8 fe ff ff 	mov    -0x118(%rbp),%rax
+    160a:	48 01 c0             	add    %rax,%rax
+    160d:	48 89 85 10 ff ff ff 	mov    %rax,-0xf0(%rbp)
+    1614:	48 8b 85 10 ff ff ff 	mov    -0xf0(%rbp),%rax
+    161b:	48 83 c0 01          	add    $0x1,%rax
+    161f:	48 8b 95 f8 fe ff ff 	mov    -0x108(%rbp),%rdx
+    1626:	48 83 c2 01          	add    $0x1,%rdx
+    162a:	0f b6 84 05 20 ff ff 	movzbl -0xe0(%rbp,%rax,1),%eax
+    1631:	ff 
+    1632:	88 02                	mov    %al,(%rdx)
+    1634:	48 8d 95 20 ff ff ff 	lea    -0xe0(%rbp),%rdx
+    163b:	48 8b 85 10 ff ff ff 	mov    -0xf0(%rbp),%rax
+    1642:	48 01 d0             	add    %rdx,%rax
+    1645:	0f b6 10             	movzbl (%rax),%edx
+    1648:	48 8b 85 f8 fe ff ff 	mov    -0x108(%rbp),%rax
+    164f:	88 10                	mov    %dl,(%rax)
+    1651:	eb 15                	jmp    1668 <void std::__detail::__to_chars_10_impl<unsigned long>(char*, unsigned int, unsigned long)+0x306>
+    1653:	48 8b 85 e8 fe ff ff 	mov    -0x118(%rbp),%rax
+    165a:	83 c0 30             	add    $0x30,%eax
+    165d:	89 c2                	mov    %eax,%edx
+    165f:	48 8b 85 f8 fe ff ff 	mov    -0x108(%rbp),%rax
+    1666:	88 10                	mov    %dl,(%rax)
+    1668:	90                   	nop
+    1669:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    166d:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    1674:	00 00 
+    1676:	74 05                	je     167d <void std::__detail::__to_chars_10_impl<unsigned long>(char*, unsigned int, unsigned long)+0x31b>
+    1678:	e8 33 fa ff ff       	call   10b0 <__stack_chk_fail@plt>
+    167d:	c9                   	leave
+    167e:	c3                   	ret
+
+000000000000167f <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)>:
+    167f:	f3 0f 1e fa          	endbr64
+    1683:	55                   	push   %rbp
+    1684:	48 89 e5             	mov    %rsp,%rbp
+    1687:	48 83 ec 30          	sub    $0x30,%rsp
+    168b:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    168f:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    1693:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+    1697:	89 4d d4             	mov    %ecx,-0x2c(%rbp)
+    169a:	83 7d d4 01          	cmpl   $0x1,-0x2c(%rbp)
+    169e:	0f 9e c0             	setle  %al
+    16a1:	0f b6 c0             	movzbl %al,%eax
+    16a4:	48 85 c0             	test   %rax,%rax
+    16a7:	75 0f                	jne    16b8 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x39>
+    16a9:	83 7d d4 24          	cmpl   $0x24,-0x2c(%rbp)
+    16ad:	0f 9f c0             	setg   %al
+    16b0:	0f b6 c0             	movzbl %al,%eax
+    16b3:	48 85 c0             	test   %rax,%rax
+    16b6:	74 07                	je     16bf <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x40>
+    16b8:	b8 01 00 00 00       	mov    $0x1,%eax
+    16bd:	eb 05                	jmp    16c4 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x45>
+    16bf:	b8 00 00 00 00       	mov    $0x0,%eax
+    16c4:	0f b6 c0             	movzbl %al,%eax
+    16c7:	48 85 c0             	test   %rax,%rax
+    16ca:	74 22                	je     16ee <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x6f>
+    16cc:	48 8d 0d 1d 0b 00 00 	lea    0xb1d(%rip),%rcx        # 21f0 <hftu::kKwTable16+0x1b0>
+    16d3:	48 8d 15 36 0b 00 00 	lea    0xb36(%rip),%rdx        # 2210 <hftu::kKwTable16+0x1d0>
+    16da:	48 8d 05 97 0b 00 00 	lea    0xb97(%rip),%rax        # 2278 <hftu::kKwTable16+0x238>
+    16e1:	be 46 01 00 00       	mov    $0x146,%esi
+    16e6:	48 89 c7             	mov    %rax,%rdi
+    16e9:	e8 a2 f9 ff ff       	call   1090 <std::__glibcxx_assert_fail(char const*, int, char const*, char const*)@plt>
+    16ee:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    16f2:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    16f6:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    16fa:	48 3b 45 e0          	cmp    -0x20(%rbp),%rax
+    16fe:	72 2a                	jb     172a <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0xab>
+    1700:	b8 00 00 00 00       	mov    $0x0,%eax
+    1705:	ba 00 00 00 00       	mov    $0x0,%edx
+    170a:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    170e:	48 89 d6             	mov    %rdx,%rsi
+    1711:	48 b9 00 00 00 00 ff 	movabs $0xffffffff00000000,%rcx
+    1718:	ff ff ff 
+    171b:	48 21 f1             	and    %rsi,%rcx
+    171e:	48 83 c9 4b          	or     $0x4b,%rcx
+    1722:	48 89 ca             	mov    %rcx,%rdx
+    1725:	e9 ca 00 00 00       	jmp    17f4 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x175>
+    172a:	48 83 7d d8 00       	cmpq   $0x0,-0x28(%rbp)
+    172f:	75 21                	jne    1752 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0xd3>
+    1731:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1735:	c6 00 30             	movb   $0x30,(%rax)
+    1738:	b8 00 00 00 00       	mov    $0x0,%eax
+    173d:	ba 00 00 00 00       	mov    $0x0,%edx
+    1742:	48 8b 4d e8          	mov    -0x18(%rbp),%rcx
+    1746:	48 83 c1 01          	add    $0x1,%rcx
+    174a:	48 89 c8             	mov    %rcx,%rax
+    174d:	e9 a2 00 00 00       	jmp    17f4 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x175>
+    1752:	83 7d d4 10          	cmpl   $0x10,-0x2c(%rbp)
+    1756:	74 20                	je     1778 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0xf9>
+    1758:	83 7d d4 10          	cmpl   $0x10,-0x2c(%rbp)
+    175c:	7f 7e                	jg     17dc <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x15d>
+    175e:	83 7d d4 0a          	cmpl   $0xa,-0x2c(%rbp)
+    1762:	74 2d                	je     1791 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x112>
+    1764:	83 7d d4 0a          	cmpl   $0xa,-0x2c(%rbp)
+    1768:	7f 72                	jg     17dc <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x15d>
+    176a:	83 7d d4 02          	cmpl   $0x2,-0x2c(%rbp)
+    176e:	74 53                	je     17c3 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x144>
+    1770:	83 7d d4 08          	cmpl   $0x8,-0x2c(%rbp)
+    1774:	74 34                	je     17aa <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x12b>
+    1776:	eb 64                	jmp    17dc <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x15d>
+    1778:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    177c:	48 8b 4d e0          	mov    -0x20(%rbp),%rcx
+    1780:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1784:	48 89 ce             	mov    %rcx,%rsi
+    1787:	48 89 c7             	mov    %rax,%rdi
+    178a:	e8 0a 01 00 00       	call   1899 <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)>
+    178f:	eb 63                	jmp    17f4 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x175>
+    1791:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    1795:	48 8b 4d e0          	mov    -0x20(%rbp),%rcx
+    1799:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    179d:	48 89 ce             	mov    %rcx,%rsi
+    17a0:	48 89 c7             	mov    %rax,%rdi
+    17a3:	e8 7f 02 00 00       	call   1a27 <std::to_chars_result std::__detail::__to_chars_10<unsigned long>(char*, char*, unsigned long)>
+    17a8:	eb 4a                	jmp    17f4 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x175>
+    17aa:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    17ae:	48 8b 4d e0          	mov    -0x20(%rbp),%rcx
+    17b2:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    17b6:	48 89 ce             	mov    %rcx,%rsi
+    17b9:	48 89 c7             	mov    %rax,%rdi
+    17bc:	e8 1e 03 00 00       	call   1adf <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)>
+    17c1:	eb 31                	jmp    17f4 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x175>
+    17c3:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    17c7:	48 8b 4d e0          	mov    -0x20(%rbp),%rcx
+    17cb:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    17cf:	48 89 ce             	mov    %rcx,%rsi
+    17d2:	48 89 c7             	mov    %rax,%rdi
+    17d5:	e8 6c 04 00 00       	call   1c46 <std::to_chars_result std::__detail::__to_chars_2<unsigned long>(char*, char*, unsigned long)>
+    17da:	eb 18                	jmp    17f4 <std::to_chars_result std::__to_chars_i<unsigned long>(char*, char*, unsigned long, int)+0x175>
+    17dc:	8b 4d d4             	mov    -0x2c(%rbp),%ecx
+    17df:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+    17e3:	48 8b 75 e0          	mov    -0x20(%rbp),%rsi
+    17e7:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    17eb:	48 89 c7             	mov    %rax,%rdi
+    17ee:	e8 2e 05 00 00       	call   1d21 <std::to_chars_result std::__detail::__to_chars<unsigned long>(char*, char*, unsigned long, int)>
+    17f3:	90                   	nop
+    17f4:	c9                   	leave
+    17f5:	c3                   	ret
+
+00000000000017f6 <_ZSt11countl_zeroITkSt18__unsigned_integeryEiT_>:
+    17f6:	f3 0f 1e fa          	endbr64
+    17fa:	55                   	push   %rbp
+    17fb:	48 89 e5             	mov    %rsp,%rbp
+    17fe:	48 83 ec 10          	sub    $0x10,%rsp
+    1802:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    1806:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    180a:	48 89 c7             	mov    %rax,%rdi
+    180d:	e8 77 06 00 00       	call   1e89 <int std::__countl_zero<unsigned long long>(unsigned long long)>
+    1812:	c9                   	leave
+    1813:	c3                   	ret
+
+0000000000001814 <std::array<unsigned long, 54ul>::operator[](unsigned long) const>:
+    1814:	f3 0f 1e fa          	endbr64
+    1818:	55                   	push   %rbp
+    1819:	48 89 e5             	mov    %rsp,%rbp
+    181c:	48 83 ec 20          	sub    $0x20,%rsp
+    1820:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1824:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+    1828:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    182c:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    1830:	b8 36 00 00 00       	mov    $0x36,%eax
+    1835:	48 39 45 e0          	cmp    %rax,-0x20(%rbp)
+    1839:	0f 93 c0             	setae  %al
+    183c:	0f b6 c0             	movzbl %al,%eax
+    183f:	48 85 c0             	test   %rax,%rax
+    1842:	74 22                	je     1866 <std::array<unsigned long, 54ul>::operator[](unsigned long) const+0x52>
+    1844:	48 8d 0d 4a 0a 00 00 	lea    0xa4a(%rip),%rcx        # 2295 <hftu::kKwTable16+0x255>
+    184b:	48 8d 15 56 0a 00 00 	lea    0xa56(%rip),%rdx        # 22a8 <hftu::kKwTable16+0x268>
+    1852:	48 8d 05 39 0b 00 00 	lea    0xb39(%rip),%rax        # 2392 <hftu::kKwTable16+0x352>
+    1859:	be db 00 00 00       	mov    $0xdb,%esi
+    185e:	48 89 c7             	mov    %rax,%rdi
+    1861:	e8 2a f8 ff ff       	call   1090 <std::__glibcxx_assert_fail(char const*, int, char const*, char const*)@plt>
+    1866:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    186a:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
+    1871:	00 
+    1872:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1876:	48 01 d0             	add    %rdx,%rax
+    1879:	c9                   	leave
+    187a:	c3                   	ret
+
+000000000000187b <unsigned int std::__detail::__to_chars_len_2<unsigned long>(unsigned long)>:
+    187b:	f3 0f 1e fa          	endbr64
+    187f:	55                   	push   %rbp
+    1880:	48 89 e5             	mov    %rsp,%rbp
+    1883:	48 83 ec 10          	sub    $0x10,%rsp
+    1887:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+    188b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+    188f:	48 89 c7             	mov    %rax,%rdi
+    1892:	e8 1f 06 00 00       	call   1eb6 <int std::__bit_width<unsigned long>(unsigned long)>
+    1897:	c9                   	leave
+    1898:	c3                   	ret
+
+0000000000001899 <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)>:
+    1899:	f3 0f 1e fa          	endbr64
+    189d:	55                   	push   %rbp
+    189e:	48 89 e5             	mov    %rsp,%rbp
+    18a1:	48 83 ec 70          	sub    $0x70,%rsp
+    18a5:	48 89 7d a8          	mov    %rdi,-0x58(%rbp)
+    18a9:	48 89 75 a0          	mov    %rsi,-0x60(%rbp)
+    18ad:	48 89 55 98          	mov    %rdx,-0x68(%rbp)
+    18b1:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    18b8:	00 00 
+    18ba:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    18be:	31 c0                	xor    %eax,%eax
+    18c0:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    18c4:	48 89 c7             	mov    %rax,%rdi
+    18c7:	e8 af ff ff ff       	call   187b <unsigned int std::__detail::__to_chars_len_2<unsigned long>(unsigned long)>
+    18cc:	83 c0 03             	add    $0x3,%eax
+    18cf:	c1 e8 02             	shr    $0x2,%eax
+    18d2:	89 45 bc             	mov    %eax,-0x44(%rbp)
+    18d5:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    18d9:	48 2b 45 a8          	sub    -0x58(%rbp),%rax
+    18dd:	48 89 c2             	mov    %rax,%rdx
+    18e0:	8b 45 bc             	mov    -0x44(%rbp),%eax
+    18e3:	48 39 c2             	cmp    %rax,%rdx
+    18e6:	0f 92 c0             	setb   %al
+    18e9:	0f b6 c0             	movzbl %al,%eax
+    18ec:	48 85 c0             	test   %rax,%rax
+    18ef:	74 1c                	je     190d <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)+0x74>
+    18f1:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+    18f5:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    18f9:	c7 45 d8 4b 00 00 00 	movl   $0x4b,-0x28(%rbp)
+    1900:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    1904:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+    1908:	e9 04 01 00 00       	jmp    1a11 <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)+0x178>
+    190d:	48 b8 30 31 32 33 34 	movabs $0x3736353433323130,%rax
+    1914:	35 36 37 
+    1917:	48 ba 38 39 61 62 63 	movabs $0x6665646362613938,%rdx
+    191e:	64 65 66 
+    1921:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1925:	48 89 55 e8          	mov    %rdx,-0x18(%rbp)
+    1929:	8b 45 bc             	mov    -0x44(%rbp),%eax
+    192c:	83 e8 01             	sub    $0x1,%eax
+    192f:	89 45 b8             	mov    %eax,-0x48(%rbp)
+    1932:	eb 5d                	jmp    1991 <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)+0xf8>
+    1934:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    1938:	83 e0 0f             	and    $0xf,%eax
+    193b:	48 89 45 c8          	mov    %rax,-0x38(%rbp)
+    193f:	48 c1 6d 98 04       	shrq   $0x4,-0x68(%rbp)
+    1944:	8b 55 b8             	mov    -0x48(%rbp),%edx
+    1947:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    194b:	48 01 c2             	add    %rax,%rdx
+    194e:	48 8d 4d e0          	lea    -0x20(%rbp),%rcx
+    1952:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1956:	48 01 c8             	add    %rcx,%rax
+    1959:	0f b6 00             	movzbl (%rax),%eax
+    195c:	88 02                	mov    %al,(%rdx)
+    195e:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    1962:	83 e0 0f             	and    $0xf,%eax
+    1965:	48 89 45 c8          	mov    %rax,-0x38(%rbp)
+    1969:	48 c1 6d 98 04       	shrq   $0x4,-0x68(%rbp)
+    196e:	8b 45 b8             	mov    -0x48(%rbp),%eax
+    1971:	83 e8 01             	sub    $0x1,%eax
+    1974:	89 c2                	mov    %eax,%edx
+    1976:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    197a:	48 01 c2             	add    %rax,%rdx
+    197d:	48 8d 4d e0          	lea    -0x20(%rbp),%rcx
+    1981:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1985:	48 01 c8             	add    %rcx,%rax
+    1988:	0f b6 00             	movzbl (%rax),%eax
+    198b:	88 02                	mov    %al,(%rdx)
+    198d:	83 6d b8 02          	subl   $0x2,-0x48(%rbp)
+    1991:	48 81 7d 98 ff 00 00 	cmpq   $0xff,-0x68(%rbp)
+    1998:	00 
+    1999:	77 99                	ja     1934 <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)+0x9b>
+    199b:	48 83 7d 98 0f       	cmpq   $0xf,-0x68(%rbp)
+    19a0:	76 3e                	jbe    19e0 <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)+0x147>
+    19a2:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    19a6:	83 e0 0f             	and    $0xf,%eax
+    19a9:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+    19ad:	48 c1 6d 98 04       	shrq   $0x4,-0x68(%rbp)
+    19b2:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    19b6:	48 8d 50 01          	lea    0x1(%rax),%rdx
+    19ba:	48 8d 4d e0          	lea    -0x20(%rbp),%rcx
+    19be:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    19c2:	48 01 c8             	add    %rcx,%rax
+    19c5:	0f b6 00             	movzbl (%rax),%eax
+    19c8:	88 02                	mov    %al,(%rdx)
+    19ca:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+    19ce:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    19d2:	48 01 d0             	add    %rdx,%rax
+    19d5:	0f b6 10             	movzbl (%rax),%edx
+    19d8:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    19dc:	88 10                	mov    %dl,(%rax)
+    19de:	eb 14                	jmp    19f4 <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)+0x15b>
+    19e0:	48 8d 55 e0          	lea    -0x20(%rbp),%rdx
+    19e4:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    19e8:	48 01 d0             	add    %rdx,%rax
+    19eb:	0f b6 10             	movzbl (%rax),%edx
+    19ee:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    19f2:	88 10                	mov    %dl,(%rax)
+    19f4:	8b 55 bc             	mov    -0x44(%rbp),%edx
+    19f7:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    19fb:	48 01 d0             	add    %rdx,%rax
+    19fe:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    1a02:	c7 45 d8 00 00 00 00 	movl   $0x0,-0x28(%rbp)
+    1a09:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    1a0d:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+    1a11:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+    1a15:	64 48 2b 0c 25 28 00 	sub    %fs:0x28,%rcx
+    1a1c:	00 00 
+    1a1e:	74 05                	je     1a25 <std::to_chars_result std::__detail::__to_chars_16<unsigned long>(char*, char*, unsigned long)+0x18c>
+    1a20:	e8 8b f6 ff ff       	call   10b0 <__stack_chk_fail@plt>
+    1a25:	c9                   	leave
+    1a26:	c3                   	ret
+
+0000000000001a27 <std::to_chars_result std::__detail::__to_chars_10<unsigned long>(char*, char*, unsigned long)>:
+    1a27:	f3 0f 1e fa          	endbr64
+    1a2b:	55                   	push   %rbp
+    1a2c:	48 89 e5             	mov    %rsp,%rbp
+    1a2f:	48 83 ec 50          	sub    $0x50,%rsp
+    1a33:	48 89 7d c8          	mov    %rdi,-0x38(%rbp)
+    1a37:	48 89 75 c0          	mov    %rsi,-0x40(%rbp)
+    1a3b:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+    1a3f:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1a46:	00 00 
+    1a48:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    1a4c:	31 c0                	xor    %eax,%eax
+    1a4e:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1a52:	be 0a 00 00 00       	mov    $0xa,%esi
+    1a57:	48 89 c7             	mov    %rax,%rdi
+    1a5a:	e8 3a f8 ff ff       	call   1299 <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)>
+    1a5f:	89 45 dc             	mov    %eax,-0x24(%rbp)
+    1a62:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    1a66:	48 2b 45 c8          	sub    -0x38(%rbp),%rax
+    1a6a:	48 89 c2             	mov    %rax,%rdx
+    1a6d:	8b 45 dc             	mov    -0x24(%rbp),%eax
+    1a70:	48 39 c2             	cmp    %rax,%rdx
+    1a73:	0f 92 c0             	setb   %al
+    1a76:	0f b6 c0             	movzbl %al,%eax
+    1a79:	48 85 c0             	test   %rax,%rax
+    1a7c:	74 19                	je     1a97 <std::to_chars_result std::__detail::__to_chars_10<unsigned long>(char*, char*, unsigned long)+0x70>
+    1a7e:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    1a82:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1a86:	c7 45 e8 4b 00 00 00 	movl   $0x4b,-0x18(%rbp)
+    1a8d:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1a91:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1a95:	eb 32                	jmp    1ac9 <std::to_chars_result std::__detail::__to_chars_10<unsigned long>(char*, char*, unsigned long)+0xa2>
+    1a97:	48 8b 55 b8          	mov    -0x48(%rbp),%rdx
+    1a9b:	8b 4d dc             	mov    -0x24(%rbp),%ecx
+    1a9e:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1aa2:	89 ce                	mov    %ecx,%esi
+    1aa4:	48 89 c7             	mov    %rax,%rdi
+    1aa7:	e8 b6 f8 ff ff       	call   1362 <void std::__detail::__to_chars_10_impl<unsigned long>(char*, unsigned int, unsigned long)>
+    1aac:	8b 55 dc             	mov    -0x24(%rbp),%edx
+    1aaf:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1ab3:	48 01 d0             	add    %rdx,%rax
+    1ab6:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1aba:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+    1ac1:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1ac5:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1ac9:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+    1acd:	64 48 2b 0c 25 28 00 	sub    %fs:0x28,%rcx
+    1ad4:	00 00 
+    1ad6:	74 05                	je     1add <std::to_chars_result std::__detail::__to_chars_10<unsigned long>(char*, char*, unsigned long)+0xb6>
+    1ad8:	e8 d3 f5 ff ff       	call   10b0 <__stack_chk_fail@plt>
+    1add:	c9                   	leave
+    1ade:	c3                   	ret
+
+0000000000001adf <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)>:
+    1adf:	f3 0f 1e fa          	endbr64
+    1ae3:	55                   	push   %rbp
+    1ae4:	48 89 e5             	mov    %rsp,%rbp
+    1ae7:	48 83 ec 60          	sub    $0x60,%rsp
+    1aeb:	48 89 7d b8          	mov    %rdi,-0x48(%rbp)
+    1aef:	48 89 75 b0          	mov    %rsi,-0x50(%rbp)
+    1af3:	48 89 55 a8          	mov    %rdx,-0x58(%rbp)
+    1af7:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1afe:	00 00 
+    1b00:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    1b04:	31 c0                	xor    %eax,%eax
+    1b06:	c7 45 cc 00 00 00 00 	movl   $0x0,-0x34(%rbp)
+    1b0d:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    1b11:	48 89 c7             	mov    %rax,%rdi
+    1b14:	e8 62 fd ff ff       	call   187b <unsigned int std::__detail::__to_chars_len_2<unsigned long>(unsigned long)>
+    1b19:	83 c0 02             	add    $0x2,%eax
+    1b1c:	89 c2                	mov    %eax,%edx
+    1b1e:	b8 ab aa aa aa       	mov    $0xaaaaaaab,%eax
+    1b23:	48 0f af c2          	imul   %rdx,%rax
+    1b27:	48 c1 e8 20          	shr    $0x20,%rax
+    1b2b:	d1 e8                	shr    $1,%eax
+    1b2d:	89 45 cc             	mov    %eax,-0x34(%rbp)
+    1b30:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+    1b34:	48 2b 45 b8          	sub    -0x48(%rbp),%rax
+    1b38:	48 89 c2             	mov    %rax,%rdx
+    1b3b:	8b 45 cc             	mov    -0x34(%rbp),%eax
+    1b3e:	48 39 c2             	cmp    %rax,%rdx
+    1b41:	0f 92 c0             	setb   %al
+    1b44:	0f b6 c0             	movzbl %al,%eax
+    1b47:	48 85 c0             	test   %rax,%rax
+    1b4a:	74 1c                	je     1b68 <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)+0x89>
+    1b4c:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+    1b50:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1b54:	c7 45 e8 4b 00 00 00 	movl   $0x4b,-0x18(%rbp)
+    1b5b:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1b5f:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1b63:	e9 c8 00 00 00       	jmp    1c30 <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)+0x151>
+    1b68:	8b 45 cc             	mov    -0x34(%rbp),%eax
+    1b6b:	83 e8 01             	sub    $0x1,%eax
+    1b6e:	89 45 c8             	mov    %eax,-0x38(%rbp)
+    1b71:	eb 51                	jmp    1bc4 <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)+0xe5>
+    1b73:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    1b77:	83 e0 07             	and    $0x7,%eax
+    1b7a:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+    1b7e:	48 c1 6d a8 03       	shrq   $0x3,-0x58(%rbp)
+    1b83:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1b87:	8d 48 30             	lea    0x30(%rax),%ecx
+    1b8a:	8b 55 c8             	mov    -0x38(%rbp),%edx
+    1b8d:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1b91:	48 01 d0             	add    %rdx,%rax
+    1b94:	89 ca                	mov    %ecx,%edx
+    1b96:	88 10                	mov    %dl,(%rax)
+    1b98:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    1b9c:	83 e0 07             	and    $0x7,%eax
+    1b9f:	48 89 45 d8          	mov    %rax,-0x28(%rbp)
+    1ba3:	48 c1 6d a8 03       	shrq   $0x3,-0x58(%rbp)
+    1ba8:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+    1bac:	8d 50 30             	lea    0x30(%rax),%edx
+    1baf:	8b 45 c8             	mov    -0x38(%rbp),%eax
+    1bb2:	83 e8 01             	sub    $0x1,%eax
+    1bb5:	89 c1                	mov    %eax,%ecx
+    1bb7:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1bbb:	48 01 c8             	add    %rcx,%rax
+    1bbe:	88 10                	mov    %dl,(%rax)
+    1bc0:	83 6d c8 02          	subl   $0x2,-0x38(%rbp)
+    1bc4:	48 83 7d a8 3f       	cmpq   $0x3f,-0x58(%rbp)
+    1bc9:	77 a8                	ja     1b73 <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)+0x94>
+    1bcb:	48 83 7d a8 07       	cmpq   $0x7,-0x58(%rbp)
+    1bd0:	76 32                	jbe    1c04 <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)+0x125>
+    1bd2:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    1bd6:	83 e0 07             	and    $0x7,%eax
+    1bd9:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    1bdd:	48 c1 6d a8 03       	shrq   $0x3,-0x58(%rbp)
+    1be2:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+    1be6:	8d 50 30             	lea    0x30(%rax),%edx
+    1be9:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1bed:	48 83 c0 01          	add    $0x1,%rax
+    1bf1:	88 10                	mov    %dl,(%rax)
+    1bf3:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    1bf7:	83 c0 30             	add    $0x30,%eax
+    1bfa:	89 c2                	mov    %eax,%edx
+    1bfc:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1c00:	88 10                	mov    %dl,(%rax)
+    1c02:	eb 0f                	jmp    1c13 <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)+0x134>
+    1c04:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+    1c08:	83 c0 30             	add    $0x30,%eax
+    1c0b:	89 c2                	mov    %eax,%edx
+    1c0d:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1c11:	88 10                	mov    %dl,(%rax)
+    1c13:	8b 55 cc             	mov    -0x34(%rbp),%edx
+    1c16:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1c1a:	48 01 d0             	add    %rdx,%rax
+    1c1d:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1c21:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+    1c28:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1c2c:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1c30:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+    1c34:	64 48 2b 0c 25 28 00 	sub    %fs:0x28,%rcx
+    1c3b:	00 00 
+    1c3d:	74 05                	je     1c44 <std::to_chars_result std::__detail::__to_chars_8<unsigned long>(char*, char*, unsigned long)+0x165>
+    1c3f:	e8 6c f4 ff ff       	call   10b0 <__stack_chk_fail@plt>
+    1c44:	c9                   	leave
+    1c45:	c3                   	ret
+
+0000000000001c46 <std::to_chars_result std::__detail::__to_chars_2<unsigned long>(char*, char*, unsigned long)>:
+    1c46:	f3 0f 1e fa          	endbr64
+    1c4a:	55                   	push   %rbp
+    1c4b:	48 89 e5             	mov    %rsp,%rbp
+    1c4e:	48 83 ec 50          	sub    $0x50,%rsp
+    1c52:	48 89 7d c8          	mov    %rdi,-0x38(%rbp)
+    1c56:	48 89 75 c0          	mov    %rsi,-0x40(%rbp)
+    1c5a:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+    1c5e:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1c65:	00 00 
+    1c67:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    1c6b:	31 c0                	xor    %eax,%eax
+    1c6d:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1c71:	48 89 c7             	mov    %rax,%rdi
+    1c74:	e8 02 fc ff ff       	call   187b <unsigned int std::__detail::__to_chars_len_2<unsigned long>(unsigned long)>
+    1c79:	89 45 dc             	mov    %eax,-0x24(%rbp)
+    1c7c:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    1c80:	48 2b 45 c8          	sub    -0x38(%rbp),%rax
+    1c84:	48 89 c2             	mov    %rax,%rdx
+    1c87:	8b 45 dc             	mov    -0x24(%rbp),%eax
+    1c8a:	48 39 c2             	cmp    %rax,%rdx
+    1c8d:	0f 92 c0             	setb   %al
+    1c90:	0f b6 c0             	movzbl %al,%eax
+    1c93:	48 85 c0             	test   %rax,%rax
+    1c96:	74 19                	je     1cb1 <std::to_chars_result std::__detail::__to_chars_2<unsigned long>(char*, char*, unsigned long)+0x6b>
+    1c98:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    1c9c:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1ca0:	c7 45 e8 4b 00 00 00 	movl   $0x4b,-0x18(%rbp)
+    1ca7:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1cab:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1caf:	eb 5a                	jmp    1d0b <std::to_chars_result std::__detail::__to_chars_2<unsigned long>(char*, char*, unsigned long)+0xc5>
+    1cb1:	8b 45 dc             	mov    -0x24(%rbp),%eax
+    1cb4:	83 e8 01             	sub    $0x1,%eax
+    1cb7:	89 45 d8             	mov    %eax,-0x28(%rbp)
+    1cba:	eb 25                	jmp    1ce1 <std::to_chars_result std::__detail::__to_chars_2<unsigned long>(char*, char*, unsigned long)+0x9b>
+    1cbc:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1cc0:	83 e0 01             	and    $0x1,%eax
+    1cc3:	83 c0 30             	add    $0x30,%eax
+    1cc6:	89 c6                	mov    %eax,%esi
+    1cc8:	48 8b 4d c8          	mov    -0x38(%rbp),%rcx
+    1ccc:	8b 45 d8             	mov    -0x28(%rbp),%eax
+    1ccf:	8d 50 ff             	lea    -0x1(%rax),%edx
+    1cd2:	89 55 d8             	mov    %edx,-0x28(%rbp)
+    1cd5:	89 c0                	mov    %eax,%eax
+    1cd7:	48 01 c8             	add    %rcx,%rax
+    1cda:	40 88 30             	mov    %sil,(%rax)
+    1cdd:	48 d1 6d b8          	shrq   $1,-0x48(%rbp)
+    1ce1:	83 7d d8 00          	cmpl   $0x0,-0x28(%rbp)
+    1ce5:	75 d5                	jne    1cbc <std::to_chars_result std::__detail::__to_chars_2<unsigned long>(char*, char*, unsigned long)+0x76>
+    1ce7:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1ceb:	c6 00 31             	movb   $0x31,(%rax)
+    1cee:	8b 55 dc             	mov    -0x24(%rbp),%edx
+    1cf1:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+    1cf5:	48 01 d0             	add    %rdx,%rax
+    1cf8:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1cfc:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+    1d03:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+    1d07:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+    1d0b:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+    1d0f:	64 48 2b 0c 25 28 00 	sub    %fs:0x28,%rcx
+    1d16:	00 00 
+    1d18:	74 05                	je     1d1f <std::to_chars_result std::__detail::__to_chars_2<unsigned long>(char*, char*, unsigned long)+0xd9>
+    1d1a:	e8 91 f3 ff ff       	call   10b0 <__stack_chk_fail@plt>
+    1d1f:	c9                   	leave
+    1d20:	c3                   	ret
+
+0000000000001d21 <std::to_chars_result std::__detail::__to_chars<unsigned long>(char*, char*, unsigned long, int)>:
+    1d21:	f3 0f 1e fa          	endbr64
+    1d25:	55                   	push   %rbp
+    1d26:	48 89 e5             	mov    %rsp,%rbp
+    1d29:	48 83 c4 80          	add    $0xffffffffffffff80,%rsp
+    1d2d:	48 89 7d 98          	mov    %rdi,-0x68(%rbp)
+    1d31:	48 89 75 90          	mov    %rsi,-0x70(%rbp)
+    1d35:	48 89 55 88          	mov    %rdx,-0x78(%rbp)
+    1d39:	89 4d 84             	mov    %ecx,-0x7c(%rbp)
+    1d3c:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1d43:	00 00 
+    1d45:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+    1d49:	31 c0                	xor    %eax,%eax
+    1d4b:	8b 55 84             	mov    -0x7c(%rbp),%edx
+    1d4e:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+    1d52:	89 d6                	mov    %edx,%esi
+    1d54:	48 89 c7             	mov    %rax,%rdi
+    1d57:	e8 3d f5 ff ff       	call   1299 <unsigned int std::__detail::__to_chars_len<unsigned long>(unsigned long, int)>
+    1d5c:	89 45 ac             	mov    %eax,-0x54(%rbp)
+    1d5f:	48 8b 45 90          	mov    -0x70(%rbp),%rax
+    1d63:	48 2b 45 98          	sub    -0x68(%rbp),%rax
+    1d67:	48 89 c2             	mov    %rax,%rdx
+    1d6a:	8b 45 ac             	mov    -0x54(%rbp),%eax
+    1d6d:	48 39 c2             	cmp    %rax,%rdx
+    1d70:	0f 92 c0             	setb   %al
+    1d73:	0f b6 c0             	movzbl %al,%eax
+    1d76:	48 85 c0             	test   %rax,%rax
+    1d79:	74 1c                	je     1d97 <std::to_chars_result std::__detail::__to_chars<unsigned long>(char*, char*, unsigned long, int)+0x76>
+    1d7b:	48 8b 45 90          	mov    -0x70(%rbp),%rax
+    1d7f:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+    1d83:	c7 45 c8 4b 00 00 00 	movl   $0x4b,-0x38(%rbp)
+    1d8a:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    1d8e:	48 8b 55 c8          	mov    -0x38(%rbp),%rdx
+    1d92:	e9 dc 00 00 00       	jmp    1e73 <std::to_chars_result std::__detail::__to_chars<unsigned long>(char*, char*, unsigned long, int)+0x152>
+    1d97:	8b 45 ac             	mov    -0x54(%rbp),%eax
+    1d9a:	83 e8 01             	sub    $0x1,%eax
+    1d9d:	89 45 a8             	mov    %eax,-0x58(%rbp)
+    1da0:	48 b8 30 31 32 33 34 	movabs $0x3736353433323130,%rax
+    1da7:	35 36 37 
+    1daa:	48 ba 38 39 61 62 63 	movabs $0x6665646362613938,%rdx
+    1db1:	64 65 66 
+    1db4:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+    1db8:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+    1dbc:	48 b8 67 68 69 6a 6b 	movabs $0x6e6d6c6b6a696867,%rax
+    1dc3:	6c 6d 6e 
+    1dc6:	48 ba 6f 70 71 72 73 	movabs $0x767574737271706f,%rdx
+    1dcd:	74 75 76 
+    1dd0:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+    1dd4:	48 89 55 e8          	mov    %rdx,-0x18(%rbp)
+    1dd8:	c7 45 f0 77 78 79 7a 	movl   $0x7a797877,-0x10(%rbp)
+    1ddf:	eb 56                	jmp    1e37 <std::to_chars_result std::__detail::__to_chars<unsigned long>(char*, char*, unsigned long, int)+0x116>
+    1de1:	8b 45 84             	mov    -0x7c(%rbp),%eax
+    1de4:	48 63 f8             	movslq %eax,%rdi
+    1de7:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+    1deb:	ba 00 00 00 00       	mov    $0x0,%edx
+    1df0:	48 f7 f7             	div    %rdi
+    1df3:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+    1df7:	8b 45 84             	mov    -0x7c(%rbp),%eax
+    1dfa:	48 63 c8             	movslq %eax,%rcx
+    1dfd:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+    1e01:	ba 00 00 00 00       	mov    $0x0,%edx
+    1e06:	48 f7 f1             	div    %rcx
+    1e09:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+    1e0d:	48 8d 55 d0          	lea    -0x30(%rbp),%rdx
+    1e11:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+    1e15:	48 01 d0             	add    %rdx,%rax
+    1e18:	0f b6 10             	movzbl (%rax),%edx
+    1e1b:	48 8b 75 98          	mov    -0x68(%rbp),%rsi
+    1e1f:	8b 45 a8             	mov    -0x58(%rbp),%eax
+    1e22:	8d 48 ff             	lea    -0x1(%rax),%ecx
+    1e25:	89 4d a8             	mov    %ecx,-0x58(%rbp)
+    1e28:	89 c0                	mov    %eax,%eax
+    1e2a:	48 01 f0             	add    %rsi,%rax
+    1e2d:	88 10                	mov    %dl,(%rax)
+    1e2f:	48 8b 45 b0          	mov    -0x50(%rbp),%rax
+    1e33:	48 89 45 88          	mov    %rax,-0x78(%rbp)
+    1e37:	8b 45 84             	mov    -0x7c(%rbp),%eax
+    1e3a:	89 c0                	mov    %eax,%eax
+    1e3c:	48 39 45 88          	cmp    %rax,-0x78(%rbp)
+    1e40:	73 9f                	jae    1de1 <std::to_chars_result std::__detail::__to_chars<unsigned long>(char*, char*, unsigned long, int)+0xc0>
+    1e42:	48 8d 55 d0          	lea    -0x30(%rbp),%rdx
+    1e46:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+    1e4a:	48 01 d0             	add    %rdx,%rax
+    1e4d:	0f b6 10             	movzbl (%rax),%edx
+    1e50:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    1e54:	88 10                	mov    %dl,(%rax)
+    1e56:	8b 55 ac             	mov    -0x54(%rbp),%edx
+    1e59:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+    1e5d:	48 01 d0             	add    %rdx,%rax
+    1e60:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+    1e64:	c7 45 c8 00 00 00 00 	movl   $0x0,-0x38(%rbp)
+    1e6b:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+    1e6f:	48 8b 55 c8          	mov    -0x38(%rbp),%rdx
+    1e73:	48 8b 4d f8          	mov    -0x8(%rbp),%rcx
+    1e77:	64 48 2b 0c 25 28 00 	sub    %fs:0x28,%rcx
+    1e7e:	00 00 
+    1e80:	74 05                	je     1e87 <std::to_chars_result std::__detail::__to_chars<unsigned long>(char*, char*, unsigned long, int)+0x166>
+    1e82:	e8 29 f2 ff ff       	call   10b0 <__stack_chk_fail@plt>
+    1e87:	c9                   	leave
+    1e88:	c3                   	ret
+
+0000000000001e89 <int std::__countl_zero<unsigned long long>(unsigned long long)>:
+    1e89:	f3 0f 1e fa          	endbr64
+    1e8d:	55                   	push   %rbp
+    1e8e:	48 89 e5             	mov    %rsp,%rbp
+    1e91:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1e95:	c7 45 fc 40 00 00 00 	movl   $0x40,-0x4(%rbp)
+    1e9c:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1ea0:	48 85 c0             	test   %rax,%rax
+    1ea3:	74 0a                	je     1eaf <int std::__countl_zero<unsigned long long>(unsigned long long)+0x26>
+    1ea5:	48 0f bd c0          	bsr    %rax,%rax
+    1ea9:	48 83 f0 3f          	xor    $0x3f,%rax
+    1ead:	eb 05                	jmp    1eb4 <int std::__countl_zero<unsigned long long>(unsigned long long)+0x2b>
+    1eaf:	b8 40 00 00 00       	mov    $0x40,%eax
+    1eb4:	5d                   	pop    %rbp
+    1eb5:	c3                   	ret
+
+0000000000001eb6 <int std::__bit_width<unsigned long>(unsigned long)>:
+    1eb6:	f3 0f 1e fa          	endbr64
+    1eba:	55                   	push   %rbp
+    1ebb:	48 89 e5             	mov    %rsp,%rbp
+    1ebe:	48 83 ec 20          	sub    $0x20,%rsp
+    1ec2:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1ec6:	c7 45 fc 40 00 00 00 	movl   $0x40,-0x4(%rbp)
+    1ecd:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1ed1:	48 89 c7             	mov    %rax,%rdi
+    1ed4:	e8 0b 00 00 00       	call   1ee4 <int std::__countl_zero<unsigned long>(unsigned long)>
+    1ed9:	ba 40 00 00 00       	mov    $0x40,%edx
+    1ede:	29 c2                	sub    %eax,%edx
+    1ee0:	89 d0                	mov    %edx,%eax
+    1ee2:	c9                   	leave
+    1ee3:	c3                   	ret
+
+0000000000001ee4 <int std::__countl_zero<unsigned long>(unsigned long)>:
+    1ee4:	f3 0f 1e fa          	endbr64
+    1ee8:	55                   	push   %rbp
+    1ee9:	48 89 e5             	mov    %rsp,%rbp
+    1eec:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+    1ef0:	c7 45 fc 40 00 00 00 	movl   $0x40,-0x4(%rbp)
+    1ef7:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+    1efb:	48 85 c0             	test   %rax,%rax
+    1efe:	74 0a                	je     1f0a <int std::__countl_zero<unsigned long>(unsigned long)+0x26>
+    1f00:	48 0f bd c0          	bsr    %rax,%rax
+    1f04:	48 83 f0 3f          	xor    $0x3f,%rax
+    1f08:	eb 05                	jmp    1f0f <int std::__countl_zero<unsigned long>(unsigned long)+0x2b>
+    1f0a:	b8 40 00 00 00       	mov    $0x40,%eax
+    1f0f:	5d                   	pop    %rbp
+    1f10:	c3                   	ret
+
+Disassembly of section .fini:
+
+0000000000001f14 <_fini>:
+    1f14:	f3 0f 1e fa          	endbr64
+    1f18:	48 83 ec 08          	sub    $0x8,%rsp
+    1f1c:	48 83 c4 08          	add    $0x8,%rsp
+    1f20:	c3                   	ret
